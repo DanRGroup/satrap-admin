@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getMessaging } from "firebase/messaging";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDayQNuzqtuXFOMS8KtQ_ydDDP-5cOKYlY",
+  apiKey: "APIKEY",
   authDomain: "fireact-soltani.firebaseapp.com",
   projectId: "fireact-soltani",
   storageBucket: "fireact-soltani.appspot.com",
