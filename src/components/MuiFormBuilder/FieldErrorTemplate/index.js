@@ -19,7 +19,7 @@ export default function FieldErrorTemplate(props) {
       {errors.map((error, i) => {
         return (
           <ListItem key={i} disableGutters={true}>
-            <FormHelperText component="div" id={`${id}-${i}`}>
+            <FormHelperText sx={{fontSize: 12}} component="div" id={`${id}-${i}`}>
               {error}
             </FormHelperText>
           </ListItem>

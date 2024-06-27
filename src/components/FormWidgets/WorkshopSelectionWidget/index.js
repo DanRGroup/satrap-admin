@@ -1,33 +1,58 @@
 import React, { useEffect, useState } from 'react';
-import CloseIcon from '@mui/icons-material/Close'
-;
+import CloseIcon from '@mui/icons-material/Close';
 import { toast } from 'react-toastify';
-import { CategoryWidget } from 'widgets';
-import { Card, CardActionArea, CardHeader, Chip, IconButton, Stack, Typography } from '@mui/material';
+import { WorkshopModel } from 'models';
+import { Card, CardActionArea, CardHeader, Chip, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
 
-export default function CategorySelectWidget({
-  id,
-  label,
-  value,
+import { ariaDescribedByIds, enumOptionsIndexForValue, enumOptionsValueForIndex, labelValue } from '@rjsf/utils';
+import { useSelector } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
+
+export default function CustomSelectWidget({
   schema,
+  id,
+  name, // remove this from textFieldProps
   options,
+  label,
+  hideLabel,
   required,
-  readonly,
   disabled,
-  onChange,
-  uiSchema,
+  placeholder,
+  readonly,
+  value,
+  multiple,
   autofocus,
-  hideError,
+  onChange,
+  onBlur,
+  onFocus,
+  errorSchema,
   rawErrors = [],
+  registry,
+  uiSchema,
+  hideError,
+  formContext,
+  ...textFieldProps
 }) {
+  const { enumOptions, enumDisabled, emptyValue: optEmptyVal } = options;
+
+  multiple = typeof multiple === 'undefined' ? false : !!multiple;
+
+  const emptyValue = multiple ? [] : '';
+  const isEmpty = typeof value === 'undefined' || (multiple && value.length < 1) || (!multiple && value === emptyValue);
+
   const isObject = typeof value === 'object';
   const [multiSelect, setMultiple] = useState(schema.type === 'array');
-  const [selected, setSelected] = useState(isObject ? value : { id: value, title: 'دسته بندی انتخابی' });
+  const [selected, setSelected] = useState(value || (multiSelect ? [] : {}));
+  const [loading, setLoading] = useState(true);
+
+  const {
+    language: { direction },
+  } = useSelector((state) => state.setting);
 
   const onAssign = (data, onClose) => {
     if (multiSelect) {
       setSelected(data);
-      onChange(data.map((item) => item.id));
+      onChange(data.map((item) => item?.id));
       onClose();
     } else {
       if (data.length > 1) {
@@ -50,28 +75,30 @@ export default function CategorySelectWidget({
   };
 
   const clearSelection = () => {
+    onChange(undefined);
     if (isObject && multiSelect) {
       return setSelected([]);
     }
-    return setSelected({ id: value, title: 'دسته بندی انتخابی' });
+    return setSelected({});
   };
 
   useEffect(() => {
-    if (value) {
-      if (isObject && multiSelect) {
-        return onChange(selected.map((item) => item.id));
+    const timer = setTimeout(() => {
+      if (value && loading) {
+        if (typeof value === 'object' && value !== null) {
+          if (Array.isArray(value)) {
+            const newVals = value.filter((val) => val);
+            setSelected(newVals);
+            onChange(newVals.map((item) => item.id));
+          } else {
+            setSelected(value);
+            onChange(value?.id);
+          }
+        }
       }
-      return onChange(String(selected?.id));
-    }
-  }, [selected]);
-
-  useEffect(() => {
-    if (isObject && multiSelect && value.length === 0) {
-      return setSelected([]);
-    }
-    if (!value) {
-      return setSelected({ id: value, title: 'دسته بندی انتخابی' });
-    }
+      return setLoading(false);
+    }, 500);
+    return () => clearTimeout(timer);
   }, [value]);
 
   return (
@@ -84,38 +111,41 @@ export default function CategorySelectWidget({
           ':hover': {
             borderColor: 'text.primary',
           },
+          direction,
         }}
       >
-        <CategoryWidget
+        <WorkshopModel
           isPopup
           isAssign
           disabled={disabled || readonly}
           multiSelect={multiSelect}
-          title="انتخاب دسته بندی"
+          title={labelValue(label || undefined, hideLabel, undefined)}
           onAssign={onAssign}
           assigning={false}
           initFilter={{}}
           preSelected={
-            multiSelect ? selected.filter((item) => Number(item.id)) : [selected].filter((item) => Number(item.id))
+            multiSelect && Array.isArray(selected)
+              ? selected.filter((item) => item?.id !== undefined)
+              : [selected].filter((item) => item?.id !== undefined)
           }
         >
           <CardActionArea disabled={disabled || readonly} sx={{ height: '100%' }}>
             <CardHeader
-              sx={{ py: 0.5, px: 1 }}
+              dir={direction}
+              sx={{ py: 0.5, px: 1.5 }}
               title={
                 <Typography
                   variant="body1"
                   color="text.secondary"
                   fontSize={selected?.id || selected?.length > 0 ? 12 : 20}
                 >
-                  {label || schema.title}
+                  <FormattedMessage id={label || schema.title} />
                 </Typography>
               }
               subheader={
                 <Stack direction="row" flexWrap="wrap" rowGap={0.5} columnGap={0.5}>
-                  {multiSelect
-                    ? selected.length > 0 &&
-                      selected.map((item, i) => (
+                  {multiSelect && Array.isArray(selected)
+                    ? selected.map((item, i) => (
                         <Chip
                           key={i}
                           size="small"
@@ -129,7 +159,7 @@ export default function CategorySelectWidget({
               }
             />
           </CardActionArea>
-        </CategoryWidget>
+        </WorkshopModel>
         <Stack
           p={1}
           zIndex={2}
@@ -137,13 +167,18 @@ export default function CategorySelectWidget({
           justifyContent="center"
           sx={{ position: 'absolute', right: 0, top: 0, bottom: 0 }}
         >
-          <IconButton
-            onClick={clearSelection}
-            color="error"
-            sx={{ width: 24, height: 24, fontSize: 16, bgcolor: 'error.lighter' }}
-          >
-            <CloseIcon fontSize="inherit" />
-          </IconButton>
+          {loading ? (
+            <CircularProgress color="secondary" size={22} />
+          ) : (
+            <IconButton
+              onClick={clearSelection}
+              color="error"
+              disabled={loading}
+              sx={{ width: 24, height: 24, fontSize: 16, bgcolor: 'error.lighter' }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          )}
         </Stack>
       </Card>
     </>

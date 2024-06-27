@@ -1,15 +1,15 @@
-import "./style.css";
-import React from "react";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import CircularProgress from "@mui/material/CircularProgress";
+import './style.css';
+import React from 'react';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 
-import GeoField from "./GeoField";
-import MuiFormBuilder from "./MuiFormBuilder";
+import validator from '@rjsf/validator-ajv6';
+import MuiFormBuilder from './MuiFormBuilder';
 
-import { transformErrors } from "./utils";
-import validator from "@rjsf/validator-ajv6";
-import { removeNulls } from "helpers/formatObject";
+import { transformErrors } from './utils';
+import { LocationField } from './CustomFields';
+import { removeNulls } from 'helpers/formatObject';
 
 const MuiForm = ({
   onError,
@@ -20,7 +20,7 @@ const MuiForm = ({
   schema = {},
   uiSchema = {},
   customValidate,
-  submit = "ذخیره",
+  submit = 'ذخیره',
   loading = false,
   disabled = false,
   showSubmit = true,
@@ -42,15 +42,10 @@ const MuiForm = ({
       customValidate={customValidate}
       transformErrors={transformErrors}
       formData={removeNulls(formData)}
-      fields={{ geo: GeoField }}
+      fields={{ location: LocationField }}
     >
       {
-        <Stack
-          columnGap={1}
-          direction="row"
-          alignItems="center"
-          justifyContent="flex-end"
-        >
+        <Stack columnGap={1} direction="row" alignItems="center" justifyContent="flex-end">
           {children}
           {showSubmit && (
             <Button
@@ -61,11 +56,7 @@ const MuiForm = ({
               sx={{ minWidth: 120 }}
               disabled={loading || disabled}
             >
-              {loading ? (
-                <CircularProgress size={24} color="secondary" />
-              ) : (
-                submit
-              )}
+              {loading ? <CircularProgress size={24} color="secondary" /> : submit}
             </Button>
           )}
         </Stack>

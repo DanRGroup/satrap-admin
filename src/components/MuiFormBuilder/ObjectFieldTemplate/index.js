@@ -1,11 +1,6 @@
-import Grid from "@mui/material/Grid";
-import {
-  canExpand,
-  descriptionId,
-  getTemplate,
-  getUiOptions,
-  titleId,
-} from "@rjsf/utils";
+import React from 'react';
+import Grid from '@mui/material/Grid';
+import { canExpand, descriptionId, getTemplate, getUiOptions, titleId } from '@rjsf/utils';
 
 /** The `ObjectFieldTemplate` is the template to use to render all the inner properties of an object along with the
  * title and description if available. If the object is expandable, then an `AddButton` is also rendered after all
@@ -29,16 +24,8 @@ export default function ObjectFieldTemplate(props) {
     registry,
   } = props;
   const uiOptions = getUiOptions(uiSchema);
-  const TitleFieldTemplate = getTemplate(
-    "TitleFieldTemplate",
-    registry,
-    uiOptions
-  );
-  const DescriptionFieldTemplate = getTemplate(
-    "DescriptionFieldTemplate",
-    registry,
-    uiOptions
-  );
+  const TitleFieldTemplate = getTemplate('TitleFieldTemplate', registry, uiOptions);
+  const DescriptionFieldTemplate = getTemplate('DescriptionFieldTemplate', registry, uiOptions);
   // Button templates are not overridden in the uiSchema
   const {
     ButtonTemplates: { AddButton },
@@ -64,22 +51,11 @@ export default function ObjectFieldTemplate(props) {
           registry={registry}
         />
       )}
-      <Grid container={true} spacing={2} style={{ marginTop: "10px" }}>
+      <Grid container={true} spacing={2}>
         {properties.map((element, index) =>
           // Remove the <Grid> if the inner element is hidden as the <Grid>
           // itself would otherwise still take up space.
-          element.hidden ? (
-            element.content
-          ) : (
-            <Grid
-              item={true}
-              xs={12}
-              key={index}
-              style={{ marginBottom: "10px" }}
-            >
-              {element.content}
-            </Grid>
-          )
+          element.hidden ? element.content : <React.Fragment key={index}>{element.content}</React.Fragment>
         )}
         {canExpand(schema, uiSchema, formData) && (
           <Grid container justifyContent="flex-end">

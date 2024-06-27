@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 const schema = {
   list: {
     name: 'workshop',
-    serviceName: 'auth',
+    serviceName: 'graphql',
     query: gql`
       query workshop($ids: [String], $title: String) {
         workshop(ids: $ids, title: $title) {

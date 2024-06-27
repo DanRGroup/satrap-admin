@@ -6,6 +6,7 @@ import {
   enumOptionsValueForIndex,
   labelValue,
 } from "@rjsf/utils";
+import { FormattedMessage } from "react-intl";
 
 /** The `SelectWidget` is a widget for rendering dropdowns.
  *  It is typically used with string properties constrained with enum options.
@@ -69,12 +70,8 @@ export default function SelectWidget({
     <TextField
       id={id}
       name={id}
-      label={labelValue(label || undefined, hideLabel, undefined)}
-      value={
-        !isEmpty && typeof selectedIndexes !== "undefined"
-          ? selectedIndexes
-          : emptyValue
-      }
+      label={<FormattedMessage id={labelValue(label || undefined, hideLabel, undefined)} />}
+      value={!isEmpty && typeof selectedIndexes !== 'undefined' ? selectedIndexes : emptyValue}
       required={required}
       disabled={disabled || readonly}
       autoFocus={autofocus}
@@ -98,8 +95,7 @@ export default function SelectWidget({
     >
       {Array.isArray(enumOptions) &&
         enumOptions.map(({ value, label }, i) => {
-          const disabled =
-            Array.isArray(enumDisabled) && enumDisabled.indexOf(value) !== -1;
+          const disabled = Array.isArray(enumDisabled) && enumDisabled.indexOf(value) !== -1;
           return (
             <MenuItem key={i} value={String(i)} disabled={disabled}>
               {label}

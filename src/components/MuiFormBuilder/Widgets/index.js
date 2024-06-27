@@ -5,9 +5,9 @@ import RangeWidget from '../RangeWidget';
 import SelectWidget from '../SelectWidget';
 import TextareaWidget from '../TextareaWidget';
 
-import DateWidget from "../DateWidget";
-import DateTimeWidget from "../DateTimeWidget";
-import SwitchWidget from "../SwitchWidget";
+import { PersianDateWidget } from '../CustomWidgets';
+// import DateTimeWidget from "../DateTimeWidget";
+// import SwitchWidget from "../SwitchWidget";
 
 export function generateWidgets() {
   return {
@@ -18,8 +18,8 @@ export function generateWidgets() {
     SelectWidget,
     TextareaWidget,
 
+    DateWidget: PersianDateWidget,
     // CheckboxWidget: SwitchWidget,
-    // DateWidget: DateWidget,
     // DateTimeWidget: DateTimeWidget,
   };
 }

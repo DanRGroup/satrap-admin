@@ -2,8 +2,8 @@ import AddButton from "../AddButton";
 import ArrayFieldItemTemplate from "../ArrayFieldItemTemplate";
 import ArrayFieldTemplate from "../ArrayFieldTemplate";
 import BaseInputTemplate from "../BaseInputTemplate";
-import DescriptionField from "../DescriptionField";
-import ErrorList from "../ErrorList";
+import DescriptionFieldTemplate from "../DescriptionFieldTemplate";
+import ErrorListTemplate from "../ErrorListTemplate";
 import {
   CopyButton,
   MoveDownButton,
@@ -15,7 +15,7 @@ import FieldHelpTemplate from "../FieldHelpTemplate";
 import FieldTemplate from "../FieldTemplate";
 import ObjectFieldTemplate from "../ObjectFieldTemplate";
 import SubmitButton from "../SubmitButton";
-import TitleField from "../TitleField";
+import TitleFieldTemplate from "../TitleFieldTemplate";
 import WrapIfAdditionalTemplate from "../WrapIfAdditionalTemplate";
 
 export function generateTemplates() {
@@ -31,13 +31,13 @@ export function generateTemplates() {
       RemoveButton,
       SubmitButton,
     },
-    DescriptionFieldTemplate: DescriptionField,
-    ErrorListTemplate: ErrorList,
+    DescriptionFieldTemplate,
+    ErrorListTemplate,
     FieldErrorTemplate,
     FieldHelpTemplate,
     FieldTemplate,
     ObjectFieldTemplate,
-    TitleFieldTemplate: TitleField,
+    TitleFieldTemplate,
     WrapIfAdditionalTemplate,
   };
 }
