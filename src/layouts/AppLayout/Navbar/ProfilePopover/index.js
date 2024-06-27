@@ -1,18 +1,10 @@
-import { useState } from "react";
-import { alpha } from "@mui/material/styles";
+import { useState } from 'react';
+import { alpha } from '@mui/material/styles';
 
-import {
-  Menu,
-  Stack,
-  Avatar,
-  Divider,
-  MenuItem,
-  Typography,
-  IconButton,
-} from "@mui/material";
+import { Menu, Stack, Avatar, Divider, MenuItem, Typography, IconButton } from '@mui/material';
 
-import { signOut } from "toolkits/redux/auth";
-import { useDispatch, useSelector } from "react-redux";
+import { signOut } from 'toolkits/redux/auth';
+import { useDispatch, useSelector } from 'react-redux';
 
 // ----------------------------------------------------------------------
 
@@ -41,7 +33,7 @@ export default function ProfilePopover() {
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const id = open ? 'simple-popover' : undefined;
 
   return (
     <>
@@ -54,13 +46,13 @@ export default function ProfilePopover() {
           width: 41,
           height: 41,
           ...(open && {
-            "&:before": {
+            '&:before': {
               zIndex: 1,
               content: "''",
-              width: "100%",
-              height: "100%",
-              borderRadius: "50%",
-              position: "absolute",
+              width: '100%',
+              height: '100%',
+              borderRadius: '50%',
+              position: 'absolute',
               bgcolor: (theme) => alpha(theme.palette.primary.main, 0.3),
             },
           }),
@@ -68,8 +60,8 @@ export default function ProfilePopover() {
       >
         <Avatar
           alt="profile"
-          src="/assets/images/avatars/avatar_18.jpg"
-          sx={{ width: "100%", height: "100%", objectFit: "cover" }}
+          src="/assets/images/avatars/avatar_15.jpg"
+          sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
       </IconButton>
 
@@ -80,12 +72,12 @@ export default function ProfilePopover() {
         onClose={onClose}
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
+          vertical: 'bottom',
+          horizontal: 'center',
         }}
         transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
+          vertical: 'top',
+          horizontal: 'center',
         }}
       >
         <Stack p={1}>
@@ -109,7 +101,7 @@ export default function ProfilePopover() {
           </Stack>
         </Stack>
 
-        <Divider sx={{ borderStyle: "dashed" }} />
+        <Divider sx={{ borderStyle: 'dashed' }} />
 
         <MenuItem onClick={logout} sx={{ m: 1 }}>
           خروج از سامانه

@@ -21,3 +21,6 @@ export { default as Scrollbar } from './Scrollbar';
 export { default as ScrollToTop } from './ScrollToTop';
 export { default as SplashScreen } from './SplashScreen';
 export { default as Tour } from './Tour';
+export { default as AvatarPopover } from './AvatarPopover';
+export { default as MediaDeleter } from './MediaDeleter';
+export { default as MediaUploader } from './MediaUploader';

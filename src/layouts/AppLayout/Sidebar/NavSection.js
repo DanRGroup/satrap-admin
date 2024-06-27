@@ -1,56 +1,44 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
-import { NavLink, matchPath, useLocation } from "react-router-dom";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { NavLink, matchPath, useLocation } from 'react-router-dom';
 
-import { styled } from "@mui/material/styles";
-import {
-  Box,
-  List,
-  Avatar,
-  Collapse,
-  IconButton,
-  ListItemText,
-  ListItemIcon,
-  ListItemButton,
-} from "@mui/material";
+import { styled } from '@mui/material/styles';
+import { Box, List, Avatar, Collapse, IconButton, ListItemText, ListItemIcon, ListItemButton } from '@mui/material';
 
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 
-import { useSelector } from "react-redux";
-import { navConfig } from "routes/SuperAdminRoutes";
+import { useSelector } from 'react-redux';
+import { navConfig } from 'routes/AppRoutes';
+import { FormattedMessage } from 'react-intl';
 
 // ----------------------------------------------------------------------
 
-const ListItemStyle = styled((props) => (
-  <ListItemButton disableGutters {...props} />
-))(({ theme }) => ({
+const ListItemStyle = styled((props) => <ListItemButton disableGutters {...props} />)(({ theme }) => ({
   ...theme.typography.body2,
   height: 48,
-  position: "relative",
-  textTransform: "capitalize",
-  transition: "all 0.5s ease",
+  position: 'relative',
+  textTransform: 'capitalize',
+  transition: 'all 0.5s ease',
   color: theme.palette.text.secondary,
   borderRadius: theme.shape.borderRadius * 2,
-  "&:hover": {
+  '&:hover': {
     backgroundColor: theme.palette.action.hover,
-    transition: "all 0.5s ease",
+    transition: 'all 0.5s ease',
   },
 }));
 
 const ListItemIconStyle = styled(ListItemIcon)({
   width: 22,
   height: 22,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 });
 
-const ExpandMore = styled(({ expand, ...other }) => (
-  <IconButton disableRipple {...other} />
-))(({ theme, expand }) => ({
-  transform: !expand ? "rotate(90deg)" : "rotate(0deg)",
-  transition: theme.transitions.create("transform", {
+const ExpandMore = styled(({ expand, ...other }) => <IconButton disableRipple {...other} />)(({ theme, expand }) => ({
+  transform: !expand ? 'rotate(90deg)' : 'rotate(0deg)',
+  transition: theme.transitions.create('transform', {
     duration: theme.transitions.duration.shortest,
   }),
 }));
@@ -73,18 +61,18 @@ function NavItem({ item, active, hasRequiredRole }) {
   };
 
   const defultRootStyle = {
-    fontWeight: "bold",
+    fontWeight: 'bold',
   };
 
   const activeRootStyle = {
-    fontWeight: "bold",
-    color: "primary.main",
-    bgcolor: "action.selected",
+    fontWeight: 'bold',
+    color: 'primary.main',
+    bgcolor: 'action.selected',
   };
 
   const activeSubStyle = {
-    color: "primary.main",
-    bgcolor: "info.lighter",
+    color: 'primary.main',
+    bgcolor: 'info.lighter',
   };
 
   if (children.length > 0) {
@@ -98,18 +86,16 @@ function NavItem({ item, active, hasRequiredRole }) {
         >
           <Avatar
             sx={{
-              mx: "auto",
-              bgcolor: "transparent",
-              color: isActiveRoot && !open ? "primary.main" : "inherit",
+              mx: 'auto',
+              bgcolor: 'transparent',
+              color: isActiveRoot && !open ? 'primary.main' : 'inherit',
             }}
           >
             {icon}
           </Avatar>
-          <ListItemText disableTypography sx={{ mb: 0 }} primary={title} />
+          <ListItemText disableTypography sx={{ mb: 0 }} primary={<FormattedMessage id={title} />} />
           <ExpandMore expand={open}>
-            <ExpandMoreIcon
-              color={isActiveRoot && !open ? "primary" : "inherit"}
-            />
+            <ExpandMoreIcon color={isActiveRoot && !open ? 'primary' : 'inherit'} />
           </ExpandMore>
         </ListItemStyle>
 
@@ -133,24 +119,23 @@ function NavItem({ item, active, hasRequiredRole }) {
                         sx={{
                           width: 4,
                           height: 4,
-                          display: "flex",
-                          borderRadius: "50%",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          bgcolor: "text.disabled",
-                          transition: (theme) =>
-                            theme.transitions.create("transform"),
+                          display: 'flex',
+                          borderRadius: '50%',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          bgcolor: 'text.disabled',
+                          transition: (theme) => theme.transitions.create('transform'),
                           ...(isActiveSub && {
-                            transform: "scale(2)",
-                            bgcolor: "primary.main",
+                            transform: 'scale(2)',
+                            bgcolor: 'primary.main',
                           }),
                         }}
                       />
                     </ListItemIconStyle>
                     <ListItemText
-                      primary={title}
+                      primary={<FormattedMessage id={title} />}
                       disableTypography
-                      sx={{ color: isActiveSub && "primary.main" }}
+                      sx={{ color: isActiveSub && 'primary.main' }}
                     />
                     <Box sx={{ width: 16, height: 16, mr: 2, ml: 2 }} />
                   </ListItemStyle>
@@ -164,11 +149,7 @@ function NavItem({ item, active, hasRequiredRole }) {
   }
 
   return (
-    <ListItemStyle
-      to={url}
-      component={NavLink}
-      sx={{ ...(isActiveRoot && activeRootStyle) }}
-    >
+    <ListItemStyle to={url} component={NavLink} sx={{ ...(isActiveRoot && activeRootStyle) }}>
       <ListItemIconStyle>
         <CheckCircleOutlineRoundedIcon />
       </ListItemIconStyle>
@@ -187,20 +168,14 @@ export default function NavSection() {
     }
     return true;
   };
-  const match = (path) =>
-    path ? !!matchPath({ path, end: false }, pathname) : false;
+  const match = (path) => (path ? !!matchPath({ path, end: false }, pathname) : false);
   return (
-    <List sx={{ px: 1, display: "flex", flexDirection: "column", rowGap: 0.5 }}>
+    <List sx={{ px: 1, display: 'flex', flexDirection: 'column', rowGap: 0.5 }}>
       {navConfig.map(
         (item, index) =>
           item?.inSidebar &&
           hasRequiredRole(item.roles, userInfo?.roles) && (
-            <NavItem
-              key={index}
-              item={item}
-              active={match}
-              hasRequiredRole={hasRequiredRole}
-            />
+            <NavItem key={index} item={item} active={match} hasRequiredRole={hasRequiredRole} />
           )
       )}
     </List>

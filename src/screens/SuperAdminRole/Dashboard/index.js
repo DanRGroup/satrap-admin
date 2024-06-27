@@ -1,14 +1,11 @@
-import React from "react";
-import { Page } from "components";
-import { Typography } from "@mui/material";
-import { FormattedMessage } from "react-intl";
+import React from 'react';
+import Chart from './Chart';
+import { Page } from 'components';
 
 export default function Dashboard() {
   return (
     <Page title="Dashboard">
-      <Typography>
-        <FormattedMessage id="welcome" />
-      </Typography>
+      <Chart />
     </Page>
   );
 }
