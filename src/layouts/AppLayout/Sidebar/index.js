@@ -24,7 +24,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   const renderContent = (
     <Stack p={1} rowGap={1} height="100%">
       <Stack py={1} rowGap={1} borderRadius={2} alignItems="center" justifyContent="center" bgcolor="info.main">
-        <Avatar alt="profile" sx={{ width: 80, height: 80 }} src="/assets/images/avatars/avatar_15.jpg" />
+        <Avatar alt="profile" sx={{ width: 80, height: 80 }} src="/assets/images/avatars/avatar_12.jpg" />
         <Stack direction="row" columnGap={0.5}>
           {roles.map((role) => (
             <Typography

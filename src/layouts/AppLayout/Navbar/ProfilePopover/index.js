@@ -60,7 +60,7 @@ export default function ProfilePopover() {
       >
         <Avatar
           alt="profile"
-          src="/assets/images/avatars/avatar_15.jpg"
+          src="/assets/images/avatars/avatar_12.jpg"
           sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
       </IconButton>
