@@ -1,10 +1,13 @@
 export { default as SiteModel } from './SiteModel';
+export { default as UsersModel } from './UsersModel';
+export { default as TariffModel } from './TariffModel';
 export { default as VehicleModel } from './VehicleModel';
 export { default as ContractModel } from './ContractModel';
 export { default as WorkshopModel } from './WorkshopModel';
 export { default as SiteTypeModel } from './SiteTypeModel';
 export { default as TasksTypeModel } from './TasksTypeModel';
 export { default as ShiftTypeModel } from './ShiftTypeModel';
+export { default as UserRolesModel } from './UserRolesModel';
 export { default as TaskStatusModel } from './TaskStatusModel';
 export { default as VehicleTypeModel } from './VehicleTypeModel';
 export { default as MaterialTypeModel } from './MaterialTypeModel';

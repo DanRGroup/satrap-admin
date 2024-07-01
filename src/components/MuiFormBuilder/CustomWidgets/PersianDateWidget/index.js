@@ -1,5 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import { Card, CardActionArea, CardContent, DialogContent, Grid, Chip, Stack, TextField, MenuItem } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  DialogContent,
+  Grid,
+  Chip,
+  Stack,
+  TextField,
+  MenuItem,
+} from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 import moment from 'moment';
@@ -22,86 +32,86 @@ import { digitsEnToFa, digitsFaToEn } from '@persian-tools/persian-tools';
 import { FormattedMessage } from 'react-intl';
 
 const weekDaysTitle = [
-    {
-      id: "01",
-      label: "شنبه"
-    },
-    {
-      id: "02",
-      label: "یکشنبه"
-    },
-    {
-      id: "03",
-      label: "دوشنبه"
-    },
-    {
-      id: "04",
-      label: "سه شنبه"
-    },
-    {
-      id: "05",
-      label: "چهارشنبه"
-    },
-    {
-      id: "06",
-      label: "پنجشنبه"
-    },
-    {
-      id: "07",
-      label: "جمعه"
-    }
-  ];
+  {
+    id: '01',
+    label: 'شنبه',
+  },
+  {
+    id: '02',
+    label: 'یکشنبه',
+  },
+  {
+    id: '03',
+    label: 'دوشنبه',
+  },
+  {
+    id: '04',
+    label: 'سه شنبه',
+  },
+  {
+    id: '05',
+    label: 'چهارشنبه',
+  },
+  {
+    id: '06',
+    label: 'پنجشنبه',
+  },
+  {
+    id: '07',
+    label: 'جمعه',
+  },
+];
 
 const months = [
-    {
-        id: "01",
-        label: "فروردین"
-    },
-    {
-        id: "02",
-        label: "اردیبهشت"
-    },
-    {
-        id: "03",
-        label: "خرداد"
-    },
-    {
-        id: "04",
-        label: "تیر"
-    },
-    {
-        id: "05",
-        label: "مرداد"
-    },
-    {
-        id: "06",
-        label: "شهریور"
-    },
-    {
-        id: "07",
-        label: "مهر"
-    },
-    {
-        id: "08",
-        label: "آبان"
-    },
-    {
-        id: "09",
-        label: "آذر"
-    },
-    {
-        id: "10",
-        label: "دی"
-    },
-    {
-        id: "11",
-        label: "بهمن"
-    },
-    {
-        id: "12",
-        label: "اسفند"
-    },
-  ];
+  {
+    id: '01',
+    label: 'فروردین',
+  },
+  {
+    id: '02',
+    label: 'اردیبهشت',
+  },
+  {
+    id: '03',
+    label: 'خرداد',
+  },
+  {
+    id: '04',
+    label: 'تیر',
+  },
+  {
+    id: '05',
+    label: 'مرداد',
+  },
+  {
+    id: '06',
+    label: 'شهریور',
+  },
+  {
+    id: '07',
+    label: 'مهر',
+  },
+  {
+    id: '08',
+    label: 'آبان',
+  },
+  {
+    id: '09',
+    label: 'آذر',
+  },
+  {
+    id: '10',
+    label: 'دی',
+  },
+  {
+    id: '11',
+    label: 'بهمن',
+  },
+  {
+    id: '12',
+    label: 'اسفند',
+  },
+];
 
 const years = [
   '1330',
@@ -190,20 +200,16 @@ const years = [
 // const years = Array.from({ length: 410}, (i) => i + 1000);
 
 function findInArray(arr, position) {
-  if(position < 0)
-    return arr[(arr.length + position)]
+  if (position < 0) return arr[arr.length + position];
   return arr[position % arr.length];
 }
 
 const StyledTabs = styled((props) => (
-  <Tabs
-    {...props}
-    TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
-  />
+  <Tabs {...props} TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }} />
 ))({
   '& .MuiTabs-indicator': {
-    display: 'none'
-  }
+    display: 'none',
+  },
 });
 
 const StyledTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) => ({
@@ -258,7 +264,7 @@ export default function PersianDateWidget(props) {
   const handleClose = () => {
     setOpen(false);
   };
-  
+
   const goToday = () => {
     setMonth(Number(jMoment().format('jMM')));
     setYear(Number(jMoment().format('jYYYY')));
@@ -267,29 +273,24 @@ export default function PersianDateWidget(props) {
     closeOnSelect && handleClose();
   };
 
-  const mon = [1,2,3,4,5,6,7,8,9,10,11];
-  const daysInMonth = jMoment.jDaysInMonth(year, Number(month-1));
-  const daysInPrevMonth = jMoment.jDaysInMonth(year, Number(month-2));
+  const mon = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+  const daysInMonth = jMoment.jDaysInMonth(year, Number(month - 1));
+  const daysInPrevMonth = jMoment.jDaysInMonth(year, Number(month - 2));
 
-  const firstDay = (moment(jMoment(`${year}-${findInArray(mon, month-1)}-01`, 'jYYYY/jMM/jDD').format('YYYY-MM-DD')).day() + 1 ) % 7;
+  const firstDay =
+    (moment(jMoment(`${year}-${findInArray(mon, month - 1)}-01`, 'jYYYY/jMM/jDD').format('YYYY-MM-DD')).day() + 1) % 7;
 
-  const extend = ( daysInMonth + firstDay ) % 7;
+  const extend = (daysInMonth + firstDay) % 7;
 
   const handleSelection = (day) => {
-    setSelectedValue(
-      jMoment(`${year}-${month}-${day - firstDay + 1}`, 'jYYYY/jMM/jDD')
-      .format('jYYYY-jMM-jDD')
-    );
-    onChange(
-      jMoment(`${year}-${month}-${day - firstDay + 1}`, 'jYYYY/jMM/jDD')
-      .format('YYYY-MM-DD')
-    )
+    setSelectedValue(jMoment(`${year}-${month}-${day - firstDay + 1}`, 'jYYYY/jMM/jDD').format('jYYYY-jMM-jDD'));
+    onChange(jMoment(`${year}-${month}-${day - firstDay + 1}`, 'jYYYY/jMM/jDD').format('YYYY-MM-DD'));
     closeOnSelect && handleClose();
-  }
+  };
 
-  useEffect( () => {
-    value && onChange(moment(value).format('YYYY-MM-DD'))
-  }, [value])
+  useEffect(() => {
+    value && onChange(moment(value).format('YYYY-MM-DD'));
+  }, [value]);
 
   return (
     <>

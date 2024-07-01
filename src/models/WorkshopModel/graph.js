@@ -5,8 +5,8 @@ const schema = {
     name: 'workshop',
     serviceName: 'graphql',
     query: gql`
-      query workshop($ids: [String], $title: String) {
-        workshop(ids: $ids, title: $title) {
+      query workshop($ids: [String], $title: String, $for_admin: Int) {
+        workshop(ids: $ids, title: $title, for_admin: $for_admin) {
           data {
             id
             title

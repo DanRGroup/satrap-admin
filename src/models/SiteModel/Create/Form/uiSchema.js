@@ -1,3 +1,5 @@
+import { UsersSelectionWidget, SiteTypeSelectionWidget } from 'components/FormWidgets';
+
 const uiSchema = () => ({
   title: {
     'ui:options': {
@@ -8,9 +10,40 @@ const uiSchema = () => ({
       xl: 12,
     },
   },
-  details: {
-    'ui:widget': 'textarea',
+  manager_id: {
+    'ui:widget': UsersSelectionWidget,
     'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
+  type_id: {
+    'ui:widget': SiteTypeSelectionWidget,
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
+  location: {
+    'ui:field': 'location',
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
+  is_active: {
+    'ui:widget': 'radio',
+    'ui:options': {
+      inline: true,
       xs: 12,
       sm: 12,
       md: 12,

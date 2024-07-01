@@ -11,7 +11,6 @@ const schema = {
         $national_code: String
         $cellphone: String! # ده تا دوازده کارکتر
         $medical_number: String
-        $specialist: String
         $gender: Int
         $address: String
         $email: String
@@ -23,8 +22,6 @@ const schema = {
         $need_activation: Int # 0 , 1
         $user_category_title: String
         $user_category_id: String
-        $insurance_type: String
-        $financial_situation: String
       ) {
         addUser(
           firstname: $firstname

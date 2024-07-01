@@ -2,15 +2,29 @@ import { gql } from '@apollo/client';
 
 const schema = {
   get: {
-    name: 'paymentStatus',
-    serviceName: 'auth',
+    name: 'vehicle',
+    serviceName: 'graphql',
     query: gql`
-      query paymentStatus($ids: [String], $title: String) {
-        paymentStatus(ids: $ids, title: $title) {
+      query vehicle($ids: [String], $title: String) {
+        vehicle(ids: $ids, title: $title) {
           data {
             id
-            title
-            details
+            owner {
+              id
+              firstname
+              lastname
+            }
+            driver {
+              id
+              firstname
+              lastname
+            }
+            type {
+              id
+              title
+            }
+            serial_number
+            plaque
             media {
               id
               full_url
@@ -22,11 +36,27 @@ const schema = {
     `,
   },
   update: {
-    name: 'updatePaymentStatus',
-    serviceName: 'admin',
+    name: 'updateVehicle',
+    serviceName: 'auth',
     query: gql`
-      mutation updatePaymentStatus($ids: [String]!, $title: String!, $code: String, $details: String) {
-        updatePaymentStatus(ids: $ids, title: $title, code: $code, details: $details) {
+      mutation updateVehicle(
+        $ids: [String]!
+        $owner_id: String
+        $driver_id: String
+        $type_id: String
+        $serial_number: String
+        $plaque: String
+        $details: String
+      ) {
+        updateVehicle(
+          ids: $ids
+          owner_id: $owner_id
+          driver_id: $driver_id
+          type_id: $type_id
+          serial_number: $serial_number
+          plaque: $plaque
+          details: $details
+        ) {
           messages
         }
       }

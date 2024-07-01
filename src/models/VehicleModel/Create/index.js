@@ -38,7 +38,7 @@ export default function CreatePopup({ title, refetch }) {
   const onSubmit = async () => {
     try {
       const { data, errors } = await formUpdate({
-        variables: formData,
+        variables: { ...formData, status: 'IDLE' },
       });
       if (!errors) {
         refetch();

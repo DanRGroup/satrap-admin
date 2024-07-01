@@ -27,7 +27,7 @@ const schema = {
         $creator_id: String
         $updator_id: String
         $tonnage: Int
-        $coefficient: Int
+        $coefficient: String
         $have_food: Int
       ) {
         createTask(

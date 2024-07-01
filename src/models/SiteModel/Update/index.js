@@ -43,7 +43,9 @@ export default function UpdatePopup({ ids, title, refetch }) {
         if (res) {
           setFormData({
             ...res,
-            status_id: res.status,
+            type_id: res.type,
+            location: { lat: res?.lat, lng: res?.lng },
+            manager_id: { id: res.manager?.id, title: `${res.manager?.firstname} ${res.manager?.lastname}` },
           });
         }
       }
@@ -56,6 +58,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
 
   const onSubmit = async () => {
     try {
+      const { title, type, location, manager_id, is_active } = formData;
       const { data, errors } = await updateModel({
         context: {
           serviceName: graph.update.serviceName,
@@ -63,7 +66,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
             authorization: `Bearer ${userToken}`,
           },
         },
-        variables: { ids, ...formData },
+        variables: { ids, title, type, manager_id, is_active, lat: location?.lat, lng: location?.lng },
       });
       if (!errors) {
         refetch();

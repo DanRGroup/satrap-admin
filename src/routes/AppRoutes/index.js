@@ -14,9 +14,13 @@ import {
   TaskStatusModel,
   TasksTypeModel,
   WorkshopStatusModel,
+  VehicleTypeModel,
   SiteModel,
   ContractModel,
   VehicleModel,
+  UsersModel,
+  WorkshopModel,
+  TariffModel,
 } from 'models';
 
 const NotFound = Loadable(lazy(() => import('screens/Authentication/Page404')));
@@ -41,10 +45,9 @@ export const navConfig = [
     path: '/',
     element: <Navigate to="/app" replace />,
   },
-  { path: '/orders', element: <Navigate to="/orders/list" replace /> },
   {
-    path: '/',
-    url: '/',
+    path: '/setting',
+    url: '/setting',
     title: 'setting',
     inSidebar: true,
     element: <AppLayout />,
@@ -52,15 +55,15 @@ export const navConfig = [
     children: [
       { element: <Navigate to="/app" replace /> },
       {
-        path: '/app',
-        url: '/app',
+        path: '/setting/app',
+        url: '/setting/app',
         title: 'app',
         element: <Dashboard />,
         inSidebar: true,
       },
       {
-        path: '/contract-types',
-        url: '/contract-types',
+        path: '/setting/contract-types',
+        url: '/setting/contract-types',
         title: 'contract_types',
         element: (
           <Page title="Contract">
@@ -71,8 +74,8 @@ export const navConfig = [
         roles: ['superadmin'],
       },
       {
-        path: '/material_types',
-        url: '/material_types',
+        path: '/setting/material_types',
+        url: '/setting/material_types',
         title: 'material_types',
         element: (
           <Page title="Material">
@@ -83,8 +86,8 @@ export const navConfig = [
         roles: ['superadmin'],
       },
       {
-        path: '/operation-types',
-        url: '/operation-types',
+        path: '/setting/operation-types',
+        url: '/setting/operation-types',
         title: 'operation_types',
         element: (
           <Page title="Operations">
@@ -95,8 +98,8 @@ export const navConfig = [
         roles: ['superadmin'],
       },
       {
-        path: '/shift-types',
-        url: '/shift-types',
+        path: '/setting/shift-types',
+        url: '/setting/shift-types',
         title: 'shift_types',
         element: (
           <Page title="Actions">
@@ -107,8 +110,8 @@ export const navConfig = [
         roles: ['superadmin'],
       },
       {
-        path: '/site-types',
-        url: '/site-types',
+        path: '/setting/site-types',
+        url: '/setting/site-types',
         title: 'site_types',
         element: (
           <Page title="Sites">
@@ -119,8 +122,20 @@ export const navConfig = [
         roles: ['superadmin'],
       },
       {
-        path: '/task-status',
-        url: '/task-status',
+        path: '/setting/vehicle-types',
+        url: '/setting/vehicle-types',
+        title: 'vehicle_types',
+        element: (
+          <Page title="Sites">
+            <VehicleTypeModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin'],
+      },
+      {
+        path: '/setting/task-status',
+        url: '/setting/task-status',
         title: 'task_status',
         element: (
           <Page title="Tasks">
@@ -131,8 +146,8 @@ export const navConfig = [
         roles: ['superadmin'],
       },
       {
-        path: '/task-types',
-        url: '/task-types',
+        path: '/setting/task-types',
+        url: '/setting/task-types',
         title: 'task_types',
         element: (
           <Page title="Tasks">
@@ -143,8 +158,8 @@ export const navConfig = [
         roles: ['superadmin'],
       },
       {
-        path: '/workshop-status',
-        url: '/workshop-status',
+        path: '/setting/workshop-status',
+        url: '/setting/workshop-status',
         title: 'workshop_status',
         element: (
           <Page title="WorkShop">
@@ -165,11 +180,22 @@ export const navConfig = [
     icon: <DashboardRoundedIcon fontSize="small" />,
     children: [
       {
+        path: '/dashboard/users',
+        url: '/dashboard/users',
+        title: 'users',
+        element: (
+          <Page title="Users">
+            <UsersModel />
+          </Page>
+        ),
+        inSidebar: true,
+      },
+      {
         path: '/dashboard/sites',
         url: '/dashboard/sites',
         title: 'sites',
         element: (
-          <Page title="Orders">
+          <Page title="Sites">
             <SiteModel />
           </Page>
         ),
@@ -191,8 +217,30 @@ export const navConfig = [
         url: '/dashboard/vehicles',
         title: 'vehicles',
         element: (
-          <Page title="Orders">
+          <Page title="Vehicles">
             <VehicleModel />
+          </Page>
+        ),
+        inSidebar: true,
+      },
+      {
+        path: '/dashboard/workshop',
+        url: '/dashboard/workshop',
+        title: 'workshops',
+        element: (
+          <Page title="Workshop">
+            <WorkshopModel />
+          </Page>
+        ),
+        inSidebar: true,
+      },
+      {
+        path: '/dashboard/tarrif',
+        url: '/dashboard/tarrif',
+        title: 'tariffs',
+        element: (
+          <Page title="Tariff">
+            <TariffModel />
           </Page>
         ),
         inSidebar: true,

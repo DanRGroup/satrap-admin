@@ -168,7 +168,7 @@ export default function NavSection() {
     }
     return true;
   };
-  const match = (path) => (path ? !!matchPath({ path, end: false }, pathname) : false);
+  const match = (path) => (path ? matchPath({ path, end: false }, pathname) : false);
   return (
     <List sx={{ px: 1, display: 'flex', flexDirection: 'column', rowGap: 0.5 }}>
       {navConfig.map(

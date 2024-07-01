@@ -2,9 +2,25 @@ const schema = () => ({
   type: 'object',
   required: [],
   properties: {
-    title: {
+    owner_id: {
       type: 'string',
-      title: 'title',
+      title: 'owner',
+    },
+    driver_id: {
+      type: 'string',
+      title: 'driver',
+    },
+    type_id: {
+      type: 'string',
+      title: 'vehicle_type',
+    },
+    serial_number: {
+      type: 'string',
+      title: 'serialNumber',
+    },
+    plaque: {
+      type: 'string',
+      title: 'plaque',
     },
     details: {
       type: 'string',
