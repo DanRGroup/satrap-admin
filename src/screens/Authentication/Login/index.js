@@ -152,7 +152,7 @@ const UserPopup = () => {
                 <StyledTitle fontSize="4rem" fontWeight="bold">
                   ساتراپ سازه
                 </StyledTitle>
-                <StyledTitle variant="h6">سامانه عملیات عمرانی</StyledTitle>
+                <StyledTitle variant="h6">سامانه مدیریت عملیات عمرانی</StyledTitle>
                 {stepContent(step)}
               </Stack>
               <Stack

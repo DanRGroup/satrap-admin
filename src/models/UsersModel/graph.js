@@ -26,7 +26,8 @@ const schema = {
         $user_section: String # CUSTOMER,OPERATOR,CATEGORY
         $page: Int
         $limit: Int
-      ) {
+      ) #$for_admin: Int
+      {
         users(
           ids: $ids
           national_codes: $national_codes
@@ -48,7 +49,8 @@ const schema = {
           user_section: $user_section
           page: $page
           limit: $limit
-        ) {
+        ) #for_admin: $for_admin
+        {
           data {
             id
             firstname

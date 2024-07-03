@@ -28,6 +28,7 @@ import { useLazyQuery } from '@apollo/client';
 import { digitsEnToFa } from '@persian-tools/persian-tools';
 
 import graph from './graph';
+import { FormattedMessage } from 'react-intl';
 
 export default function Assignment({ title, selected, handleSelect, onAssign, onClose, assigning }) {
   const theme = useTheme();
@@ -206,7 +207,7 @@ export default function Assignment({ title, selected, handleSelect, onAssign, on
             disabled={assigning}
             onClick={() => onAssign(selected, onClose)}
           >
-            {title || 'اختصاص'}
+            {<FormattedMessage id={title} /> || 'اختصاص'}
           </Button>
         </CardActions>
       </Card>

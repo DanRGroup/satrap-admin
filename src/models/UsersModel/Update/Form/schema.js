@@ -4,12 +4,11 @@ const schema = () => ({
   properties: {
     type_id: {
       type: 'string',
-      title: 'type',
-      oneOf: [
-        { const: '2', title: 'اپراتور' },
-        { const: '3', title: 'راننده' },
-      ],
-      default: '3',
+      title: 'role',
+    },
+    status_id: {
+      type: 'string',
+      title: 'status',
     },
     firstname: {
       type: 'string',
@@ -42,7 +41,6 @@ const schema = () => ({
       title: 'password',
       minLength: 8,
     },
-
     is_active: {
       type: 'number',
       title: 'activity',

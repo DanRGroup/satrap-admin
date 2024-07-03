@@ -9,6 +9,14 @@ const schema = {
         tariff(ids: $ids) {
           data {
             id
+            task_type {
+              id
+              title
+            }
+            workshop {
+              id
+              title
+            }
             media {
               id
               full_url

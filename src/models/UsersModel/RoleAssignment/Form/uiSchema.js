@@ -1,4 +1,4 @@
-import { UsersRolesSelectionWidget, WorkshopSelectionWidget } from 'components/FormWidgets';
+import { UsersTypeSelectionWidget, WorkshopSelectionWidget } from 'components/FormWidgets';
 
 const uiSchema = () => ({
   workshop_id: {
@@ -12,7 +12,7 @@ const uiSchema = () => ({
     },
   },
   role_id: {
-    'ui:widget': UsersRolesSelectionWidget,
+    'ui:widget': UsersTypeSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,

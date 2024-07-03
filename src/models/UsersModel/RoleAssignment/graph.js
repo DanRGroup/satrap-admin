@@ -2,14 +2,14 @@ import { gql } from '@apollo/client';
 
 const schema = {
   assignRole: {
-    name: 'createShopsUser',
-    serviceName: 'shopadmin',
+    name: 'createWorkshopsUser',
+    serviceName: 'workshopadmin',
     query: gql`
-      mutation createShopsUser($shop_id: String, $user_ids: [String]!, $role_id: String!, $details: String) {
-        createShopsUser(shop_id: $shop_id, user_ids: $user_ids, role_id: $role_id, details: $details) {
+      mutation createWorkshopsUser($workshop_id: String, $user_ids: [String]!, $role_id: String!, $details: String) {
+        createWorkshopsUser(workshop_id: $workshop_id, user_ids: $user_ids, role_id: $role_id, details: $details) {
           model {
             id
-            shop {
+            workshop {
               id
               title
             }
@@ -26,7 +26,7 @@ const schema = {
         }
       }
     `,
-  }
+  },
 };
 
 export default schema;

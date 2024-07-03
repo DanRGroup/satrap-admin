@@ -2,19 +2,69 @@ import { gql } from '@apollo/client';
 
 const schema = {
   get: {
-    name: 'paymentStatus',
+    name: 'task',
     serviceName: 'auth',
     query: gql`
-      query paymentStatus($ids: [String], $title: String) {
-        paymentStatus(ids: $ids, title: $title) {
+      query task($ids: [String]) {
+        task(ids: $ids) {
           data {
-            id
-            title
-            details
-            media {
+            driver {
               id
+              firstname
+              lastname
+            }
+            operation_type {
+              id
+              title
+            }
+            workshop {
+              id
+              title
+            }
+            material_type {
+              id
+              title
+            }
+            status {
+              id
+              title
+            }
+            supervisor {
+              id
+              firstname
+              lastname
+            }
+            creator {
+              id
+              firstname
+              lastname
+            }
+            updator {
+              id
+              firstname
+              lastname
+            }
+            media {
               full_url
             }
+            type {
+              id
+              title
+            }
+            workshop {
+              id
+              title
+            }
+            site {
+              id
+              title
+            }
+            shift_type {
+              id
+              title
+            }
+            start_time
+            end_time
           }
           total
         }

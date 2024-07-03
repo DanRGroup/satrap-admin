@@ -97,7 +97,7 @@ export default function CustomSelectWidget({
         }
       }
       return setLoading(false);
-    }, 500);
+    }, 1200);
     return () => clearTimeout(timer);
   }, [value]);
 

@@ -43,7 +43,6 @@ export default function UpdatePopup({ ids, title, refetch }) {
         if (res) {
           setFormData({
             ...res,
-            status_id: res.status,
           });
         }
       }

@@ -8,7 +8,7 @@ import { useLazyQuery } from '@apollo/client';
 
 export default function MainModel(props) {
   const { initFilter, isPopup = false } = props;
-  const init = { ...initFilter, type_ids: ["2", "3"] };
+  const init = { ...initFilter /*type_ids: ['9']*/ };
 
   const [startFetch, setStartFetch] = useState(!isPopup);
   const [flag, setFlag] = useState(false);
@@ -49,6 +49,7 @@ export default function MainModel(props) {
           ...filter,
           page,
           limit,
+          // for_admin: 1,
         },
       });
       if (!isEmptyObject(data) && !error) {

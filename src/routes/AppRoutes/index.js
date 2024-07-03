@@ -19,14 +19,15 @@ import {
   ContractModel,
   VehicleModel,
   UsersModel,
+  UserStatusModel,
   WorkshopModel,
   TariffModel,
+  TaskModel,
 } from 'models';
 
 const NotFound = Loadable(lazy(() => import('screens/Authentication/Page404')));
 
-const FixedOrder = Loadable(lazy(() => import('screens/SuperAdminRole/FixedOrder')));
-const NewOrderScreen = Loadable(lazy(() => import('screens/SuperAdminRole/NewOrder')));
+const Management = Loadable(lazy(() => import('screens/SuperAdminRole/Management')));
 const SuperAdminDashboard = Loadable(lazy(() => import('screens/SuperAdminRole/Dashboard')));
 
 function Dashboard() {
@@ -43,7 +44,7 @@ function Dashboard() {
 export const navConfig = [
   {
     path: '/',
-    element: <Navigate to="/app" replace />,
+    element: <Navigate to="/setting/app" replace />,
   },
   {
     path: '/setting',
@@ -169,6 +170,18 @@ export const navConfig = [
         inSidebar: true,
         roles: ['superadmin'],
       },
+      {
+        path: '/setting/user-status',
+        url: '/setting/user-status',
+        title: 'user_status',
+        element: (
+          <Page title="UserStatus">
+            <UserStatusModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin'],
+      },
     ],
   },
   {
@@ -179,6 +192,50 @@ export const navConfig = [
     element: <AppLayout />,
     icon: <DashboardRoundedIcon fontSize="small" />,
     children: [
+      {
+        path: '/dashboard/managment',
+        url: '/dashboard/managment',
+        title: 'managment',
+        element: (
+          <Page title="Managment">
+            <Management />
+          </Page>
+        ),
+        inSidebar: true,
+      },
+      {
+        path: '/dashboard/contracts',
+        url: '/dashboard/contracts',
+        title: 'contracts',
+        element: (
+          <Page title="Orders">
+            <ContractModel />
+          </Page>
+        ),
+        inSidebar: true,
+      },
+      {
+        path: '/dashboard/task',
+        url: '/dashboard/task',
+        title: 'tasks',
+        element: (
+          <Page title="Task">
+            <TaskModel />
+          </Page>
+        ),
+        inSidebar: true,
+      },
+      {
+        path: '/dashboard/tarrif',
+        url: '/dashboard/tarrif',
+        title: 'tariffs',
+        element: (
+          <Page title="Tariff">
+            <TariffModel />
+          </Page>
+        ),
+        inSidebar: true,
+      },
       {
         path: '/dashboard/users',
         url: '/dashboard/users',
@@ -202,17 +259,6 @@ export const navConfig = [
         inSidebar: true,
       },
       {
-        path: '/dashboard/contracts',
-        url: '/dashboard/contracts',
-        title: 'contracts',
-        element: (
-          <Page title="Orders">
-            <ContractModel />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
         path: '/dashboard/vehicles',
         url: '/dashboard/vehicles',
         title: 'vehicles',
@@ -230,17 +276,6 @@ export const navConfig = [
         element: (
           <Page title="Workshop">
             <WorkshopModel />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
-        path: '/dashboard/tarrif',
-        url: '/dashboard/tarrif',
-        title: 'tariffs',
-        element: (
-          <Page title="Tariff">
-            <TariffModel />
           </Page>
         ),
         inSidebar: true,

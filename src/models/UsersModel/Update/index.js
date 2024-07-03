@@ -41,7 +41,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
       if (!isEmptyObject(data)) {
         const res = data[graph.get.name].data[0];
         if (res) {
-          setFormData(res);
+          setFormData({ ...res, type_id: res.type, status_id: res.status, birth_date: res.birth_date });
         }
       }
     } catch (error) {}
@@ -52,6 +52,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
   };
 
   const onSubmit = async () => {
+    // console.log('formdata', formData);
     try {
       const { data, errors } = await updateModel({
         context: {

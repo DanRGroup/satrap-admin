@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 const schema = {
   create: {
     name: 'createTariff',
-    serviceName: 'admin',
+    serviceName: 'siteadmin',
     query: gql`
       mutation createTariff(
         $task_type_id: String!

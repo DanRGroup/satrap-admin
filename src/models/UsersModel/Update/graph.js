@@ -19,6 +19,10 @@ const schema = {
             gender
             details
             is_active
+            type {
+              id
+              title
+            }
             status {
               id
               title

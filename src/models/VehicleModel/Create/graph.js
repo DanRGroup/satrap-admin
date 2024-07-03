@@ -7,10 +7,10 @@ const schema = {
     query: gql`
       mutation createVehicle(
         $owner_id: String
-        $driver_id: String
-        $type_id: String
+        $driver_id: String!
+        $type_id: String!
         $serial_number: String
-        $plaque: String
+        $plaque: String!
         $status: String
         $details: String
       ) {

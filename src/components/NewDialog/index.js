@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Dialog, useMediaQuery, useTheme } from '@mui/material';
 
-export default function NewDialog({ open, label, onClose, maxWidth="md", children }) {
-  const theme = useTheme();  
+export default function NewDialog({ open, label, onClose, maxWidth = 'md', children }) {
+  const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   return (
     <Dialog
@@ -10,7 +10,7 @@ export default function NewDialog({ open, label, onClose, maxWidth="md", childre
       dir="rtl"
       open={open}
       onClose={onClose}
-      maxWidth={maxWidth}
+      // maxWidth={maxWidth}
       PaperComponent={Box}
       fullScreen={fullScreen}
       aria-labelledby={`${label}-dialog-title`}

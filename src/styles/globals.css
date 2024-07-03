@@ -1,7 +1,10 @@
-/* Vazir Font */
+/* Hide scrollbar */
+
 ::-webkit-scrollbar {
   display: none;
 }
+/* Vazir Font */
+
 @font-face {
   font-family: Vazir;
   src: url('/public/assets/fonts/Vazir/Vazir-FD-WOL.eot');

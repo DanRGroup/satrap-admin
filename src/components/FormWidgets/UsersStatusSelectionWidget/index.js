@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import { toast } from 'react-toastify';
-import { UsersStatusModel } from 'models';
+import { UserStatusModel } from 'models';
 import { Card, CardActionArea, CardHeader, Chip, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
 
 import { ariaDescribedByIds, enumOptionsIndexForValue, enumOptionsValueForIndex, labelValue } from '@rjsf/utils';
@@ -97,7 +97,7 @@ export default function CustomSelectWidget({
         }
       }
       return setLoading(false);
-    }, 500);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [value]);
 
@@ -114,7 +114,7 @@ export default function CustomSelectWidget({
           direction,
         }}
       >
-        <UsersStatusModel
+        <UserStatusModel
           isPopup
           isAssign
           disabled={disabled || readonly}
@@ -159,7 +159,7 @@ export default function CustomSelectWidget({
               }
             />
           </CardActionArea>
-        </UsersStatusModel>
+        </UserStatusModel>
         <Stack
           p={1}
           zIndex={2}

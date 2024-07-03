@@ -3,22 +3,22 @@ import { gql } from '@apollo/client';
 const schema = {
   create: {
     name: 'createTasks',
-    serviceName: 'admin',
+    serviceName: 'auth',
     query: gql`
       mutation createTask(
         $vehicle_id: String!
-        $driver_id: String
-        $type_id: String
-        $operation_type_id: String
-        $workshop_id: String
-        $site_id: String
-        $material_type_id: String
-        $shift_type_id: String
+        $driver_id: String!
+        $type_id: String!
+        $operation_type_id: String!
+        $workshop_id: String!
+        $site_id: String!
+        $material_type_id: String!
+        $shift_type_id: String!
         $status_id: String
         $start_time: String
         $end_time: String
         $stop_dueto: String
-        $cost: String
+        #$cost: String
         $bill_number: String
         $baskul_cost: String
         $description: String
@@ -26,8 +26,8 @@ const schema = {
         $supervisor_id: String
         $creator_id: String
         $updator_id: String
-        $tonnage: Int
-        $coefficient: String
+        $tonnage: String
+        #$coefficient: String
         $have_food: Int
       ) {
         createTask(
@@ -43,7 +43,7 @@ const schema = {
           start_time: $start_time
           end_time: $end_time
           stop_dueto: $stop_dueto
-          cost: $cost
+          #cost: $cost
           bill_number: $bill_number
           baskul_cost: $baskul_cost
           description: $description
@@ -52,7 +52,7 @@ const schema = {
           creator_id: $creator_id
           updator_id: $updator_id
           tonnage: $tonnage
-          coefficient: $coefficient
+          #coefficient: $coefficient
           have_food: $have_food
         ) {
           messages
@@ -61,3 +61,5 @@ const schema = {
     `,
   },
 };
+
+export default schema;

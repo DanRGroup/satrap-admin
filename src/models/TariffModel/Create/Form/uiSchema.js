@@ -1,5 +1,16 @@
+import {
+  UsersSelectionWidget,
+  SiteSelectionWidget,
+  TasksTypeSelectionWidget,
+  OperationTypeSelectionWidget,
+  WorkshopSelectionWidget,
+  MaterialTypeSelectionWidget,
+  ShiftTypeSelectionWidget,
+} from 'components/FormWidgets';
+
 const uiSchema = () => ({
-  title: {
+  task_type_id: {
+    'ui:widget': TasksTypeSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,
@@ -8,7 +19,97 @@ const uiSchema = () => ({
       xl: 12,
     },
   },
-  details: {
+  operation_type_id: {
+    'ui:widget': OperationTypeSelectionWidget,
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
+  workshop_id: {
+    'ui:widget': WorkshopSelectionWidget,
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
+  site_id: {
+    'ui:widget': SiteSelectionWidget,
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
+  material_type_id: {
+    'ui:widget': MaterialTypeSelectionWidget,
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
+  shift_type_id: {
+    'ui:widget': ShiftTypeSelectionWidget,
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
+  creator_id: {
+    'ui:widget': UsersSelectionWidget,
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
+  updator_id: {
+    'ui:widget': UsersSelectionWidget,
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
+  cost: {
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
+  is_active: {
+    'ui:widget': 'radio',
+    'ui:options': {
+      inline: true,
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
+  description: {
     'ui:widget': 'textarea',
     'ui:options': {
       xs: 12,

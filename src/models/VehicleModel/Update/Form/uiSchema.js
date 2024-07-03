@@ -1,4 +1,4 @@
-import { UsersSelectionWidget, VehicleTypeSelectionWidget } from 'components/FormWidgets';
+import { UsersSelectionWidget, VehicleTypeSelectionWidget, DriversSelectionWidget } from 'components/FormWidgets';
 
 const uiSchema = () => ({
   owner_id: {
@@ -12,7 +12,7 @@ const uiSchema = () => ({
     },
   },
   driver_id: {
-    'ui:widget': UsersSelectionWidget,
+    'ui:widget': DriversSelectionWidget,
     'ui:options': {
       xs: 6,
       sm: 6,

@@ -43,7 +43,14 @@ export default function UpdatePopup({ ids, title, refetch }) {
         if (res) {
           setFormData({
             ...res,
-            status_id: res.status,
+            task_type_id: res.task_type,
+            operation_type_id: res.operation_type,
+            workshop_id: res.workshop,
+            site_id: res.site,
+            material_type_id: res.material_type,
+            shift_type_id: res.shift_type,
+            creator_id: { id: res.creator?.id, title: `${res.creator?.firstname} ${res.creator?.lastname}` },
+            updator_id: { id: res.updator?.id, title: `${res.updator?.firstname} ${res.updator?.lastname}` },
           });
         }
       }

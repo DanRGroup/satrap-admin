@@ -6,6 +6,10 @@ const schema = () => ({
       type: 'string',
       title: 'role',
     },
+    status_id: {
+      type: 'string',
+      title: 'status',
+    },
     firstname: {
       type: 'string',
       title: 'firstname',

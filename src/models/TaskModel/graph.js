@@ -5,14 +5,19 @@ const schema = {
     name: 'task',
     serviceName: 'auth',
     query: gql`
-      query task($ids: [String], $title: String) {
-        task(ids: $ids, title: $title) {
+      query task($ids: [String]) {
+        task(ids: $ids) {
           data {
-            id
-            title
             media {
-              id
               full_url
+            }
+            type {
+              id
+              title
+            }
+            workshop {
+              id
+              title
             }
           }
           total
