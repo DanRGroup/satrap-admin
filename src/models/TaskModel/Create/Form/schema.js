@@ -48,10 +48,10 @@ const schema = () => ({
       title: 'end_date',
       format: 'date',
     },
-    stop_dueto: {
-      type: 'string',
-      title: 'stop_dueto',
-    },
+    // stop_dueto: {
+    //   type: 'string',
+    //   title: 'stop_dueto',
+    // },
     // cost: {
     //   type: 'string',
     //   title: 'cost',
@@ -64,18 +64,18 @@ const schema = () => ({
       type: 'string',
       title: 'baskul_cost',
     },
-    supervisor_id: {
-      type: 'string',
-      title: 'supervisor',
-    },
-    creator_id: {
-      type: 'string',
-      title: 'creator',
-    },
-    updator_id: {
-      type: 'string',
-      title: 'updator',
-    },
+    // supervisor_id: {
+    //   type: 'string',
+    //   title: 'supervisor',
+    // },
+    // creator_id: {
+    //   type: 'string',
+    //   title: 'creator',
+    // },
+    // updator_id: {
+    //   type: 'string',
+    //   title: 'updator',
+    // },
     tonnage: {
       type: 'string',
       title: 'tonnage',

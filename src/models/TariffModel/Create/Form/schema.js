@@ -26,14 +26,14 @@ const schema = () => ({
       type: 'string',
       title: 'shift_type',
     },
-    creator_id: {
-      type: 'string',
-      title: 'creator',
-    },
-    updator_id: {
-      type: 'string',
-      title: 'updator',
-    },
+    // creator_id: {
+    //   type: 'string',
+    //   title: 'creator',
+    // },
+    // updator_id: {
+    //   type: 'string',
+    //   title: 'updator',
+    // },
     cost: {
       type: 'string',
       title: 'cost',

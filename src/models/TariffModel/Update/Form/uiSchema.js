@@ -69,26 +69,26 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
-  creator_id: {
-    'ui:widget': UsersSelectionWidget,
-    'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
-  updator_id: {
-    'ui:widget': UsersSelectionWidget,
-    'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
+  // creator_id: {
+  //   'ui:widget': UsersSelectionWidget,
+  //   'ui:options': {
+  //     xs: 6,
+  //     sm: 6,
+  //     md: 6,
+  //     lg: 6,
+  //     xl: 6,
+  //   },
+  // },
+  // updator_id: {
+  //   'ui:widget': UsersSelectionWidget,
+  //   'ui:options': {
+  //     xs: 6,
+  //     sm: 6,
+  //     md: 6,
+  //     lg: 6,
+  //     xl: 6,
+  //   },
+  // },
   cost: {
     'ui:options': {
       xs: 12,

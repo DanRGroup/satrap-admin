@@ -8,7 +8,7 @@ const schema = {
       mutation createSite(
         $title: String!
         $manager_id: String
-        $type_id: String
+        $type_id: String!
         $lat: String
         $lng: String
         $status: String

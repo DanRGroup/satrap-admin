@@ -11,7 +11,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   const {
     language: { direction: dir },
   } = useSelector((state) => state.setting);
-  const isRtl = dir === "rtl";
+  const isRtl = dir === 'rtl';
   return (
     <>
       <Slide
@@ -34,16 +34,10 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             alignItems="center"
             position="absolute"
             justifyContent="flex-start"
-            direction={isRtl ? "row" : "row-reverse"}
+            direction={isRtl ? 'row' : 'row-reverse'}
           >
             <Checkbox size="small" checked={checked} onChange={handleSelect} />
-            <Media
-              id={model.id}
-              model="Brand"
-              collection="avatar"
-              title={model.title}
-              subheader={model.producer?.title || 'برند'}
-            >
+            <Media id={model.id} model="Site" collection="images" title={model.title} subheader={''}>
               <AvatarPopover media={model?.media[0]?.full_url} />
             </Media>
           </Stack>

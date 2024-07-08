@@ -64,7 +64,7 @@ export default function Model({ model, delay, checked, handleSelect, refetch }) 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography fontSize={14} variant="subtitle1">
-                  {`${model?.firstname} ${model?.lastname}`}
+                  {`${model?.firstname} ${model?.lastname} (${model?.type?.title})`}
                 </Typography>
               }
               subheader={

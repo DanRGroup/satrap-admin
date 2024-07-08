@@ -110,7 +110,7 @@ export default function List({
               direction={direction}
               delay={(i % limit) + 1}
               checked={selected.find((select) => model.id === select.id) ? true : false}
-              handleSelect={() => handleSelect({ id: model?.id, title: model.title })}
+              handleSelect={() => handleSelect({ id: model?.id, title: model.plaque })}
             />
           ))}
           <LoadingMore total={total} result={result.length} loading={loading} onClick={() => setPage(page + 1)} />

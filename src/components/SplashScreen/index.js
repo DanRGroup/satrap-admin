@@ -1,12 +1,11 @@
-import React from "react";
-import { Logo } from "components";
-import { Stack } from "@mui/material";
-
+import React from 'react';
+import { Logo } from 'components';
+import { Stack } from '@mui/material';
 
 const Splash = () => {
   return (
     <Stack height="100vh" justifyContent="center" alignItems="center">
-      <Logo width={96} height={96} />
+      <Logo width={200} height={200} />
     </Stack>
   );
 };
