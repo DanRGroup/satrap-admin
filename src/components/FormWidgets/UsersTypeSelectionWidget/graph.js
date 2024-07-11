@@ -16,17 +16,6 @@ const schema = {
       }
     `,
   },
-  update: {
-    name: 'updateUserType',
-    serviceName: 'admin',
-    query: gql`
-      mutation updateUserType($ids: [String]!, $title: String!, $details: String) {
-        updateUserType(ids: $ids, title: $title, details: $details) {
-          messages
-        }
-      }
-    `,
-  },
 };
 
 export default schema;

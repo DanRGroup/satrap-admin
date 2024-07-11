@@ -7,7 +7,8 @@ const schema = {
     query: gql`
       query task($ids: [String]) {
         task(ids: $ids) {
-          data {
+          records {
+            id
             media {
               full_url
             }
@@ -20,7 +21,12 @@ const schema = {
               title
             }
           }
-          total
+          #total
+          total_houre
+          total_service
+          total_shift
+          total_tonnage
+          total_cost
         }
       }
     `,

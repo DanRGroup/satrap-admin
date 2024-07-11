@@ -43,9 +43,10 @@ export default function UpdatePopup({ ids, title, refetch }) {
         if (res) {
           setFormData({
             ...res,
-            type_id: res.type,
+            type_id: res.type?.id,
             location: { lat: res?.lat, lng: res?.lng },
-            manager_id: { id: res.manager?.id, title: `${res.manager?.firstname} ${res.manager?.lastname}` },
+            manager_id: res.manager?.id,
+            is_active: Number(res.is_active),
           });
         }
       }

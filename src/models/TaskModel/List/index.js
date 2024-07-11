@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import RefreshRoundedIcon from '@mui/icons-material/RefreshRounded';
 
-import { Stack, Tooltip, IconButton, CircularProgress, Box } from '@mui/material';
+import { Stack, Tooltip, IconButton, CircularProgress, Box, Chip } from '@mui/material';
 import { LoadingMore, NewDialogActions, NewDialogContent, NewDialogTitle } from 'components';
 
 import Model from '../Model';
@@ -15,6 +15,7 @@ export default function List({
   page,
   limit,
   total,
+  report: { total_houre, total_service, total_shift, total_tonnage, total_cost },
   setPage,
 
   result,
@@ -117,6 +118,11 @@ export default function List({
         </Stack>
       </NewDialogContent>
       <NewDialogActions isPopup={isPopup}>
+        {total_houre && <Chip label={`جمع ساعت : ${total_houre}`} />}
+        {total_service && <Chip label={`جمع سرویس : ${total_service}`} />}
+        {total_shift && <Chip label={`جمع شیفت : ${total_shift}`} />}
+        {total_tonnage && <Chip label={`جمع تناژ : ${total_tonnage}`} />}
+        {total_cost && <Chip label={`جمع هزینه‌ها : ${total_cost}`} />}
         <Tooltip title={<FormattedMessage id="refresh" />}>
           <IconButton sx={{ bgcolor: 'action.selected', color: '#fff' }} size="medium" onClick={refresh}>
             {loading ? (

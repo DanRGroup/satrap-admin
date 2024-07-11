@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 const schema = {
   delete: {
     name: 'deleteTariff',
-    serviceName: 'admin',
+    serviceName: 'siteadmin',
     query: gql`
       mutation deleteTariff($ids: [String]!) {
         deleteTariff(ids: $ids) {

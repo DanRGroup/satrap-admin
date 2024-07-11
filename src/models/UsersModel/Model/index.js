@@ -39,7 +39,7 @@ export default function Model({ model, delay, checked, handleSelect, refetch }) 
               model="User"
               collection="avatar"
               title={`${model?.firstname} ${model?.lastname}`}
-              subheader="Dr"
+              subheader=""
             >
               <AvatarPopover media={model?.media[0]?.full_url} />
             </Media>

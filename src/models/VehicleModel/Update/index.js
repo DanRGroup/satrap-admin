@@ -43,9 +43,9 @@ export default function UpdatePopup({ ids, title, refetch }) {
         if (res) {
           setFormData({
             ...res,
-            type_id: res.type,
-            owner_id: { id: res.owner?.id, title: `${res.owner?.firstname} ${res.owner?.lastname}` },
-            driver_id: { id: res.driver?.id, title: `${res.driver?.firstname} ${res.driver?.lastname}` },
+            type_id: res.type?.id,
+            owner_id: res.owner?.id,
+            driver_id: res.driver?.id,
           });
         }
       }

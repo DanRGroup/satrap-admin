@@ -26,14 +26,6 @@ const schema = () => ({
         },
       },
     },
-    is_active: {
-      type: 'number',
-      title: 'activity',
-      oneOf: [
-        { const: 1, title: 'active' },
-        { const: 0, title: 'inactive' },
-      ],
-    },
   },
 });
 

@@ -15,18 +15,6 @@ const schema = {
               full_url
             }
           }
-          total
-        }
-      }
-    `,
-  },
-  update: {
-    name: 'updateSiteType',
-    serviceName: 'admin',
-    query: gql`
-      mutation updateSiteType($ids: [String]!) {
-        updateSiteType(ids: $ids) {
-          messages
         }
       }
     `,

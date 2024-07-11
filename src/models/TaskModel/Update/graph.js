@@ -7,7 +7,8 @@ const schema = {
     query: gql`
       query task($ids: [String]) {
         task(ids: $ids) {
-          data {
+          records {
+            id
             driver {
               id
               firstname
@@ -66,16 +67,17 @@ const schema = {
             start_time
             end_time
           }
-          total
+          #total
         }
       }
     `,
   },
   update: {
     name: 'updateTask',
-    serviceName: 'siteadmin',
+    serviceName: 'auth',
     query: gql`
       mutation updateTask(
+        $ids: [String]!
         $vehicle_id: String!
         $driver_id: String!
         $type_id: String!
@@ -101,6 +103,7 @@ const schema = {
         $have_food: Int
       ) {
         updateTask(
+          ids: $ids
           vehicle_id: $vehicle_id
           driver_id: $driver_id
           type_id: $type_id

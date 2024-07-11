@@ -23,6 +23,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
 
   const onOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
+  console.log('ids', ids);
 
   const getModel = async () => {
     try {
@@ -39,24 +40,22 @@ export default function UpdatePopup({ ids, title, refetch }) {
         },
       });
       if (!isEmptyObject(data)) {
-        const res = data[graph.get.name].data[0];
+        const res = data[graph.get.name].records[0];
+        console.log('res', res);
         if (res) {
           setFormData({
             ...res,
-            driver_id: { id: res.driver?.id, title: `${res.driver?.firstname} ${res.driver?.lastname}` },
-            supervisor_id: {
-              id: res.supervisor?.id,
-              title: `${res.supervisor?.firstname} ${res.supervisor?.lastname}`,
-            },
-            creator_id: { id: res.creator?.id, title: `${res.creator?.firstname} ${res.creator?.lastname}` },
-            updator_id: { id: res.updator?.id, title: `${res.updator?.firstname} ${res.updator?.lastname}` },
-            type_id: res.type,
-            operation_type_id: res.operation_type,
-            workshop_id: res.workshop,
-            site_id: res.site,
-            shift_id: res.shift,
-            material_type_id: res.material_type,
-            status_id: res.status,
+            driver_id: res.driver?.id,
+            supervisor_id: res.supervisor?.id,
+            creator_id: res.creator?.id,
+            updator_id: res.updator?.id,
+            type_id: res.type?.id,
+            operation_type_id: res.operation_type?.id,
+            workshop_id: res.workshop?.id,
+            site_id: res.site?.id,
+            shift_id: res.shift?.id,
+            material_type_id: res.material_type?.id,
+            status_id: res.status_id?.id,
           });
         }
       }

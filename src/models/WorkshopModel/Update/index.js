@@ -35,7 +35,6 @@ export default function UpdatePopup({ ids, title, refetch }) {
         },
         variables: {
           ids,
-          for_admin: 1,
         },
       });
       if (!isEmptyObject(data)) {
@@ -44,7 +43,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
           setFormData({
             ...res,
             location: { lat: res?.lat, lng: res?.lng },
-            manager_id: { id: res.manager?.id, title: `${res.manager?.firstname} ${res.manager?.lastname}` },
+            manager_id: res.manager?.id,
           });
         }
       }
@@ -64,7 +63,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
             authorization: `Bearer ${userToken}`,
           },
         },
-        variables: { ids, ...formData },
+        variables: { ids, ...formData, lat: formData?.location.lat, lng: formData?.location.lng },
       });
       if (!errors) {
         refetch();

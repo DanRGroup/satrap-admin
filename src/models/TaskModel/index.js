@@ -15,6 +15,7 @@ export default function MainModel(props) {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(12);
   const [total, setTotal] = useState(0);
+  const [report, setReport] = useState({});
   const [result, setResult] = useState([]);
   const [filter, setFilter] = useState(init);
   const { userToken } = useSelector((state) => state.auth);
@@ -52,9 +53,11 @@ export default function MainModel(props) {
         },
       });
       if (!isEmptyObject(data) && !error) {
-        const res = data[graph.list.name];
-        setTotal(res?.total);
-        paginate ? setResult((prevData) => prevData.concat(res?.data)) : setResult(res?.data);
+        const { records, total, total_houre, total_service, total_shift, total_tonnage, total_cost } =
+          data[graph.list.name];
+        setTotal(total);
+        setReport({ total_houre, total_service, total_shift, total_tonnage, total_cost });
+        paginate ? setResult((prevData) => prevData.concat(records)) : setResult(records);
       }
     } catch (error) {}
   };
@@ -68,6 +71,7 @@ export default function MainModel(props) {
       page={page}
       limit={limit}
       total={total}
+      report={report}
       result={result}
       filter={filter}
       loading={loading}

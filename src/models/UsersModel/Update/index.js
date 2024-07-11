@@ -41,7 +41,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
       if (!isEmptyObject(data)) {
         const res = data[graph.get.name].data[0];
         if (res) {
-          setFormData({ ...res, type_id: res.type, status_id: res.status, birth_date: res.birth_date });
+          setFormData({ ...res, type_id: res.type?.id, status_id: res.status?.id, birth_date: res.birth_date });
         }
       }
     } catch (error) {}

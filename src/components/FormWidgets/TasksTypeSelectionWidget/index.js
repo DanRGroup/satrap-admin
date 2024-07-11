@@ -1,12 +1,15 @@
+import graph from './graph';
 import React, { useEffect, useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
+
 import { toast } from 'react-toastify';
 import { TasksTypeModel } from 'models';
-import { Card, CardActionArea, CardHeader, Chip, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
-
-import { ariaDescribedByIds, enumOptionsIndexForValue, enumOptionsValueForIndex, labelValue } from '@rjsf/utils';
 import { useSelector } from 'react-redux';
+import { useLazyQuery } from '@apollo/client';
 import { FormattedMessage } from 'react-intl';
+import { isEmptyObject } from 'helpers/formatObject';
+import { ariaDescribedByIds, enumOptionsIndexForValue, enumOptionsValueForIndex, labelValue } from '@rjsf/utils';
+import { Card, CardActionArea, CardHeader, Chip, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
 
 export default function CustomSelectWidget({
   schema,
@@ -34,16 +37,11 @@ export default function CustomSelectWidget({
   ...textFieldProps
 }) {
   const { enumOptions, enumDisabled, emptyValue: optEmptyVal } = options;
-
-  multiple = typeof multiple === 'undefined' ? false : !!multiple;
-
-  const emptyValue = multiple ? [] : '';
-  const isEmpty = typeof value === 'undefined' || (multiple && value.length < 1) || (!multiple && value === emptyValue);
-
   const isObject = typeof value === 'object';
-  const [multiSelect, setMultiple] = useState(schema.type === 'array');
-  const [selected, setSelected] = useState(value || (multiSelect ? [] : {}));
+  const multiSelect = schema.type === 'array';
   const [loading, setLoading] = useState(true);
+  const [selected, setSelected] = useState(value);
+  const { userToken } = useSelector((state) => state.auth);
 
   const {
     language: { direction },
@@ -82,23 +80,42 @@ export default function CustomSelectWidget({
     return setSelected({});
   };
 
+  const [getModel, { loading: fetching }] = useLazyQuery(graph.get.query, {
+    context: {
+      serviceName: graph.get.serviceName,
+      headers: {
+        authorization: `Bearer ${userToken}`,
+      },
+    },
+  });
+
+  const handleData = async () => {
+    try {
+      const { data } = await getModel({
+        variables: {
+          ids: value,
+        },
+      });
+      if (!isEmptyObject(data)) {
+        const res = data[graph.get.name].data;
+        const modified = multiSelect ? res.map(({ id, title }) => ({ id, title })) : res[0];
+        setSelected(modified);
+        setLoading(false);
+      }
+    } catch (error) {}
+  };
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (value && loading) {
-        if (typeof value === 'object' && value !== null) {
-          if (Array.isArray(value)) {
-            const newVals = value.filter((val) => val);
-            setSelected(newVals);
-            onChange(newVals.map((item) => item.id));
-          } else {
-            setSelected(value);
-            onChange(value?.id);
-          }
-        }
+    let timer = setTimeout(() => {
+      if (loading && value) {
+        return handleData();
       }
       return setLoading(false);
-    }, 1500);
-    return () => clearTimeout(timer);
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [value]);
 
   return (
@@ -167,13 +184,13 @@ export default function CustomSelectWidget({
           justifyContent="center"
           sx={{ position: 'absolute', right: 0, top: 0, bottom: 0 }}
         >
-          {loading ? (
-            <CircularProgress color="secondary" size={22} />
+          {loading || fetching ? (
+            <CircularProgress color="primary" size={22} />
           ) : (
             <IconButton
-              onClick={clearSelection}
               color="error"
               disabled={loading}
+              onClick={clearSelection}
               sx={{ width: 24, height: 24, fontSize: 16, bgcolor: 'error.lighter' }}
             >
               <CloseIcon fontSize="inherit" />

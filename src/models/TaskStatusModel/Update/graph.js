@@ -2,11 +2,11 @@ import { gql } from '@apollo/client';
 
 const schema = {
   get: {
-    name: 'siteType',
+    name: 'taskStatus',
     serviceName: 'graphql',
     query: gql`
-      query siteType($ids: [String], $title: String) {
-        siteType(ids: $ids, title: $title) {
+      query taskStatus($ids: [String], $title: String) {
+        taskStatus(ids: $ids, title: $title) {
           data {
             id
             title
@@ -21,11 +21,11 @@ const schema = {
     `,
   },
   update: {
-    name: 'updateSiteType',
+    name: 'updateTaskStatus',
     serviceName: 'admin',
     query: gql`
-      mutation updateSiteType($ids: [String]!, $title: String!, $details: String) {
-        updateSiteType(ids: $ids, title: $title, details: $details) {
+      mutation updateTaskStatus($ids: [String]!, $title: String!, $details: String) {
+        updateTaskStatus(ids: $ids, title: $title, details: $details) {
           messages
         }
       }

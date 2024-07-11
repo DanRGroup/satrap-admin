@@ -37,7 +37,6 @@ const schema = {
         $lat: String
         $lng: String
         $status: String
-        $is_active: Int
       ) {
         updateSite(
           ids: $ids
@@ -47,7 +46,6 @@ const schema = {
           lat: $lat
           lng: $lng
           status: $status
-          is_active: $is_active
         ) {
           messages
         }
