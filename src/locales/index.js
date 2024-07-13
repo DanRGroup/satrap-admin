@@ -66,6 +66,13 @@ const locales = {
     gender: 'Gender',
     needActivation: 'Need Activation?',
     do: 'Do',
+
+    registered: 'Registered',
+    doing: 'Doing',
+    done: 'Done',
+    suspend: 'Suspend',
+    canceled: 'Canceled',
+
     dont: 'Dont',
     man: 'Man',
     woman: 'Woman',
@@ -205,6 +212,13 @@ const locales = {
     gender: 'جنسیت',
     needActivation: 'نیاز به فعالسازی؟',
     do: 'دارد',
+
+    registered: 'ثبت شده',
+    doing: 'در حال انجام',
+    done: 'انجام شده',
+    suspend: 'معلق',
+    canceled: 'لغو شده',
+
     dont: 'ندارد',
     man: 'آقا',
     woman: 'خانم',

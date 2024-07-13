@@ -10,6 +10,8 @@ const schema = {
           data {
             id
             title
+            lat
+            lng
             manager {
               id
               firstname

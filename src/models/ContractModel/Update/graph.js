@@ -18,6 +18,7 @@ const schema = {
               id
               title
             }
+            status
             start_date
             end_date
             cost

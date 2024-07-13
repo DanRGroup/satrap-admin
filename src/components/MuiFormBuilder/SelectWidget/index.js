@@ -1,12 +1,7 @@
-import MenuItem from "@mui/material/MenuItem";
-import TextField from "@mui/material/TextField";
-import {
-  ariaDescribedByIds,
-  enumOptionsIndexForValue,
-  enumOptionsValueForIndex,
-  labelValue,
-} from "@rjsf/utils";
-import { FormattedMessage } from "react-intl";
+import MenuItem from '@mui/material/MenuItem';
+import TextField from '@mui/material/TextField';
+import { ariaDescribedByIds, enumOptionsIndexForValue, enumOptionsValueForIndex, labelValue } from '@rjsf/utils';
+import { FormattedMessage } from 'react-intl';
 
 /** The `SelectWidget` is a widget for rendering dropdowns.
  *  It is typically used with string properties constrained with enum options.
@@ -40,31 +35,16 @@ export default function SelectWidget({
 }) {
   const { enumOptions, enumDisabled, emptyValue: optEmptyVal } = options;
 
-  multiple = typeof multiple === "undefined" ? false : !!multiple;
+  multiple = typeof multiple === 'undefined' ? false : !!multiple;
 
-  const emptyValue = multiple ? [] : "";
-  const isEmpty =
-    typeof value === "undefined" ||
-    (multiple && value.length < 1) ||
-    (!multiple && value === emptyValue);
+  const emptyValue = multiple ? [] : '';
+  const isEmpty = typeof value === 'undefined' || (multiple && value.length < 1) || (!multiple && value === emptyValue);
 
-  const _onChange = ({ target: { value } }) =>
-    onChange(enumOptionsValueForIndex(value, enumOptions, optEmptyVal));
-  const _onBlur = ({ target: { value } }) =>
-    onBlur(id, enumOptionsValueForIndex(value, enumOptions, optEmptyVal));
-  const _onFocus = ({ target: { value } }) =>
-    onFocus(id, enumOptionsValueForIndex(value, enumOptions, optEmptyVal));
-  const selectedIndexes = enumOptionsIndexForValue(
-    value,
-    enumOptions,
-    multiple
-  );
-  const {
-    InputLabelProps,
-    SelectProps,
-    autocomplete,
-    ...textFieldRemainingProps
-  } = textFieldProps;
+  const _onChange = ({ target: { value } }) => onChange(enumOptionsValueForIndex(value, enumOptions, optEmptyVal));
+  const _onBlur = ({ target: { value } }) => onBlur(id, enumOptionsValueForIndex(value, enumOptions, optEmptyVal));
+  const _onFocus = ({ target: { value } }) => onFocus(id, enumOptionsValueForIndex(value, enumOptions, optEmptyVal));
+  const selectedIndexes = enumOptionsIndexForValue(value, enumOptions, multiple);
+  const { InputLabelProps, SelectProps, autocomplete, ...textFieldRemainingProps } = textFieldProps;
 
   return (
     <TextField
@@ -98,7 +78,7 @@ export default function SelectWidget({
           const disabled = Array.isArray(enumDisabled) && enumDisabled.indexOf(value) !== -1;
           return (
             <MenuItem key={i} value={String(i)} disabled={disabled}>
-              {label}
+              <FormattedMessage id={labelValue(label || undefined, hideLabel, undefined)} />
             </MenuItem>
           );
         })}

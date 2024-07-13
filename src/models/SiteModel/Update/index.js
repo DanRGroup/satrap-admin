@@ -67,7 +67,12 @@ export default function UpdatePopup({ ids, title, refetch }) {
             authorization: `Bearer ${userToken}`,
           },
         },
-        variables: { ids, title, type, manager_id, is_active, lat: location?.lat, lng: location?.lng },
+        variables: {
+          ids,
+          ...formData,
+          lat: formData?.location.lat,
+          lng: formData?.location.lng,
+        },
       });
       if (!errors) {
         refetch();

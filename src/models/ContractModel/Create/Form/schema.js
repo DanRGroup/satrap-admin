@@ -24,6 +24,17 @@ const schema = () => ({
       title: 'end_date',
       format: 'date',
     },
+    status: {
+      type: 'string',
+      title: 'status',
+      oneOf: [
+        { const: 'REGISTERED', title: 'registered' },
+        { const: 'DOING', title: 'doing' },
+        { const: 'DONED', title: 'done' },
+        { const: 'SUSPENDED', title: 'suspend' },
+        { const: 'CANCELED', title: 'canceled' },
+      ],
+    },
     cost: {
       type: 'string',
       title: 'cost',

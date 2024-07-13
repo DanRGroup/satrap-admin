@@ -45,6 +45,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
             ...res,
             workshop_id: res.workshop?.id,
             type_id: res.type?.id,
+            status_id: res.status,
           });
         }
       }

@@ -38,11 +38,11 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           >
             <Checkbox size="small" checked={checked} onChange={handleSelect} />
             <Media
-              id={model.id}
+              id={model?.id}
               model="Brand"
               collection="avatar"
-              title={model.title}
-              subheader={model.producer?.title || 'برند'}
+              title={model?.title}
+              subheader={model?.producer?.title || 'برند'}
             >
               <AvatarPopover media={model?.media[0]?.full_url} />
             </Media>
@@ -58,8 +58,8 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
-              <Media id={model.id} model="Brand" collection="banner" />
+              <Update ids={model?.id} title={<FormattedMessage id="update" />} refetch={refetch} />
+              <Media id={model?.id} model="Brand" collection="banner" />
             </NewSpeedDial>
           </Stack>
           <CardActionArea onClick={handleSelect}>
@@ -67,12 +67,12 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography fontSize={14} variant="subtitle1">
-                  {`${model?.task_type.title}`}
+                  {`${model?.task_type?.title}`}
                 </Typography>
               }
               subheader={
                 <Typography fontSize={12} variant="subtitle2">
-                  {`${model?.workshop.title}`}
+                  {`${model?.workshop?.title}`}
                 </Typography>
               }
             />
