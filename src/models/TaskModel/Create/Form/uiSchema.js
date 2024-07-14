@@ -14,41 +14,41 @@ const uiSchema = () => ({
   vehicle_id: {
     'ui:widget': VehicleSelectionWidget,
     'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
-  driver_id: {
-    'ui:widget': UsersSelectionWidget,
-    'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
-  type_id: {
-    'ui:widget': TasksTypeSelectionWidget,
-    'ui:options': {
       xs: 12,
       sm: 12,
       md: 12,
       lg: 12,
       xl: 12,
+    },
+  },
+  // driver_id: {
+  //   'ui:widget': UsersSelectionWidget,
+  //   'ui:options': {
+  //     xs: 6,
+  //     sm: 6,
+  //     md: 6,
+  //     lg: 6,
+  //     xl: 6,
+  //   },
+  // },
+  type_id: {
+    // 'ui:widget': TasksTypeSelectionWidget,
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   operation_type_id: {
-    'ui:widget': OperationTypeSelectionWidget,
+    // 'ui:widget': OperationTypeSelectionWidget,
     'ui:options': {
-      xs: 12,
-      sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   workshop_id: {
@@ -72,7 +72,7 @@ const uiSchema = () => ({
     },
   },
   material_type_id: {
-    'ui:widget': MaterialTypeSelectionWidget,
+    // 'ui:widget': MaterialTypeSelectionWidget,
     'ui:options': {
       xs: 6,
       sm: 6,
@@ -82,7 +82,7 @@ const uiSchema = () => ({
     },
   },
   shift_type_id: {
-    'ui:widget': ShiftTypeSelectionWidget,
+    // 'ui:widget': ShiftTypeSelectionWidget,
     'ui:options': {
       xs: 6,
       sm: 6,
@@ -91,16 +91,16 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
-  status_id: {
-    'ui:widget': TasksStatusSelectionWidget,
-    'ui:options': {
-      xs: 12,
-      sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
-    },
-  },
+  // status_id: {
+  //   'ui:widget': TasksStatusSelectionWidget,
+  //   'ui:options': {
+  //     xs: 12,
+  //     sm: 12,
+  //     md: 12,
+  //     lg: 12,
+  //     xl: 12,
+  //   },
+  // },
   start_date: {
     'ui:options': {
       xs: 6,
@@ -146,15 +146,15 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
-  baskul_cost: {
-    'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
+  // baskul_cost: {
+  //   'ui:options': {
+  //     xs: 6,
+  //     sm: 6,
+  //     md: 6,
+  //     lg: 6,
+  //     xl: 6,
+  //   },
+  // },
   // supervisor_id: {
   //   'ui:widget': UsersSelectionWidget,
   //   'ui:options': {
@@ -187,11 +187,11 @@ const uiSchema = () => ({
   // },
   tonnage: {
     'ui:options': {
-      xs: 12,
-      sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   coefficient: {
@@ -203,17 +203,17 @@ const uiSchema = () => ({
       xl: 12,
     },
   },
-  have_food: {
-    'ui:widget': 'radio',
-    'ui:options': {
-      inline: true,
-      xs: 12,
-      sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
-    },
-  },
+  // have_food: {
+  //   'ui:widget': 'radio',
+  //   'ui:options': {
+  //     inline: true,
+  //     xs: 12,
+  //     sm: 12,
+  //     md: 12,
+  //     lg: 12,
+  //     xl: 12,
+  //   },
+  // },
   description: {
     'ui:widget': 'textarea',
     'ui:options': {

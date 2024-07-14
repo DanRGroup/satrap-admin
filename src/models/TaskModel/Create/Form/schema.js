@@ -1,4 +1,4 @@
-const schema = () => ({
+const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
   type: 'object',
   required: [],
   properties: {
@@ -6,17 +6,19 @@ const schema = () => ({
       type: 'string',
       title: 'vehicle',
     },
-    driver_id: {
-      type: 'string',
-      title: 'driver',
-    },
+    // driver_id: {
+    //   type: 'string',
+    //   title: 'driver',
+    // },
     type_id: {
       type: 'string',
       title: 'task_type',
+      oneOf: taskTypes,
     },
     operation_type_id: {
       type: 'string',
       title: 'operation',
+      oneOf: operationTypes,
     },
     workshop_id: {
       type: 'string',
@@ -29,15 +31,17 @@ const schema = () => ({
     material_type_id: {
       type: 'string',
       title: 'material_type',
+      oneOf: materialTypes,
     },
     shift_type_id: {
       type: 'string',
       title: 'shift_type',
+      oneOf: shiftTypes,
     },
-    status_id: {
-      type: 'string',
-      title: 'task_status',
-    },
+    // status_id: {
+    //   type: 'string',
+    //   title: 'task_status',
+    // },
     start_date: {
       type: 'string',
       title: 'start_date',
@@ -60,10 +64,10 @@ const schema = () => ({
       type: 'string',
       title: 'bill_number',
     },
-    baskul_cost: {
-      type: 'string',
-      title: 'baskul_cost',
-    },
+    // baskul_cost: {
+    //   type: 'string',
+    //   title: 'baskul_cost',
+    // },
     // supervisor_id: {
     //   type: 'string',
     //   title: 'supervisor',
@@ -80,18 +84,18 @@ const schema = () => ({
       type: 'string',
       title: 'tonnage',
     },
-    // coefficient: {
-    //   type: 'string',
-    //   title: 'coefficient',
-    // },
-    have_food: {
-      type: 'number',
-      title: 'food_status',
-      oneOf: [
-        { const: 1, title: 'do' },
-        { const: 0, title: 'dont' },
-      ],
+    coefficient: {
+      type: 'string',
+      title: 'coefficient',
     },
+    // have_food: {
+    //   type: 'number',
+    //   title: 'food_status',
+    //   oneOf: [
+    //     { const: 1, title: 'do' },
+    //     { const: 0, title: 'dont' },
+    //   ],
+    // },
     description: {
       type: 'string',
       title: 'description',
