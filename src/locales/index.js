@@ -67,6 +67,9 @@ const locales = {
     needActivation: 'Need Activation?',
     do: 'Do',
 
+    natural: 'Natural',
+    legal: 'Legal',
+
     registered: 'Registered',
     doing: 'Doing',
     done: 'Done',
@@ -92,6 +95,7 @@ const locales = {
     creator: 'Creator',
     updator: 'Updator',
     supervisor: 'Supervisor',
+    employer: 'Employer',
     stop_dueto: 'Stop Due to',
     site: 'Site',
     sites: 'Sites',
@@ -129,6 +133,58 @@ const locales = {
     workshop: 'Workshop',
     workshops: 'Workshops',
     workshop_status: 'Workshop status',
+
+    carrying_cargo: 'Carrying Cargo',
+    excavation: 'Excavation',
+    quarrying: 'Quarrying',
+    packet: 'Packet',
+    picor: 'Picor',
+    leveling: 'Leveling',
+    pit_consolidation: 'Pit Consolidation',
+    shot_and_filling: 'Shot And Filling',
+    wiating: 'Wiating',
+
+    service: 'Service',
+    tonnage: 'Tonnage',
+    houry: 'Houry',
+    shift: 'Shift',
+
+    debris: 'Debris',
+    rocks: 'Rocks',
+    gravel: 'Gravel',
+    sand_dune: 'Sand Dune',
+    sand: 'Sand',
+    pea_gravel: 'Pea Gravel',
+    sandy_loam: 'Sandy Loam',
+    oversize: 'Oversize',
+
+    morning: 'Morning',
+    night: 'Night',
+
+    user: 'User',
+    manager: 'Manager',
+    operator: 'Operator',
+    workshop_manager: 'Workshop Manager',
+    workshop_operator: 'Workshop Operator',
+    workshop_supervisor: 'Workshop Supervisor',
+    site_manager: 'Site Manager',
+    financial_manager: 'Financial Manager',
+    driver: 'Driver',
+
+    waiting_for_activate: 'Waiting For Activate',
+    verified: 'Verified',
+    deactive: 'Deactive',
+    deleted: 'Deleted',
+
+    mine: 'Mine',
+    furnace: 'Furnace',
+    defile: 'Defile',
+    desert: 'Desert',
+
+    single_truck: 'Single Truck',
+    double_truck: 'Double Truck',
+    excavator: 'Excavator',
+    loader_truck: 'Loader Truck',
 
     // Models
     ActionsCostWidget: 'ActionsCostWidget',
@@ -213,6 +269,9 @@ const locales = {
     needActivation: 'نیاز به فعالسازی؟',
     do: 'دارد',
 
+    natural: 'حقیقی',
+    legal: 'حقوقی',
+
     registered: 'ثبت شده',
     doing: 'در حال انجام',
     done: 'انجام شده',
@@ -235,6 +294,7 @@ const locales = {
     creator: 'ایجاد کننده',
     updator: 'بروزرسانی کننده',
     supervisor: 'ناظر',
+    employer: 'کارمند',
     stop_dueto: 'علت توقف',
     site: 'محل',
     sites: 'محل‌ها',
@@ -271,6 +331,58 @@ const locales = {
     workshop: 'کارگاه',
     workshops: '‌کارگاه‌ها',
     workshop_status: 'وضعیت کارگاه',
+
+    carrying_cargo: 'حمل بار',
+    excavation: 'خاک برداری',
+    quarrying: 'سنگ برداری',
+    packet: 'پاکت',
+    picor: 'پیکور',
+    leveling: 'تسطیح و ریگلاژ',
+    pit_consolidation: 'تحکیم گود',
+    shot_and_filling: 'شات و فیلینگ',
+    wiating: 'در انتظار',
+
+    service: 'سرویس',
+    tonnage: 'تن',
+    houry: 'ساعت',
+    shift: 'شیفت',
+
+    debris: 'نخاله',
+    rocks: 'سنگ',
+    gravel: 'شن',
+    sand_dune: 'بادامی',
+    sand: 'ماسه',
+    pea_gravel: 'نخودی',
+    sandy_loam: 'ماسه بادی',
+    oversize: 'اورسایز',
+
+    morning: 'صبح',
+    night: 'شب',
+
+    user: 'کاربر',
+    manager: 'مدیر کل',
+    operator: 'اپراتور سامانه',
+    workshop_manager: 'مدیر کارگاه',
+    workshop_operator: 'اپراتور کارگاه',
+    workshop_supervisor: 'ناظر کارگاه',
+    site_manager: 'مدیر محل',
+    financial_manager: 'مدیر مالی',
+    driver: 'راننده',
+
+    waiting_for_activate: 'در انتظار فعال‌سازی',
+    verified: 'تایید شده',
+    deactive: 'غیر فعال',
+    deleted: 'حذف شده',
+
+    mine: 'معدن',
+    furnace: 'کوره',
+    defile: 'گردنه',
+    desert: 'بیابان',
+
+    single_truck: 'کامیون تک',
+    double_truck: 'کامیون جفت',
+    excavator: 'بیل',
+    loader_truck: 'لودر',
 
     // Models
     ActionsCostWidget: 'تعرفه خدمات',

@@ -10,23 +10,43 @@ import {
 
 const uiSchema = () => ({
   task_type_id: {
-    'ui:widget': TasksTypeSelectionWidget,
+    // 'ui:widget': TasksTypeSelectionWidget,
     'ui:options': {
-      xs: 12,
-      sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   operation_type_id: {
-    'ui:widget': OperationTypeSelectionWidget,
+    // 'ui:widget': OperationTypeSelectionWidget,
     'ui:options': {
-      xs: 12,
-      sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
+  material_type_id: {
+    // 'ui:widget': MaterialTypeSelectionWidget,
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
+  shift_type_id: {
+    // 'ui:widget': ShiftTypeSelectionWidget,
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   workshop_id: {
@@ -41,26 +61,6 @@ const uiSchema = () => ({
   },
   site_id: {
     'ui:widget': SiteSelectionWidget,
-    'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
-  material_type_id: {
-    'ui:widget': MaterialTypeSelectionWidget,
-    'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
-  shift_type_id: {
-    'ui:widget': ShiftTypeSelectionWidget,
     'ui:options': {
       xs: 6,
       sm: 6,

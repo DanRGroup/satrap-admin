@@ -1,4 +1,4 @@
-const schema = () => ({
+const schema = (vehicleTypes) => ({
   type: 'object',
   required: [],
   properties: {
@@ -13,6 +13,7 @@ const schema = () => ({
     type_id: {
       type: 'string',
       title: 'vehicle_type',
+      oneOf: vehicleTypes,
     },
     serial_number: {
       type: 'string',

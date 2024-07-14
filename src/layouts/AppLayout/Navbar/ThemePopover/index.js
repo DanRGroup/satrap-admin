@@ -1,9 +1,9 @@
-import { IconButton } from "@mui/material";
-import { setTheme } from "toolkits/redux/setting";
-import { useDispatch, useSelector } from "react-redux";
+import { IconButton } from '@mui/material';
+import { setTheme } from 'toolkits/redux/setting';
+import { useDispatch, useSelector } from 'react-redux';
 
-import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
-import NightsStayRoundedIcon from "@mui/icons-material/NightsStayRounded";
+import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
+import NightsStayRoundedIcon from '@mui/icons-material/NightsStayRounded';
 // ----------------------------------------------------------------------
 
 export default function ThemePopover() {
@@ -13,21 +13,17 @@ export default function ThemePopover() {
   } = useSelector((state) => state.setting);
 
   const changeTheme = () => {
-    if (mode === "light") {
-      dispatch(setTheme({ color: "secondary", mode: "dark" }));
+    if (mode === 'light') {
+      dispatch(setTheme({ color: 'secondary', mode: 'dark' }));
     } else {
-      dispatch(setTheme({ color: "primary", mode: "light" }));
+      dispatch(setTheme({ color: 'primary', mode: 'light' }));
     }
   };
 
   return (
     <>
       <IconButton color={color} size="medium" onClick={changeTheme}>
-        {mode === "light" ? (
-          <NightsStayRoundedIcon fontSize="small" />
-        ) : (
-          <LightModeRoundedIcon fontSize="small" />
-        )}
+        {mode === 'light' ? <NightsStayRoundedIcon fontSize="small" /> : <LightModeRoundedIcon fontSize="small" />}
       </IconButton>
     </>
   );

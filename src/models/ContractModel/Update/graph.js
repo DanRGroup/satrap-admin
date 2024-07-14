@@ -18,6 +18,11 @@ const schema = {
               id
               title
             }
+            employer {
+              id
+              firstname
+              lastname
+            }
             status
             start_date
             end_date

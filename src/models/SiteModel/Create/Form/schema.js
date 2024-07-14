@@ -1,4 +1,4 @@
-const schema = () => ({
+const schema = (siteTypes) => ({
   type: 'object',
   required: [],
   properties: {
@@ -13,6 +13,7 @@ const schema = () => ({
     type_id: {
       type: 'string',
       title: 'site_type',
+      oneOf: siteTypes,
     },
     location: {
       type: 'object',

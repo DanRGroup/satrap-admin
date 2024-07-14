@@ -1,14 +1,26 @@
-const schema = () => ({
+const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
   type: 'object',
   required: [],
   properties: {
     task_type_id: {
       type: 'string',
       title: 'task_type',
+      oneOf: taskTypes,
     },
     operation_type_id: {
       type: 'string',
       title: 'operation_type',
+      oneOf: operationTypes,
+    },
+    material_type_id: {
+      type: 'string',
+      title: 'material_type',
+      oneOf: materialTypes,
+    },
+    shift_type_id: {
+      type: 'string',
+      title: 'shift_type',
+      oneOf: shiftTypes,
     },
     workshop_id: {
       type: 'string',
@@ -17,14 +29,6 @@ const schema = () => ({
     site_id: {
       type: 'string',
       title: 'site',
-    },
-    material_type_id: {
-      type: 'string',
-      title: 'material_type',
-    },
-    shift_type_id: {
-      type: 'string',
-      title: 'shift_type',
     },
     // creator_id: {
     //   type: 'string',

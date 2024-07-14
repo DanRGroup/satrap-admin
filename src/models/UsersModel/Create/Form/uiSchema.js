@@ -1,8 +1,8 @@
-import { UsersTypeSelectionWidget, UsersStatusSelectionWidget } from 'components/FormWidgets';
+// import { UsersTypeSelectionWidget, UsersStatusSelectionWidget } from 'components/FormWidgets';
 
 const uiSchema = () => ({
   type_id: {
-    'ui:widget': UsersTypeSelectionWidget,
+    // 'ui:widget': UsersTypeSelectionWidget,
     'ui:options': {
       xs: 6,
       sm: 6,
@@ -12,7 +12,7 @@ const uiSchema = () => ({
     },
   },
   status_id: {
-    'ui:widget': UsersStatusSelectionWidget,
+    // 'ui:widget': UsersStatusSelectionWidget,
     'ui:options': {
       xs: 6,
       sm: 6,

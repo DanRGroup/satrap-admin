@@ -22,7 +22,7 @@ const uiSchema = () => ({
     },
   },
   type_id: {
-    'ui:widget': VehicleTypeSelectionWidget,
+    // 'ui:widget': VehicleTypeSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,
