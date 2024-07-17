@@ -24,11 +24,21 @@ const uiSchema = () => ({
   type_id: {
     // 'ui:widget': VehicleTypeSelectionWidget,
     'ui:options': {
-      xs: 12,
-      sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
+  status: {
+    // 'ui:widget': VehicleTypeSelectionWidget,
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   serial_number: {

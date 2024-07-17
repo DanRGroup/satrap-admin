@@ -31,26 +31,26 @@ const uiSchema = () => ({
   //     xl: 6,
   //   },
   // },
-  // type_id: {
-  //   // 'ui:widget': TasksTypeSelectionWidget,
-  //   'ui:options': {
-  //     xs: 6,
-  //     sm: 6,
-  //     md: 6,
-  //     lg: 6,
-  //     xl: 6,
-  //   },
-  // },
-  // operation_type_id: {
-  //   // 'ui:widget': OperationTypeSelectionWidget,
-  //   'ui:options': {
-  //     xs: 6,
-  //     sm: 6,
-  //     md: 6,
-  //     lg: 6,
-  //     xl: 6,
-  //   },
-  // },
+  type_id: {
+    // 'ui:widget': TasksTypeSelectionWidget,
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
+  operation_type_id: {
+    // 'ui:widget': OperationTypeSelectionWidget,
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
   workshop_id: {
     'ui:widget': WorkshopSelectionWidget,
     'ui:options': {
@@ -71,26 +71,26 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
-  // material_type_id: {
-  //   // 'ui:widget': MaterialTypeSelectionWidget,
-  //   'ui:options': {
-  //     xs: 6,
-  //     sm: 6,
-  //     md: 6,
-  //     lg: 6,
-  //     xl: 6,
-  //   },
-  // },
-  // shift_type_id: {
-  //   // 'ui:widget': ShiftTypeSelectionWidget,
-  //   'ui:options': {
-  //     xs: 6,
-  //     sm: 6,
-  //     md: 6,
-  //     lg: 6,
-  //     xl: 6,
-  //   },
-  // },
+  material_type_id: {
+    // 'ui:widget': MaterialTypeSelectionWidget,
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
+  shift_type_id: {
+    // 'ui:widget': ShiftTypeSelectionWidget,
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
   // status_id: {
   //   'ui:widget': TasksStatusSelectionWidget,
   //   'ui:options': {
@@ -101,7 +101,7 @@ const uiSchema = () => ({
   //     xl: 12,
   //   },
   // },
-  start_date: {
+  start_time: {
     'ui:options': {
       xs: 6,
       sm: 6,
@@ -110,7 +110,7 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
-  end_date: {
+  end_time: {
     'ui:options': {
       xs: 6,
       sm: 6,
@@ -194,15 +194,15 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
-  // coefficient: {
-  //   'ui:options': {
-  //     xs: 12,
-  //     sm: 12,
-  //     md: 12,
-  //     lg: 12,
-  //     xl: 12,
-  //   },
-  // },
+  coefficient: {
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
   // have_food: {
   //   'ui:widget': 'radio',
   //   'ui:options': {

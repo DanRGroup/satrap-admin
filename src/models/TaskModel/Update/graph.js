@@ -66,6 +66,7 @@ const schema = {
             }
             start_time
             end_time
+            tonnage
           }
           #total
         }
@@ -79,7 +80,7 @@ const schema = {
       mutation updateTask(
         $ids: [String]!
         #$vehicle_id: String!
-        $driver_id: String!
+        #$driver_id: String!
         #$type_id: String!
         #$operation_type_id: String!
         $workshop_id: String!
@@ -105,7 +106,7 @@ const schema = {
         updateTask(
           ids: $ids
           #vehicle_id: $vehicle_id
-          driver_id: $driver_id
+          #driver_id: $driver_id
           #type_id: $type_id
           #operation_type_id: $operation_type_id
           workshop_id: $workshop_id

@@ -5,8 +5,20 @@ const schema = {
     name: 'tariff',
     serviceName: 'auth',
     query: gql`
-      query tariff($ids: [String]) {
-        tariff(ids: $ids) {
+      query tariff(
+        $ids: [String]
+        $task_type_ids: [String]
+        $operation_type_ids: [String]
+        $workshop_ids: [String]
+        $site_ids: [String]
+      ) {
+        tariff(
+          ids: $ids
+          task_type_ids: $task_type_ids
+          operation_type_ids: $operation_type_ids
+          workshop_ids: $workshop_ids
+          site_ids: $site_ids
+        ) {
           data {
             id
             task_type {
@@ -14,6 +26,14 @@ const schema = {
               title
             }
             workshop {
+              id
+              title
+            }
+            material_type {
+              id
+              title
+            }
+            site {
               id
               title
             }

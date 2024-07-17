@@ -6,11 +6,12 @@ import { useSelector } from 'react-redux';
 
 const Form = ({ formData = {}, onChange }) => {
   const { vehicleTypes } = useSelector((state) => state.models);
+  const { vehicleStatuses } = useSelector((state) => state.models);
 
   return (
     <MuiFormBuilder
       showSubmit={false}
-      schema={schema(vehicleTypes)}
+      schema={schema(vehicleTypes, vehicleStatuses)}
       uiSchema={uiSchema()}
       formData={formData}
       onChange={onChange}

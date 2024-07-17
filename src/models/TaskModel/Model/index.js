@@ -67,12 +67,12 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography fontSize={14} variant="subtitle1">
-                  {`${model?.type.title}`}
+                  {`${model?.type.title} - ${model?.material_type?.title} - ماشین : ${model?.vehicle?.plaque} - راننده : ${model?.driver?.firstname} ${model?.driver?.lastname}`}
                 </Typography>
               }
               subheader={
                 <Typography fontSize={12} variant="subtitle2">
-                  {`${model?.workshop.title}`}
+                  {`${model?.workshop?.title} ${model?.type.title === 'حمل بار' ? ` - ${model?.site?.title}` : ''}`}
                 </Typography>
               }
             />

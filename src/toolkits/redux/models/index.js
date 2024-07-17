@@ -14,6 +14,10 @@ export const setModelsSlice = createSlice({
       { const: 'SUSPENDED', title: 'suspend' },
       { const: 'CANCELED', title: 'canceled' },
     ],
+    siteStatuses: [
+      { const: 'READY', title: 'ready' },
+      { const: 'UNREADY', title: 'unready' },
+    ],
     taskTypes: [
       { const: '1', title: 'carrying_cargo' },
       { const: '2', title: 'excavation' },
@@ -73,6 +77,17 @@ export const setModelsSlice = createSlice({
       { const: '2', title: 'double_truck' },
       { const: '3', title: 'excavator' },
       { const: '4', title: 'loader_truck' },
+    ],
+    vehicleStatuses: [
+      { const: 'RUNING', title: 'runing' },
+      { const: 'REPAIRING', title: 'repairing' },
+      { const: 'STOPED', title: 'stoped' },
+      { const: 'IDLE', title: 'idle' },
+    ],
+    workshopStatuses: [
+      { const: '1', title: 'in_pending' },
+      { const: '2', title: 'in_operation' },
+      { const: '3', title: 'finished' },
     ],
   },
   reducers: {

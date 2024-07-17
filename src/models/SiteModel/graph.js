@@ -5,8 +5,22 @@ const schema = {
     name: 'site',
     serviceName: 'graphql',
     query: gql`
-      query site($ids: [String], $title: String) {
-        site(ids: $ids, title: $title) {
+      query site(
+        $ids: [String]
+        $title: String
+        $manager_ids: [String]
+        $type_ids: [String]
+        $is_active: Int
+        $status: String
+      ) {
+        site(
+          ids: $ids
+          title: $title
+          manager_ids: $manager_ids
+          type_ids: $type_ids
+          is_active: $is_active
+          status: $status
+        ) {
           data {
             id
             title

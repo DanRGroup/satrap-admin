@@ -45,17 +45,15 @@ export default function UpdatePopup({ ids, title, refetch }) {
         if (res) {
           setFormData({
             ...res,
-            driver_id: res.driver?.id,
-            supervisor_id: res.supervisor?.id,
-            creator_id: res.creator?.id,
-            updator_id: res.updator?.id,
             type_id: res.type?.id,
             operation_type_id: res.operation_type?.id,
             workshop_id: res.workshop?.id,
             site_id: res.site?.id,
-            shift_id: res.shift?.id,
+            shift_type: res.shift_type?.id,
             material_type_id: res.material_type?.id,
-            status_id: res.status_id?.id,
+            status_id: res.status?.id,
+            start_time: res.start_time,
+            end_time: res.end_time,
           });
         }
       }

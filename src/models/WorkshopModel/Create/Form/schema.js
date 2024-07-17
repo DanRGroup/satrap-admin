@@ -1,4 +1,4 @@
-const schema = () => ({
+const schema = (workshopStatuses) => ({
   type: 'object',
   required: [],
   properties: {
@@ -6,14 +6,23 @@ const schema = () => ({
       type: 'string',
       title: 'title',
     },
-    alias: {
-      type: 'string',
-      title: 'alias',
-    },
+    // alias: {
+    //   type: 'string',
+    //   title: 'alias',
+    // },
     // shipping_cost_config: {
     //   type: 'string',
     //   title: 'site_type',
     // },
+    status_id: {
+      type: 'string',
+      title: 'status',
+      oneOf: workshopStatuses,
+    },
+    manager_id: {
+      type: 'string',
+      title: 'workshop_manager',
+    },
     location: {
       type: 'object',
       title: 'location',
@@ -25,10 +34,6 @@ const schema = () => ({
           type: 'string',
         },
       },
-    },
-    manager_id: {
-      type: 'string',
-      title: 'manager',
     },
     is_active: {
       type: 'number',

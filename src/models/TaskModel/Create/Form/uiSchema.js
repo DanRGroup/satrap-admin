@@ -101,7 +101,7 @@ const uiSchema = () => ({
   //     xl: 12,
   //   },
   // },
-  start_date: {
+  start_time: {
     'ui:options': {
       xs: 6,
       sm: 6,
@@ -110,7 +110,7 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
-  end_date: {
+  end_time: {
     'ui:options': {
       xs: 6,
       sm: 6,

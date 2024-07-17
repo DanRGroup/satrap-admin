@@ -22,6 +22,9 @@ const schema = {
               id
               full_url
             }
+            status {
+              id
+            }
           }
           total
         }

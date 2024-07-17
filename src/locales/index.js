@@ -58,7 +58,9 @@ const locales = {
     nationalCode: 'National Code',
     birthDate: 'Birth Date',
     start_date: 'Start Date',
+    start_time: 'Start Time',
     end_date: 'End Date',
+    end_time: 'End Time',
     serialNumber: 'Serial Number',
     specialist: 'Specialist',
     email: 'Email',
@@ -75,6 +77,9 @@ const locales = {
     done: 'Done',
     suspend: 'Suspend',
     canceled: 'Canceled',
+
+    ready: 'Ready',
+    unready: 'Unready',
 
     dont: 'Dont',
     man: 'Man',
@@ -101,6 +106,7 @@ const locales = {
     sites: 'Sites',
     siteReports: 'Site Reports',
     site_type: 'Site Type',
+    site_status: 'Site Status',
     site_types: 'Site Types',
     driver: 'Driver',
     owner: 'Owner',
@@ -116,6 +122,7 @@ const locales = {
     vehicles: 'Vehicles',
     vehicle_type: 'Vehicle Type',
     vehicle_types: 'Vehicles Types',
+    vehicle_status: 'Vehicle Status',
     shift: 'Shift',
     shift_type: 'Shift Type',
     shift_types: 'Shift Types',
@@ -185,6 +192,10 @@ const locales = {
     double_truck: 'Double Truck',
     excavator: 'Excavator',
     loader_truck: 'Loader Truck',
+
+    in_pending: 'In Pending',
+    in_operation: 'In Operation',
+    finished: 'Finished',
 
     // Models
     ActionsCostWidget: 'ActionsCostWidget',
@@ -261,7 +272,9 @@ const locales = {
     nationalCode: 'کد ملی',
     birthDate: 'تاریخ تولد',
     start_date: 'تاریخ شروع',
+    start_time: 'زمان شروع',
     end_date: 'تاریخ پایان',
+    end_time: 'زمان پایان',
     serialNumber: 'شماره سریال',
     email: 'پست الکترونیک',
     address: 'آدرس',
@@ -277,6 +290,9 @@ const locales = {
     done: 'انجام شده',
     suspend: 'معلق',
     canceled: 'لغو شده',
+
+    ready: 'آماده',
+    unready: 'غیرآماده',
 
     dont: 'ندارد',
     man: 'آقا',
@@ -300,6 +316,7 @@ const locales = {
     sites: 'محل‌ها',
     siteReports: 'گزارشات محل',
     site_type: 'نوع محل',
+    site_status: 'وضعیت محل',
     site_types: 'انواع محل',
     driver: 'راننده',
     owner: 'مالک',
@@ -314,6 +331,7 @@ const locales = {
     vehicles: 'ماشین آلات',
     vehicle_type: 'نوع ماشین',
     vehicle_types: 'انواع ماشین آلات',
+    vehicle_status: 'وضعیت ماشین',
     shift: 'شیفت کاری',
     shift_type: 'نوع شیفت کاری',
     shift_types: 'انواع شیفت کاری',
@@ -383,6 +401,10 @@ const locales = {
     double_truck: 'کامیون جفت',
     excavator: 'بیل',
     loader_truck: 'لودر',
+
+    in_pending: 'در حال راه اندازی',
+    in_operation: 'در حال فعالیت',
+    finished: 'اتمام کار',
 
     // Models
     ActionsCostWidget: 'تعرفه خدمات',

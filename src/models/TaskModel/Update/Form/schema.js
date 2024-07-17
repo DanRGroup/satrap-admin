@@ -1,4 +1,4 @@
-const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
+const schema = () => ({
   type: 'object',
   required: [],
   properties: {
@@ -42,15 +42,15 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
     //   type: 'string',
     //   title: 'task_status',
     // },
-    start_date: {
+    start_time: {
       type: 'string',
-      title: 'start_date',
-      format: 'date',
+      title: 'start_time',
+      format: 'time',
     },
-    end_date: {
+    end_time: {
       type: 'string',
-      title: 'end_date',
-      format: 'date',
+      title: 'end_time',
+      format: 'time',
     },
     // stop_dueto: {
     //   type: 'string',

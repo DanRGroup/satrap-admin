@@ -1,4 +1,4 @@
-import { ContractTypeSelectionWidget, WorkshopSelectionWidget } from 'components/FormWidgets';
+import { ContractTypeSelectionWidget, WorkshopSelectionWidget, UsersSelectionWidget } from 'components/FormWidgets';
 
 const uiSchema = () => ({
   title: {
@@ -10,8 +10,7 @@ const uiSchema = () => ({
       xl: 12,
     },
   },
-  workshop_ids: {
-    'ui:widget': WorkshopSelectionWidget,
+  start_date: {
     'ui:options': {
       xs: 6,
       sm: 6,
@@ -20,8 +19,55 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
+  end_date: {
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
+  workshop_ids: {
+    'ui:widget': WorkshopSelectionWidget,
+    'ui:options': {
+      xs: 4,
+      sm: 4,
+      md: 4,
+      lg: 4,
+      xl: 4,
+    },
+  },
   type_ids: {
-    'ui:widget': ContractTypeSelectionWidget,
+    // 'ui:widget': ContractTypeSelectionWidget,
+    'ui:options': {
+      xs: 4,
+      sm: 4,
+      md: 4,
+      lg: 4,
+      xl: 4,
+    },
+  },
+  employer_ids: {
+    'ui:widget': UsersSelectionWidget,
+    'ui:options': {
+      xs: 4,
+      sm: 4,
+      md: 4,
+      lg: 4,
+      xl: 4,
+    },
+  },
+  status: {
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
+  number: {
     'ui:options': {
       xs: 6,
       sm: 6,

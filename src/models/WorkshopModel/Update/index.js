@@ -44,6 +44,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
             ...res,
             location: { lat: res?.lat, lng: res?.lng },
             manager_id: res.manager?.id,
+            status_id: res.status?.id,
           });
         }
       }

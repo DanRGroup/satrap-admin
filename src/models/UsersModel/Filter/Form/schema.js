@@ -1,11 +1,25 @@
-const schema = () => ({
+const schema = (userTypes, userStatuses) => ({
   type: 'object',
   required: [],
   properties: {
-    title: {
+    lastname: {
       type: 'string',
-      title: 'title',
-    }
+      title: 'lastname',
+    },
+    firstname: {
+      type: 'string',
+      title: 'firstname',
+    },
+    status_ids: {
+      type: 'string',
+      title: 'status',
+      oneOf: userStatuses,
+    },
+    type_ids: {
+      type: 'string',
+      title: 'role',
+      oneOf: userTypes,
+    },
   },
 });
 
