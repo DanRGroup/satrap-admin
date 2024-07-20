@@ -14,6 +14,7 @@ const locales = {
     refresh: 'Refresh',
     create: 'Create',
     update: 'Update',
+    change_status: 'Change Status',
     delete: 'Delete',
     ignore: 'Ignore',
     ok: 'OK',
@@ -197,6 +198,16 @@ const locales = {
     in_operation: 'In Operation',
     finished: 'Finished',
 
+    doing: 'Doing',
+    done: 'Done',
+    supervisor_confirmed: 'Supervisor Confirmed',
+    reviewed: 'Reviewed',
+    workshop_manager_confirmed: 'Workshop Manager Confirmed',
+    canceled_by_driver: 'Canceled By Driver',
+    canceled_by_supervisor: 'Canceled By Supervisor',
+    suspended: 'Suspended',
+    finished: 'Finished',
+
     // Models
     ActionsCostWidget: 'ActionsCostWidget',
     OrdersStatusWidget: 'OrdersStatusWidget',
@@ -226,6 +237,7 @@ const locales = {
     refresh: 'تازه سازی',
     create: 'ایجاد',
     update: 'ویرایش',
+    change_status: 'تغییر وضعیت',
     delete: 'حذف',
     ignore: 'فعلا نه',
     ok: 'تایید',
@@ -405,6 +417,16 @@ const locales = {
     in_pending: 'در حال راه اندازی',
     in_operation: 'در حال فعالیت',
     finished: 'اتمام کار',
+
+    doing: 'در حال انجام',
+    done: 'انجام شده',
+    supervisor_confirmed: 'تایید شده توسط ناظر',
+    reviewed: 'بررسی شده',
+    workshop_manager_confirmed: 'تایید شده توسط مدیر کارگاه',
+    canceled_by_driver: 'لغو شده توسط راننده',
+    canceled_by_supervisor: 'لغو شده توسط ناظر',
+    suspended: 'معلق',
+    finished: 'اتمام یافته',
 
     // Models
     ActionsCostWidget: 'تعرفه خدمات',

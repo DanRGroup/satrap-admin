@@ -91,16 +91,16 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
-  // status_id: {
-  //   'ui:widget': TasksStatusSelectionWidget,
-  //   'ui:options': {
-  //     xs: 12,
-  //     sm: 12,
-  //     md: 12,
-  //     lg: 12,
-  //     xl: 12,
-  //   },
-  // },
+  status_id: {
+    // 'ui:widget': TasksStatusSelectionWidget,
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
   start_time: {
     'ui:options': {
       xs: 6,

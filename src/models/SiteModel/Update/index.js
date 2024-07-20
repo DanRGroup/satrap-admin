@@ -69,9 +69,12 @@ export default function UpdatePopup({ ids, title, refetch }) {
         },
         variables: {
           ids,
-          ...formData,
+          title: formData?.title,
+          manager_id: formData?.manager_id,
+          type_id: formData?.type_id,
           lat: formData?.location.lat,
           lng: formData?.location.lng,
+          status: formData?.status,
         },
       });
       if (!errors) {

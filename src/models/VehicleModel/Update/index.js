@@ -65,7 +65,15 @@ export default function UpdatePopup({ ids, title, refetch }) {
             authorization: `Bearer ${userToken}`,
           },
         },
-        variables: { ids, ...formData },
+        variables: {
+          ids,
+          owner: formData?.owner_id,
+          driver_id: formData?.driver_id,
+          type_id: formData?.type_id,
+          serial_number: formData?.serial_number,
+          plaque: formData?.plaque,
+          details: formData?.details,
+        },
       });
       if (!errors) {
         refetch();

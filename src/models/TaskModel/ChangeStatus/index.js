@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import ModeEditRoundedIcon from '@mui/icons-material/ModeEditRounded';
+import AppRegistrationRoundedIcon from '@mui/icons-material/AppRegistrationRounded';
 
 import Form from './Form';
 import graph from './graph';
@@ -13,7 +14,6 @@ import { isEmptyObject } from 'helpers/formatObject';
 import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'components';
 import { FormattedMessage } from 'react-intl';
 import { CircularProgress, Stack } from '@mui/material';
-import { endOfDay } from 'date-fns';
 
 export default function UpdatePopup({ ids, title, refetch }) {
   const [open, setOpen] = useState(false);
@@ -24,6 +24,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
 
   const onOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
+  console.log('ids', ids);
 
   const getModel = async () => {
     try {
@@ -40,14 +41,20 @@ export default function UpdatePopup({ ids, title, refetch }) {
         },
       });
       if (!isEmptyObject(data)) {
-        const res = data[graph.get.name].data[0];
+        const res = data[graph.get.name].records[0];
+        console.log('res', res);
         if (res) {
           setFormData({
             ...res,
-            workshop_id: res.workshop?.id,
-            employer_id: res.employer?.id,
             type_id: res.type?.id,
-            // status_id: res.status,
+            operation_type_id: res.operation_type?.id,
+            workshop_id: res.workshop?.id,
+            site_id: res.site?.id,
+            shift_type: res.shift_type?.id,
+            material_type_id: res.material_type?.id,
+            status_id: res.status?.id,
+            start_time: res.start_time,
+            end_time: res.end_time,
           });
         }
       }
@@ -67,19 +74,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
             authorization: `Bearer ${userToken}`,
           },
         },
-        variables: {
-          ids,
-          title: formData?.title,
-          workshop_id: formData?.workshop_id,
-          type_id: formData?.type_id,
-          employer_id: formData?.employer_id,
-          status: formData?.status_id,
-          start_date: formData?.start_date,
-          end_date: formData?.end_date,
-          cost: formData?.cost,
-          number: formData?.number,
-          details: formData?.details,
-        },
+        variables: { ids, ...formData },
       });
       if (!errors) {
         refetch();
@@ -101,7 +96,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
     <>
       <Tooltip title={title}>
         <IconButton sx={{ bgcolor: 'action.selected' }} size="small" color="info" onClick={onOpen}>
-          <ModeEditRoundedIcon fontSize="small" />
+          <AppRegistrationRoundedIcon color="error" fontSize="small" />
         </IconButton>
       </Tooltip>
       <NewDialog label="update" open={open} onClose={onClose} maxWidth="xs">
@@ -112,7 +107,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
               <CircularProgress />
             </Stack>
           ) : (
-            <Stack p={2} alignItems="center">
+            <Stack p={2}>
               <Form formData={formData} onChange={onChange} />
             </Stack>
           )}

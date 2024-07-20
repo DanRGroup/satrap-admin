@@ -64,7 +64,6 @@ const schema = {
               id
               title
             }
-            bill_number
             start_time
             end_time
             tonnage

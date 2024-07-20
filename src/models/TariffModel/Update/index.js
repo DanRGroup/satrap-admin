@@ -13,6 +13,7 @@ import { isEmptyObject } from 'helpers/formatObject';
 import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'components';
 import { FormattedMessage } from 'react-intl';
 import { CircularProgress, Stack } from '@mui/material';
+import { descriptionId } from '@rjsf/utils';
 
 export default function UpdatePopup({ ids, title, refetch }) {
   const [open, setOpen] = useState(false);
@@ -71,7 +72,18 @@ export default function UpdatePopup({ ids, title, refetch }) {
             authorization: `Bearer ${userToken}`,
           },
         },
-        variables: { ids, ...formData },
+        variables: {
+          ids,
+          task_type_id: formData?.task_type_id,
+          operation_type_id: formData?.operation_type_id,
+          material_type_id: formData?.material_type_id,
+          shift_type_id: formData?.shift_type_id,
+          workshop_id: formData?.workshop_id,
+          site_id: formData?.site_id,
+          cost: formData?.cost,
+          is_active: formData?.is_active,
+          description: formData?.description,
+        },
       });
       if (!errors) {
         refetch();

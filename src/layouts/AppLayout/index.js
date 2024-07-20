@@ -45,7 +45,6 @@ export default function DashboardLayout() {
 
   // console.log('res', result);
 
-  console.log('models', models);
   return (
     <>
       <TourProvider>

@@ -29,6 +29,17 @@ export const setModelsSlice = createSlice({
       { const: '8', title: 'shot_and_filling' },
       { const: '9', title: 'wiating' },
     ],
+    taskStatuses: [
+      { const: '1', title: 'doing' },
+      { const: '2', title: 'done' },
+      { const: '3', title: 'supervisor_confirmed' },
+      { const: '4', title: 'reviewed' },
+      { const: '5', title: 'workshop_manager_confirmed' },
+      { const: '6', title: 'canceled_by_driver' },
+      { const: '7', title: 'canceled_by_supervisor' },
+      { const: '8', title: 'suspended' },
+      { const: '9', title: 'finished' },
+    ],
     operationTypes: [
       { const: '1', title: 'service' },
       { const: '2', title: 'tonnage' },

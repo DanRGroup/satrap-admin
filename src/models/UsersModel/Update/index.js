@@ -61,7 +61,20 @@ export default function UpdatePopup({ ids, title, refetch }) {
             authorization: `Bearer ${userToken}`,
           },
         },
-        variables: { ids, ...formData },
+        variables: {
+          ids,
+          firstname: formData?.firstname,
+          lastname: formData?.lastname,
+          national_code: formData?.national_code,
+          birth_date: formData?.birth_date,
+          tellphone: formData?.tellphone,
+          address: formData?.address,
+          email: formData?.email,
+          gender: formData?.gender,
+          is_active: formData?.is_active,
+          status_id: formData?.status_id,
+          type_id: formData?.type_id,
+        },
       });
       if (!errors) {
         refetch();

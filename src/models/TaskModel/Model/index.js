@@ -1,6 +1,7 @@
 import React from 'react';
 import Update from '../Update';
 import Media from '../Media';
+import ChangeStatus from '../ChangeStatus';
 
 import { Card, Stack, Slide, Divider, Checkbox, Typography, CardHeader, CardActionArea } from '@mui/material';
 import { AvatarPopover, NewSpeedDial } from 'components';
@@ -59,6 +60,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           >
             <NewSpeedDial>
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
+              <ChangeStatus ids={model.id} title={<FormattedMessage id="change_status" />} refetch={refetch} />
               <Media id={model.id} model="Brand" collection="banner" />
             </NewSpeedDial>
           </Stack>

@@ -1,4 +1,7 @@
+import React, { useEffect, useState } from 'react';
+
 import { faker } from '@faker-js/faker';
+import graph from './graph';
 
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -16,9 +19,45 @@ import AppTrafficBySite from './app-traffic-by-site';
 import AppCurrentSubject from './app-current-subject';
 import AppConversionRates from './app-conversion-rates';
 
+import { useLazyQuery } from '@apollo/client';
+import { useSelector } from 'react-redux';
+import { isEmptyObject } from 'helpers/formatObject';
+
 // ----------------------------------------------------------------------
 
 export default function AppView() {
+  const { userToken } = useSelector((state) => state.auth);
+  const { lables, setLables } = useState([]);
+
+  const [getData, { loading }] = useLazyQuery(graph.list.query, {
+    context: {
+      serviceName: graph.list.serviceName,
+      headers: {
+        authorization: `Bearer ${userToken}`,
+      },
+    },
+  });
+
+  const handleData = async () => {
+    try {
+      const { data, error } = await getData({
+        variables: {
+          type_ids: '1',
+        },
+      });
+      if (!isEmptyObject(data) && !error) {
+        const { records } = data[graph.list.name];
+        setLables(records.map((record) => record.start_time));
+        console.log('lables', lables);
+      }
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    handleData();
+  }, []);
+
+  // console.log('lables', lables);
   return (
     <Container maxWidth="xl">
       <Grid container spacing={3}>
@@ -61,41 +100,41 @@ export default function AppView() {
 
         <Grid xs={12} md={6} lg={8}>
           <AppWebsiteVisits
-            title="نمودار فعالیت ماهانه کاربران"
-            subheader="(+43%) than last year"
+            title="نمودار فعالیت حمل بار کارگاه‌ها"
+            subheader="ده روز گذشته"
             chart={{
               labels: [
-                '01/01/2003',
-                '02/01/2003',
-                '03/01/2003',
-                '04/01/2003',
-                '05/01/2003',
-                '06/01/2003',
-                '07/01/2003',
-                '08/01/2003',
-                '09/01/2003',
-                '10/01/2003',
-                '11/01/2003',
+                '2024-07-08',
+                '2024-07-09',
+                '2024-07-10',
+                '2024-07-11',
+                '2024-07-12',
+                '2024-07-13',
+                '2024-07-14',
+                '2024-07-15',
+                '2024-07-16',
+                '2024-07-17',
               ],
               series: [
                 {
-                  name: 'رانندگان',
+                  name: 'تعداد',
                   type: 'column',
                   fill: 'solid',
-                  data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+                  data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22],
                 },
                 {
-                  name: 'کاربران',
+                  name: 'پیشرفت',
                   type: 'area',
                   fill: 'gradient',
-                  data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+                  color: '#00b8d9',
+                  data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22],
                 },
-                {
-                  name: 'مدیران',
-                  type: 'line',
-                  fill: 'solid',
-                  data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                },
+                // {
+                //   name: 'مدیران',
+                //   type: 'line',
+                //   fill: 'solid',
+                //   data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+                // },
               ],
             }}
           />
@@ -117,7 +156,7 @@ export default function AppView() {
         <Grid xs={12} md={6} lg={8}>
           <AppConversionRates
             title="آمار فعالیت محل‌ها"
-            subheader="(+43%) than last year"
+            subheader="یک هفته گذشته"
             chart={{
               series: [
                 { label: 'محل ۱', value: 400 },
