@@ -61,12 +61,12 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography textAlign={isRtl ? 'start' : 'end'} fontSize={14} variant="subtitle1">
-                  {model.title}
+                  {model?.title} - {model?.manager?.firstname} {model?.manager?.lastname}
                 </Typography>
               }
               subheader={
                 <Typography fontSize={12} variant="subtitle2">
-                  {model.producer?.title}
+                  {model?.type?.title}
                 </Typography>
               }
             />

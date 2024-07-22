@@ -27,6 +27,10 @@ const schema = {
             id
             plaque
             serial_number
+            driver {
+              firstname
+              lastname
+            }
             media {
               id
               full_url

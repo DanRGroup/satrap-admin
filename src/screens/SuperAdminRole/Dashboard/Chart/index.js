@@ -22,12 +22,16 @@ import AppConversionRates from './app-conversion-rates';
 import { useLazyQuery } from '@apollo/client';
 import { useSelector } from 'react-redux';
 import { isEmptyObject } from 'helpers/formatObject';
+import { groupBy } from 'utils/formArray';
 
 // ----------------------------------------------------------------------
 
 export default function AppView() {
   const { userToken } = useSelector((state) => state.auth);
-  const { lables, setLables } = useState([]);
+  const [data, setData] = useState([]);
+  const [labels, setLabels] = useState([]);
+
+  let grouped = {};
 
   const [getData, { loading }] = useLazyQuery(graph.list.query, {
     context: {
@@ -47,8 +51,14 @@ export default function AppView() {
       });
       if (!isEmptyObject(data) && !error) {
         const { records } = data[graph.list.name];
-        setLables(records.map((record) => record.start_time));
-        console.log('lables', lables);
+        records.forEach((item) => {
+          item.end_time = item.end_time.split(' ')[0];
+        });
+        grouped = groupBy(records, 'end_time');
+        const keys = Object.keys(grouped);
+        const vals = Object.values(grouped).map((x) => x.length);
+        setLabels(keys.reverse());
+        setData(vals.reverse());
       }
     } catch (error) {}
   };
@@ -98,46 +108,58 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} md={6} lg={8}>
-          <AppWebsiteVisits
-            title="نمودار فعالیت حمل بار کارگاه‌ها"
-            subheader="ده روز گذشته"
-            chart={{
-              labels: [
-                '2024-07-08',
-                '2024-07-09',
-                '2024-07-10',
-                '2024-07-11',
-                '2024-07-12',
-                '2024-07-13',
-                '2024-07-14',
-                '2024-07-15',
-                '2024-07-16',
-                '2024-07-17',
-              ],
-              series: [
-                {
-                  name: 'تعداد',
-                  type: 'column',
-                  fill: 'solid',
-                  data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22],
-                },
-                {
-                  name: 'پیشرفت',
-                  type: 'area',
-                  fill: 'gradient',
-                  color: '#00b8d9',
-                  data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22],
-                },
-                // {
-                //   name: 'مدیران',
-                //   type: 'line',
-                //   fill: 'solid',
-                //   data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                // },
-              ],
-            }}
-          />
+        <Grid xs={12} md={6} lg={6}>
+          {labels.length > 0 && (
+            <AppWebsiteVisits
+              title="نمودار فعالیت حمل بار کارگاه‌ها"
+              subheader="ده روز گذشته"
+              chart={{
+                labels: labels,
+                series: [
+                  {
+                    name: 'تعداد',
+                    type: 'column',
+                    fill: 'solid',
+                    data: data,
+                  },
+                  {
+                    name: 'پیشرفت',
+                    type: 'area',
+                    fill: 'gradient',
+                    color: '#00b8d9',
+                    data: data,
+                  },
+                ],
+              }}
+            />
+          )}
+        </Grid>
+
+        <Grid xs={12} md={6} lg={6}>
+          {labels.length > 0 && (
+            <AppWebsiteVisits
+              title="نمودار فعالیت حمل بار کارگاه‌ها"
+              subheader="ده روز گذشته"
+              chart={{
+                labels: labels,
+                series: [
+                  {
+                    name: 'تعداد',
+                    type: 'column',
+                    fill: 'solid',
+                    data: data,
+                  },
+                  {
+                    name: 'پیشرفت',
+                    type: 'area',
+                    fill: 'gradient',
+                    color: '#00b8d9',
+                    data: data,
+                  },
+                ],
+              }}
+            />
+          )}
         </Grid>
 
         <Grid xs={12} md={6} lg={4}>
@@ -201,7 +223,7 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} md={6} lg={4}>
+        {/* <Grid xs={12} md={6} lg={4}>
           <AppOrderTimeline
             title="اطلاعیه ها"
             list={[...Array(5)].map((_, index) => ({
@@ -211,7 +233,7 @@ export default function AppView() {
               time: faker.date.past(),
             }))}
           />
-        </Grid>
+        </Grid> */}
 
         {/* <Grid xs={12} md={6} lg={4}>
           <AppTrafficBySite

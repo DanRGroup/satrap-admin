@@ -24,6 +24,14 @@ const schema = {
           data {
             id
             title
+            employer {
+              firstname
+              lastname
+            }
+            workshop {
+              id
+              title
+            }
             media {
               id
               full_url

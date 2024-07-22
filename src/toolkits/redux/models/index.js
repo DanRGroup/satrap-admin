@@ -4,8 +4,8 @@ export const setModelsSlice = createSlice({
   name: 'models',
   initialState: {
     contractTypes: [
-      { const: '2', title: 'natural' },
-      { const: '4', title: 'legal' },
+      { const: '1', title: 'natural' },
+      { const: '2', title: 'legal' },
     ],
     contractStatuses: [
       { const: 'REGISTERED', title: 'registered' },

@@ -12,6 +12,7 @@ const schema = {
             title
             lat
             lng
+            is_active
             manager {
               id
               firstname

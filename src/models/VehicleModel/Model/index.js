@@ -67,7 +67,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography fontSize={14} variant="subtitle1">
-                  {`پلاک : ${model?.plaque}`}
+                  {`پلاک : ${model?.plaque} - (${model?.driver?.firstname} ${model?.driver?.lastname})`}
                 </Typography>
               }
               subheader={

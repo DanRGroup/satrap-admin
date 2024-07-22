@@ -60,14 +60,6 @@ const schema = (userTypes, userStatuses) => ({
       title: 'email',
       format: 'email',
     },
-    need_activation: {
-      type: 'number',
-      title: 'needActivation',
-      oneOf: [
-        { const: 1, title: 'do' },
-        { const: 0, title: 'dont' },
-      ],
-    },
   },
 });
 

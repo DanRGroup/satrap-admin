@@ -428,6 +428,11 @@ const locales = {
     suspended: 'معلق',
     finished: 'اتمام یافته',
 
+    runing: 'در حال فعالیت',
+    repairing: 'در حال تعمیر',
+    stoped: 'متوقف',
+    idle: 'بیکار',
+
     // Models
     ActionsCostWidget: 'تعرفه خدمات',
     ActionsWidget: 'خدمات',

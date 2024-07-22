@@ -38,7 +38,7 @@ export default function CreatePopup({ title, refetch }) {
   const onSubmit = async () => {
     try {
       const { data, errors } = await formUpdate({
-        variables: { ...formData, status: 'READY' },
+        variables: { ...formData, lat: formData?.location?.lat, lng: formData?.location?.lng, status: 'READY' },
       });
       if (!errors) {
         refetch();

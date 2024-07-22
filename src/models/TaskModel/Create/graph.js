@@ -16,7 +16,7 @@ const schema = {
         $shift_type_id: String!
         #$status_id: String
         $start_time: String
-        $end_time: String
+        #$end_time: String
         #$stop_dueto: String
         #$cost: String
         #$bill_number: String
@@ -39,7 +39,7 @@ const schema = {
           shift_type_id: $shift_type_id
           #status_id: $status_id
           start_time: $start_time
-          end_time: $end_time
+          #end_time: $end_time
           #stop_dueto: $stop_dueto
           #cost: $cost
           #bill_number: $bill_number

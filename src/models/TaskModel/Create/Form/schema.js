@@ -52,6 +52,16 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
       title: 'end_time',
       format: 'time',
     },
+    start_date: {
+      type: 'string',
+      title: 'start_date',
+      format: 'date',
+    },
+    end_date: {
+      type: 'string',
+      title: 'end_date',
+      format: 'date',
+    },
     // stop_dueto: {
     //   type: 'string',
     //   title: 'stop_dueto',

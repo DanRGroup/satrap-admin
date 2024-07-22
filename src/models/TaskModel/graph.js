@@ -14,6 +14,7 @@ const schema = {
         $shift_type_ids: [String]
         $material_type_ids: [String]
         $operation_type_ids: [String]
+        $status_ids: [String]
         $type_ids: [String]
       ) {
         task(
@@ -25,6 +26,7 @@ const schema = {
           shift_type_ids: $shift_type_ids
           material_type_ids: $material_type_ids
           operation_type_ids: $operation_type_ids
+          status_ids: $status_ids
           type_ids: $type_ids
         ) {
           records {
@@ -56,6 +58,8 @@ const schema = {
               id
               title
             }
+            start_time
+            end_time
           }
           #total
           total_houre

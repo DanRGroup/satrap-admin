@@ -67,12 +67,12 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography fontSize={14} variant="subtitle1">
-                  {model.title}
+                  {model?.title}
                 </Typography>
               }
               subheader={
                 <Typography fontSize={12} variant="subtitle2">
-                  {model.producer?.title}
+                  {model?.workshop?.title} - {model?.employer?.firstname} {model?.employer?.lastname}
                 </Typography>
               }
             />

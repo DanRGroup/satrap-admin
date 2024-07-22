@@ -24,7 +24,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
 
   const onOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
-  console.log('ids', ids);
+  //console.log('ids', ids);
 
   const getModel = async () => {
     try {

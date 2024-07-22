@@ -119,6 +119,24 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
+  start_date: {
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
+  end_date: {
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
   // stop_dueto: {
   //   'ui:options': {
   //     xs: 12,

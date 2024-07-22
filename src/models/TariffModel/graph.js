@@ -41,6 +41,14 @@ const schema = {
               id
               full_url
             }
+            operation_type {
+              id
+              title
+            }
+            shift_type {
+              id
+              title
+            }
           }
           total
         }

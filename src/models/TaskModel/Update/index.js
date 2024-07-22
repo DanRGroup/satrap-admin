@@ -24,7 +24,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
 
   const onOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
-  console.log('ids', ids);
+  //console.log('ids', ids);
 
   const getModel = async () => {
     try {
@@ -42,7 +42,6 @@ export default function UpdatePopup({ ids, title, refetch }) {
       });
       if (!isEmptyObject(data)) {
         const res = data[graph.get.name].records[0];
-        console.log('res', res);
         if (res) {
           setFormData({
             ...res,
@@ -53,6 +52,10 @@ export default function UpdatePopup({ ids, title, refetch }) {
             shift_type: res.shift_type?.id,
             material_type_id: res.material_type?.id,
             status_id: res.status?.id,
+            start_time: res?.start_time.split(' ')[1],
+            end_time: res?.end_time.split(' ')[1],
+            start_date: res?.start_time.split(' ')[0] + ' 00:00:00',
+            end_date: res?.end_time.split(' ')[0] + ' 00:00:00',
           });
         }
       }
