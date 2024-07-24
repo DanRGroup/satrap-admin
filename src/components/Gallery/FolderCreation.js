@@ -46,9 +46,7 @@ export default function FileFolderCreation({ path, reload }) {
       if (!isEmptyObject(data)) {
         reload();
         onClose();
-        data[graph.create.name]?.messages.map((message) =>
-          toast.success(String(message))
-        );
+        data[graph.create.name]?.messages.map((message) => toast.success(String(message)));
       }
     } catch (error) {}
   };

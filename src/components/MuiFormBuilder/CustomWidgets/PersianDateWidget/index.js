@@ -244,8 +244,6 @@ export default function PersianDateWidget(props) {
     closeOnSelect = true,
   } = props;
 
-  console.log('value', value);
-
   jMoment.loadPersian({ dialect: 'persian-modern', usePersianDigits: false });
 
   const date = value || digitsFaToEn(moment().format('YYYY-MM-DD'));

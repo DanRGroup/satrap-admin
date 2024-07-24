@@ -42,7 +42,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
       });
       if (!isEmptyObject(data)) {
         const res = data[graph.get.name].records[0];
-        console.log('res', res);
+        // console.log('res', res);
         if (res) {
           setFormData({
             ...res,

@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { signIn } from "toolkits/redux/auth";
+import { signIn } from 'toolkits/redux/auth';
 import { useDispatch } from 'react-redux';
 import { isEmptyObject } from 'helpers/formatObject';
 import { useMutation } from '@apollo/client';
@@ -43,13 +43,12 @@ export default function SignIn({ handleType, startLiveBackground }) {
             },
           })
         );
-        data[graph.login.name]?.messages.map((message) =>
-          toast.success(String(message))
-        );
+        console.log(userRoles);
+        data[graph.login.name]?.messages.map((message) => toast.success(String(message)));
         startLiveBackground(true);
       }
     } catch (error) {
-      startLiveBackground(true)
+      startLiveBackground(true);
     }
   };
   return (

@@ -1,6 +1,6 @@
-import { useSelector } from "react-redux";
-import { Stack, Typography } from "@mui/material";
-import { Navigate, useLocation } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { Stack, Typography } from '@mui/material';
+import { Navigate, useLocation } from 'react-router-dom';
 
 export default function PrivateRoute({ data }) {
   const { roles = [], element } = data;

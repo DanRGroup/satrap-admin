@@ -64,6 +64,10 @@ const schema = {
               id
               title
             }
+            status {
+              id
+              title
+            }
             bill_number
             start_time
             end_time

@@ -61,6 +61,7 @@ export const navConfig = [
         title: 'app',
         element: <Dashboard />,
         inSidebar: true,
+        roles: ['superadmin'],
       },
       {
         path: '/setting/contract-types',

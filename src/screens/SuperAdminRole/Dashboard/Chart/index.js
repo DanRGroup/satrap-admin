@@ -9,6 +9,9 @@ import Typography from '@mui/material/Typography';
 
 import Iconify from './iconify';
 
+import ServiceChart from './ServiceChart';
+import TonnageChart from './TonnageChart';
+
 import AppTasks from './app-tasks';
 import AppNewsUpdate from './app-news-update';
 import AppOrderTimeline from './app-order-timeline';
@@ -31,7 +34,9 @@ export default function AppView() {
   const [data, setData] = useState([]);
   const [labels, setLabels] = useState([]);
 
+  // const lables = ['2024-07-19', '2024-07-20', '2024-07-21', '2024-07-22'];
   let grouped = {};
+  let counts = [];
 
   const [getData, { loading }] = useLazyQuery(graph.list.query, {
     context: {
@@ -52,13 +57,14 @@ export default function AppView() {
       if (!isEmptyObject(data) && !error) {
         const { records } = data[graph.list.name];
         records.forEach((item) => {
-          item.end_time = item.end_time.split(' ')[0];
+          item.end_time = item.end_time.split(' ')[0]; // Keep only the date part
         });
         grouped = groupBy(records, 'end_time');
         const keys = Object.keys(grouped);
         const vals = Object.values(grouped).map((x) => x.length);
         setLabels(keys.reverse());
         setData(vals.reverse());
+        // handleGroups(grouped, lables);
       }
     } catch (error) {}
   };
@@ -108,59 +114,8 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} md={6} lg={6}>
-          {labels.length > 0 && (
-            <AppWebsiteVisits
-              title="نمودار فعالیت حمل بار کارگاه‌ها"
-              subheader="ده روز گذشته"
-              chart={{
-                labels: labels,
-                series: [
-                  {
-                    name: 'تعداد',
-                    type: 'column',
-                    fill: 'solid',
-                    data: data,
-                  },
-                  {
-                    name: 'پیشرفت',
-                    type: 'area',
-                    fill: 'gradient',
-                    color: '#00b8d9',
-                    data: data,
-                  },
-                ],
-              }}
-            />
-          )}
-        </Grid>
-
-        <Grid xs={12} md={6} lg={6}>
-          {labels.length > 0 && (
-            <AppWebsiteVisits
-              title="نمودار فعالیت حمل بار کارگاه‌ها"
-              subheader="ده روز گذشته"
-              chart={{
-                labels: labels,
-                series: [
-                  {
-                    name: 'تعداد',
-                    type: 'column',
-                    fill: 'solid',
-                    data: data,
-                  },
-                  {
-                    name: 'پیشرفت',
-                    type: 'area',
-                    fill: 'gradient',
-                    color: '#00b8d9',
-                    data: data,
-                  },
-                ],
-              }}
-            />
-          )}
-        </Grid>
+        <ServiceChart />
+        <TonnageChart />
 
         <Grid xs={12} md={6} lg={4}>
           <AppCurrentVisits
