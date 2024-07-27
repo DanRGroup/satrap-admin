@@ -2,54 +2,12 @@ import { gql } from '@apollo/client';
 
 const schema = {
   list: {
-    name: 'task',
-    serviceName: 'auth',
+    name: 'users',
+    serviceName: 'siteadmin',
     query: gql`
-      query task(
-        $ids: [String]
-        $workshop_ids: [String]
-        $site_ids: [String]
-        $material_type_ids: [String]
-        $operation_type_ids: [String]
-        $type_ids: [String]
-      ) {
-        task(
-          ids: $ids
-          workshop_ids: $workshop_ids
-          site_ids: $site_ids
-          material_type_ids: $material_type_ids
-          operation_type_ids: $operation_type_ids
-          type_ids: $type_ids
-        ) {
-          records {
-            id
-            start_time
-            end_time
-            type {
-              id
-              title
-            }
-            workshop {
-              id
-              title
-            }
-            site {
-              id
-              title
-            }
-            vehicle {
-              plaque
-            }
-            driver {
-              id
-              firstname
-              lastname
-            }
-            material_type {
-              id
-              title
-            }
-          }
+      query {
+        users {
+          total
         }
       }
     `,

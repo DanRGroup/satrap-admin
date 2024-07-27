@@ -1,30 +1,23 @@
-import { useState } from "react";
-import { alpha } from "@mui/material/styles";
+import { useState } from 'react';
+import { alpha } from '@mui/material/styles';
 
-import {
-  Menu,
-  Avatar,
-  MenuItem,
-  IconButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
+import { Menu, Avatar, MenuItem, IconButton, ListItemIcon, ListItemText } from '@mui/material';
 
-import { setLanguage } from "toolkits/redux/setting";
-import { useDispatch, useSelector } from "react-redux";
+import { setLanguage } from 'toolkits/redux/setting';
+import { useDispatch, useSelector } from 'react-redux';
 
 // ----------------------------------------------------------------------
 
 const languages = {
   en: {
-    value: "en",
-    label: "English",
-    icon: "/assets/icons/en.webp",
+    value: 'en',
+    label: 'English',
+    icon: '/assets/icons/en.webp',
   },
   fa: {
-    value: "fa",
-    label: "فارسی",
-    icon: "/assets/icons/fa.webp",
+    value: 'fa',
+    label: 'فارسی',
+    icon: '/assets/icons/fa.webp',
   },
 };
 
@@ -46,16 +39,16 @@ export default function LanguagePopover() {
   };
 
   const changeLanguage = (data) => {
-    if (data === "fa") {
-      dispatch(setLanguage({ language: "fa", direction: "rtl" }));
+    if (data === 'fa') {
+      dispatch(setLanguage({ language: 'fa', direction: 'rtl' }));
     } else {
-      dispatch(setLanguage({ language: "en", direction: "ltr" }));
+      dispatch(setLanguage({ language: 'en', direction: 'ltr' }));
     }
     onClose();
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const id = open ? 'simple-popover' : undefined;
 
   return (
     <>
@@ -69,18 +62,14 @@ export default function LanguagePopover() {
           width: 41,
           height: 41,
           ...(open && {
-            bgcolor: (theme) =>
-              alpha(
-                theme.palette.primary.main,
-                theme.palette.action.focusOpacity
-              ),
+            bgcolor: (theme) => alpha(theme.palette.primary.main, theme.palette.action.focusOpacity),
           }),
         }}
       >
         <Avatar
           src={languages[language]?.icon}
           alt={languages[language]?.label}
-          sx={{ width: "100%", height: "100%", objectFit: "cover" }}
+          sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
       </IconButton>
 
@@ -91,12 +80,12 @@ export default function LanguagePopover() {
         onClose={onClose}
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
+          vertical: 'bottom',
+          horizontal: 'center',
         }}
         transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
+          vertical: 'top',
+          horizontal: 'center',
         }}
       >
         {Object.keys(languages).map((key) => (
@@ -106,15 +95,9 @@ export default function LanguagePopover() {
             onClick={() => changeLanguage(languages[key].value)}
           >
             <ListItemIcon sx={{ mr: 1 }}>
-              <Avatar
-                sx={{ width: 32, height: 32 }}
-                alt={languages[key].label}
-                src={languages[key].icon}
-              />
+              <Avatar sx={{ width: 32, height: 32 }} alt={languages[key].label} src={languages[key].icon} />
             </ListItemIcon>
-            <ListItemText primaryTypographyProps={{ variant: "body2" }}>
-              {languages[key].label}
-            </ListItemText>
+            <ListItemText primaryTypographyProps={{ variant: 'body2' }}>{languages[key].label}</ListItemText>
           </MenuItem>
         ))}
       </Menu>

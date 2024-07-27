@@ -4,15 +4,15 @@ const schema = () => ({
   properties: {
     cellphone: {
       type: 'string',
-      title: 'شماره همراه',
-      default: ''
+      title: 'phone_number',
+      default: '',
     },
     password: {
       type: 'string',
-      title: 'گذرواژه',
-      default: ''
-    }
-  }
+      title: 'password',
+      default: '',
+    },
+  },
 });
 
 export default schema;

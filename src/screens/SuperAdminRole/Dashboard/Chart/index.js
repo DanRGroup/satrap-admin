@@ -25,18 +25,12 @@ import AppConversionRates from './app-conversion-rates';
 import { useLazyQuery } from '@apollo/client';
 import { useSelector } from 'react-redux';
 import { isEmptyObject } from 'helpers/formatObject';
-import { groupBy } from 'utils/formArray';
 
 // ----------------------------------------------------------------------
 
 export default function AppView() {
   const { userToken } = useSelector((state) => state.auth);
-  const [data, setData] = useState([]);
-  const [labels, setLabels] = useState([]);
-
-  // const lables = ['2024-07-19', '2024-07-20', '2024-07-21', '2024-07-22'];
-  let grouped = {};
-  let counts = [];
+  const { totalUsers, setTotalUsers } = useState(0);
 
   const [getData, { loading }] = useLazyQuery(graph.list.query, {
     context: {
@@ -49,31 +43,20 @@ export default function AppView() {
 
   const handleData = async () => {
     try {
-      const { data, error } = await getData({
-        variables: {
-          type_ids: '1',
-        },
-      });
+      const { data, error } = await getData({});
       if (!isEmptyObject(data) && !error) {
-        const { records } = data[graph.list.name];
-        records.forEach((item) => {
-          item.end_time = item.end_time.split(' ')[0]; // Keep only the date part
-        });
-        grouped = groupBy(records, 'end_time');
-        const keys = Object.keys(grouped);
-        const vals = Object.values(grouped).map((x) => x.length);
-        setLabels(keys.reverse());
-        setData(vals.reverse());
-        // handleGroups(grouped, lables);
+        const { total } = data[graph.list.name];
+        console.log(total);
+        setTotalUsers(total);
       }
     } catch (error) {}
   };
 
   useEffect(() => {
     handleData();
+    console.log('total', totalUsers);
   }, []);
 
-  // console.log('lables', lables);
   return (
     <Container maxWidth="xl">
       <Grid container spacing={3}>
@@ -100,19 +83,21 @@ export default function AppView() {
             title="کارگاه‌ها"
             total={1725}
             color="warning"
-            url="/orders/new"
+            // url="/orders/new"
             icon={<img alt="icon" src="/assets/icons/glass/orders.png" />}
           />
         </Grid>
 
-        <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="کاربران"
-            total={234}
-            color="error"
-            icon={<img alt="icon" src="/assets/icons/glass/doctors.png" />}
-          />
-        </Grid>
+        {totalUsers !== undefined && (
+          <Grid xs={12} sm={6} md={3}>
+            <AppWidgetSummary
+              title="کاربران"
+              total={totalUsers}
+              color="error"
+              icon={<img alt="icon" src="/assets/icons/glass/doctors.png" />}
+            />
+          </Grid>
+        )}
 
         <ServiceChart />
         <TonnageChart />

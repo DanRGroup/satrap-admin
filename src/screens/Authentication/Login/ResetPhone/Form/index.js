@@ -14,7 +14,7 @@ const Form = ({ formData = {}, loading, onSubmit, handleType }) => {
       schema={schema()}
       uiSchema={uiSchema()}
     >
-      <Button size="small" onClick={() => handleType(0)}>
+      <Button size="small" onClick={() => handleType(0)} sx={{ m: 2 }}>
         رمز عبور دارم
       </Button>
     </MuiFormBuilder>

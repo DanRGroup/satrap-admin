@@ -2,6 +2,8 @@ import { ka_GE } from '@faker-js/faker';
 
 const locales = {
   en: {
+    brand: 'Satrapsazeh',
+    brand_title: 'Opartion Control System',
     welcome: 'Welcome Back...!',
     selectAll: 'Select All',
     selected: 'Selected {selected} Items',
@@ -37,6 +39,8 @@ const locales = {
     newOrder: 'New Order',
 
     // Forms
+    login: 'Login',
+    id: 'ID',
     title: 'Title',
     alias: 'Alias',
     name: 'Name',
@@ -55,6 +59,7 @@ const locales = {
     username: 'Username',
     password: 'Password',
     cellphone: 'Cellphone',
+    phone_number: 'Phone number',
     statusCode: 'Status Code',
     nationalCode: 'National Code',
     birthDate: 'Birth Date',
@@ -68,6 +73,7 @@ const locales = {
     address: 'Address',
     gender: 'Gender',
     needActivation: 'Need Activation?',
+    password_forget: 'Forget Password',
     do: 'Do',
 
     natural: 'Natural',
@@ -225,6 +231,8 @@ const locales = {
     OrdersWidget: 'OrdersWidget',
   },
   fa: {
+    brand: 'ساتراپ سازه',
+    brand_title: 'سامانه کنترل عملیات عمرانی',
     welcome: 'خوش آمدید...!',
     selectAll: 'انتخاب همه',
     selected: 'رکورد انتخاب شده {selected}',
@@ -261,6 +269,7 @@ const locales = {
     newOrder: 'ثبت سفارش',
 
     // Forms
+    login: 'ورود',
     id: 'شناسه',
     title: 'عنوان',
     alias: 'نام مستعار',
@@ -280,6 +289,7 @@ const locales = {
     username: 'نام کاربری',
     password: 'گذرواژه',
     cellphone: 'تلفن همراه',
+    phone_number: 'شماره همراه',
     statusCode: 'کد وضعیت',
     nationalCode: 'کد ملی',
     birthDate: 'تاریخ تولد',
@@ -292,6 +302,8 @@ const locales = {
     address: 'آدرس',
     gender: 'جنسیت',
     needActivation: 'نیاز به فعالسازی؟',
+    password_forget: 'Forget Password',
+    password_forget: 'فراموشی رمز عبور',
     do: 'دارد',
 
     natural: 'حقیقی',
@@ -324,8 +336,8 @@ const locales = {
     supervisor: 'ناظر',
     employer: 'کارمند',
     stop_dueto: 'علت توقف',
-    site: 'محل',
-    sites: 'محل‌ها',
+    site: 'محل تخلیه',
+    sites: 'محل‌‌ها‌ی تخلیه',
     siteReports: 'گزارشات محل',
     site_type: 'نوع محل',
     site_status: 'وضعیت محل',

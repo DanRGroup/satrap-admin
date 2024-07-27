@@ -43,7 +43,7 @@ export default function SignIn({ handleType, startLiveBackground }) {
             },
           })
         );
-        console.log(userRoles);
+        // console.log(userRoles);
         data[graph.login.name]?.messages.map((message) => toast.success(String(message)));
         startLiveBackground(true);
       }
@@ -52,7 +52,7 @@ export default function SignIn({ handleType, startLiveBackground }) {
     }
   };
   return (
-    <Box width={340}>
+    <Box width={340} sx={{ textAlign: 'center' }}>
       <Form onSubmit={onSubmit} handleType={handleType} />
     </Box>
   );

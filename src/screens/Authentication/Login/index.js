@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import SignIn from './SignIn';
 // import Phone from './Phone';
 // import OTP from './OTP';
+
+import ThemePopover from 'layouts/AppLayout/Navbar/ThemePopover';
+import LanguagePopover from 'layouts/AppLayout/Navbar/LanguagePopover';
 
 import ResetPhone from './ResetPhone';
 import ResetOTP from './ResetOTP';
@@ -20,11 +23,14 @@ import {
   Card,
   CardContent,
   Typography,
+  AppBar,
+  IconButton,
 } from '@mui/material';
 
 import BackgroundVideo from './BackgroundVideo';
 import useMousePosition from 'hooks/useMousePosition';
 import usePrefersReducedMotion from 'hooks/usePrefersReducedMotion';
+import { FormattedMessage } from 'react-intl';
 
 const StyledTitle = styled(Typography)(({ theme }) => ({
   color: 'transparent',
@@ -112,8 +118,22 @@ const UserPopup = () => {
   // const prefersReducedMotion = usePrefersReducedMotion();
 
   // const transform = prefersReducedMotion ? null : mousePosition.x + mousePosition.y;
-
+  const drawerWidth = 320;
   const startLiveBackground = (start) => setStart(start);
+
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  useEffect(() => {
+    const handleStatusChange = () => {
+      setIsOnline(navigator.onLine);
+    };
+    window.addEventListener('online', handleStatusChange);
+    window.addEventListener('offline', handleStatusChange);
+    return () => {
+      window.removeEventListener('online', handleStatusChange);
+      window.removeEventListener('offline', handleStatusChange);
+    };
+  }, [isOnline]);
 
   const handleType = (data, extra = null) => {
     setExtra(extra);
@@ -144,15 +164,52 @@ const UserPopup = () => {
 
   return (
     <Page title="ورود">
+      <AppBar
+        elevation={0}
+        sx={{
+          m: 1,
+          borderRadius: 2,
+          bgcolor: 'background.default',
+        }}
+      >
+        {!isOnline && (
+          <Typography
+            mx={1}
+            px={1}
+            fontWeight="bold"
+            textAlign="center"
+            color="error.main"
+            bgcolor="warning.light"
+            borderRadius="0 0 16px 16px"
+          >
+            لطفا دسترسی اینترنت خود را بررسی کنید!
+          </Typography>
+        )}
+        <Stack direction="row" alignItems="center" px={1} minHeight={64}>
+          <Box sx={{ flexGrow: 1 }} />
+
+          <Stack columnGap={1} direction="row" alignItems="center">
+            {/* <IconButton color="warning" onClick={openTour}>
+            <HelpOutlineRoundedIcon fontSize="small" />
+          </IconButton> */}
+            <ThemePopover />
+            <LanguagePopover />
+          </Stack>
+        </Stack>
+      </AppBar>
       <BackgroundVideo blur={0} videoSource="https://hyperano.ir/videos/live-bg.mov" start={start}>
         <Stack width="100vw" height="100vh">
           <Fade in={!screenSaver} timeout={1000}>
             <Stack direction="row" height="100%">
               <Stack flex={2} px={4} justifyContent="center" alignItems="center">
-                <StyledTitle fontSize="4rem" fontWeight="bold">
-                  ساتراپ سازه
-                </StyledTitle>
-                <StyledTitle variant="h6">سامانه کنترل عملیات عمرانی</StyledTitle>
+                <Stack sx={{ m: 2 }}>
+                  <StyledTitle fontSize="3.5rem" fontWeight="bold">
+                    <FormattedMessage id="brand" />
+                  </StyledTitle>
+                  <StyledTitle variant="h6">
+                    <FormattedMessage id="brand_title" />
+                  </StyledTitle>
+                </Stack>
                 {stepContent(step)}
               </Stack>
               <Stack
@@ -166,6 +223,7 @@ const UserPopup = () => {
                   backgroundPosition: 'center',
                   backgroundSize: 'contain',
                   backgroundRepeat: 'no-repeat',
+                  mt: 10,
                 }}
               >
                 <CardMedia sx={{ position: 'absolute', width: '100%', p: '40%' }} image="/assets/screen_1.webp" />
