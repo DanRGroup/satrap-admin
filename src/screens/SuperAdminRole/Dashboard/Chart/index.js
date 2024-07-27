@@ -30,7 +30,7 @@ import { isEmptyObject } from 'helpers/formatObject';
 
 export default function AppView() {
   const { userToken } = useSelector((state) => state.auth);
-  const { totalUsers, setTotalUsers } = useState(0);
+  const [totalUsers, setTotalUsers] = useState(0);
 
   const [getData, { loading }] = useLazyQuery(graph.list.query, {
     context: {
@@ -43,10 +43,9 @@ export default function AppView() {
 
   const handleData = async () => {
     try {
-      const { data, error } = await getData({});
+      const { data, error } = await getData();
       if (!isEmptyObject(data) && !error) {
         const { total } = data[graph.list.name];
-        console.log(total);
         setTotalUsers(total);
       }
     } catch (error) {}
@@ -54,7 +53,6 @@ export default function AppView() {
 
   useEffect(() => {
     handleData();
-    console.log('total', totalUsers);
   }, []);
 
   return (
@@ -88,16 +86,14 @@ export default function AppView() {
           />
         </Grid>
 
-        {totalUsers !== undefined && (
-          <Grid xs={12} sm={6} md={3}>
-            <AppWidgetSummary
-              title="کاربران"
-              total={totalUsers}
-              color="error"
-              icon={<img alt="icon" src="/assets/icons/glass/doctors.png" />}
-            />
-          </Grid>
-        )}
+        <Grid xs={12} sm={6} md={3}>
+          <AppWidgetSummary
+            title="کاربران"
+            total={totalUsers}
+            color="error"
+            icon={<img alt="icon" src="/assets/icons/glass/doctors.png" />}
+          />
+        </Grid>
 
         <ServiceChart />
         <TonnageChart />
