@@ -209,7 +209,7 @@ export const navConfig = [
         url: '/dashboard/contracts',
         title: 'contracts',
         element: (
-          <Page title="Orders">
+          <Page title="Contracts">
             <ContractModel />
           </Page>
         ),
@@ -220,7 +220,7 @@ export const navConfig = [
         url: '/dashboard/task',
         title: 'tasks',
         element: (
-          <Page title="Task">
+          <Page title="Tasks">
             <TaskModel />
           </Page>
         ),
@@ -231,7 +231,7 @@ export const navConfig = [
         url: '/dashboard/tarrif',
         title: 'tariffs',
         element: (
-          <Page title="Tariff">
+          <Page title="Tariffs">
             <TariffModel />
           </Page>
         ),
@@ -275,7 +275,7 @@ export const navConfig = [
         url: '/dashboard/workshop',
         title: 'workshops',
         element: (
-          <Page title="Workshop">
+          <Page title="Workshops">
             <WorkshopModel />
           </Page>
         ),

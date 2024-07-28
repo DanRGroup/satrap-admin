@@ -1,107 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { faker } from '@faker-js/faker';
-import graph from './graph';
 
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
-import Typography from '@mui/material/Typography';
 
-import Iconify from './iconify';
-
+import ModelsCount from './ModelsCount';
 import ServiceChart from './ServiceChart';
 import TonnageChart from './TonnageChart';
 
-import AppTasks from './app-tasks';
 import AppNewsUpdate from './app-news-update';
-import AppOrderTimeline from './app-order-timeline';
 import AppCurrentVisits from './app-current-visits';
-import AppWebsiteVisits from './app-website-visits';
-import AppWidgetSummary from './app-widget-summary';
-import AppTrafficBySite from './app-traffic-by-site';
 import AppCurrentSubject from './app-current-subject';
 import AppConversionRates from './app-conversion-rates';
-
-import { useLazyQuery } from '@apollo/client';
-import { useSelector } from 'react-redux';
-import { isEmptyObject } from 'helpers/formatObject';
 
 // ----------------------------------------------------------------------
 
 export default function AppView() {
-  const { userToken } = useSelector((state) => state.auth);
-  const { totalUsers, setTotalUsers } = useState(0);
-
-  const [getData, { loading }] = useLazyQuery(graph.list.query, {
-    context: {
-      serviceName: graph.list.serviceName,
-      headers: {
-        authorization: `Bearer ${userToken}`,
-      },
-    },
-  });
-
-  const handleData = async () => {
-    try {
-      const { data, error } = await getData({});
-      if (!isEmptyObject(data) && !error) {
-        const { total } = data[graph.list.name];
-        console.log(total);
-        setTotalUsers(total);
-      }
-    } catch (error) {}
-  };
-
-  useEffect(() => {
-    handleData();
-    console.log('total', totalUsers);
-  }, []);
-
   return (
     <Container maxWidth="xl">
       <Grid container spacing={3}>
-        <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="رانندگان"
-            total={7140}
-            color="success"
-            icon={<img alt="icon" src="/assets/icons/glass/patients.png" />}
-          />
-        </Grid>
-
-        <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="محل‌ها"
-            total={135}
-            color="info"
-            icon={<img alt="icon" src="/assets/icons/glass/clinics.png" />}
-          />
-        </Grid>
-
-        <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="کارگاه‌ها"
-            total={1725}
-            color="warning"
-            // url="/orders/new"
-            icon={<img alt="icon" src="/assets/icons/glass/orders.png" />}
-          />
-        </Grid>
-
-        {totalUsers !== undefined && (
-          <Grid xs={12} sm={6} md={3}>
-            <AppWidgetSummary
-              title="کاربران"
-              total={totalUsers}
-              color="error"
-              icon={<img alt="icon" src="/assets/icons/glass/doctors.png" />}
-            />
-          </Grid>
-        )}
-
+        <ModelsCount />
         <ServiceChart />
         <TonnageChart />
-
         <Grid xs={12} md={6} lg={4}>
           <AppCurrentVisits
             title="نمودار پراکندگی حمل و نقل"

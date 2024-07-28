@@ -8,7 +8,6 @@ const schema = {
       query workshop(
         $ids: [String]
         $title: String
-        $for_admin: Int
         $alias: String
         $status_ids: [String]
         $manager_ids: [String]
@@ -17,7 +16,6 @@ const schema = {
         workshop(
           ids: $ids
           title: $title
-          for_admin: $for_admin
           alias: $alias
           status_ids: $status_ids
           manager_ids: $manager_ids

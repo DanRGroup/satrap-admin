@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 const schema = {
   list: {
     name: 'users',
-    serviceName: 'siteadmin',
+    serviceName: 'shared',
     query: gql`
       query users(
         $ids: [String]

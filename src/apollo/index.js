@@ -34,17 +34,17 @@ const auth = createUploadLink({
 const admin = createUploadLink({
   uri: `${url}/graphql/auth/admin`,
 });
-const shopadmin = createUploadLink({
-  uri: `${url}/graphql/auth/shopadmin`,
+const siteAdmin = createUploadLink({
+  uri: `${url}/graphql/auth/siteAdmin`,
 });
 const crawlerer = createUploadLink({
   uri: `${url}/graphql/auth/crawlerer`,
 });
-const siteadmin = createUploadLink({
-  uri: `${url}/graphql/auth/siteadmin`,
+const shared = createUploadLink({
+  uri: `${url}/graphql/auth/shared`,
 });
-const workshopadmin = createUploadLink({
-  uri: `${url}/graphql/auth/workshopadmin`,
+const companyAdmin = createUploadLink({
+  uri: `${url}/graphql/auth/companyAdmin`,
 });
 const accountingViewer = createUploadLink({
   uri: `${url}/graphql/auth/accountingViewer`,
@@ -55,10 +55,10 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   (operation.getContext().serviceName === 'auth' ||
     operation.getContext().serviceName === 'admin' ||
     operation.getContext().serviceName === 'crawlerer' ||
-    operation.getContext().serviceName === 'siteadmin' ||
-    operation.getContext().serviceName === 'workshopadmin' ||
+    operation.getContext().serviceName === 'shared' ||
+    operation.getContext().serviceName === 'companyAdmin' ||
     operation.getContext().serviceName === 'accountingViewer' ||
-    operation.getContext().serviceName === 'shopadmin') &&
+    operation.getContext().serviceName === 'siteAdmin') &&
     operation.setContext(({ headers = {} }) => ({
       headers: {
         ...headers,
@@ -73,18 +73,22 @@ const graphqlEndpoints = ApolloLink.split(
   (operation) => operation.getContext().serviceName === 'auth',
   auth,
   ApolloLink.split(
-    (operation) => operation.getContext().serviceName === 'siteadmin',
-    siteadmin,
+    (operation) => operation.getContext().serviceName === 'shared',
+    shared,
     ApolloLink.split(
-      (operation) => operation.getContext().serviceName === 'workshopadmin',
-      workshopadmin,
+      (operation) => operation.getContext().serviceName === 'companyAdmin',
+      companyAdmin,
       ApolloLink.split(
-        (operation) => operation.getContext().serviceName === 'accountingViewer',
-        accountingViewer,
+        (operation) => operation.getContext().serviceName === 'siteAdmin',
+        siteAdmin,
         ApolloLink.split(
-          (operation) => operation.getContext().serviceName === 'crawlerer',
-          crawlerer,
-          ApolloLink.split((operation) => operation.getContext().serviceName === 'admin', admin, graphql)
+          (operation) => operation.getContext().serviceName === 'accountingViewer',
+          accountingViewer,
+          ApolloLink.split(
+            (operation) => operation.getContext().serviceName === 'crawlerer',
+            crawlerer,
+            ApolloLink.split((operation) => operation.getContext().serviceName === 'admin', admin, graphql)
+          )
         )
       )
     )

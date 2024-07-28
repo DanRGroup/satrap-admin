@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 const schema = {
   create: {
     name: 'createContract',
-    serviceName: 'admin',
+    serviceName: 'companyAdmin',
     query: gql`
       mutation createContract(
         $title: String!

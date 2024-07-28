@@ -58,16 +58,16 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
-  cellphone: {
-    inputType: 'tel',
-    'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
+  // cellphone: {
+  //   inputType: 'tel',
+  //   'ui:options': {
+  //     xs: 6,
+  //     sm: 6,
+  //     md: 6,
+  //     lg: 6,
+  //     xl: 6,
+  //   },
+  // },
   national_code: {
     'ui:options': {
       xs: 6,
@@ -121,11 +121,11 @@ const uiSchema = () => ({
     'ui:widget': 'radio',
     'ui:options': {
       inline: true,
-      xs: 12,
-      sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
 });

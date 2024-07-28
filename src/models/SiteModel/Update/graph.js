@@ -30,7 +30,7 @@ const schema = {
   },
   update: {
     name: 'updateSite',
-    serviceName: 'siteadmin',
+    serviceName: 'siteAdmin',
     query: gql`
       mutation updateSite(
         $ids: [String]!

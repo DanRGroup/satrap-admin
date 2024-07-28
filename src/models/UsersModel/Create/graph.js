@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 const schema = {
   create: {
     name: 'addUser',
-    serviceName: 'siteadmin',
+    serviceName: 'shared',
     query: gql`
       mutation addUser(
         $password: String! # حداقل 7 کارکتر

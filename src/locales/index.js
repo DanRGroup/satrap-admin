@@ -147,6 +147,7 @@ const locales = {
     workshop: 'Workshop',
     workshops: 'Workshops',
     workshop_status: 'Workshop status',
+    created_date: 'Creating date',
 
     carrying_cargo: 'Carrying Cargo',
     excavation: 'Excavation',
@@ -373,6 +374,7 @@ const locales = {
     workshop: 'کارگاه',
     workshops: '‌کارگاه‌ها',
     workshop_status: 'وضعیت کارگاه',
+    created_date: 'تاریخ ایجاد',
 
     carrying_cargo: 'حمل بار',
     excavation: 'خاک برداری',

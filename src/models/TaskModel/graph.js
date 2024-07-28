@@ -16,6 +16,9 @@ const schema = {
         $operation_type_ids: [String]
         $status_ids: [String]
         $type_ids: [String]
+        $created_at: String
+        $min_created_at_equality: String
+        $max_created_at_equality: String
       ) {
         task(
           ids: $ids
@@ -28,6 +31,9 @@ const schema = {
           operation_type_ids: $operation_type_ids
           status_ids: $status_ids
           type_ids: $type_ids
+          created_at: $created_at
+          min_created_at_equality: $min_created_at_equality
+          max_created_at_equality: $max_created_at_equality
         ) {
           records {
             id

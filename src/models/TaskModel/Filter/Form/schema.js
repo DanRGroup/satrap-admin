@@ -44,15 +44,10 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes, taskStatus
       title: 'task_status',
       oneOf: taskStatuses,
     },
-    start_time: {
+    created_at: {
       type: 'string',
-      title: 'start_time',
-      format: 'time',
-    },
-    end_time: {
-      type: 'string',
-      title: 'end_time',
-      format: 'time',
+      title: 'created_date',
+      format: 'date',
     },
   },
 });

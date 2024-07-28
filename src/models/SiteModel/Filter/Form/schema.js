@@ -6,10 +6,6 @@ const schema = (siteTypes, siteStatuses) => ({
       type: 'string',
       title: 'title',
     },
-    manager_ids: {
-      type: 'string',
-      title: 'site_manager',
-    },
     type_ids: {
       type: 'string',
       title: 'site_type',

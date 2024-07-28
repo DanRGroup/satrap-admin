@@ -98,16 +98,7 @@ const uiSchema = () => ({
     },
   },
 
-  start_time: {
-    'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
-  end_time: {
+  created_at: {
     'ui:options': {
       xs: 6,
       sm: 6,

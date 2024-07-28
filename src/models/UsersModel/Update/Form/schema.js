@@ -33,11 +33,11 @@ const schema = (userTypes, userStatuses) => ({
       title: 'birthDate',
       format: 'date',
     },
-    cellphone: {
-      type: 'string',
-      title: 'cellphone',
-      minLength: 9,
-    },
+    // cellphone: {
+    //   type: 'string',
+    //   title: 'cellphone',
+    //   minLength: 9,
+    // },
     password: {
       type: 'string',
       title: 'password',

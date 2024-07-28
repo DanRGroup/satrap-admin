@@ -25,10 +25,6 @@ const schema = (contractTypes, contractStatuses) => ({
       type: 'string',
       title: 'workshop',
     },
-    employer_ids: {
-      type: 'string',
-      title: 'employer',
-    },
     status: {
       type: 'string',
       title: 'status',

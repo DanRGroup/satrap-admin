@@ -10,7 +10,7 @@ const schema = {
         $title: String
         $workshop_ids: [String]
         $type_ids: [String]
-        $employer_ids: [String]
+        #$employer_ids: [String]
         $status: String
       ) {
         contract(
@@ -18,7 +18,7 @@ const schema = {
           title: $title
           workshop_ids: $workshop_ids
           type_ids: $type_ids
-          employer_ids: $employer_ids
+          #employer_ids: $employer_ids
           status: $status
         ) {
           data {

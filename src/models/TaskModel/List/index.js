@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import RefreshRoundedIcon from '@mui/icons-material/RefreshRounded';
 
-import { Stack, Tooltip, IconButton, CircularProgress, Box, Chip } from '@mui/material';
+import { Stack, Tooltip, IconButton, CircularProgress, Box, Chip, useMediaQuery, useTheme } from '@mui/material';
 import { LoadingMore, NewDialogActions, NewDialogContent, NewDialogTitle } from 'components';
 
 import Model from '../Model';
@@ -38,6 +38,9 @@ export default function List({
 }) {
   const [selected, setSelected] = useState(preSelected || []);
   const [direction, setDirection] = useState('right');
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleSelect = (item) => {
     const selectedIndex = selected.map((item) => item.id).indexOf(item.id);
@@ -100,6 +103,15 @@ export default function List({
           isPopup={isPopup}
         />
       </NewDialogTitle>
+      {isMobile && (
+        <Box sx={{ textAlign: 'center' }}>
+          {total_houre && <Chip label={`جمع ساعت : ${total_houre}`} />}
+          {total_service && <Chip label={`جمع سرویس : ${total_service}`} />}
+          {total_shift && <Chip label={`جمع شیفت : ${total_shift}`} />}
+          {total_tonnage && <Chip label={`جمع تناژ : ${total_tonnage}`} />}
+          {total_cost && <Chip label={`جمع هزینه‌ها : ${total_cost}`} />}
+        </Box>
+      )}
       <NewDialogContent>
         <Stack p={0.5} rowGap={0.5} minHeight={isPopup ? 'calc(100vh - 245px)' : 'calc(100vh - 264px)'}>
           {result.map((model, i) => (
@@ -118,11 +130,16 @@ export default function List({
         </Stack>
       </NewDialogContent>
       <NewDialogActions isPopup={isPopup}>
-        {total_houre && <Chip label={`جمع ساعت : ${total_houre}`} />}
-        {total_service && <Chip label={`جمع سرویس : ${total_service}`} />}
-        {total_shift && <Chip label={`جمع شیفت : ${total_shift}`} />}
-        {total_tonnage && <Chip label={`جمع تناژ : ${total_tonnage}`} />}
-        {total_cost && <Chip label={`جمع هزینه‌ها : ${total_cost}`} />}
+        {!isMobile && (
+          <Box>
+            {total_houre && <Chip label={`جمع ساعت : ${total_houre}`} />}
+            {total_service && <Chip label={`جمع سرویس : ${total_service}`} />}
+            {total_shift && <Chip label={`جمع شیفت : ${total_shift}`} />}
+            {total_tonnage && <Chip label={`جمع تناژ : ${total_tonnage}`} />}
+            {total_cost && <Chip label={`جمع هزینه‌ها : ${total_cost}`} />}
+          </Box>
+        )}
+
         <Tooltip title={<FormattedMessage id="refresh" />}>
           <IconButton sx={{ bgcolor: 'action.selected', color: '#fff' }} size="medium" onClick={refresh}>
             {loading ? (
