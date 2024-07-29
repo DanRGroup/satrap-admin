@@ -40,6 +40,7 @@ const schema = {
     serviceName: 'auth',
     query: gql`
       mutation updateVehicle(
+        $vin: String
         $ids: [String]!
         $owner_id: String
         $driver_id: String
@@ -49,6 +50,7 @@ const schema = {
         $details: String
       ) {
         updateVehicle(
+          vin: $vin
           ids: $ids
           owner_id: $owner_id
           driver_id: $driver_id

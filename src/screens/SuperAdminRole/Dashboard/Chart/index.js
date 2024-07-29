@@ -17,79 +17,10 @@ import AppConversionRates from './app-conversion-rates';
 // ----------------------------------------------------------------------
 
 export default function AppView() {
-<<<<<<< HEAD
   return (
     <Container maxWidth="xl">
       <Grid container spacing={3}>
         <ModelsCount />
-=======
-  const { userToken } = useSelector((state) => state.auth);
-  const [totalUsers, setTotalUsers] = useState(0);
-
-  const [getData, { loading }] = useLazyQuery(graph.list.query, {
-    context: {
-      serviceName: graph.list.serviceName,
-      headers: {
-        authorization: `Bearer ${userToken}`,
-      },
-    },
-  });
-
-  const handleData = async () => {
-    try {
-      const { data, error } = await getData();
-      if (!isEmptyObject(data) && !error) {
-        const { total } = data[graph.list.name];
-        setTotalUsers(total);
-      }
-    } catch (error) {}
-  };
-
-  useEffect(() => {
-    handleData();
-  }, []);
-
-  return (
-    <Container maxWidth="xl">
-      <Grid container spacing={3}>
-        <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="رانندگان"
-            total={7140}
-            color="success"
-            icon={<img alt="icon" src="/assets/icons/glass/patients.png" />}
-          />
-        </Grid>
-
-        <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="محل‌ها"
-            total={135}
-            color="info"
-            icon={<img alt="icon" src="/assets/icons/glass/clinics.png" />}
-          />
-        </Grid>
-
-        <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="کارگاه‌ها"
-            total={1725}
-            color="warning"
-            // url="/orders/new"
-            icon={<img alt="icon" src="/assets/icons/glass/orders.png" />}
-          />
-        </Grid>
-
-        <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="کاربران"
-            total={totalUsers}
-            color="error"
-            icon={<img alt="icon" src="/assets/icons/glass/doctors.png" />}
-          />
-        </Grid>
-
->>>>>>> 7d4ffdf0ee7ab9bf53aa79a5a08fc5d40c07acca
         <ServiceChart />
         <TonnageChart />
         <Grid xs={12} md={6} lg={4}>

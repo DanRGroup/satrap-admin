@@ -6,6 +6,7 @@ const schema = {
     serviceName: 'auth',
     query: gql`
       mutation createVehicle(
+        $vin: String
         $owner_id: String
         $driver_id: String
         $type_id: String!
@@ -15,6 +16,7 @@ const schema = {
         $details: String
       ) {
         createVehicle(
+          vin: $vin
           owner_id: $owner_id
           driver_id: $driver_id
           type_id: $type_id

@@ -1,4 +1,4 @@
-const schema = (contractTypes, contractStatuses) => ({
+const schema = (contractTypes, contractStatuses, operationTypes) => ({
   type: 'object',
   required: [],
   properties: {
@@ -23,6 +23,27 @@ const schema = (contractTypes, contractStatuses) => ({
       type: 'string',
       title: 'status',
       oneOf: contractStatuses,
+    },
+    operation_type_id: {
+      type: 'string',
+      title: 'operation_type',
+      oneOf: operationTypes,
+    },
+    forecast_amount: {
+      type: 'string',
+      title: 'forecast_amount',
+    },
+    contractual_number: {
+      type: 'string',
+      title: 'contractual_number',
+    },
+    is_civil: {
+      type: 'number',
+      title: 'civil_project',
+      oneOf: [
+        { const: 1, title: 'is_civil' },
+        { const: 0, title: 'not_civil' },
+      ],
     },
     start_date: {
       type: 'string',

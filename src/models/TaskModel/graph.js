@@ -64,6 +64,7 @@ const schema = {
               id
               title
             }
+            baskul
             start_time
             end_time
           }

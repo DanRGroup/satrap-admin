@@ -35,6 +35,7 @@ const schema = {
               id
               full_url
             }
+            vin
           }
           total
         }

@@ -20,7 +20,6 @@ const schema = {
         #$stop_dueto: String
         #$cost: String
         #$bill_number: String
-        #$baskul_cost: String
         $description: String
         #$details: String
         $supervisor_id: String
@@ -43,7 +42,6 @@ const schema = {
           #stop_dueto: $stop_dueto
           #cost: $cost
           #bill_number: $bill_number
-          #baskul_cost: $baskul_cost
           description: $description
           #details: $details
           supervisor_id: $supervisor_id

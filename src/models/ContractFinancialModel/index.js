@@ -49,7 +49,6 @@ export default function MainModel(props) {
           ...filter,
           page,
           limit,
-          with_calculations: 1,
         },
       });
       if (!isEmptyObject(data) && !error) {

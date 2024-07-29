@@ -12,6 +12,7 @@ const schema = {
         $type_ids: [String]
         #$employer_ids: [String]
         $status: String
+        $with_calculations: Int
       ) {
         contract(
           ids: $ids
@@ -20,10 +21,13 @@ const schema = {
           type_ids: $type_ids
           #employer_ids: $employer_ids
           status: $status
+          with_calculations: $with_calculations
         ) {
           data {
             id
             title
+            contractual_number
+            is_civil
             employer {
               firstname
               lastname
@@ -36,6 +40,17 @@ const schema = {
               id
               full_url
             }
+            financials {
+              cost
+            }
+            operation_type {
+              id
+              title
+            }
+            total_houre
+            total_service
+            total_tonnage
+            progress
           }
           total
         }

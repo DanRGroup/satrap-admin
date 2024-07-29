@@ -164,15 +164,15 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
-  // baskul_cost: {
-  //   'ui:options': {
-  //     xs: 6,
-  //     sm: 6,
-  //     md: 6,
-  //     lg: 6,
-  //     xl: 6,
-  //   },
-  // },
+  baskul: {
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    },
+  },
   // supervisor_id: {
   //   'ui:widget': UsersSelectionWidget,
   //   'ui:options': {
@@ -205,20 +205,20 @@ const uiSchema = () => ({
   // },
   tonnage: {
     'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
-  coefficient: {
-    'ui:options': {
       xs: 12,
       sm: 12,
       md: 12,
       lg: 12,
       xl: 12,
+    },
+  },
+  coefficient: {
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   // have_food: {

@@ -49,44 +49,6 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
-  operation_type_id: {
-    'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
-  forecast_amount: {
-    'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
-  contractual_number: {
-    'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
-  is_civil: {
-    'ui:widget': 'radio',
-    'ui:options': {
-      inline: true,
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
   start_date: {
     'ui:options': {
       xs: 6,

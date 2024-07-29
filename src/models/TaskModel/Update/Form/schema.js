@@ -79,10 +79,10 @@ const schema = (taskStatuses) => ({
       type: 'string',
       title: 'bill_number',
     },
-    // baskul_cost: {
-    //   type: 'string',
-    //   title: 'baskul_cost',
-    // },
+    baskul: {
+      type: 'string',
+      title: 'baskul_amount',
+    },
     // supervisor_id: {
     //   type: 'string',
     //   title: 'supervisor',

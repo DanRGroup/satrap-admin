@@ -7,10 +7,12 @@ import { useSelector } from 'react-redux';
 const Form = ({ formData = {}, onChange }) => {
   const { contractTypes } = useSelector((state) => state.models);
   const { contractStatuses } = useSelector((state) => state.models);
+  const { operationTypes } = useSelector((state) => state.models);
+
   return (
     <MuiFormBuilder
       showSubmit={false}
-      schema={schema(contractTypes, contractStatuses)}
+      schema={schema(contractTypes, contractStatuses, operationTypes)}
       uiSchema={uiSchema()}
       formData={formData}
       onChange={onChange}
