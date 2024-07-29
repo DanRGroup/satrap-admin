@@ -51,8 +51,8 @@ const uiSchema = () => ({
   password: {
     'ui:widget': 'password',
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,

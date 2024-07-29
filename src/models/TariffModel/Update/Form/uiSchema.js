@@ -12,8 +12,8 @@ const uiSchema = () => ({
   task_type_id: {
     // 'ui:widget': TasksTypeSelectionWidget,
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -22,8 +22,8 @@ const uiSchema = () => ({
   operation_type_id: {
     // 'ui:widget': OperationTypeSelectionWidget,
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -32,8 +32,8 @@ const uiSchema = () => ({
   material_type_id: {
     // 'ui:widget': MaterialTypeSelectionWidget,
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -42,8 +42,8 @@ const uiSchema = () => ({
   shift_type_id: {
     // 'ui:widget': ShiftTypeSelectionWidget,
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -52,8 +52,8 @@ const uiSchema = () => ({
   workshop_id: {
     'ui:widget': WorkshopSelectionWidget,
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -62,8 +62,8 @@ const uiSchema = () => ({
   site_id: {
     'ui:widget': SiteSelectionWidget,
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,

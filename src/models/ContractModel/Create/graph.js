@@ -34,10 +34,10 @@ const schema = {
           cost: $cost
           number: $number
           details: $details
-          is_civil: $is_civil
           operation_type_id: $operation_type_id
           forecast_amount: $forecast_amount
           contractual_number: $contractual_number
+          is_civil: $is_civil
         ) {
           messages
         }

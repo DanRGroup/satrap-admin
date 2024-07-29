@@ -13,8 +13,8 @@ const uiSchema = () => ({
   workshop_id: {
     'ui:widget': WorkshopSelectionWidget,
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -23,8 +23,8 @@ const uiSchema = () => ({
   employer_id: {
     'ui:widget': UsersSelectionWidget,
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -33,8 +33,8 @@ const uiSchema = () => ({
   type_id: {
     // 'ui:widget': ContractTypeSelectionWidget,
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -42,8 +42,8 @@ const uiSchema = () => ({
   },
   status: {
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -51,8 +51,8 @@ const uiSchema = () => ({
   },
   operation_type_id: {
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -60,8 +60,8 @@ const uiSchema = () => ({
   },
   forecast_amount: {
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -69,8 +69,8 @@ const uiSchema = () => ({
   },
   contractual_number: {
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -80,8 +80,8 @@ const uiSchema = () => ({
     'ui:widget': 'radio',
     'ui:options': {
       inline: true,
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -89,8 +89,8 @@ const uiSchema = () => ({
   },
   start_date: {
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -98,8 +98,8 @@ const uiSchema = () => ({
   },
   end_date: {
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -107,8 +107,8 @@ const uiSchema = () => ({
   },
   cost: {
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -116,8 +116,8 @@ const uiSchema = () => ({
   },
   number: {
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
