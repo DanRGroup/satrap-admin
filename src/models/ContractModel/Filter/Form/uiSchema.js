@@ -31,21 +31,21 @@ const uiSchema = () => ({
   workshop_ids: {
     'ui:widget': WorkshopSelectionWidget,
     'ui:options': {
-      xs: 4,
-      sm: 4,
-      md: 4,
-      lg: 4,
-      xl: 4,
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   type_ids: {
     // 'ui:widget': ContractTypeSelectionWidget,
     'ui:options': {
-      xs: 4,
-      sm: 4,
-      md: 4,
-      lg: 4,
-      xl: 4,
+      xs: 6,
+      sm: 6,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   employer_ids: {

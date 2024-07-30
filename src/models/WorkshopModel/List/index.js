@@ -120,14 +120,14 @@ export default function List({
         <Tooltip title={<FormattedMessage id="refresh" />}>
           <IconButton sx={{ bgcolor: 'action.selected', color: '#fff' }} size="medium" onClick={refresh}>
             {loading ? (
-              <CircularProgress color="inherit" size={25} />
+              <CircularProgress color="primary" size={25} />
             ) : (
-              <RefreshRoundedIcon color="inherit" fontSize="small" />
+              <RefreshRoundedIcon color="primary" fontSize="small" />
             )}
           </IconButton>
         </Tooltip>
         <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
-        <Create title={<FormattedMessage id="create" />} refetch={refresh} />
+        <Create title={<FormattedMessage id="create_workshop" />} refetch={refresh} />
       </NewDialogActions>
     </>
   );

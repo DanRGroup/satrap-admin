@@ -60,7 +60,7 @@ export default function CreatePopup({ title, refetch }) {
           color="warning"
           onClick={onOpen}
           disabled={loading}
-          sx={{ bgcolor: 'action.selected' }}
+          // sx={{ bgcolor: 'action.selected' }}
         >
           <AddCircleOutlineRounded fontSize="small" />
         </IconButton>

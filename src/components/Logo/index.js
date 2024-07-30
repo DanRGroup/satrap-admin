@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Box } from '@mui/material';
+import { Box, Fade } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -23,9 +23,35 @@ export default function Logo({ width, height, disabledLink = false, sx }) {
   // OR
   // const logo = <Box component="img" src="/static/logo.svg" sx={{ width: 80, height: 80, ...sx }} />
 
+  const delay = 2;
   const logo = (
-    <Box sx={{ width, height, ...sx }}>
-      {/* <svg width={height} height={height} viewBox="0 0 195 116" fill={PRIMARY_MAIN} xmlns="http://www.w3.org/2000/svg">
+    <Fade in unmountOnExit timeout={{ appear: delay * 150, enter: delay * 170, exit: delay * 190 }}>
+      <Box
+        component="img"
+        src="/assets/logo_satrap.png"
+        alt="Logo"
+        sx={{
+          borderRadius: '20px',
+          width: { width },
+          height: { height },
+        }}
+      />
+    </Fade>
+
+    // <Box sx={{ width, height, ...sx, borderRadius: 10 }}>
+    // <img src="/assets/logo_satrap.jpg" width={width} height={height} />
+    // </Box>
+  );
+
+  if (disabledLink) {
+    return <>{logo}</>;
+  }
+
+  return <RouterLink to="/">{logo}</RouterLink>;
+}
+
+{
+  /* <svg width={height} height={height} viewBox="0 0 195 116" fill={PRIMARY_MAIN} xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="BG1" x1="100%" x2="50%" y1="9.946%" y2="50%">
             <stop offset="0%" stopColor={PRIMARY_DARK} />
@@ -59,14 +85,5 @@ export default function Logo({ width, height, disabledLink = false, sx }) {
         <path d="M149.271 114.942C149.271 115.494 148.823 115.942 148.271 115.942H146.826C146.274 115.942 145.826 115.494 145.826 114.942V92.9419C145.826 92.3896 146.274 91.9419 146.826 91.9419H148.782C149.09 91.9419 149.382 92.0843 149.571 92.3277L161.967 108.254C162.551 109.005 163.756 108.592 163.756 107.64V92.9419C163.756 92.3896 164.203 91.9419 164.756 91.9419H166.2C166.753 91.9419 167.2 92.3896 167.2 92.9419V114.942C167.2 115.494 166.753 115.942 166.2 115.942H164.245C163.936 115.942 163.645 115.8 163.455 115.556L151.06 99.6298C150.475 98.8785 149.271 99.292 149.271 100.244V114.942Z" fill={PRIMARY_DARK}/>
         <path d="M194.036 112.511C194.036 112.98 193.947 113.426 193.767 113.85C193.588 114.263 193.342 114.625 193.028 114.938C192.714 115.25 192.345 115.496 191.919 115.674C191.504 115.853 191.062 115.942 190.591 115.942H176.829C176.359 115.942 175.91 115.853 175.485 115.674C175.07 115.496 174.706 115.25 174.392 114.938C174.079 114.625 173.832 114.263 173.653 113.85C173.474 113.426 173.384 112.98 173.384 112.511V95.3729C173.384 94.9042 173.474 94.4635 173.653 94.0507C173.832 93.6267 174.079 93.2641 174.392 92.9628C174.706 92.6504 175.07 92.4049 175.485 92.2264C175.91 92.0367 176.359 91.9419 176.829 91.9419H190.591C191.062 91.9419 191.504 92.0367 191.919 92.2264C192.345 92.4049 192.714 92.6504 193.028 92.9628C193.342 93.2641 193.588 93.6267 193.767 94.0507C193.947 94.4635 194.036 94.9042 194.036 95.3729V112.511ZM177.829 95.3729C177.277 95.3729 176.829 95.8206 176.829 96.3729V111.511C176.829 112.063 177.277 112.511 177.829 112.511H189.591C190.144 112.511 190.591 112.063 190.591 111.511V96.3729C190.591 95.8206 190.144 95.3729 189.591 95.3729H177.829Z" fill={PRIMARY_DARK}/>
         </g>      
-      </svg> */}
-      <img src="/assets/logo_satrap.jpg" width={width} height={height} />
-    </Box>
-  );
-
-  if (disabledLink) {
-    return <>{logo}</>;
-  }
-
-  return <RouterLink to="/">{logo}</RouterLink>;
+      </svg> */
 }

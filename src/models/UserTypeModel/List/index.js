@@ -83,7 +83,7 @@ export default function List({
           handleSelect={handleSelect}
         />
       )}
-      <NewDialogTitle title={title} onClose={onClose} isPopup={isPopup}>
+      <NewDialogTitle title={<FormattedMessage id={title} />} onClose={onClose} isPopup={isPopup}>
         <Filter
           total={total}
           init={filter}
@@ -120,9 +120,9 @@ export default function List({
         <Tooltip title={<FormattedMessage id="refresh" />}>
           <IconButton sx={{ bgcolor: 'action.selected', color: '#fff' }} size="medium" onClick={refresh}>
             {loading ? (
-              <CircularProgress color="inherit" size={25} />
+              <CircularProgress color="primary" size={25} />
             ) : (
-              <RefreshRoundedIcon color="inherit" fontSize="small" />
+              <RefreshRoundedIcon color="primary" fontSize="small" />
             )}
           </IconButton>
         </Tooltip>

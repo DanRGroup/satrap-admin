@@ -56,9 +56,9 @@ export default function AppWebsiteVisits({ title, subheader, chart, refetch, loa
         <Tooltip title={<FormattedMessage id="refresh" />}>
           <IconButton sx={{ bgcolor: 'action.selected', color: '#fff' }} size="medium" onClick={refetch}>
             {loading ? (
-              <CircularProgress color="inherit" size={25} />
+              <CircularProgress color="primary" size={25} />
             ) : (
-              <RefreshRoundedIcon color="inherit" fontSize="small" />
+              <RefreshRoundedIcon color="primary" fontSize="small" />
             )}
           </IconButton>
         </Tooltip>

@@ -13,6 +13,7 @@ import { useMutation } from '@apollo/client';
 import { isEmptyObject } from 'helpers/formatObject';
 import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'components';
 import { FormattedMessage } from 'react-intl';
+import Typography from 'theme/overrides/Typography';
 
 export default function CreatePopup({ title, refetch }) {
   const [open, setOpen] = useState(false);
@@ -66,6 +67,7 @@ export default function CreatePopup({ title, refetch }) {
         </IconButton>
       </Tooltip>
       <NewDialog label="create" open={open} onClose={onClose} maxWidth="xs">
+        {/* <Typography>{title}</Typography> */}
         <NewDialogTitle title={title} onClose={onClose} />
         <NewDialogContent>
           <Stack p={2} alignItems="center">

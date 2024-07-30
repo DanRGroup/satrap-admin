@@ -54,7 +54,7 @@ export default function CreatePopup({ title, refetch }) {
 
   return (
     <>
-      <Tooltip title={title}>
+      <Tooltip>
         <Button
           size="medium"
           color="primary"

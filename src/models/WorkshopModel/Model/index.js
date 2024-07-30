@@ -11,7 +11,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   const {
     language: { direction: dir },
   } = useSelector((state) => state.setting);
-  const isRtl = dir === "rtl";
+  const isRtl = dir === 'rtl';
   return (
     <>
       <Slide
@@ -34,7 +34,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             alignItems="center"
             position="absolute"
             justifyContent="flex-start"
-            direction={isRtl ? "row" : "row-reverse"}
+            direction={isRtl ? 'row' : 'row-reverse'}
           >
             <Checkbox size="small" checked={checked} onChange={handleSelect} />
             <Media
@@ -66,7 +66,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
               title={
-                <Typography textAlign={isRtl ? 'start' : 'end'} fontSize={14} variant="subtitle1">
+                <Typography fontSize={14} variant="subtitle1">
                   {model.title}
                 </Typography>
               }
