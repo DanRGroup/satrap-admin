@@ -100,7 +100,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
       <NewDialog label="update" open={open} onClose={onClose} maxWidth="xs">
         <NewDialogTitle title={title} onClose={onClose} />
         <NewDialogContent>
-          {loading ? (
+          {loading || !formData ? (
             <Stack rowGap={3} py={2} alignItems="center" justifyContent="center" height={140}>
               <CircularProgress />
             </Stack>
