@@ -1,6 +1,6 @@
 const schema = (userTypes, userStatuses) => ({
   type: 'object',
-  required: [],
+  required: ['password'],
   properties: {
     type_id: {
       type: 'string',

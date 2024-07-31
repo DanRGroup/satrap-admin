@@ -28,12 +28,17 @@ export default function NewDialogTitle({ title, onClose, isPopup = true, actions
 }
 
 function Title({ title }) {
-  if (typeof title === 'string') {
-    return (
-      <Typography variant="subtitle1" color="#FFFFFF">
-        {title}
-      </Typography>
-    );
-  }
-  return title;
+  // if (typeof title === 'string') {
+  //   return (
+  //     <Typography variant="subtitle1" color="#FFFFFF">
+  //       {title}
+  //     </Typography>
+  //   );
+  // }
+  // return title;
+  return (
+    <Typography variant="subtitle1" color="#FFFFFF">
+      {title}
+    </Typography>
+  );
 }

@@ -73,7 +73,7 @@ export default function List({
 
   return (
     <>
-      {isAssign && (
+      {isAssign && multiSelect && (
         <Assignment
           title={title}
           onClose={onClose}
@@ -83,7 +83,7 @@ export default function List({
           handleSelect={handleSelect}
         />
       )}
-      <NewDialogTitle title={title} onClose={onClose} isPopup={isPopup}>
+      <NewDialogTitle title={<FormattedMessage id="users" />} onClose={onClose} isPopup={isPopup}>
         <Filter
           total={total}
           init={filter}

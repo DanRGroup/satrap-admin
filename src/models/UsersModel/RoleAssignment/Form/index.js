@@ -5,11 +5,12 @@ import { MuiFormBuilder } from 'components';
 import { useSelector } from 'react-redux';
 
 const RoleAssignmentForm = ({ formData = {}, loading, onSubmit }) => {
-  // const {shops, roles} = useSelector(state => state.app);
+  const { userRoles } = useSelector((state) => state.models);
+
   return (
     <MuiFormBuilder
       submit="تایید"
-      schema={schema([], [])}
+      schema={schema(userRoles)}
       uiSchema={uiSchema()}
       loading={loading}
       formData={formData}

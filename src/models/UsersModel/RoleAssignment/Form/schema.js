@@ -1,4 +1,4 @@
-const schema = () => ({
+const schema = (userRoles) => ({
   type: 'object',
   required: [],
   properties: {
@@ -9,6 +9,7 @@ const schema = () => ({
     role_id: {
       type: 'string',
       title: 'role',
+      oneOf: userRoles,
     },
   },
 });

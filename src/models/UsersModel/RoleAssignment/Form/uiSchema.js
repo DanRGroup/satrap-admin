@@ -12,7 +12,7 @@ const uiSchema = () => ({
     },
   },
   role_id: {
-    'ui:widget': UsersTypeSelectionWidget,
+    // 'ui:widget': UsersTypeSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,

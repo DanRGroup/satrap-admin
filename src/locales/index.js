@@ -453,6 +453,8 @@ const locales = {
     financial_manager: 'مدیر مالی',
     driver: 'راننده',
 
+    company_ceo: 'مدیر شرکت',
+
     waiting_for_activate: 'در انتظار فعال‌سازی',
     verified: 'تایید شده',
     deactive: 'غیر فعال',

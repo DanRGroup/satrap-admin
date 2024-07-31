@@ -111,7 +111,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
         </IconButton>
       </Tooltip>
       <NewDialog label="update" open={open} onClose={onClose} maxWidth="xs">
-        <NewDialogTitle title={title} onClose={onClose} />
+        <NewDialogTitle title={<FormattedMessage id="edit_task" />} onClose={onClose} />
         <NewDialogContent>
           {loading ? (
             <Stack rowGap={3} py={2} alignItems="center" justifyContent="center" height={140}>

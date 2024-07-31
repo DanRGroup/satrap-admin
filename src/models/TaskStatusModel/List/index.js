@@ -73,7 +73,7 @@ export default function List({
 
   return (
     <>
-      {isAssign && (
+      {isAssign && multiSelect && (
         <Assignment
           title={title}
           onClose={onClose}

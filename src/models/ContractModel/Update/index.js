@@ -14,18 +14,13 @@ import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'c
 import { FormattedMessage } from 'react-intl';
 import { CircularProgress, Stack } from '@mui/material';
 import { endOfDay } from 'date-fns';
-import { useIntl } from 'react-intl';
 
 export default function UpdatePopup({ ids, title, refetch }) {
   const [open, setOpen] = useState(false);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState();
   const { userToken } = useSelector((state) => state.auth);
   const [fetchModel, { loading }] = useLazyQuery(graph.get.query);
   const [updateModel, { loading: updating }] = useMutation(graph.update.query);
-  const intl = useIntl();
-  const popupTitle = intl.formatMessage({
-    id: 'edit_contract',
-  });
 
   const onOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
@@ -115,9 +110,9 @@ export default function UpdatePopup({ ids, title, refetch }) {
         </IconButton>
       </Tooltip>
       <NewDialog label="update" open={open} onClose={onClose} maxWidth="xs">
-        <NewDialogTitle title={popupTitle} onClose={onClose} />
+        <NewDialogTitle title={<FormattedMessage id="edit_contract" />} onClose={onClose} />
         <NewDialogContent>
-          {loading ? (
+          {loading || !formData ? (
             <Stack rowGap={3} py={2} alignItems="center" justifyContent="center" height={140}>
               <CircularProgress />
             </Stack>

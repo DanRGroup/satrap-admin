@@ -68,7 +68,7 @@ export default function Assignment({ title, selected, handleSelect, onAssign, on
 
   return (
     <>
-      {/* <Card
+      <Card
         elevation={8}
         sx={{
           mx: 'auto',
@@ -209,7 +209,7 @@ export default function Assignment({ title, selected, handleSelect, onAssign, on
             {title || 'اختصاص'}
           </Button>
         </CardActions>
-      </Card> */}
+      </Card>
     </>
   );
 }
