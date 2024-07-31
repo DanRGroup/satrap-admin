@@ -3,6 +3,8 @@ import Roles from '../Roles';
 import Media from '../Media';
 import Update from '../Update';
 
+import { formatUserRoles } from 'helpers';
+
 import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { AvatarPopover, NewSpeedDial } from 'components';
@@ -13,6 +15,8 @@ export default function Model({ model, delay, checked, handleSelect, refetch }) 
     language: { dir, direction },
   } = useSelector((state) => state.setting);
   const isRtl = direction === 'rtl';
+  const role = Array.isArray(model?.roles) && model?.roles.length > 0 ? formatUserRoles(model.roles) : '';
+
   return (
     <>
       <Fade in unmountOnExit timeout={{ appear: delay * 150, enter: delay * 170, exit: delay * 190 }}>
@@ -64,7 +68,7 @@ export default function Model({ model, delay, checked, handleSelect, refetch }) 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography fontSize={14} variant="subtitle1">
-                  {`${model?.firstname} ${model?.lastname} (${model?.type?.title})`}
+                  {`${model?.firstname} ${model?.lastname} ${role}`}
                 </Typography>
               }
               subheader={

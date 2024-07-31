@@ -62,6 +62,7 @@ const schema = {
               id
               title
             }
+            roles
             #all_roles {
             #  sites {
             #    id

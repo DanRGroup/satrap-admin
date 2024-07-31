@@ -52,7 +52,7 @@ const schema = {
               title
             }
             tonnage
-            #created_at
+            created_at
           }
           total_tonnage
         }

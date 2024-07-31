@@ -2,16 +2,11 @@ const schema = (userTypes, userStatuses) => ({
   type: 'object',
   required: ['password'],
   properties: {
-    type_id: {
-      type: 'string',
-      title: 'role',
-      oneOf: userTypes,
-    },
-    status_id: {
-      type: 'string',
-      title: 'status',
-      oneOf: userStatuses,
-    },
+    // type_id: {
+    //   type: 'string',
+    //   title: 'role',
+    //   oneOf: userTypes,
+    // },
     firstname: {
       type: 'string',
       title: 'firstname',
@@ -19,6 +14,11 @@ const schema = (userTypes, userStatuses) => ({
     lastname: {
       type: 'string',
       title: 'lastname',
+    },
+    status_id: {
+      type: 'string',
+      title: 'status',
+      oneOf: userStatuses,
     },
     national_code: {
       type: 'string',

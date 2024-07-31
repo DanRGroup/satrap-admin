@@ -49,6 +49,10 @@ const schema = {
               id
               title
             }
+            task_type {
+              id
+              title
+            }
           }
           total
         }

@@ -11,7 +11,7 @@ const schema = {
         $type_id: String!
         $operation_type_id: String!
         $workshop_id: String!
-        $site_id: String!
+        $site_id: String
         $material_type_id: String!
         $shift_type_id: String!
         #$status_id: String

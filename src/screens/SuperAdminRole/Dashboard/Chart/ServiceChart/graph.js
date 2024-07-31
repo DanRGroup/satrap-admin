@@ -51,6 +51,7 @@ const schema = {
               id
               title
             }
+            created_at
           }
         }
       }

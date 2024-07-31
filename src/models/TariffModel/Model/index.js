@@ -72,7 +72,9 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               }
               subheader={
                 <Typography fontSize={12} variant="subtitle2">
-                  {`${model?.workshop?.title} - ${model?.site?.title}`}
+                  {`${model?.workshop?.title} ${
+                    model?.task_type.title === 'حمل بار' ? ` - ${model?.site?.title}` : ''
+                  }`}
                 </Typography>
               }
             />
