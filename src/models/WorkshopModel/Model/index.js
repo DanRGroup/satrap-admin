@@ -7,11 +7,15 @@ import { AvatarPopover, NewSpeedDial } from 'components';
 import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 
+import { hasRequiredRole } from 'helpers';
+
 export default function Model({ model, delay, direction, checked, handleSelect, refetch }) {
   const {
     language: { direction: dir },
   } = useSelector((state) => state.setting);
   const isRtl = dir === 'rtl';
+  const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
+
   return (
     <>
       <Slide
@@ -58,7 +62,9 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
+              {isAuthenticated && hasRequiredRole(['superadmin', 'workshopManager'], userInfo?.roles) && (
+                <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
+              )}
               <Media id={model.id} model="Brand" collection="banner" />
             </NewSpeedDial>
           </Stack>

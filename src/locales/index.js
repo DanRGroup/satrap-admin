@@ -329,6 +329,10 @@ const locales = {
 
     natural: 'حقیقی',
     legal: 'حقوقی',
+    natural_official: 'حقیقی رسمی',
+    natural_agreement: 'حقیقی توافقی',
+    legal_official: 'حقوقی رسمی',
+    legal_agreement: 'حقوقی توافقی',
 
     registered: 'ثبت شده',
     doing: 'در حال انجام',

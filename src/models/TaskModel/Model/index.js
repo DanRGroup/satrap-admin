@@ -63,7 +63,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {isAuthenticated && hasRequiredRole(['superadmin', 'unitadmin'], userInfo?.roles) && (
+              {isAuthenticated && hasRequiredRole(['superadmin', 'workshopManager'], userInfo?.roles) && (
                 <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
               )}
               {/* <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} /> */}

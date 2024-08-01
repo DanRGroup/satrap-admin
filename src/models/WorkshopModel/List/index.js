@@ -4,6 +4,9 @@ import RefreshRoundedIcon from '@mui/icons-material/RefreshRounded';
 import { Stack, Tooltip, IconButton, CircularProgress, Box } from '@mui/material';
 import { LoadingMore, NewDialogActions, NewDialogContent, NewDialogTitle } from 'components';
 
+import { useSelector } from 'react-redux';
+import { hasRequiredRole } from 'helpers';
+
 import Model from '../Model';
 import Filter from '../Filter';
 import Delete from '../Delete';
@@ -37,6 +40,7 @@ export default function List({
 }) {
   const [selected, setSelected] = useState(preSelected || []);
   const [direction, setDirection] = useState('right');
+  const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
 
   const handleSelect = (item) => {
     const selectedIndex = selected.map((item) => item.id).indexOf(item.id);
@@ -126,8 +130,12 @@ export default function List({
             )}
           </IconButton>
         </Tooltip>
-        <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
-        <Create title={<FormattedMessage id="create_workshop" />} refetch={refresh} />
+        {isAuthenticated && hasRequiredRole(['superadmin'], userInfo?.roles) && (
+          <>
+            <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
+            <Create title={<FormattedMessage id="create_workshop" />} refetch={refresh} />
+          </>
+        )}
       </NewDialogActions>
     </>
   );

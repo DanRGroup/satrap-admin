@@ -53,6 +53,7 @@ export const navConfig = [
     inSidebar: true,
     element: <AppLayout />,
     icon: <DashboardRoundedIcon fontSize="small" />,
+    roles: ['superadmin'],
     children: [
       { element: <Navigate to="/app" replace /> },
       {

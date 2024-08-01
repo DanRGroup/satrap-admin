@@ -11,6 +11,9 @@ import Create from '../Create';
 import Assignment from '../Assignment';
 import { FormattedMessage } from 'react-intl';
 
+import { useSelector } from 'react-redux';
+import { hasRequiredRole } from 'helpers';
+
 export default function List({
   page,
   limit,
@@ -37,6 +40,7 @@ export default function List({
 }) {
   const [selected, setSelected] = useState(preSelected || []);
   const [direction, setDirection] = useState('right');
+  const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
 
   const handleSelect = (item) => {
     const selectedIndex = selected.map((item) => item.id).indexOf(item.id);
@@ -126,8 +130,12 @@ export default function List({
             )}
           </IconButton>
         </Tooltip>
-        <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
-        <Create title={<FormattedMessage id="create" />} refetch={refresh} />
+        {isAuthenticated && hasRequiredRole(['superadmin', 'companyCeo'], userInfo?.roles) && (
+          <>
+            <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
+            <Create title={<FormattedMessage id="create" />} refetch={refresh} />
+          </>
+        )}
       </NewDialogActions>
     </>
   );
