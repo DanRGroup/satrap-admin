@@ -5,6 +5,7 @@ export { default as VehicleSelectionWidget } from './VehicleSelectionWidget';
 export { default as WorkshopSelectionWidget } from './WorkshopSelectionWidget';
 // export { default as CreatorsSelectionWidget } from './CreatorsSelectionWidget';
 export { default as SiteTypeSelectionWidget } from './SiteTypeSelectionWidget';
+export { default as ContractSelectionWidget } from './ContractSelectionWidget';
 export { default as ShiftTypeSelectionWidget } from './ShiftTypeSelectionWidget';
 export { default as TasksTypeSelectionWidget } from './TasksTypeSelectionWidget';
 export { default as UsersTypeSelectionWidget } from './UsersTypeSelectionWidget';

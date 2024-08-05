@@ -17,7 +17,7 @@ import { descriptionId } from '@rjsf/utils';
 
 export default function UpdatePopup({ ids, title, refetch }) {
   const [open, setOpen] = useState(false);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState();
   const { userToken } = useSelector((state) => state.auth);
   const [fetchModel, { loading }] = useLazyQuery(graph.get.query);
   const [updateModel, { loading: updating }] = useMutation(graph.update.query);

@@ -13,7 +13,7 @@ export default function PopupHandler(props) {
 function Popup(props) {
   const [open, setOpen] = useState(false);
   const { title, disabled, setStartFetch, children } = props;
-
+  const { ids } = props;
   const onOpen = () => {
     if (!disabled) {
       setOpen(true);
@@ -29,7 +29,7 @@ function Popup(props) {
     <>
       <DialogChildButton title={title} onClick={onOpen} children={children} />
       <NewDialog label={title} open={open} onClose={onClose}>
-        <List onClose={onClose} {...props} />
+        <List onClose={onClose} {...props} ids={ids} />
       </NewDialog>
     </>
   );

@@ -162,6 +162,9 @@ function NavItem({ item, active, hasRequiredRole }) {
 export default function NavSection() {
   const { pathname } = useLocation();
   const { userInfo } = useSelector((state) => state.auth);
+
+  // const navigationConfig = hasRequiredRole(['superadmin'], userInfo?.roles) ? appNavConfig : superAdminNavConfig;
+
   const hasRequiredRole = (routeRoles = [], userRoles = []) => {
     if (routeRoles.length > 0) {
       return userRoles.filter((el) => routeRoles.includes(el.name)).length > 0;

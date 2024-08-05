@@ -24,7 +24,7 @@ const MuiForm = ({
   loading = false,
   disabled = false,
   showSubmit = true,
-  liveValidate = true,
+  liveValidate = false,
   showErrorList = false,
 }) => {
   return (

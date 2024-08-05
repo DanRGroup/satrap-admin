@@ -1,8 +1,22 @@
 import React from 'react';
 import Update from '../Update';
+import ContractFinancial from 'models/ContractFinancialModel';
 import Media from '../Media';
 
-import { Card, Stack, Slide, Divider, Checkbox, Typography, CardHeader, CardActionArea } from '@mui/material';
+import {
+  Card,
+  Stack,
+  Slide,
+  Divider,
+  Checkbox,
+  Typography,
+  CardHeader,
+  CardActionArea,
+  Button,
+  Tooltip,
+  IconButton,
+} from '@mui/material';
+import PaymentRoundedIcon from '@mui/icons-material/PaymentRounded';
 import { AvatarPopover, NewSpeedDial } from 'components';
 import { FormattedMessage } from 'react-intl';
 
@@ -62,8 +76,17 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {isAuthenticated && hasRequiredRole(['superadmin', 'companyCeo'], userInfo?.roles) && (
-                <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
+              {isAuthenticated && hasRequiredRole(['superadmin', 'companyAdmin'], userInfo?.roles) && (
+                <>
+                  <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
+                  <ContractFinancial isPopup ids={model.id} title={<FormattedMessage id="financials" />}>
+                    <Tooltip>
+                      <IconButton sx={{ bgcolor: 'action.selected' }} size="small" color="info">
+                        <PaymentRoundedIcon fontSize="small" />
+                      </IconButton>
+                    </Tooltip>
+                  </ContractFinancial>
+                </>
               )}
               <Media id={model.id} model="Brand" collection="banner" />
             </NewSpeedDial>

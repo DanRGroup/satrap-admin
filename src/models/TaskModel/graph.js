@@ -36,39 +36,42 @@ const schema = {
           max_created_at_equality: $max_created_at_equality
         ) {
           records {
-            id
-            media {
-              full_url
-            }
-            type {
+            data {
               id
-              title
+              media {
+                full_url
+              }
+              type {
+                id
+                title
+              }
+              workshop {
+                id
+                title
+              }
+              site {
+                id
+                title
+              }
+              vehicle {
+                plaque
+              }
+              driver {
+                id
+                firstname
+                lastname
+              }
+              material_type {
+                id
+                title
+              }
+              baskul
+              start_time
+              end_time
             }
-            workshop {
-              id
-              title
-            }
-            site {
-              id
-              title
-            }
-            vehicle {
-              plaque
-            }
-            driver {
-              id
-              firstname
-              lastname
-            }
-            material_type {
-              id
-              title
-            }
-            baskul
-            start_time
-            end_time
           }
           #total
+          total
           total_houre
           total_service
           total_shift

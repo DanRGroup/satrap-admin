@@ -23,6 +23,13 @@ const schema = {
               firstname
               lastname
             }
+            operation_type {
+              id
+              title
+            }
+            forecast_amount
+            contractual_number
+            is_civil
             status
             start_date
             end_date
@@ -56,6 +63,10 @@ const schema = {
         $cost: String
         $number: String
         $details: String
+        $operation_type_id: String
+        $forecast_amount: String
+        $contractual_number: String
+        $is_civil: Int
       ) {
         updateContract(
           ids: $ids
@@ -70,6 +81,10 @@ const schema = {
           cost: $cost
           number: $number
           details: $details
+          operation_type_id: $operation_type_id
+          forecast_amount: $forecast_amount
+          contractual_number: $contractual_number
+          is_civil: $is_civil
         ) {
           messages
         }

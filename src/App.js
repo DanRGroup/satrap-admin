@@ -13,10 +13,11 @@ import { ToastContainer } from 'react-toastify';
 import { ApolloProvider } from '@apollo/client';
 import { ScrollToTop, SplashScreen } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppRoutes, AuthenticationRoutes } from 'routes';
+import { AppRoutes, AuthenticationRoutes, SuperAdminRoutes } from 'routes';
 
 import 'styles/globals.css';
 import 'react-toastify/dist/ReactToastify.css';
+import { hasRequiredRole } from 'helpers';
 // ----------------------------------------------------------------------
 
 export default function App() {
@@ -39,7 +40,9 @@ export default function App() {
 
   const getContent = () => {
     if (!loading) {
-      if (isAuthenticated) {
+      if (isAuthenticated && hasRequiredRole(['superadmin'], userInfo?.roles)) {
+        return <SuperAdminRoutes />;
+      } else if (isAuthenticated) {
         return <AppRoutes />;
       }
       return <AuthenticationRoutes />;

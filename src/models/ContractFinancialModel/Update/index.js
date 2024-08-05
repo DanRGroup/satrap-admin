@@ -17,7 +17,7 @@ import { endOfDay } from 'date-fns';
 
 export default function UpdatePopup({ ids, title, refetch }) {
   const [open, setOpen] = useState(false);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState();
   const { userToken } = useSelector((state) => state.auth);
   const [fetchModel, { loading }] = useLazyQuery(graph.get.query);
   const [updateModel, { loading: updating }] = useMutation(graph.update.query);
@@ -44,9 +44,10 @@ export default function UpdatePopup({ ids, title, refetch }) {
         if (res) {
           setFormData({
             ...res,
-            workshop_id: res.workshop?.id,
-            employer_id: res.employer?.id,
-            type_id: res.type?.id,
+            workshop_id: res?.workshop?.id,
+            employer_id: res?.employer?.id,
+            type_id: res?.type?.id,
+            operation_type_id: res?.operation_type?.id,
             // status_id: res.status,
           });
         }
@@ -79,6 +80,10 @@ export default function UpdatePopup({ ids, title, refetch }) {
           cost: formData?.cost,
           number: formData?.number,
           details: formData?.details,
+          operation_type_id: formData?.operation_type_id,
+          forecast_amount: formData?.forecast_amount,
+          contractual_number: formData?.contractual_number,
+          is_civil: formData?.is_civil,
         },
       });
       if (!errors) {
@@ -105,7 +110,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
         </IconButton>
       </Tooltip>
       <NewDialog label="update" open={open} onClose={onClose} maxWidth="xs">
-        <NewDialogTitle title={title} onClose={onClose} />
+        <NewDialogTitle title={<FormattedMessage id="edit_contract" />} onClose={onClose} />
         <NewDialogContent>
           {loading || !formData ? (
             <Stack rowGap={3} py={2} alignItems="center" justifyContent="center" height={140}>

@@ -24,7 +24,6 @@ import {
   TariffModel,
   TaskModel,
 } from 'models';
-import { FormattedMessage } from 'react-intl';
 
 const NotFound = Loadable(lazy(() => import('screens/Authentication/Page404')));
 
@@ -42,18 +41,150 @@ function Dashboard() {
   return <SuperAdminDashboard />;
 }
 
-export const navConfig = [
+export const superAdminNavConfig = [
   {
     path: '/',
-    element: <Navigate to="/dashboard/managment" replace />,
+    element: <Navigate to="/setting/app" replace />,
   },
   {
-    path: '/setting/app',
-    url: '/setting/app',
-    title: <FormattedMessage id="app" />,
-    element: <Dashboard />,
+    path: '/setting',
+    url: '/setting',
+    title: 'setting',
     inSidebar: true,
+    element: <AppLayout />,
+    icon: <DashboardRoundedIcon fontSize="small" />,
     roles: ['superadmin'],
+    children: [
+      { element: <Navigate to="/app" replace /> },
+      {
+        path: '/setting/app',
+        url: '/setting/app',
+        title: 'app',
+        element: <Dashboard />,
+        inSidebar: true,
+        roles: ['superadmin'],
+      },
+      {
+        path: '/setting/contract-types',
+        url: '/setting/contract-types',
+        title: 'contract_types',
+        element: (
+          <Page title="Contract">
+            <ContractTypeModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin'],
+      },
+      {
+        path: '/setting/material_types',
+        url: '/setting/material_types',
+        title: 'material_types',
+        element: (
+          <Page title="Material">
+            <MaterialTypeModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin'],
+      },
+      {
+        path: '/setting/operation-types',
+        url: '/setting/operation-types',
+        title: 'operation_types',
+        element: (
+          <Page title="Operations">
+            <OperationTypeModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin'],
+      },
+      {
+        path: '/setting/shift-types',
+        url: '/setting/shift-types',
+        title: 'shift_types',
+        element: (
+          <Page title="Actions">
+            <ShiftTypeModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin'],
+      },
+      {
+        path: '/setting/site-types',
+        url: '/setting/site-types',
+        title: 'site_types',
+        element: (
+          <Page title="Sites">
+            <SiteTypeModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin'],
+      },
+      {
+        path: '/setting/vehicle-types',
+        url: '/setting/vehicle-types',
+        title: 'vehicle_types',
+        element: (
+          <Page title="Sites">
+            <VehicleTypeModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin'],
+      },
+      {
+        path: '/setting/task-status',
+        url: '/setting/task-status',
+        title: 'task_status',
+        element: (
+          <Page title="Tasks">
+            <TaskStatusModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin'],
+      },
+      {
+        path: '/setting/task-types',
+        url: '/setting/task-types',
+        title: 'task_types',
+        element: (
+          <Page title="Tasks">
+            <TasksTypeModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin'],
+      },
+      {
+        path: '/setting/workshop-status',
+        url: '/setting/workshop-status',
+        title: 'workshop_status',
+        element: (
+          <Page title="WorkShop">
+            <WorkshopStatusModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin'],
+      },
+      {
+        path: '/setting/user-status',
+        url: '/setting/user-status',
+        title: 'user_status',
+        element: (
+          <Page title="UserStatus">
+            <UserStatusModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin'],
+      },
+    ],
   },
   {
     path: '/dashboard',
@@ -84,7 +215,6 @@ export const navConfig = [
           </Page>
         ),
         inSidebar: true,
-        roles: ['superadmin', 'companyAdmin'],
       },
       {
         path: '/dashboard/task',
@@ -107,7 +237,6 @@ export const navConfig = [
           </Page>
         ),
         inSidebar: true,
-        roles: ['superadmin', 'companyAdmin'],
       },
       {
         path: '/dashboard/users',
@@ -130,7 +259,6 @@ export const navConfig = [
           </Page>
         ),
         inSidebar: true,
-        roles: ['superadmin', 'siteManager'],
       },
       {
         path: '/dashboard/vehicles',
@@ -153,7 +281,6 @@ export const navConfig = [
           </Page>
         ),
         inSidebar: true,
-        roles: ['superadmin', 'workshopManager'],
       },
     ],
   },
@@ -188,7 +315,7 @@ export const navConfig = [
 const Router = () => {
   return (
     <Routes>
-      {navConfig.map((route, i) => (
+      {superAdminNavConfig.map((route, i) => (
         <Route key={i} path={route.path} element={<PrivateRoute data={route} />}>
           {route.children &&
             route.children.map((child, c) => (

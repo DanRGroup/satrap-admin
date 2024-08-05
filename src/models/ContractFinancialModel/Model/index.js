@@ -1,17 +1,20 @@
 import React from 'react';
 import Update from '../Update';
-import Media from '../Media';
 
 import { Card, Stack, Slide, Divider, Checkbox, Typography, CardHeader, CardActionArea } from '@mui/material';
 import { AvatarPopover, NewSpeedDial } from 'components';
-import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
+
+import { useSelector } from 'react-redux';
+import { hasRequiredRole } from 'helpers';
 
 export default function Model({ model, delay, direction, checked, handleSelect, refetch }) {
   const {
     language: { direction: dir },
   } = useSelector((state) => state.setting);
   const isRtl = dir === 'rtl';
+  const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
+
   return (
     <>
       <Slide
@@ -27,27 +30,6 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           }}
         >
           <Stack
-            left={8}
-            zIndex={1}
-            columnGap={0.5}
-            height="100%"
-            alignItems="center"
-            position="absolute"
-            justifyContent="flex-start"
-            direction={isRtl ? 'row' : 'row-reverse'}
-          >
-            <Checkbox size="small" checked={checked} onChange={handleSelect} />
-            <Media
-              id={model.id}
-              model="Brand"
-              collection="avatar"
-              title={model.title}
-              subheader={model.producer?.title || 'برند'}
-            >
-              <AvatarPopover media={model?.media[0]?.full_url} />
-            </Media>
-          </Stack>
-          <Stack
             right={8}
             zIndex={1}
             columnGap={0.5}
@@ -58,8 +40,11 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
-              <Media id={model.id} model="Brand" collection="banner" />
+              {isAuthenticated && hasRequiredRole(['superadmin', 'companyAdmin'], userInfo?.roles) && (
+                <>
+                  <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
+                </>
+              )}
             </NewSpeedDial>
           </Stack>
           <CardActionArea onClick={handleSelect}>
@@ -67,14 +52,15 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography fontSize={14} variant="subtitle1">
-                  {model?.title}
+                  {model?.cost && `مبلغ پرداخت : ${model?.cost}`}
+                  {model?.reported_in && `- شماره گزارش : ${model?.reported_in}`}
                 </Typography>
               }
-              subheader={
-                <Typography fontSize={12} variant="subtitle2">
-                  {model?.workshop?.title} - {model?.employer?.firstname} {model?.employer?.lastname}
-                </Typography>
-              }
+              // subheader={
+              //   <Typography fontSize={12} variant="subtitle2">
+              //     {model?.workshop?.title} - {model?.employer?.firstname} {model?.employer?.lastname}
+              //   </Typography>
+              // }
             />
           </CardActionArea>
         </Card>

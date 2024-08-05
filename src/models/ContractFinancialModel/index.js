@@ -7,7 +7,7 @@ import { isEmptyObject } from 'helpers/formatObject';
 import { useLazyQuery } from '@apollo/client';
 
 export default function MainModel(props) {
-  const { initFilter, isPopup = false } = props;
+  const { initFilter, isPopup = false, ids } = props;
   const init = { ...initFilter };
 
   const [startFetch, setStartFetch] = useState(!isPopup);
@@ -47,8 +47,7 @@ export default function MainModel(props) {
       const { data, error } = await getData({
         variables: {
           ...filter,
-          page,
-          limit,
+          contract_ids: ids,
         },
       });
       if (!isEmptyObject(data) && !error) {
@@ -65,6 +64,7 @@ export default function MainModel(props) {
 
   return (
     <PopupHandler
+      ids={ids}
       page={page}
       limit={limit}
       total={total}
