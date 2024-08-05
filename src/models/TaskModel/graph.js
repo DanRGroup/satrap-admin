@@ -69,9 +69,8 @@ const schema = {
               start_time
               end_time
             }
+            total
           }
-          #total
-          total
           total_houre
           total_service
           total_shift
