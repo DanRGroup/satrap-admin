@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dialog, Tooltip, IconButton, DialogTitle, DialogContent, CircularProgress } from '@mui/material';
+import { Dialog, Tooltip, IconButton, DialogTitle, DialogContent, CircularProgress, Box } from '@mui/material';
 import { AssignmentIndRounded } from '@mui/icons-material';
 
 import Form from './Form';
@@ -72,9 +72,11 @@ export default function RoleAssignment({ ids, refetch }) {
         maxWidth="xs"
       >
         <DialogTitle id="alert-dialog-title">اختصاص نقش</DialogTitle>
-        <DialogContent>
-          <Form formData={form} loading={loading} onSubmit={onSubmit} />
-        </DialogContent>
+        <Box sx={{ m: 0.5 }}>
+          <DialogContent>
+            <Form formData={form} loading={loading} onSubmit={onSubmit} />
+          </DialogContent>
+        </Box>
       </Dialog>
     </>
   );

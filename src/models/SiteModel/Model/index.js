@@ -57,7 +57,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {isAuthenticated && hasRequiredRole(['superadmin', 'siteManager'], userInfo?.roles) && (
+              {isAuthenticated && hasRequiredRole(['superadmin', 'siteManager', 'companyCeo'], userInfo?.roles) && (
                 <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
               )}
               <Media id={model.id} model="Brand" collection="banner" />
@@ -68,7 +68,8 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography textAlign={isRtl ? 'start' : 'end'} fontSize={14} variant="subtitle1">
-                  {model?.title} - {model?.manager?.firstname} {model?.manager?.lastname}
+                  {model?.title} {model?.manager?.firstname && `- مدیر : ${model?.manager?.firstname}`}{' '}
+                  {model?.manager?.lastname}
                 </Typography>
               }
               subheader={

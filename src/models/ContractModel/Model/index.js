@@ -76,7 +76,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {isAuthenticated && hasRequiredRole(['superadmin', 'companyAdmin'], userInfo?.roles) && (
+              {isAuthenticated && hasRequiredRole(['superadmin', 'companyCeo'], userInfo?.roles) && (
                 <>
                   <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
                   <ContractFinancial isPopup ids={model.id} title={<FormattedMessage id="financials" />}>

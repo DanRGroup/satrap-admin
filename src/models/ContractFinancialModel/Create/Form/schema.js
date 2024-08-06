@@ -10,9 +10,9 @@ const schema = () => ({
     },
     cost: {
       type: 'string',
-      title: 'cost',
+      title: 'pay',
     },
-    repoted_in: {
+    reported_in: {
       type: 'string',
       title: 'report_number',
     },

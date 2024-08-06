@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
-import PaymentRoundedIcon from '@mui/icons-material/PaymentRounded';
+import AddCircleOutlineRounded from '@mui/icons-material/AddCircleOutlineRounded';
 
 import Form from './Form';
 import graph from '../graph';
@@ -87,8 +87,14 @@ export default function CreatePopup({ ids, title, refetch }) {
   return (
     <>
       <Tooltip title={title}>
-        <IconButton sx={{ bgcolor: 'action.selected' }} color="info" onClick={onOpen}>
-          <PaymentRoundedIcon fontSize="small" size={25} />
+        <IconButton
+          size="medium"
+          color="warning"
+          onClick={onOpen}
+          disabled={loading}
+          sx={{ bgcolor: 'action.selected' }}
+        >
+          <AddCircleOutlineRounded fontSize="small" />
         </IconButton>
       </Tooltip>
       <NewDialog label="update" open={open} onClose={onClose} maxWidth="xs">

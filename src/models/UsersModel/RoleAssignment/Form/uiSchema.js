@@ -1,6 +1,16 @@
-import { UsersTypeSelectionWidget, WorkshopSelectionWidget } from 'components/FormWidgets';
+import { UsersTypeSelectionWidget, WorkshopSelectionWidget, SiteSelectionWidget } from 'components/FormWidgets';
 
 const uiSchema = () => ({
+  role_id: {
+    // 'ui:widget': UsersTypeSelectionWidget,
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
   workshop_id: {
     'ui:widget': WorkshopSelectionWidget,
     'ui:options': {
@@ -11,8 +21,8 @@ const uiSchema = () => ({
       xl: 12,
     },
   },
-  role_id: {
-    // 'ui:widget': UsersTypeSelectionWidget,
+  site_id: {
+    'ui:widget': SiteSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,

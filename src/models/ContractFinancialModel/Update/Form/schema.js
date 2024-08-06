@@ -1,71 +1,24 @@
-const schema = (contractTypes, contractStatuses, operationTypes) => ({
+import { type } from '@testing-library/user-event/dist/type';
+
+const schema = () => ({
   type: 'object',
   required: [],
   properties: {
-    title: {
+    contract_id: {
       type: 'string',
-      title: 'title',
-    },
-    workshop_id: {
-      type: 'string',
-      title: 'workshop',
-    },
-    employer_id: {
-      type: 'string',
-      title: 'employer',
-    },
-    type_id: {
-      type: 'string',
-      title: 'contract_type',
-      oneOf: contractTypes,
-    },
-    status: {
-      type: 'string',
-      title: 'status',
-      oneOf: contractStatuses,
-    },
-    operation_type_id: {
-      type: 'string',
-      title: 'operation_type',
-      oneOf: operationTypes,
-    },
-    forecast_amount: {
-      type: 'string',
-      title: 'forecast_amount',
-    },
-    contractual_number: {
-      type: 'string',
-      title: 'contractual_number',
-    },
-    is_civil: {
-      type: 'number',
-      title: 'civil_project',
-      oneOf: [
-        { const: 1, title: 'is_civil' },
-        { const: 0, title: 'not_civil' },
-      ],
-    },
-    start_date: {
-      type: 'string',
-      title: 'start_date',
-      format: 'date',
-    },
-    end_date: {
-      type: 'string',
-      title: 'end_date',
-      format: 'date',
+      title: 'contract',
     },
     cost: {
       type: 'string',
-      title: 'cost',
+      title: 'pay',
     },
-    number: {
+    reported_in: {
       type: 'string',
-      title: 'number',
+      title: 'report_number',
     },
-    details: {
+    description: {
       type: 'string',
-      title: 'details',
+      title: 'description',
     },
   },
 });

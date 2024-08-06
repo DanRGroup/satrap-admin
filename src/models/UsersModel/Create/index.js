@@ -36,19 +36,23 @@ export default function CreatePopup({ title, refetch }) {
   };
 
   const onSubmit = async () => {
-    try {
-      const { data, errors } = await formUpdate({
-        variables: formData,
-      });
-      if (!errors) {
-        refetch();
-        onClose();
-        if (!isEmptyObject(data)) {
-          data[graph.create.name]?.messages.map((message) => toast.success(String(message)));
+    if (!formData.password || !formData.cellphone) {
+      toast.error('رمز عبور و تلفن همراه الزامی است');
+    } else {
+      try {
+        const { data, errors } = await formUpdate({
+          variables: formData,
+        });
+        if (!errors) {
+          refetch();
+          onClose();
+          if (!isEmptyObject(data)) {
+            data[graph.create.name]?.messages.map((message) => toast.success(String(message)));
+          }
         }
+      } catch (error) {
+        setFormData(formData);
       }
-    } catch (error) {
-      setFormData(formData);
     }
   };
 

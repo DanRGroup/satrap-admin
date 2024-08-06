@@ -1,4 +1,5 @@
-import React from 'react';
+// import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { faker } from '@faker-js/faker';
 
@@ -14,27 +15,83 @@ import AppCurrentVisits from './app-current-visits';
 import AppCurrentSubject from './app-current-subject';
 import AppConversionRates from './app-conversion-rates';
 
+import graph from './graph';
+
+import { useLazyQuery } from '@apollo/client';
+import { useSelector } from 'react-redux';
+import { isEmptyObject } from 'helpers/formatObject';
+
 // ----------------------------------------------------------------------
 
 export default function AppView() {
+  const { userToken } = useSelector((state) => state.auth);
+  const [forecast, setForecast] = useState(0);
+  const [total, settotal] = useState(0);
+  const [refresh, setRefresh] = useState(false);
+  const title = 'نمودار فعالیت حمل بار (کارکرد تن)';
+  const {
+    language: { dir },
+  } = useSelector((state) => state.setting);
+
+  let grouped = {};
+
+  const refetch = () => setRefresh((prev) => !prev);
+  const [getData, { loading }] = useLazyQuery(graph.contract.query, {
+    context: {
+      serviceName: graph.contract.serviceName,
+      headers: {
+        authorization: `Bearer ${userToken}`,
+      },
+    },
+  });
+
+  const handleData = async () => {
+    try {
+      const { data, error } = await getData({
+        variables: {
+          with_calculations: 1,
+          // status_ids: '2',
+        },
+      });
+      if (!isEmptyObject(data) && !error) {
+        const { data: contracts } = data[graph.contract.name];
+        console.log(contracts[0]);
+        const { forecast_amount, total_service } = contracts[0];
+        // console.log(forecast_amount);
+        // console.log(total_service);
+        setForecast(Number(forecast_amount));
+        settotal(Number(total_service));
+        console.log('forecast', forecast);
+        console.log('total', total);
+      }
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    handleData();
+  }, [refresh]);
+
   return (
     <Container maxWidth="xl">
       <Grid container spacing={3}>
         <ModelsCount />
         <ServiceChart />
         <TonnageChart />
-        <Grid xs={12} md={6} lg={4}>
-          <AppCurrentVisits
-            title="نمودار پراکندگی حمل و نقل"
-            chart={{
-              series: [
-                { label: 'رانندگان', value: 4344 },
-                { label: 'کاربران', value: 2378 },
-                { label: 'مدیران', value: 5348 },
-              ],
-            }}
-          />
-        </Grid>
+        {total !== 0 && forecast !== 0 ? (
+          <Grid xs={12} md={6} lg={4}>
+            <AppCurrentVisits
+              title="نمودار پراکندگی حمل و نقل"
+              chart={{
+                series: [
+                  { label: 'رانندگان', value: { total } },
+                  { label: 'کاربران', value: { forecast } },
+                ],
+              }}
+            />
+          </Grid>
+        ) : (
+          <></>
+        )}
 
         <Grid xs={12} md={6} lg={8}>
           <AppConversionRates

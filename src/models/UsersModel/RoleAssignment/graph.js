@@ -5,8 +5,8 @@ const schema = {
     name: 'createWorkshopsUser',
     serviceName: 'shared',
     query: gql`
-      mutation createWorkshopsUser($workshop_id: String, $user_ids: [String]!, $role_id: String!) {
-        createWorkshopsUser(workshop_id: $workshop_id, user_ids: $user_ids, role_id: $role_id) {
+      mutation createWorkshopsUser($workshop_id: String, $user_ids: [String]!, $role_id: String!, $site_id: String) {
+        createWorkshopsUser(workshop_id: $workshop_id, user_ids: $user_ids, role_id: $role_id, site_id: $site_id) {
           model {
             id
             workshop {

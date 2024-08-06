@@ -40,7 +40,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {isAuthenticated && hasRequiredRole(['superadmin', 'companyAdmin'], userInfo?.roles) && (
+              {isAuthenticated && hasRequiredRole(['superadmin', 'companyCeo'], userInfo?.roles) && (
                 <>
                   <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
                 </>
@@ -51,9 +51,9 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
               title={
-                <Typography fontSize={14} variant="subtitle1">
-                  {model?.cost && `مبلغ پرداخت : ${model?.cost}`}
-                  {model?.reported_in && `- شماره گزارش : ${model?.reported_in}`}
+                <Typography fontSize={14} variant="subtitle1" color={!model?.cost && 'error'}>
+                  {model?.cost ? `مبلغ پرداخت : ${model?.cost}` : 'عدم دسترسی به اطلاعات پرداخت'}
+                  {model?.reported_in && ` - شماره گزارش : ${model?.reported_in}`}
                 </Typography>
               }
               // subheader={

@@ -20,7 +20,7 @@ const uiSchema = () => ({
       xl: 12,
     },
   },
-  report_number: {
+  reported_in: {
     'ui:options': {
       xs: 12,
       sm: 12,

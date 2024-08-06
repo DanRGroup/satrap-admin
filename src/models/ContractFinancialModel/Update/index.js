@@ -36,7 +36,6 @@ export default function UpdatePopup({ ids, title, refetch }) {
         },
         variables: {
           ids,
-          for_admin: 1,
         },
       });
       if (!isEmptyObject(data)) {
@@ -44,10 +43,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
         if (res) {
           setFormData({
             ...res,
-            workshop_id: res?.workshop?.id,
-            employer_id: res?.employer?.id,
-            type_id: res?.type?.id,
-            operation_type_id: res?.operation_type?.id,
+            contract_id: res?.contract?.id,
             // status_id: res.status,
           });
         }
@@ -70,20 +66,9 @@ export default function UpdatePopup({ ids, title, refetch }) {
         },
         variables: {
           ids,
-          title: formData?.title,
-          workshop_id: formData?.workshop_id,
-          type_id: formData?.type_id,
-          employer_id: formData?.employer_id,
-          status: formData?.status_id,
-          start_date: formData?.start_date,
-          end_date: formData?.end_date,
           cost: formData?.cost,
-          number: formData?.number,
-          details: formData?.details,
-          operation_type_id: formData?.operation_type_id,
-          forecast_amount: formData?.forecast_amount,
-          contractual_number: formData?.contractual_number,
-          is_civil: formData?.is_civil,
+          reported_in: formData?.reported_in,
+          description: formData?.description,
         },
       });
       if (!errors) {

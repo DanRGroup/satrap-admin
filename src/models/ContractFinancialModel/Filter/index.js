@@ -89,17 +89,24 @@ export default function Filter({
           action={
             <Stack columnGap={0.5} direction="row" alignItems="center" justifyContent="flex-end">
               <Tooltip title={<FormattedMessage id="rmFilters" />}>
-                <IconButton sx={{ bgcolor: 'info.lighter' }} size="small" color="info" onClick={clearFilter}>
+                <IconButton
+                  disabled={true}
+                  sx={{ bgcolor: 'info.lighter' }}
+                  size="small"
+                  color="info"
+                  onClick={clearFilter}
+                >
                   <FilterAltOffRounded color="info" fontSize="small" />
                 </IconButton>
               </Tooltip>
               <ExpandMoreButton
+                disabled={true}
                 open={<FormattedMessage id="showFilters" />}
                 close={<FormattedMessage id="hideFilters" />}
                 onClick={handleExpandClick}
                 expand={expanded}
               >
-                <KeyboardArrowUpRounded color="warning" fontSize="small" />
+                <KeyboardArrowUpRounded disabled={true} color="warning" fontSize="small" />
               </ExpandMoreButton>
             </Stack>
           }

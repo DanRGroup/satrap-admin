@@ -24,34 +24,36 @@ const schema = {
           type_ids: $type_ids
         ) {
           records {
-            id
-            start_time
-            end_time
-            type {
+            data {
               id
-              title
+              start_time
+              end_time
+              type {
+                id
+                title
+              }
+              workshop {
+                id
+                title
+              }
+              site {
+                id
+                title
+              }
+              vehicle {
+                plaque
+              }
+              driver {
+                id
+                firstname
+                lastname
+              }
+              material_type {
+                id
+                title
+              }
+              created_at
             }
-            workshop {
-              id
-              title
-            }
-            site {
-              id
-              title
-            }
-            vehicle {
-              plaque
-            }
-            driver {
-              id
-              firstname
-              lastname
-            }
-            material_type {
-              id
-              title
-            }
-            created_at
           }
         }
       }

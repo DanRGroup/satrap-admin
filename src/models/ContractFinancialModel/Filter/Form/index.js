@@ -13,12 +13,10 @@ const Form = ({ init, setFilter }) => {
     setFilter(formData);
   };
 
-  const { contractTypes } = useSelector((state) => state.models);
-  const { contractStatuses } = useSelector((state) => state.models);
   return (
     <MuiFormBuilder
       showSubmit={false}
-      schema={schema(contractTypes, contractStatuses)}
+      schema={schema()}
       uiSchema={uiSchema()}
       formData={formData}
       onChange={onChange}

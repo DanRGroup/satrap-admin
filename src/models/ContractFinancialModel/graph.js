@@ -8,6 +8,7 @@ const schema = {
       query contractFinancial($contract_ids: [String]) {
         contractFinancial(contract_ids: $contract_ids) {
           data {
+            id
             contract {
               id
               title
