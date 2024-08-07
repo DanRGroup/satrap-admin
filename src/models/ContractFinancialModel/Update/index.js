@@ -66,7 +66,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
         },
         variables: {
           ids,
-          cost: formData?.cost,
+          // cost: formData?.cost,
           reported_in: formData?.reported_in,
           description: formData?.description,
         },

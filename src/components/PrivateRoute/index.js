@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { Navigate, useLocation } from 'react-router-dom';
 
 export default function PrivateRoute({ data }) {
@@ -30,6 +30,7 @@ export default function PrivateRoute({ data }) {
         <Typography variant="h1" color="error">
           شما اجازه دسترسی به این صفحه ندارید!
         </Typography>
+        <Button href="/dashboard/managment">بازگشت به سامانه</Button>
       </Stack>
     );
   }

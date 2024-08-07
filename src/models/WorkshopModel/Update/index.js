@@ -67,6 +67,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
         variables: {
           ids,
           title: formData?.title,
+          status_id: formData?.status_id,
           alias: formData?.alias,
           lat: formData?.location.lat,
           lng: formData?.location.lng,

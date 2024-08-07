@@ -34,13 +34,25 @@ export const setModelsSlice = createSlice({
     taskStatuses: [
       { const: '1', title: 'doing' },
       { const: '2', title: 'done' },
-      { const: '3', title: 'supervisor_confirmed' },
-      { const: '4', title: 'reviewed' },
+      { const: '3', title: 'reviewed' },
+      { const: '4', title: 'supervisor_confirmed' },
       { const: '5', title: 'workshop_manager_confirmed' },
       { const: '6', title: 'canceled_by_driver' },
       { const: '7', title: 'canceled_by_supervisor' },
       { const: '8', title: 'suspended' },
       { const: '9', title: 'finished' },
+    ],
+    limitedTaskStatuses: [
+      { const: '2', title: 'done' },
+      { const: '6', title: 'canceled_by_driver' },
+      { const: '8', title: 'suspended' },
+    ],
+    supervisorTaskStatuses: [
+      { const: '2', title: 'done' },
+      { const: '3', title: 'reviewed' },
+      { const: '4', title: 'supervisor_confirmed' },
+      { const: '7', title: 'canceled_by_supervisor' },
+      { const: '8', title: 'suspended' },
     ],
     operationTypes: [
       { const: '1', title: 'service' },

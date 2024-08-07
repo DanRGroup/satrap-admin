@@ -259,6 +259,7 @@ export const navConfig = [
           </Page>
         ),
         inSidebar: true,
+        roles: ['superadmin', 'companyCeo'],
       },
       {
         path: '/dashboard/sites',

@@ -1,11 +1,11 @@
-const schema = (taskStatuses) => ({
+const schema = (taskStatusesRole) => ({
   type: 'object',
   required: [],
   properties: {
     status_id: {
       type: 'string',
       title: 'task_status',
-      oneOf: taskStatuses,
+      oneOf: taskStatusesRole,
     },
   },
 });

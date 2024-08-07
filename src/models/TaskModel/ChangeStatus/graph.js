@@ -8,10 +8,12 @@ const schema = {
       query task($ids: [String]) {
         task(ids: $ids) {
           records {
-            id
-            status {
+            data {
               id
-              title
+              status {
+                id
+                title
+              }
             }
           }
         }

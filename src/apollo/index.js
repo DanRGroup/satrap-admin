@@ -46,6 +46,9 @@ const shared = createUploadLink({
 const companyAdmin = createUploadLink({
   uri: `${url}/graphql/auth/companyAdmin`,
 });
+const workshopAdmin = createUploadLink({
+  uri: `${url}/graphql/auth/workshopAdmin`,
+});
 const accountingViewer = createUploadLink({
   uri: `${url}/graphql/auth/accountingViewer`,
 });
@@ -57,6 +60,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
     operation.getContext().serviceName === 'crawlerer' ||
     operation.getContext().serviceName === 'shared' ||
     operation.getContext().serviceName === 'companyAdmin' ||
+    operation.getContext().serviceName === 'workshopAdmin' ||
     operation.getContext().serviceName === 'accountingViewer' ||
     operation.getContext().serviceName === 'siteAdmin') &&
     operation.setContext(({ headers = {} }) => ({
@@ -79,15 +83,19 @@ const graphqlEndpoints = ApolloLink.split(
       (operation) => operation.getContext().serviceName === 'companyAdmin',
       companyAdmin,
       ApolloLink.split(
-        (operation) => operation.getContext().serviceName === 'siteAdmin',
-        siteAdmin,
+        (operation) => operation.getContext().serviceName === 'workshopAdmin',
+        workshopAdmin,
         ApolloLink.split(
-          (operation) => operation.getContext().serviceName === 'accountingViewer',
-          accountingViewer,
+          (operation) => operation.getContext().serviceName === 'siteAdmin',
+          siteAdmin,
           ApolloLink.split(
-            (operation) => operation.getContext().serviceName === 'crawlerer',
-            crawlerer,
-            ApolloLink.split((operation) => operation.getContext().serviceName === 'admin', admin, graphql)
+            (operation) => operation.getContext().serviceName === 'accountingViewer',
+            accountingViewer,
+            ApolloLink.split(
+              (operation) => operation.getContext().serviceName === 'crawlerer',
+              crawlerer,
+              ApolloLink.split((operation) => operation.getContext().serviceName === 'admin', admin, graphql)
+            )
           )
         )
       )

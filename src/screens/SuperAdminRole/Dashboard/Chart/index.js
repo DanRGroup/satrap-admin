@@ -9,6 +9,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import ModelsCount from './ModelsCount';
 import ServiceChart from './ServiceChart';
 import TonnageChart from './TonnageChart';
+import ContractChart from './ContractChart';
 
 import AppNewsUpdate from './app-news-update';
 import AppCurrentVisits from './app-current-visits';
@@ -55,14 +56,9 @@ export default function AppView() {
       });
       if (!isEmptyObject(data) && !error) {
         const { data: contracts } = data[graph.contract.name];
-        console.log(contracts[0]);
         const { forecast_amount, total_service } = contracts[0];
-        // console.log(forecast_amount);
-        // console.log(total_service);
-        setForecast(Number(forecast_amount));
+        setForecast(Number(forecast_amount - total_service));
         settotal(Number(total_service));
-        console.log('forecast', forecast);
-        console.log('total', total);
       }
     } catch (error) {}
   };
@@ -77,21 +73,7 @@ export default function AppView() {
         <ModelsCount />
         <ServiceChart />
         <TonnageChart />
-        {total !== 0 && forecast !== 0 ? (
-          <Grid xs={12} md={6} lg={4}>
-            <AppCurrentVisits
-              title="نمودار پراکندگی حمل و نقل"
-              chart={{
-                series: [
-                  { label: 'رانندگان', value: { total } },
-                  { label: 'کاربران', value: { forecast } },
-                ],
-              }}
-            />
-          </Grid>
-        ) : (
-          <></>
-        )}
+        <ContractChart />
 
         <Grid xs={12} md={6} lg={8}>
           <AppConversionRates
