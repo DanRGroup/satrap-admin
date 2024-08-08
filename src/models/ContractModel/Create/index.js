@@ -67,7 +67,6 @@ export default function CreatePopup({ title, refetch }) {
         </IconButton>
       </Tooltip>
       <NewDialog label="create" open={open} onClose={onClose} maxWidth="xs">
-        {/* <Typography>{title}</Typography> */}
         <NewDialogTitle title={<FormattedMessage id="create_contract" />} onClose={onClose} />
         <NewDialogContent>
           <Stack p={2} alignItems="center">

@@ -2,7 +2,19 @@ import React from 'react';
 import Update from '../Update';
 import Media from '../Media';
 
-import { Card, Stack, Slide, Divider, Checkbox, Typography, CardHeader, CardActionArea } from '@mui/material';
+import {
+  Card,
+  Stack,
+  Slide,
+  Divider,
+  Checkbox,
+  Typography,
+  CardHeader,
+  CardActionArea,
+  useTheme,
+  useMediaQuery,
+  Chip,
+} from '@mui/material';
 import { AvatarPopover, NewSpeedDial } from 'components';
 import { FormattedMessage } from 'react-intl';
 
@@ -15,6 +27,16 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   } = useSelector((state) => state.setting);
   const isRtl = dir === 'rtl';
   const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
+
+  const operationType = model?.operation_type?.title;
+  const materialType = model?.material_type?.title;
+  const shiftType = model?.shift_type?.title;
+  const taskType = model?.task_type?.title;
+  const workshopTitle = model?.workshop?.title;
+  const siteTitle = model?.site?.title;
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <>
@@ -40,6 +62,14 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-start"
             direction={isRtl ? 'row' : 'row-reverse'}
           >
+            {/* {!isMobile && (
+              <>
+                {workshopTitle && <Chip label={workshopTitle} />}
+                {siteTitle && <Chip label={siteTitle} />}
+                {operationType && <Chip label={operationType} />}
+                {shiftType && <Chip label={shiftType} />}
+              </>
+            )} */}
             <Checkbox size="small" checked={checked} onChange={handleSelect} />
             <Media
               id={model?.id}
@@ -62,9 +92,15 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {isAuthenticated && hasRequiredRole(['superadmin', 'companyCeo'], userInfo?.roles) && (
-                <Update ids={model?.id} title={<FormattedMessage id="update" />} refetch={refetch} />
-              )}
+              {workshopTitle && <Chip label={workshopTitle} />}
+              {siteTitle && <Chip label={siteTitle} />}
+              {operationType && <Chip label={operationType} />}
+              {shiftType && <Chip label={shiftType} />}
+              {isAuthenticated &&
+                hasRequiredRole(
+                  ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
+                  userInfo?.roles
+                ) && <Update ids={model?.id} title={<FormattedMessage id="update" />} refetch={refetch} />}
               <Media id={model?.id} model="Brand" collection="banner" />
             </NewSpeedDial>
           </Stack>
@@ -73,16 +109,16 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography fontSize={14} variant="subtitle1">
-                  {`${model?.task_type?.title} - ${model?.material_type?.title} - کارکرد : ${model?.operation_type?.title} - شیفت : ${model?.shift_type?.title}`}
+                  {`${taskType} ${materialType && ' - ' + materialType}`}
                 </Typography>
               }
-              subheader={
-                <Typography fontSize={12} variant="subtitle2">
-                  {`${model?.workshop?.title} ${
-                    model?.task_type.title === 'حمل بار' ? ` - ${model?.site?.title}` : ''
-                  }`}
-                </Typography>
-              }
+              // subheader={
+              //   <Typography fontSize={12} variant="subtitle2">
+              //     {`${model?.workshop?.title} ${
+              //       model?.task_type.title === 'حمل بار' ? ` - ${model?.site?.title}` : ''
+              //     }`}
+              //   </Typography>
+              // }
             />
           </CardActionArea>
         </Card>

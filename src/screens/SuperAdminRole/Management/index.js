@@ -15,16 +15,17 @@ export default function NewOrder() {
     <Container maxWidth="xl">
       <Stack pt={3} rowGap={3} alignItems="center">
         <Grid container>
-          {isAuthenticated && hasRequiredRole(['superadmin', 'companyCeo'], userInfo?.roles) && (
-            <>
-              <Grid item xs={12} sm={6} md={4} lg={4} p={0.5}>
-                <NewContract />
-              </Grid>
-              <Grid item xs={12} sm={6} md={4} lg={4} p={0.5}>
-                <NewTariff />
-              </Grid>
-            </>
-          )}
+          {isAuthenticated &&
+            hasRequiredRole(['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'], userInfo?.roles) && (
+              <>
+                <Grid item xs={12} sm={6} md={4} lg={4} p={0.5}>
+                  <NewContract />
+                </Grid>
+                <Grid item xs={12} sm={6} md={4} lg={4} p={0.5}>
+                  <NewTariff />
+                </Grid>
+              </>
+            )}
           <Grid item xs={12} sm={6} md={4} lg={4} p={0.5}>
             <NewTask />
           </Grid>

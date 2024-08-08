@@ -3,7 +3,19 @@ import Update from '../Update';
 import Media from '../Media';
 import ChangeStatus from '../ChangeStatus';
 
-import { Card, Stack, Slide, Divider, Checkbox, Typography, CardHeader, CardActionArea } from '@mui/material';
+import {
+  Card,
+  Stack,
+  Slide,
+  Divider,
+  Checkbox,
+  Typography,
+  CardHeader,
+  CardActionArea,
+  useMediaQuery,
+  useTheme,
+  Chip,
+} from '@mui/material';
 import { AvatarPopover, NewSpeedDial } from 'components';
 import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
@@ -16,6 +28,15 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   } = useSelector((state) => state.setting);
   const isRtl = dir === 'rtl';
   const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const driver = model?.driver?.firstname + ' ' + model?.driver?.lastname;
+  const taskType = model?.type.title;
+  const plaque = model?.vehicle?.plaque;
+  const workshopTitle = model?.workshop?.title;
+  const siteTitle = model?.site?.title;
 
   return (
     <>
@@ -62,6 +83,14 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             position="absolute"
             justifyContent="flex-end"
           >
+            {!isMobile && (
+              <>
+                {taskType && <Chip label={taskType} />}
+                {plaque && <Chip label={plaque} />}
+                {workshopTitle && <Chip label={workshopTitle} />}
+                {siteTitle && <Chip label={siteTitle} />}
+              </>
+            )}
             <NewSpeedDial>
               {isAuthenticated &&
                 hasRequiredRole(['superadmin', 'workshopManager', 'siteManager'], userInfo?.roles) && (
@@ -77,14 +106,14 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography fontSize={14} variant="subtitle1">
-                  {`${model?.type.title} - ${model?.material_type?.title} - ماشین : ${model?.vehicle?.plaque} - راننده : ${model?.driver?.firstname} ${model?.driver?.lastname}`}
+                  {driver}
                 </Typography>
               }
-              subheader={
-                <Typography fontSize={12} variant="subtitle2">
-                  {`${model?.workshop?.title} ${model?.type.title === 'حمل بار' ? ` - ${model?.site?.title}` : ''}`}
-                </Typography>
-              }
+              // subheader={
+              //   <Typography fontSize={12} variant="subtitle2">
+              //     {`${model?.workshop?.title} ${model?.type.title === 'حمل بار' ? ` - ${model?.site?.title}` : ''}`}
+              //   </Typography>
+              // }
             />
           </CardActionArea>
         </Card>

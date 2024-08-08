@@ -87,6 +87,8 @@ export const setModelsSlice = createSlice({
     ],
     userRoles: [
       { const: '3', title: 'company_ceo' },
+      { const: '4', title: 'company_operator' },
+      { const: '5', title: 'company_financial' },
       { const: '6', title: 'workshop_manager' },
       { const: '8', title: 'workshop_supervisor' },
       { const: '9', title: 'site_manager' },

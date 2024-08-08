@@ -45,6 +45,7 @@ const locales = {
     alias: 'Alias',
     name: 'Name',
     role: 'Role',
+    role_asignment: 'Role Asignment',
     details: 'Details',
     cost: 'Cost',
     pay: 'Pay',
@@ -210,6 +211,10 @@ const locales = {
     financial_manager: 'Financial Manager',
     driver: 'Driver',
 
+    company_ceo: 'Company CEO',
+    company_operator: 'Company Operator',
+    company_financial: 'Company Financial',
+
     waiting_for_activate: 'Waiting For Activate',
     verified: 'Verified',
     deactive: 'Deactive',
@@ -301,6 +306,7 @@ const locales = {
     alias: 'نام مستعار',
     name: 'نام',
     role: 'نقش',
+    role_asignment: 'اختصاص نقش',
     cost: 'هزینه',
     pay: 'پرداختی',
     number: 'شماره',
@@ -462,11 +468,13 @@ const locales = {
     workshop_manager: 'مدیر کارگاه',
     workshop_operator: 'اپراتور کارگاه',
     workshop_supervisor: 'ناظر کارگاه',
-    site_manager: 'مدیر محل',
+    site_manager: 'مدیر محل تخلیه',
     financial_manager: 'مدیر مالی',
     driver: 'راننده',
 
-    company_ceo: 'مدیر شرکت',
+    company_ceo: 'مدیر عامل شرکت',
+    company_operator: 'اپراتور شرکت',
+    company_financial: 'واحد مالی شرکت',
 
     waiting_for_activate: 'در انتظار فعال‌سازی',
     verified: 'تایید شده',

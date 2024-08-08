@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, IconButton, Stack, Zoom, useMediaQuery, useTheme } from '@mui/material';
+import { Box, IconButton, Stack, Zoom, useMediaQuery, useTheme, Paper, List } from '@mui/material';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 
 export default function CompHandler({ children }) {
@@ -37,11 +37,14 @@ function SpeedDial({ children }) {
           bgcolor: '#919eab3d',
           borderRadius: 2,
           px: 1,
-          zIndex: 1
+          zIndex: 1,
+          overflowX: 'auto',
+          overflowY: 'hidden',
+          flexDirection: 'row',
         }}
         columnGap={1}
         alignItems="center"
-        direction="row-reverse"
+        // direction="row-reverse"
       >
         {children.map((child, i) => (
           <Zoom
@@ -50,7 +53,7 @@ function SpeedDial({ children }) {
             unmountOnExit
             timeout={{ appear: (i + 1.5) * 130, enter: (i + 1.5) * 150, exit: (i + 1.5) * 170 }}
           >
-            <Box>{child}</Box>
+            <Box x={{ minWidth: '150px' }}>{child}</Box>
           </Zoom>
         ))}
       </Stack>

@@ -60,7 +60,7 @@ export default function AppView() {
   return (
     <Grid xs={12} md={6} lg={4}>
       <AppCurrentVisits
-        title={`نمودار اجرای hhh`}
+        title={`نمودار اجرای قرارداد`}
         chart={{
           series: [
             { label: 'انجام شده', value: total },

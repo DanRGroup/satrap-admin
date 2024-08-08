@@ -2,7 +2,7 @@ import React from 'react';
 import Update from '../Update';
 import Media from '../Media';
 
-import { Card, Stack, Slide, Divider, Checkbox, Typography, CardHeader, CardActionArea } from '@mui/material';
+import { Card, Stack, Slide, Divider, Checkbox, Typography, CardHeader, CardActionArea, Chip } from '@mui/material';
 import { AvatarPopover, NewSpeedDial } from 'components';
 
 import { useSelector } from 'react-redux';
@@ -16,6 +16,13 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   } = useSelector((state) => state.setting);
   const isRtl = dir === 'rtl';
   const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
+
+  const siteTitel = model?.title;
+  const siteType = model?.type?.title;
+  const siteManager =
+    model?.manager?.firstname && model?.manager?.lastname
+      ? `${model?.manager?.firstname} ${model?.manager?.lastname}`
+      : '';
 
   return (
     <>
@@ -57,6 +64,8 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
+              {siteType && <Chip label={siteType} />}
+              {siteManager && <Chip label={siteManager} />}
               {isAuthenticated && hasRequiredRole(['superadmin', 'siteManager', 'companyCeo'], userInfo?.roles) && (
                 <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
               )}
@@ -68,15 +77,14 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography textAlign={isRtl ? 'start' : 'end'} fontSize={14} variant="subtitle1">
-                  {model?.title} {model?.manager?.firstname && `- مدیر : ${model?.manager?.firstname}`}{' '}
-                  {model?.manager?.lastname}
+                  {siteTitel}
                 </Typography>
               }
-              subheader={
-                <Typography fontSize={12} variant="subtitle2">
-                  {model?.type?.title}
-                </Typography>
-              }
+              // subheader={
+              //   <Typography fontSize={12} variant="subtitle2">
+              //     {model?.type?.title}
+              //   </Typography>
+              // }
             />
           </CardActionArea>
         </Card>

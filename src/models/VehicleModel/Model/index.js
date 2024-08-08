@@ -2,7 +2,7 @@ import React from 'react';
 import Update from '../Update';
 import Media from '../Media';
 
-import { Card, Stack, Slide, Divider, Checkbox, Typography, CardHeader, CardActionArea } from '@mui/material';
+import { Card, Stack, Slide, Divider, Checkbox, Typography, CardHeader, CardActionArea, Chip } from '@mui/material';
 import { AvatarPopover, NewSpeedDial } from 'components';
 import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
@@ -12,6 +12,12 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
     language: { direction: dir },
   } = useSelector((state) => state.setting);
   const isRtl = dir === 'rtl';
+
+  const vehicleType = model?.type?.title ? model?.type?.title : '';
+  const plaque = model?.plaque ? model?.plaque : '';
+  const driverName =
+    model?.driver?.firstname && model?.driver?.lastname ? `${model?.driver?.firstname} ${model?.driver?.lastname}` : '';
+
   return (
     <>
       <Slide
@@ -58,6 +64,8 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
+              {vehicleType && <Chip label={vehicleType} />}
+              {driverName && <Chip label={driverName} />}
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
               <Media id={model.id} model="Brand" collection="banner" />
             </NewSpeedDial>
@@ -67,14 +75,14 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography fontSize={14} variant="subtitle1">
-                  {`${model?.type?.title} - پلاک : ${model?.plaque} - (${model?.driver?.firstname} ${model?.driver?.lastname})`}
+                  {`پلاک : ${plaque}`}
                 </Typography>
               }
-              subheader={
-                <Typography fontSize={12} variant="subtitle2">
-                  {`شماره سریال : ${model.serial_number}`}
-                </Typography>
-              }
+              // subheader={
+              //   <Typography fontSize={12} variant="subtitle2">
+              //     {`شماره سریال : ${model.serial_number}`}
+              //   </Typography>
+              // }
             />
           </CardActionArea>
         </Card>

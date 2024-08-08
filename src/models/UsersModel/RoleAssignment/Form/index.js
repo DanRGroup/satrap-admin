@@ -9,7 +9,7 @@ const RoleAssignmentForm = ({ formData = {}, loading, onSubmit }) => {
 
   return (
     <MuiFormBuilder
-      submit="تایید"
+      showSubmit={false}
       schema={schema(userRoles)}
       uiSchema={uiSchema()}
       loading={loading}

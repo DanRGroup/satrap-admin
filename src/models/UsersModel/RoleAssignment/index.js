@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Dialog, Tooltip, IconButton, DialogTitle, DialogContent, CircularProgress, Box } from '@mui/material';
+import { Dialog, Tooltip, IconButton, DialogTitle, Stack, CircularProgress, Box, Button } from '@mui/material';
 import { AssignmentIndRounded } from '@mui/icons-material';
+
+import { NewDialogActions, NewDialogContent, NewDialog, NewDialogTitle } from 'components';
 
 import Form from './Form';
 import graph from './graph';
@@ -8,17 +10,18 @@ import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { isEmptyObject } from 'helpers/formatObject';
+import { FormattedMessage } from 'react-intl';
 
 export default function RoleAssignment({ ids, refetch }) {
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({});
   const { userToken } = useSelector((state) => state.auth);
 
-  const handleClickOpen = () => {
+  const onOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const onClose = () => {
     setOpen(false);
   };
 
@@ -41,7 +44,7 @@ export default function RoleAssignment({ ids, refetch }) {
       });
       if (!errors) {
         refetch();
-        handleClose();
+        onClose();
         if (!isEmptyObject(data)) {
           data[graph.assignRole.name]?.messages.map((message) => toast.success(String(message)));
         }
@@ -54,7 +57,7 @@ export default function RoleAssignment({ ids, refetch }) {
   return (
     <>
       <Tooltip title="اختصاص نقش">
-        <IconButton sx={{ bgcolor: 'action.selected' }} size="medium" color="error" onClick={handleClickOpen}>
+        <IconButton sx={{ bgcolor: 'action.selected' }} size="medium" color="error" onClick={onOpen}>
           {loading ? (
             <CircularProgress color="error" size={25} />
           ) : (
@@ -62,22 +65,27 @@ export default function RoleAssignment({ ids, refetch }) {
           )}
         </IconButton>
       </Tooltip>
-      <Dialog
+      <NewDialog
         open={open}
-        onClose={handleClose}
+        onClose={onClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
         dir="rtl"
         fullWidth
         maxWidth="xs"
       >
-        <DialogTitle id="alert-dialog-title">اختصاص نقش</DialogTitle>
-        <Box sx={{ m: 0.5 }}>
-          <DialogContent>
-            <Form formData={form} loading={loading} onSubmit={onSubmit} />
-          </DialogContent>
-        </Box>
-      </Dialog>
+        <NewDialogTitle title={<FormattedMessage id="role_asignment" />} onClose={onClose} />
+        <NewDialogContent>
+          <Stack sx={{ m: 2 }}>
+            <Form formData={form} loading={loading} />
+          </Stack>
+        </NewDialogContent>
+        <NewDialogActions>
+          <Button size="large" variant="contained" onClick={onSubmit}>
+            <FormattedMessage id="confirm" />
+          </Button>
+        </NewDialogActions>
+      </NewDialog>
     </>
   );
 }

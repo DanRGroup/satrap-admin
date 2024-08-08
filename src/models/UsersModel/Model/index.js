@@ -8,7 +8,7 @@ import { formatUserRoles } from 'helpers';
 import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { AvatarPopover, NewSpeedDial } from 'components';
-import { Card, Stack, Fade, Divider, Checkbox, Typography, CardHeader, CardActionArea } from '@mui/material';
+import { Card, Stack, Fade, Divider, Checkbox, Typography, CardHeader, CardActionArea, Chip } from '@mui/material';
 
 export default function Model({ model, delay, checked, handleSelect, refetch }) {
   const {
@@ -16,6 +16,9 @@ export default function Model({ model, delay, checked, handleSelect, refetch }) 
   } = useSelector((state) => state.setting);
   const isRtl = direction === 'rtl';
   const role = Array.isArray(model?.roles) && model?.roles.length > 0 ? formatUserRoles(model.roles) : '';
+
+  const userFullName = model?.firstname && model?.lastname ? `${model.firstname} ${model.lastname}` : 'بدون نام';
+  const cellphone = model?.cellphone;
 
   return (
     <>
@@ -59,6 +62,8 @@ export default function Model({ model, delay, checked, handleSelect, refetch }) 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
+              {role && <Chip label={role} />}
+              {cellphone && <Chip label={cellphone} />}
               <Roles refetch={refetch} roles={model.all_roles} />
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
             </NewSpeedDial>
@@ -68,14 +73,14 @@ export default function Model({ model, delay, checked, handleSelect, refetch }) 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography fontSize={14} variant="subtitle1">
-                  {`${model?.firstname} ${model?.lastname} ${role}`}
+                  {`${userFullName}`}
                 </Typography>
               }
-              subheader={
-                <Typography fontSize={12} variant="subtitle2">
-                  {model.cellphone}
-                </Typography>
-              }
+              // subheader={
+              //   <Typography fontSize={12} variant="subtitle2">
+              //     {model?.cellphone}
+              //   </Typography>
+              // }
             />
           </CardActionArea>
         </Card>

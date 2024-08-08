@@ -15,6 +15,9 @@ import {
   Button,
   Tooltip,
   IconButton,
+  Chip,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import PaymentRoundedIcon from '@mui/icons-material/PaymentRounded';
 import { AvatarPopover, NewSpeedDial } from 'components';
@@ -29,6 +32,12 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   } = useSelector((state) => state.setting);
   const isRtl = dir === 'rtl';
   const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const workshopTitle = model?.workshop?.title;
+  const employer = model?.employer?.firstname + model?.employer?.lastname;
 
   return (
     <>
@@ -76,18 +85,28 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {isAuthenticated && hasRequiredRole(['superadmin', 'companyCeo'], userInfo?.roles) && (
+              {!isMobile && (
                 <>
-                  <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
-                  <ContractFinancial isPopup ids={model.id} title={<FormattedMessage id="financials" />}>
-                    <Tooltip>
-                      <IconButton sx={{ bgcolor: 'action.selected' }} size="small" color="info">
-                        <PaymentRoundedIcon fontSize="small" />
-                      </IconButton>
-                    </Tooltip>
-                  </ContractFinancial>
+                  {workshopTitle && <Chip label={workshopTitle} />}
+                  {employer && <Chip label={employer} />}
                 </>
               )}
+              {isAuthenticated &&
+                hasRequiredRole(
+                  ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
+                  userInfo?.roles
+                ) && (
+                  <>
+                    <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
+                    <ContractFinancial isPopup ids={model.id} title={<FormattedMessage id="financials" />}>
+                      <Tooltip>
+                        <IconButton sx={{ bgcolor: 'action.selected' }} size="small" color="info">
+                          <PaymentRoundedIcon fontSize="small" />
+                        </IconButton>
+                      </Tooltip>
+                    </ContractFinancial>
+                  </>
+                )}
               <Media id={model.id} model="Brand" collection="banner" />
             </NewSpeedDial>
           </Stack>
@@ -99,11 +118,11 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
                   {model?.title}
                 </Typography>
               }
-              subheader={
-                <Typography fontSize={12} variant="subtitle2">
-                  {model?.workshop?.title} - {model?.employer?.firstname} {model?.employer?.lastname}
-                </Typography>
-              }
+              // subheader={
+              //   <Typography fontSize={12} variant="subtitle2">
+              //     {model?.workshop?.title} - {model?.employer?.firstname} {model?.employer?.lastname}
+              //   </Typography>
+              // }
             />
           </CardActionArea>
         </Card>
