@@ -14,8 +14,8 @@ const uiSchema = () => ({
   vehicle_ids: {
     'ui:widget': VehicleSelectionWidget,
     'ui:options': {
-      xs: 3,
-      sm: 3,
+      xs: 6,
+      sm: 6,
       md: 3,
       lg: 3,
       xl: 3,
@@ -24,8 +24,8 @@ const uiSchema = () => ({
   workshop_ids: {
     'ui:widget': WorkshopSelectionWidget,
     'ui:options': {
-      xs: 3,
-      sm: 3,
+      xs: 6,
+      sm: 6,
       md: 3,
       lg: 3,
       xl: 3,
@@ -34,8 +34,8 @@ const uiSchema = () => ({
   site_ids: {
     'ui:widget': SiteSelectionWidget,
     'ui:options': {
-      xs: 3,
-      sm: 3,
+      xs: 6,
+      sm: 6,
       md: 3,
       lg: 3,
       xl: 3,
@@ -44,8 +44,8 @@ const uiSchema = () => ({
   driver_ids: {
     'ui:widget': UsersSelectionWidget,
     'ui:options': {
-      xs: 3,
-      sm: 3,
+      xs: 6,
+      sm: 6,
       md: 3,
       lg: 3,
       xl: 3,
@@ -53,8 +53,8 @@ const uiSchema = () => ({
   },
   type_ids: {
     'ui:options': {
-      xs: 4,
-      sm: 4,
+      xs: 6,
+      sm: 6,
       md: 4,
       lg: 4,
       xl: 4,
@@ -62,8 +62,8 @@ const uiSchema = () => ({
   },
   material_type_ids: {
     'ui:options': {
-      xs: 4,
-      sm: 4,
+      xs: 6,
+      sm: 6,
       md: 4,
       lg: 4,
       xl: 4,
@@ -71,8 +71,8 @@ const uiSchema = () => ({
   },
   shift_type_ids: {
     'ui:options': {
-      xs: 4,
-      sm: 4,
+      xs: 6,
+      sm: 6,
       md: 4,
       lg: 4,
       xl: 4,
@@ -90,8 +90,8 @@ const uiSchema = () => ({
   status_ids: {
     // 'ui:widget': TasksStatusSelectionWidget,
     'ui:options': {
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,
@@ -100,11 +100,11 @@ const uiSchema = () => ({
 
   created_at: {
     'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
     },
   },
 });
