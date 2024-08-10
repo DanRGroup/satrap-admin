@@ -83,15 +83,11 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             position="absolute"
             justifyContent="flex-end"
           >
-            {!isMobile && (
-              <>
-                {taskType && <Chip label={taskType} />}
-                {plaque && <Chip label={plaque} />}
-                {workshopTitle && <Chip label={workshopTitle} />}
-                {siteTitle && <Chip label={siteTitle} />}
-              </>
-            )}
             <NewSpeedDial>
+              {taskType && <Chip label={taskType} />}
+              {plaque && <Chip label={plaque} />}
+              {workshopTitle && <Chip label={workshopTitle} />}
+              {siteTitle && <Chip label={siteTitle} />}
               {isAuthenticated &&
                 hasRequiredRole(['superadmin', 'workshopManager', 'siteManager'], userInfo?.roles) && (
                   <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />

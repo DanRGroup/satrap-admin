@@ -324,7 +324,11 @@ export default function PersianDateWidget(props) {
           </Typography>
         </Button>
       </Stack>
-      <Dialog onClose={handleClose} open={open} fullScreen={fullScreen}>
+      <Dialog
+        onClose={handleClose}
+        open={open}
+        // fullScreen={fullScreen}
+      >
         <DialogTitle fontSize={24}>{digitsEnToFa(selectedValue)}</DialogTitle>
         <DialogContent dir="rtl" sx={{ p: { xs: 0.5, sm: 1, md: 2 } }}>
           <Stack rowGap={2}>

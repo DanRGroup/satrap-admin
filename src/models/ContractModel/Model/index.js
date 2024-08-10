@@ -16,8 +16,6 @@ import {
   Tooltip,
   IconButton,
   Chip,
-  useMediaQuery,
-  useTheme,
 } from '@mui/material';
 import PaymentRoundedIcon from '@mui/icons-material/PaymentRounded';
 import { AvatarPopover, NewSpeedDial } from 'components';
@@ -32,9 +30,6 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   } = useSelector((state) => state.setting);
   const isRtl = dir === 'rtl';
   const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
-
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const workshopTitle = model?.workshop?.title;
   const employer = model?.employer?.firstname + model?.employer?.lastname;
@@ -85,12 +80,8 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {!isMobile && (
-                <>
-                  {workshopTitle && <Chip label={workshopTitle} />}
-                  {employer && <Chip label={employer} />}
-                </>
-              )}
+              {workshopTitle && <Chip label={workshopTitle} />}
+              {employer && <Chip label={employer} />}
               {isAuthenticated &&
                 hasRequiredRole(
                   ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
