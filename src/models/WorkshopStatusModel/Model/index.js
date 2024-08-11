@@ -2,16 +2,29 @@ import React from 'react';
 import Update from '../Update';
 import Media from '../Media';
 
-import { Card, Stack, Slide, Divider, Checkbox, Typography, CardHeader, CardActionArea } from '@mui/material';
+import {
+  Card,
+  Stack,
+  Slide,
+  Divider,
+  Checkbox,
+  Typography,
+  CardHeader,
+  CardActionArea,
+  alpha,
+  useTheme,
+} from '@mui/material';
 import { AvatarPopover, NewSpeedDial } from 'components';
 import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 
-export default function Model({ model, delay, direction, checked, handleSelect, refetch }) {
+export default function Model({ model, delay, direction, checked, handleSelect, refetch, color }) {
   const {
     language: { direction: dir },
   } = useSelector((state) => state.setting);
-  const isRtl = dir === "rtl";
+  const isRtl = dir === 'rtl';
+  const theme = useTheme();
+
   return (
     <>
       <Slide
@@ -23,7 +36,12 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
         <Card
           sx={{
             position: 'relative',
-            bgcolor: checked && 'action.disabledBackground',
+            // bgcolor: checked && 'action.disabledBackground',
+            bgcolor: checked
+              ? alpha(theme.palette.warning.lighter, 1)
+              : color
+              ? 'action.disabledOpacity'
+              : 'action.focus',
           }}
         >
           <Stack
@@ -34,7 +52,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             alignItems="center"
             position="absolute"
             justifyContent="flex-start"
-            direction={isRtl ? "row" : "row-reverse"}
+            direction={isRtl ? 'row' : 'row-reverse'}
           >
             <Checkbox size="small" checked={checked} onChange={handleSelect} />
             <Media

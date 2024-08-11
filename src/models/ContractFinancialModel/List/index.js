@@ -61,6 +61,10 @@ export default function List({
     }
   };
 
+  const getColor = (index) => {
+    return index % 2 === 0 ? false : true;
+  };
+
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
       setSelected(result);
@@ -114,6 +118,7 @@ export default function List({
               style={{ flex: 1 }}
               direction={direction}
               delay={(i % limit) + 1}
+              color={getColor(i)}
               checked={selected.find((select) => model.id === select.id) ? true : false}
               handleSelect={() => handleSelect({ id: model?.id, title: model.title })}
             />

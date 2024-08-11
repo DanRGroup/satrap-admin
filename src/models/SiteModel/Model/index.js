@@ -2,6 +2,7 @@ import React from 'react';
 import Update from '../Update';
 import Media from '../Media';
 
+import { alpha, useTheme } from '@mui/material';
 import { Card, Stack, Slide, Divider, Checkbox, Typography, CardHeader, CardActionArea, Chip } from '@mui/material';
 import { AvatarPopover, NewSpeedDial } from 'components';
 
@@ -10,12 +11,14 @@ import { hasRequiredRole } from 'helpers';
 
 import { FormattedMessage } from 'react-intl';
 
-export default function Model({ model, delay, direction, checked, handleSelect, refetch }) {
+export default function Model({ model, delay, direction, checked, handleSelect, refetch, color }) {
   const {
     language: { direction: dir },
   } = useSelector((state) => state.setting);
   const isRtl = dir === 'rtl';
   const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
+
+  const theme = useTheme();
 
   const siteTitel = model?.title;
   const siteType = model?.type?.title;
@@ -35,7 +38,12 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
         <Card
           sx={{
             position: 'relative',
-            bgcolor: checked && 'action.disabledBackground',
+            // bgcolor: checked && 'action.disabledBackground',
+            bgcolor: checked
+              ? alpha(theme.palette.warning.lighter, 1)
+              : color
+              ? 'action.disabledOpacity'
+              : 'action.focus',
           }}
         >
           <Stack

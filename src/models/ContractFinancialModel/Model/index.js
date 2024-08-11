@@ -8,7 +8,7 @@ import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { hasRequiredRole } from 'helpers';
 
-export default function Model({ model, delay, direction, checked, handleSelect, refetch }) {
+export default function Model({ model, delay, direction, checked, handleSelect, refetch, color }) {
   const {
     language: { direction: dir },
   } = useSelector((state) => state.setting);
@@ -26,7 +26,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
         <Card
           sx={{
             position: 'relative',
-            bgcolor: checked && 'action.disabledBackground',
+            bgcolor: color ? 'action.disabledOpacity' : 'action.focus',
           }}
         >
           <Stack

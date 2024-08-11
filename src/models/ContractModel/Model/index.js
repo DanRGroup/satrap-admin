@@ -3,6 +3,7 @@ import Update from '../Update';
 import ContractFinancial from 'models/ContractFinancialModel';
 import Media from '../Media';
 
+import { alpha, useTheme } from '@mui/material';
 import {
   Card,
   Stack,
@@ -24,7 +25,7 @@ import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { hasRequiredRole } from 'helpers';
 
-export default function Model({ model, delay, direction, checked, handleSelect, refetch }) {
+export default function Model({ model, delay, direction, checked, handleSelect, refetch, color }) {
   const {
     language: { direction: dir },
   } = useSelector((state) => state.setting);
@@ -33,6 +34,8 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
 
   const workshopTitle = model?.workshop?.title;
   const employer = model?.employer?.firstname + model?.employer?.lastname;
+
+  const theme = useTheme();
 
   return (
     <>
@@ -45,7 +48,12 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
         <Card
           sx={{
             position: 'relative',
-            bgcolor: checked && 'action.disabledBackground',
+            // bgcolor: checked && 'action.disabledBackground',
+            bgcolor: checked
+              ? alpha(theme.palette.warning.lighter, 1)
+              : color
+              ? 'action.disabledOpacity'
+              : 'action.focus',
           }}
         >
           <Stack

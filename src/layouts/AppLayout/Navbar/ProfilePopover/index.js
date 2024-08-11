@@ -64,23 +64,6 @@ export default function ProfilePopover() {
           sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
       </IconButton>
-      <Stack direction="row" columnGap={1} py={1}>
-        {roles.map((role) => (
-          <Typography
-            px={2}
-            py={0.5}
-            key={role.id}
-            fontSize={12}
-            borderRadius={3}
-            lineHeight={1.5}
-            color="error.dark"
-            variant="subtitle2"
-            bgcolor="error.lighter"
-          >
-            {role.title}
-          </Typography>
-        ))}
-      </Stack>
 
       <Menu
         id={id}
@@ -99,7 +82,7 @@ export default function ProfilePopover() {
       >
         <Stack p={1}>
           <Typography variant="subtitle1">{username}</Typography>
-          {/* <Stack direction="row" columnGap={1} py={1}>
+          <Stack direction="row" columnGap={1} py={1}>
             {roles.map((role) => (
               <Typography
                 px={2}
@@ -115,7 +98,7 @@ export default function ProfilePopover() {
                 {role.title}
               </Typography>
             ))}
-          </Stack> */}
+          </Stack>
         </Stack>
 
         <Divider sx={{ borderStyle: 'dashed' }} />

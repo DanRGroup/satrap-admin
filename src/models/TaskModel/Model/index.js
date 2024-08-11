@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Update from '../Update';
 import Media from '../Media';
 import ChangeStatus from '../ChangeStatus';
@@ -15,6 +15,7 @@ import {
   useMediaQuery,
   useTheme,
   Chip,
+  alpha,
 } from '@mui/material';
 import { AvatarPopover, NewSpeedDial } from 'components';
 import { useSelector } from 'react-redux';
@@ -22,7 +23,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { hasRequiredRole } from 'helpers';
 
-export default function Model({ model, delay, direction, checked, handleSelect, refetch }) {
+export default function Model({ model, delay, direction, checked, handleSelect, refetch, color }) {
   const {
     language: { direction: dir },
   } = useSelector((state) => state.setting);
@@ -38,6 +39,8 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   const workshopTitle = model?.workshop?.title;
   const siteTitle = model?.site?.title;
 
+  console.log(color);
+
   return (
     <>
       <Slide
@@ -49,7 +52,11 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
         <Card
           sx={{
             position: 'relative',
-            bgcolor: checked && 'action.disabledBackground',
+            bgcolor: checked
+              ? alpha(theme.palette.warning.lighter, 1)
+              : color
+              ? 'action.disabledOpacity'
+              : 'action.focus',
           }}
         >
           <Stack

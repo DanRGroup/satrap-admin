@@ -8,13 +8,27 @@ import { formatUserRoles } from 'helpers';
 import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { AvatarPopover, NewSpeedDial } from 'components';
-import { Card, Stack, Fade, Divider, Checkbox, Typography, CardHeader, CardActionArea, Chip } from '@mui/material';
+import {
+  Card,
+  Stack,
+  Fade,
+  Divider,
+  Checkbox,
+  Typography,
+  CardHeader,
+  CardActionArea,
+  Chip,
+  alpha,
+  useTheme,
+} from '@mui/material';
 
-export default function Model({ model, delay, checked, handleSelect, refetch }) {
+export default function Model({ model, delay, checked, handleSelect, refetch, color }) {
   const {
     language: { dir, direction },
   } = useSelector((state) => state.setting);
   const isRtl = direction === 'rtl';
+  const theme = useTheme();
+
   const role = Array.isArray(model?.roles) && model?.roles.length > 0 ? formatUserRoles(model.roles) : '';
 
   const userFullName = model?.firstname && model?.lastname ? `${model.firstname} ${model.lastname}` : 'بدون نام';
@@ -27,7 +41,12 @@ export default function Model({ model, delay, checked, handleSelect, refetch }) 
           sx={{
             direction: dir,
             position: 'relative',
-            bgcolor: checked && 'action.disabledBackground',
+            // bgcolor: checked && 'action.disabledBackground',
+            bgcolor: checked
+              ? alpha(theme.palette.warning.lighter, 1)
+              : color
+              ? 'action.disabledOpacity'
+              : 'action.focus',
           }}
         >
           <Stack
