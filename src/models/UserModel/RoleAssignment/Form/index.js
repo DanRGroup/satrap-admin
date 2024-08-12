@@ -1,10 +1,10 @@
 import React from 'react';
-import schema from './schema';
+import { schema, siteSchema, workshopSchema } from './schema';
 import uiSchema from './uiSchema';
 import { MuiFormBuilder } from 'components';
 import { useSelector } from 'react-redux';
 
-const RoleAssignmentForm = ({ formData = {}, loading, onSubmit }) => {
+const RoleAssignmentForm = ({ formData = {}, loading, onSubmit, onChange }) => {
   const { userRoles } = useSelector((state) => state.models);
 
   return (
@@ -15,6 +15,7 @@ const RoleAssignmentForm = ({ formData = {}, loading, onSubmit }) => {
       loading={loading}
       formData={formData}
       onSubmit={onSubmit}
+      onChange={onChange}
     />
   );
 };

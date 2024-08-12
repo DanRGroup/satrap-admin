@@ -59,6 +59,7 @@ const uiSchema = () => ({
     },
   },
   cellphone: {
+    'ui:emptyValue': '',
     inputType: 'tel',
     'ui:options': {
       xs: 12,

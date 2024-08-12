@@ -63,20 +63,20 @@ const schema = {
               title
             }
             roles
-            #all_roles {
-            #  sites {
-            #    id
-            #    type {
-            #      id
-            #      title
-            #    }
-            #    title
-            #  }
-            #  workshops {
-            #    id
-            #    title
-            #  }
-            #}
+            all_roles {
+              sites {
+                id
+                type {
+                  id
+                  title
+                }
+                title
+              }
+              workshops {
+                id
+                title
+              }
+            }
           }
           total
         }

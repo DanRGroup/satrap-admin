@@ -7,6 +7,18 @@ const schema = (taskStatusesRole) => ({
       title: 'task_status',
       oneOf: taskStatusesRole,
     },
+    location: {
+      type: 'object',
+      title: 'location',
+      properties: {
+        lat: {
+          type: 'string',
+        },
+        lng: {
+          type: 'string',
+        },
+      },
+    },
   },
 });
 

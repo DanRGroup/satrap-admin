@@ -3,6 +3,23 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 export const setModelsSlice = createSlice({
   name: 'models',
   initialState: {
+    // contractTypes: [],
+    // contractStatuses: [],
+    // siteStatuses: [],
+    // taskTypes: [],
+    // taskStatuses: [],
+    // limitedTaskStatuses: [],
+    // supervisorTaskStatuses: [],
+    // operationTypes: [],
+    // materialTypes: [],
+    // shiftTypes: [],
+    // userTypes: [],
+    // userRoles: [],
+    // userStatuses: [],
+    // siteTypes: [],
+    // vehicleTypes: [],
+    // vehicleStatuses: [],
+    // workshopStatuses: [],
     contractTypes: [
       { const: '1', title: 'natural_official' },
       { const: '2', title: 'natural_agreement' },

@@ -14,8 +14,20 @@ import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'c
 import { FormattedMessage } from 'react-intl';
 import { CircularProgress, Stack } from '@mui/material';
 import { endOfDay } from 'date-fns';
+import { hasRequiredRole } from 'helpers';
 
-export default function UpdatePopup({ ids, title, refetch }) {
+export default function CompHandler(props) {
+  const { userToken, userInfo, isAuthenticated } = useSelector((state) => state.auth);
+  if (
+    isAuthenticated &&
+    hasRequiredRole(['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'], userInfo?.roles)
+  ) {
+    return <UpdatePopup {...props} />;
+  }
+  return null;
+}
+
+function UpdatePopup({ ids, title, refetch }) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState();
   const { userToken } = useSelector((state) => state.auth);

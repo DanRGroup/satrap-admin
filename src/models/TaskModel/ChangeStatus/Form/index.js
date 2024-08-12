@@ -3,8 +3,6 @@ import schema from './schema';
 import uiSchema from './uiSchema';
 import { MuiFormBuilder } from 'components';
 import { useSelector } from 'react-redux';
-import { hasRequiredRole } from 'helpers';
-import { ConstantColorFactor } from 'three';
 
 const Form = ({ formData = {}, onChange }) => {
   const { taskStatuses, limitedTaskStatuses, supervisorTaskStatuses } = useSelector((state) => state.models);
@@ -29,7 +27,7 @@ const Form = ({ formData = {}, onChange }) => {
     <MuiFormBuilder
       showSubmit={false}
       schema={schema(taskStatusesRole)}
-      uiSchema={uiSchema}
+      uiSchema={uiSchema()}
       formData={formData}
       onChange={onChange}
     />

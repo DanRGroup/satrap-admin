@@ -12,13 +12,13 @@ import {
   ShiftTypeModel,
   SiteTypeModel,
   TaskStatusModel,
-  TasksTypeModel,
+  TaskTypeModel,
   WorkshopStatusModel,
   VehicleTypeModel,
   SiteModel,
   ContractModel,
   VehicleModel,
-  UsersModel,
+  UserModel,
   UserStatusModel,
   WorkshopModel,
   TariffModel,
@@ -154,7 +154,7 @@ export const superAdminNavConfig = [
         title: 'task_types',
         element: (
           <Page title="Tasks">
-            <TasksTypeModel />
+            <TaskTypeModel />
           </Page>
         ),
         inSidebar: true,
@@ -244,7 +244,7 @@ export const superAdminNavConfig = [
         title: 'users',
         element: (
           <Page title="Users">
-            <UsersModel />
+            <UserModel />
           </Page>
         ),
         inSidebar: true,

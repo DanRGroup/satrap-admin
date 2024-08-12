@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 
 import { toast } from 'react-toastify';
-import { TasksTypeModel } from 'models';
+import { TaskTypeModel } from 'models';
 import { useSelector } from 'react-redux';
 import { useLazyQuery } from '@apollo/client';
 import { FormattedMessage } from 'react-intl';
@@ -131,7 +131,7 @@ export default function CustomSelectWidget({
           direction,
         }}
       >
-        <TasksTypeModel
+        <TaskTypeModel
           isPopup
           isAssign
           disabled={disabled || readonly}
@@ -176,7 +176,7 @@ export default function CustomSelectWidget({
               }
             />
           </CardActionArea>
-        </TasksTypeModel>
+        </TaskTypeModel>
         <Stack
           p={1}
           zIndex={2}

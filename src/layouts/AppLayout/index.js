@@ -15,35 +15,31 @@ import Sidebar from './Sidebar';
 export default function DashboardLayout() {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const [result, setResult] = useState({});
   const { userToken } = useSelector((state) => state.auth);
-  const { models } = useSelector((state) => state.models);
 
-  const [getData, { loading }] = useLazyQuery(graph.list.query, {
+  const [getData, { loading }] = useLazyQuery(graph.contractType.query, {
     context: {
-      serviceName: graph.list.serviceName,
+      serviceName: graph.contractType.serviceName,
       headers: {
         authorization: `Bearer ${userToken}`,
       },
     },
   });
 
-  // const handleData = async () => {
-  //   try {
-  //     const { data: types, error } = await getData();
-  //     if (!isEmptyObject(types) && !error) {
-  //       const res = types[graph.list.name];
-  //       // setResult(res);
-  //       dispatch(setModels({ contractTypes: res }));
-  //     }
-  //   } catch (error) {}
-  // };
+  const handleData = async () => {
+    try {
+      const { data: types, error } = await getData();
+      if (!isEmptyObject(types) && !error) {
+        const res = types[graph.contractType.name];
+        // setResult(res);
+        dispatch(setModels({ contractTypes: res }));
+      }
+    } catch (error) {}
+  };
 
-  // useEffect(() => {
-  //   handleData();
-  // }, []);
-
-  // console.log('res', result);
+  useEffect(() => {
+    handleData();
+  }, []);
 
   return (
     <>

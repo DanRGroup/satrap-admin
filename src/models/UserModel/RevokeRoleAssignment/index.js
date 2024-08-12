@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Dialog, Tooltip, IconButton, DialogTitle, Stack, CircularProgress, Box, Button } from '@mui/material';
-import { AssignmentIndRounded } from '@mui/icons-material';
+import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';
 
 import { NewDialogActions, NewDialogContent, NewDialog, NewDialogTitle } from 'components';
 
@@ -14,27 +14,50 @@ import { FormattedMessage } from 'react-intl';
 
 export default function RoleAssignment({ ids, refetch }) {
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState({});
+  const [formData, setformData] = useState({});
   const { userToken } = useSelector((state) => state.auth);
 
-  const onOpen = () => {
-    setOpen(true);
-  };
+  const [schema, setSchema] = useState(0);
 
-  const onClose = () => {
-    setOpen(false);
-  };
+  // const onOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const [formCreate, { loading }] = useMutation(graph.assignRole.query, {
+  // const onClose = () => {
+  //   setOpen(false);
+  // };
+
+  const [formCreate, { loading }] = useMutation(graph.revokeUserRole.query, {
     context: {
-      serviceName: graph.assignRole.serviceName,
+      serviceName: graph.revokeUserRole.serviceName,
       headers: {
         authorization: `Bearer ${userToken}`,
       },
     },
   });
 
-  const onSubmit = async ({ formData }) => {
+  // const onChange = ({ formData }) => {
+  //   setformData(formData);
+  //   switch (formData?.role_id) {
+  //     case '3':
+  //     case '4':
+  //     case '5':
+  //     case '6':
+  //     case '7':
+  //     case '8':
+  //       setSchema(1);
+  //       break;
+  //     case '9':
+  //       setSchema(2);
+  //       break;
+  //     default:
+  //       setSchema(0);
+  //       break;
+  //   }
+  // };
+
+  const onSubmit = async () => {
+    // console.log('formdata', formData);
     try {
       const { data, errors } = await formCreate({
         variables: {
@@ -44,28 +67,28 @@ export default function RoleAssignment({ ids, refetch }) {
       });
       if (!errors) {
         refetch();
-        onClose();
+        // onClose();
         if (!isEmptyObject(data)) {
-          data[graph.assignRole.name]?.messages.map((message) => toast.success(String(message)));
+          data[graph.revokeUserRole.name]?.messages.map((message) => toast.success(String(message)));
         }
       }
     } catch (error) {
-      setForm(formData);
+      setformData(formData);
     }
   };
 
   return (
     <>
-      <Tooltip title="اختصاص نقش">
-        <IconButton sx={{ bgcolor: 'action.selected' }} size="medium" color="error" onClick={onOpen}>
+      <Tooltip title="حذف نقش">
+        <IconButton sx={{ bgcolor: 'action.selected' }} size="medium" color="error" onClick={onSubmit}>
           {loading ? (
             <CircularProgress color="error" size={25} />
           ) : (
-            <AssignmentIndRounded color="error" fontSize="small" />
+            <AssignmentLateIcon color="error" fontSize="small" />
           )}
         </IconButton>
       </Tooltip>
-      <NewDialog
+      {/* <NewDialog
         open={open}
         onClose={onClose}
         aria-labelledby="alert-dialog-title"
@@ -77,7 +100,7 @@ export default function RoleAssignment({ ids, refetch }) {
         <NewDialogTitle title={<FormattedMessage id="role_asignment" />} onClose={onClose} />
         <NewDialogContent>
           <Stack sx={{ m: 2 }}>
-            <Form formData={form} loading={loading} />
+            <Form formData={formData} loading={loading} onChange={onChange} formSchema={schema} />
           </Stack>
         </NewDialogContent>
         <NewDialogActions>
@@ -85,7 +108,7 @@ export default function RoleAssignment({ ids, refetch }) {
             <FormattedMessage id="confirm" />
           </Button>
         </NewDialogActions>
-      </NewDialog>
+      </NewDialog> */}
     </>
   );
 }

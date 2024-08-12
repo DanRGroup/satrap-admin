@@ -1,15 +1,15 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const settingSlice = createSlice({
-  name: "setting",
+  name: 'setting',
   initialState: {
     theme: {
       color: 'mui',
-      mode: 'light'
+      mode: 'light',
     },
     language: {
-      language: "fa",
-      direction: "rtl",
+      language: 'fa',
+      direction: 'rtl',
     },
   },
   reducers: {

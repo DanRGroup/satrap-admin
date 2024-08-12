@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Dialog,
@@ -29,11 +29,16 @@ import graph from './graph';
 import { isEmptyObject } from 'helpers/formatObject';
 import { FormattedMessage } from 'react-intl';
 
+import { formatUserRoles } from 'helpers';
+
 export default function RolesPopup({ ids, refetch, roles = [] }) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const { userToken } = useSelector((state) => state.auth);
 
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    console.log('roles', roles);
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
 
   const [shopRoleDelete, { loading }] = useMutation(graph.delete.query, {
@@ -103,9 +108,9 @@ export default function RolesPopup({ ids, refetch, roles = [] }) {
           <DialogContent sx={{ p: 1 }}>
             <Stack rowGap={1}>
               {roles.map((item, i) => {
-                const { role, labs, units } = item;
-                if (units) {
-                  return units.map(({ id, type, title }, i) => (
+                const { role, workshops, sites } = item;
+                if (sites) {
+                  return sites.map(({ id, type, title }, i) => (
                     <Card key={i}>
                       <CardHeader
                         avatar={
@@ -139,8 +144,8 @@ export default function RolesPopup({ ids, refetch, roles = [] }) {
                     </Card>
                   ));
                 }
-                if (labs) {
-                  return labs
+                if (workshops) {
+                  return workshops
                     .filter((x) => x)
                     .map(({ id, title }, i) => (
                       <Card key={i}>
@@ -150,7 +155,7 @@ export default function RolesPopup({ ids, refetch, roles = [] }) {
                               <AdminPanelSettingsRoundedIcon fontSize="small" color="error" />
                             </Avatar>
                           }
-                          title={role.title}
+                          title={workshops.title}
                           action={
                             <Chip
                               label={
