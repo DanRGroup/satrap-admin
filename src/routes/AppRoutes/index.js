@@ -86,8 +86,8 @@ export const navConfig = [
         roles: ['superadmin'],
       },
       {
-        path: '/setting/material_types',
-        url: '/setting/material_types',
+        path: '/setting/material-types',
+        url: '/setting/material-types',
         title: 'material_types',
         element: (
           <Page title="Material">
