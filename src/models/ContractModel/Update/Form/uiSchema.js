@@ -1,4 +1,9 @@
-import { ContractTypeSelectionWidget, UsersSelectionWidget, WorkshopSelectionWidget } from 'components/FormWidgets';
+import {
+  ContractTypeSelectionWidget,
+  UsersSelectionWidget,
+  WorkshopSelectionWidget,
+  OperationTypeSelectionWidget,
+} from 'components/FormWidgets';
 
 const uiSchema = () => ({
   title: {
@@ -50,6 +55,7 @@ const uiSchema = () => ({
     },
   },
   operation_type_id: {
+    'ui:widget': OperationTypeSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,
