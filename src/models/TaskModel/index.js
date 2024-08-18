@@ -8,7 +8,7 @@ import { useLazyQuery } from '@apollo/client';
 
 export default function MainModel(props) {
   const { initFilter, isPopup = false } = props;
-  const init = { ...initFilter };
+  const init = { max_created_at_equality: '<=', min_created_at_equality: '>=', ...initFilter };
 
   const [startFetch, setStartFetch] = useState(!isPopup);
   const [flag, setFlag] = useState(false);

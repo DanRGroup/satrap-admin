@@ -95,7 +95,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               {/* <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} /> */}
               <ChangeStatus ids={model.id} title={<FormattedMessage id="change_status" />} refetch={refetch} />
               <ChangeLocation
-                ids={ model?.vehicle?.id }
+                ids={model?.vehicle?.id}
                 title={<FormattedMessage id="changeLocation" />}
                 refetch={refetch}
               />

@@ -17,6 +17,8 @@ const schema = {
         $status_ids: [String]
         $type_ids: [String]
         $created_at: String
+        $min_created_at: String
+        $max_created_at: String
         $min_created_at_equality: String
         $max_created_at_equality: String
       ) {
@@ -32,6 +34,8 @@ const schema = {
           status_ids: $status_ids
           type_ids: $type_ids
           created_at: $created_at
+          min_created_at: $min_created_at
+          max_created_at: $max_created_at
           min_created_at_equality: $min_created_at_equality
           max_created_at_equality: $max_created_at_equality
         ) {

@@ -45,11 +45,11 @@ export default function CreatePopup({ title, refetch }) {
         },
       });
       if (!errors) {
-        refetch();
-        onClose();
         if (!isEmptyObject(data)) {
           data[graph.create.name]?.messages.map((message) => toast.success(String(message)));
         }
+        refetch();
+        onClose();
       }
     } catch (error) {
       setFormData(formData);
