@@ -18,13 +18,13 @@ import { CircularProgress, Stack } from '@mui/material';
 export default function UpdatePopup({ ids, title, refetch }) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState();
+  const [formError, setFormError] = useState(true);
   const { userToken } = useSelector((state) => state.auth);
   const [fetchModel, { loading }] = useLazyQuery(graph.get.query);
   const [updateModel, { loading: updating }] = useMutation(graph.update.query);
 
   const onOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
-  //console.log('ids', ids);
 
   const getModel = async () => {
     try {
@@ -42,19 +42,23 @@ export default function UpdatePopup({ ids, title, refetch }) {
       });
       if (!isEmptyObject(data)) {
         const res = data[graph.get.name].records.data[0];
-        // console.log('res', res);
         if (res) {
+          const { status } = res;
           setFormData({
-            ...res,
-            status_id: res.status?.id,
+            status_id: status?.id,
+            // location: {
+            //   lat: "32.654240998567744",
+            //   lng: "51.660764328003665"
+            // }
           });
         }
       }
     } catch (error) {}
   };
 
-  const onChange = ({ formData }) => {
+  const onChange = ({ formData, errors }) => {
     setFormData(formData);
+    setFormError(Boolean(errors.length > 0));
   };
 
   const onSubmit = async () => {
@@ -66,7 +70,11 @@ export default function UpdatePopup({ ids, title, refetch }) {
             authorization: `Bearer ${userToken}`,
           },
         },
-        variables: { ids, status_id: formData?.status_id, lat: formData?.location.lat, lng: formData?.location.lng },
+        variables: {
+          ids,
+          status_id: formData?.status_id,
+          lat: formData?.location.lat, lng: formData?.location.lng
+        },
       });
       if (!errors) {
         refetch();
@@ -110,7 +118,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
             size="large"
             color="primary"
             variant="contained"
-            disabled={loading || updating}
+            disabled={loading || updating || formError}
             onClick={onSubmit}
             sx={{ minWidth: 80 }}
           >

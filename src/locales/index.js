@@ -374,7 +374,7 @@ const locales = {
     creator: 'ایجاد کننده',
     updator: 'بروزرسانی کننده',
     supervisor: 'ناظر',
-    employer: 'کارمند',
+    employer: 'کارفرما',
     stop_dueto: 'علت توقف',
 
     site: 'محل تخلیه',

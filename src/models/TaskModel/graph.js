@@ -54,6 +54,7 @@ const schema = {
                 title
               }
               vehicle {
+                id
                 plaque
               }
               driver {

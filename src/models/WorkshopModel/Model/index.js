@@ -61,10 +61,9 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <Checkbox size="small" checked={checked} onChange={handleSelect} />
             <Media
               id={model.id}
-              model="Brand"
+              model="Workshop"
               collection="avatar"
               title={model.title}
-              subheader={model.producer?.title || 'برند'}
             >
               <AvatarPopover media={model?.media[0]?.full_url} />
             </Media>
@@ -83,7 +82,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               {isAuthenticated && hasRequiredRole(['superadmin', 'workshopManager', 'companyCeo'], userInfo?.roles) && (
                 <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
               )}
-              <Media id={model.id} model="Brand" collection="banner" />
+              <Media id={model.id} model="Workshop" collection="banner" />
             </NewSpeedDial>
           </Stack>
           <CardActionArea onClick={handleSelect}>

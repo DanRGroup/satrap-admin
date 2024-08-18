@@ -1,5 +1,8 @@
+import { TasksStatusSelectionWidget } from 'components/FormWidgets';
+
 const uiSchema = () => ({
   status_id: {
+    'ui:widget': TasksStatusSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,

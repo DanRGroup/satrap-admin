@@ -34,9 +34,9 @@ const LocationFieldTemplate = (props) => {
     }
   }, []);
 
-  useEffect(() => {
-    onChange({ lat: String(center[1]), lng: String(center[0]) });
-  }, []);
+  // useEffect(() => {
+  //   onChange({ lat: String(center[1]), lng: String(center[0]) });
+  // }, []);
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {

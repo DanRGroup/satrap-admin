@@ -72,6 +72,10 @@ const schema = {
                 }
                 title
               }
+              role {
+                id
+                title
+              }
               workshops {
                 id
                 title
