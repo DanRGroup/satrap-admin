@@ -26,13 +26,13 @@ const Form = ({ formData = {}, onChange }) => {
       taskStatusesRole = taskStatuses;
   }
 
-  const formSchema = hasRequiredRole(['siteManager'], userRole) ? siteManagerUiSchema() : uiSchema();
+  // const formSchema = hasRequiredRole(['siteManager'], userRole) ? siteManagerUiSchema() : uiSchema();
 
   return (
     <MuiFormBuilder
       showSubmit={false}
-      schema={schema((taskStatuses = taskStatusesRole))}
-      uiSchema={formSchema}
+      schema={schema(taskStatusesRole)}
+      uiSchema={uiSchema()}
       formData={formData}
       onChange={onChange}
     />

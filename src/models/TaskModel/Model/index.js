@@ -39,8 +39,6 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   const workshopTitle = model?.workshop?.title;
   const siteTitle = model?.site?.title;
 
-  console.log(color);
-
   return (
     <>
       <Slide
