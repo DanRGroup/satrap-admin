@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Update from '../Update';
 import Media from '../Media';
 import ChangeStatus from '../ChangeStatus';
+import ChangeLocation from '../ChangeLocation';
 
 import {
   Card,
@@ -68,13 +69,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             direction={isRtl ? 'row' : 'row-reverse'}
           >
             <Checkbox size="small" checked={checked} onChange={handleSelect} />
-            <Media
-              id={model.id}
-              model="Brand"
-              collection="avatar"
-              title={model.title}
-              subheader={model.producer?.title || 'برند'}
-            >
+            <Media id={model.id} model="Task" collection="avatar" title={model.title}>
               <AvatarPopover media={model?.media[0]?.full_url} />
             </Media>
           </Stack>
@@ -99,7 +94,12 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
                 )}
               {/* <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} /> */}
               <ChangeStatus ids={model.id} title={<FormattedMessage id="change_status" />} refetch={refetch} />
-              <Media id={model.id} model="Brand" collection="banner" />
+              <ChangeLocation
+                ids={model?.vehicle?.id}
+                title={<FormattedMessage id="changeLocation" />}
+                refetch={refetch}
+              />
+              <Media id={model.id} model="Task" collection="banner" />
             </NewSpeedDial>
           </Stack>
           <CardActionArea onClick={handleSelect}>

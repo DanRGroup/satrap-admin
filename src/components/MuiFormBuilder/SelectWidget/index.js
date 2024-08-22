@@ -34,7 +34,7 @@ export default function SelectWidget({
   formContext,
   ...textFieldProps
 }) {
-  const { enumOptions, enumDisabled, emptyValue: optEmptyVal } = options;
+  const { enumOptions, enumDisabled, emptyValue: optEmptyVal, initFilter = {} } = options;
 
   multiple = typeof multiple === 'undefined' ? false : !!multiple;
 

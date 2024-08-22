@@ -44,9 +44,14 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes, taskStatus
       title: 'task_status',
       oneOf: taskStatuses,
     },
-    created_at: {
+    min_created_at: {
       type: 'string',
-      title: 'created_date',
+      title: 'min_created_at',
+      format: 'date',
+    },
+    max_created_at: {
+      type: 'string',
+      title: 'max_created_at',
       format: 'date',
     },
   },

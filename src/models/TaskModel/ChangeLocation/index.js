@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
-import ModeEditRoundedIcon from '@mui/icons-material/ModeEditRounded';
+import FmdGoodRoundedIcon from '@mui/icons-material/FmdGoodRounded';
 
 import Form from './Form';
 import graph from './graph';
@@ -13,11 +13,23 @@ import { isEmptyObject } from 'helpers/formatObject';
 import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'components';
 import { FormattedMessage } from 'react-intl';
 import { CircularProgress, Stack } from '@mui/material';
-import { descriptionId } from '@rjsf/utils';
+import { hasRequiredRole } from 'helpers';
 
-export default function UpdatePopup({ ids, title, refetch }) {
+export default function CompHandler(props) {
+  const { userInfo, isAuthenticated } = useSelector((state) => state.auth);
+  if (
+    isAuthenticated &&
+    hasRequiredRole(['driver'], userInfo?.roles)
+  ) {
+    return <UpdatePopup {...props} />;
+  }
+  return null;
+}
+
+function UpdatePopup({ ids, title, refetch }) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState();
+  const [formError, setFormError] = useState(true);
   const { userToken } = useSelector((state) => state.auth);
   const [fetchModel, { loading }] = useLazyQuery(graph.get.query);
   const [updateModel, { loading: updating }] = useMutation(graph.update.query);
@@ -36,33 +48,26 @@ export default function UpdatePopup({ ids, title, refetch }) {
         },
         variables: {
           ids,
-          for_admin: 1,
         },
       });
       if (!isEmptyObject(data)) {
-        const res = data[graph.get.name].records.data[0];
+        const res = data[graph.get.name].data[0];
         if (res) {
+          const { tracks } = res;
           setFormData({
-            ...res,
-            type_id: res.type?.id,
-            operation_type_id: res.operation_type?.id,
-            workshop_id: res.workshop?.id,
-            site_id: res.site?.id,
-            shift_type: res.shift_type?.id,
-            material_type_id: res.material_type?.id,
-            status_id: res.status?.id,
-            start_time: res?.start_time.split(' ')[1],
-            end_time: res?.end_time.split(' ')[1],
-            start_date: res?.start_time.split(' ')[0] + ' 00:00:00',
-            end_date: res?.end_time.split(' ')[0] + ' 00:00:00',
+            location: {
+              lat: tracks[0]?.lat,
+              lng: tracks[0]?.lng,
+            }
           });
         }
       }
     } catch (error) {}
   };
 
-  const onChange = ({ formData }) => {
+  const onChange = ({ formData, errors }) => {
     setFormData(formData);
+    setFormError(Boolean(errors.length > 0));
   };
 
   const onSubmit = async () => {
@@ -75,15 +80,9 @@ export default function UpdatePopup({ ids, title, refetch }) {
           },
         },
         variables: {
-          ids,
-          workshop_id: formData?.workshop_id,
-          site_id: formData?.site_id,
-          status_id: formData?.status_id,
-          start_time: formData?.start_time,
-          end_time: formData?.end_time,
-          bill_number: formData?.bill_number,
-          tonnage: formData?.tonnage,
-          description: formData?.description,
+          vehicle_id: ids,
+          lat: formData?.location.lat,
+          lng: formData?.location.lng,
         },
       });
       if (!errors) {
@@ -106,18 +105,18 @@ export default function UpdatePopup({ ids, title, refetch }) {
     <>
       <Tooltip title={title}>
         <IconButton sx={{ bgcolor: 'action.selected' }} size="small" color="info" onClick={onOpen}>
-          <ModeEditRoundedIcon fontSize="small" />
+          <FmdGoodRoundedIcon color="primary" fontSize="small" />
         </IconButton>
       </Tooltip>
       <NewDialog label="update" open={open} onClose={onClose} maxWidth="xs">
-        <NewDialogTitle title={<FormattedMessage id="edit_task" />} onClose={onClose} />
+        <NewDialogTitle title={title} onClose={onClose} />
         <NewDialogContent>
-          {loading || !formData ? (
+          {loading ? (
             <Stack rowGap={3} py={2} alignItems="center" justifyContent="center" height={140}>
               <CircularProgress />
             </Stack>
           ) : (
-            <Stack p={2} alignItems="center">
+            <Stack p={2}>
               <Form formData={formData} onChange={onChange} />
             </Stack>
           )}
@@ -128,7 +127,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
             size="large"
             color="primary"
             variant="contained"
-            disabled={loading || updating}
+            disabled={loading || updating || formError}
             onClick={onSubmit}
             sx={{ minWidth: 80 }}
           >

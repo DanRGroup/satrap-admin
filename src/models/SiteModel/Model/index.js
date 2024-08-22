@@ -77,7 +77,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               {isAuthenticated && hasRequiredRole(['superadmin', 'siteManager', 'companyCeo'], userInfo?.roles) && (
                 <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
               )}
-              <Media id={model.id} model="Brand" collection="banner" />
+              <Media id={model.id} model="Site" collection="banner" />
             </NewSpeedDial>
           </Stack>
           <CardActionArea onClick={handleSelect}>

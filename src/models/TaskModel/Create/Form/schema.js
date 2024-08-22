@@ -18,7 +18,7 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
     operation_type_id: {
       type: 'string',
       title: 'operation',
-      oneOf: operationTypes,
+      // oneOf: operationTypes,
     },
     workshop_id: {
       type: 'string',
@@ -42,26 +42,26 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
     //   type: 'string',
     //   title: 'task_status',
     // },
-    start_time: {
-      type: 'string',
-      title: 'start_time',
-      format: 'time',
-    },
-    end_time: {
-      type: 'string',
-      title: 'end_time',
-      format: 'time',
-    },
     start_date: {
       type: 'string',
       title: 'start_date',
       format: 'date',
     },
-    end_date: {
+    start_time: {
       type: 'string',
-      title: 'end_date',
-      format: 'date',
+      title: 'start_time',
+      format: 'time',
     },
+    // end_time: {
+    //   type: 'string',
+    //   title: 'end_time',
+    //   format: 'time',
+    // },
+    // end_date: {
+    //   type: 'string',
+    //   title: 'end_date',
+    //   format: 'date',
+    // },
     // stop_dueto: {
     //   type: 'string',
     //   title: 'stop_dueto',

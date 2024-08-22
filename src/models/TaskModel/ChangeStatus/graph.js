@@ -9,10 +9,8 @@ const schema = {
         task(ids: $ids) {
           records {
             data {
-              id
               status {
                 id
-                title
               }
             }
           }

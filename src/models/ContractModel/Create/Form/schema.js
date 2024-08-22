@@ -27,7 +27,7 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
     operation_type_id: {
       type: 'string',
       title: 'operation_type',
-      oneOf: operationTypes,
+      // oneOf: operationTypes,
     },
     forecast_amount: {
       type: 'string',

@@ -53,7 +53,6 @@ export default function MainModel(props) {
       });
       if (!isEmptyObject(data) && !error) {
         const res = data[graph.list.name];
-        console.log('res', res);
         setTotal(res?.total);
         paginate ? setResult((prevData) => prevData.concat(res?.data)) : setResult(res?.data);
       }

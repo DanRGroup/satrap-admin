@@ -67,13 +67,13 @@ function NavItem({ item, active, hasRequiredRole }) {
 
   const activeRootStyle = {
     fontWeight: 'bold',
-    color: 'primary.main',
+    color: 'text.primary',
     bgcolor: 'action.selected',
   };
 
   const activeSubStyle = {
-    color: 'primary.main',
-    bgcolor: 'info.lighter',
+    color: 'text.secondary',
+    bgcolor: 'action.hover',
   };
 
   if (children.length > 0) {
@@ -89,14 +89,14 @@ function NavItem({ item, active, hasRequiredRole }) {
             sx={{
               mx: 'auto',
               bgcolor: 'transparent',
-              color: isActiveRoot && !open ? 'primary.main' : 'inherit',
+              color: isActiveRoot && !open ? 'text.primary' : 'text.secondary',
             }}
           >
             {icon}
           </Avatar>
           <ListItemText disableTypography sx={{ mb: 0 }} primary={<FormattedMessage id={title} />} />
           <ExpandMore expand={open}>
-            <ExpandMoreIcon color={isActiveRoot && !open ? 'primary' : 'inherit'} />
+            <ExpandMoreIcon color={isActiveRoot && !open ? 'text.primary' : 'text.secondary'} />
           </ExpandMore>
         </ListItemStyle>
 
@@ -128,7 +128,7 @@ function NavItem({ item, active, hasRequiredRole }) {
                           transition: (theme) => theme.transitions.create('transform'),
                           ...(isActiveSub && {
                             transform: 'scale(2)',
-                            bgcolor: 'primary.main',
+                            bgcolor: 'text.primary',
                           }),
                         }}
                       />
@@ -136,7 +136,7 @@ function NavItem({ item, active, hasRequiredRole }) {
                     <ListItemText
                       primary={<FormattedMessage id={title} />}
                       disableTypography
-                      sx={{ color: isActiveSub && 'primary.main' }}
+                      sx={{ color: isActiveSub && 'text.primary' }}
                     />
                     <Box sx={{ width: 16, height: 16, mr: 2, ml: 2 }} />
                   </ListItemStyle>

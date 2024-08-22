@@ -23,8 +23,8 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
 
   const renderContent = (
     <Stack p={1} rowGap={1} height="100%">
-      <Stack py={1} rowGap={1} borderRadius={2} alignItems="center" justifyContent="center" bgcolor="info.main">
-        <Avatar alt="profile" sx={{ width: 80, height: 80 }} src="/assets/images/avatars/avatar_12.jpg" />
+      <Stack py={1} rowGap={1} borderRadius={2} alignItems="center" justifyContent="center" bgcolor="warning.light">
+        <Avatar alt="profile" sx={{ width: 80, height: 80 }} />
         <Stack direction="row" columnGap={0.5}>
           {roles.map((role) => (
             <Typography
@@ -33,18 +33,18 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
               fontSize={12}
               borderRadius={3}
               lineHeight={1.5}
-              color="error.dark"
+              color="warning.dark"
               variant="subtitle2"
-              bgcolor="error.lighter"
+              bgcolor="warning.lighter"
             >
               {role.title}
             </Typography>
           ))}
         </Stack>
-        <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
+        <Typography variant="subtitle2" color="#44474c">
           {username}
         </Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        <Typography variant="body2" color="#44474c77">
           {cellphone}
         </Typography>
       </Stack>

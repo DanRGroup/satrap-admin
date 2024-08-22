@@ -33,7 +33,9 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
 
   const workshopTitle = model?.workshop?.title;
-  const employer = model?.employer?.firstname + model?.employer?.lastname;
+  const employer = model?.employer?.firstname
+    ? `${model?.employer?.firstname} ${model?.employer?.lastname}`
+    : 'بدون نام';
 
   const theme = useTheme();
 
@@ -69,10 +71,9 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <Checkbox size="small" checked={checked} onChange={handleSelect} />
             <Media
               id={model.id}
-              model="Brand"
+              model="Contract"
               collection="avatar"
               title={model.title}
-              subheader={model.producer?.title || 'برند'}
             >
               <AvatarPopover media={model?.media[0]?.full_url} />
             </Media>
@@ -89,7 +90,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           >
             <NewSpeedDial>
               {workshopTitle && <Chip label={workshopTitle} />}
-              {employer && <Chip label={employer} />}
+              <Chip label={employer} />
               {isAuthenticated &&
                 hasRequiredRole(
                   ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
@@ -106,7 +107,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
                     </ContractFinancial>
                   </>
                 )}
-              <Media id={model.id} model="Brand" collection="banner" />
+              <Media id={model.id} model="Contract" collection="banner" />
             </NewSpeedDial>
           </Stack>
           <CardActionArea onClick={handleSelect}>

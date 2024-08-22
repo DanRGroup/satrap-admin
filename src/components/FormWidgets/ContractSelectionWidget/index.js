@@ -36,7 +36,7 @@ export default function CustomSelectWidget({
   formContext,
   ...textFieldProps
 }) {
-  const { enumOptions, enumDisabled, emptyValue: optEmptyVal } = options;
+  const { enumOptions, enumDisabled, emptyValue: optEmptyVal, initFilter = {} } = options;
   const isObject = typeof value === 'object';
   const multiSelect = schema.type === 'array';
   const [loading, setLoading] = useState(true);
@@ -110,6 +110,12 @@ export default function CustomSelectWidget({
   useEffect(() => {
     let timer = setTimeout(() => {
       if (loading && value) {
+        if (multiSelect) {
+          if (value.length > 0) {
+            return handleData();
+          }
+          return setLoading(false);
+        }
         return handleData();
       }
       return setLoading(false);
@@ -141,7 +147,7 @@ export default function CustomSelectWidget({
           title={labelValue(label || undefined, hideLabel, undefined)}
           onAssign={onAssign}
           assigning={false}
-          initFilter={{}}
+          initFilter={initFilter}
           preSelected={
             multiSelect && Array.isArray(selected)
               ? selected.filter((item) => item?.id !== undefined)

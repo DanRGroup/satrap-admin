@@ -46,7 +46,8 @@ const MediaAssignment = ({ id, title, subheader, model, children }) => {
         },
       });
       if (!isEmptyObject(data)) {
-        setCurrent(data[graph.current.name].data[0]?.media || []);
+        const { records } = data[graph.current.name];
+        setCurrent(records?.data[0]?.media || []);
       }
     } catch (error) {}
   };
