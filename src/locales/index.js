@@ -77,6 +77,8 @@ const locales = {
     needActivation: 'Need Activation?',
     password_forget: 'Forget Password',
     do: 'Do',
+    yes: 'Yes',
+    no: 'No',
 
     natural: 'Natural',
     legal: 'Legal',
@@ -224,6 +226,7 @@ const locales = {
     furnace: 'Furnace',
     defile: 'Defile',
     desert: 'Desert',
+    displacement: 'Displacement',
 
     single_truck: 'Single Truck',
     double_truck: 'Double Truck',
@@ -335,9 +338,10 @@ const locales = {
     address: 'آدرس',
     gender: 'جنسیت',
     needActivation: 'نیاز به فعالسازی؟',
-    password_forget: 'Forget Password',
     password_forget: 'فراموشی رمز عبور',
     do: 'دارد',
+    yes: 'بله',
+    no: 'خیر',
 
     natural: 'حقیقی',
     legal: 'حقوقی',
@@ -485,6 +489,7 @@ const locales = {
     furnace: 'کوره',
     defile: 'گردنه',
     desert: 'بیابان',
+    displacement: 'جابه جایی',
 
     single_truck: 'کامیون تک',
     double_truck: 'کامیون جفت',

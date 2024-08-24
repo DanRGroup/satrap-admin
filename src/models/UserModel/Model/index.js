@@ -39,14 +39,9 @@ export default function Model({ model, delay, checked, handleSelect, refetch, co
       <Fade in unmountOnExit timeout={{ appear: delay * 150, enter: delay * 170, exit: delay * 190 }}>
         <Card
           sx={{
-            direction: dir,
             position: 'relative',
             // bgcolor: checked && 'action.disabledBackground',
-            bgcolor: checked
-              ? alpha(theme.palette.warning.lighter, 1)
-              : color
-              ? 'action.disabledOpacity'
-              : 'action.focus',
+            bgcolor: checked ? 'primary.light' : color ? 'action.disabledOpacity' : 'action.focus',
           }}
         >
           <Stack

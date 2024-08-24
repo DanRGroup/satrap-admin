@@ -73,7 +73,8 @@ export default function UpdatePopup({ ids, title, refetch }) {
         variables: {
           ids,
           status_id: formData?.status_id,
-          lat: formData?.location.lat, lng: formData?.location.lng
+          lat: formData?.location.lat,
+          lng: formData?.location.lng,
         },
       });
       if (!errors) {
@@ -95,7 +96,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
   return (
     <>
       <Tooltip title={title}>
-        <IconButton sx={{ bgcolor: 'action.selected' }} size="small" color="info" onClick={onOpen}>
+        <IconButton sx={{ bgcolor: 'warning.lighter' }} size="small" color="info" onClick={onOpen}>
           <AppRegistrationRoundedIcon color="error" fontSize="small" />
         </IconButton>
       </Tooltip>

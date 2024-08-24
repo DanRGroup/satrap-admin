@@ -51,11 +51,8 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
         <Card
           sx={{
             position: 'relative',
-            bgcolor: checked
-              ? alpha(theme.palette.warning.lighter, 1)
-              : color
-              ? 'action.disabledOpacity'
-              : 'action.focus',
+            // bgcolor: checked && 'action.disabledBackground',
+            bgcolor: checked ? 'primary.light' : color ? 'action.disabledOpacity' : 'action.focus',
           }}
         >
           <Stack
@@ -99,7 +96,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
                 title={<FormattedMessage id="changeLocation" />}
                 refetch={refetch}
               />
-              <Media id={model.id} model="Task" collection="banner" />
+              {/* <Media id={model.id} model="Task" collection="banner" /> */}
             </NewSpeedDial>
           </Stack>
           <CardActionArea onClick={handleSelect}>

@@ -24,11 +24,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           sx={{
             position: 'relative',
             // bgcolor: checked && 'action.disabledBackground',
-            bgcolor: checked
-              ? alpha(theme.palette.warning.lighter, 1)
-              : color
-              ? 'action.disabledOpacity'
-              : 'action.focus',
+            bgcolor: checked ? 'primary.light' : color ? 'action.disabledOpacity' : 'action.focus',
           }}
         >
           <Stack

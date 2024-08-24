@@ -39,11 +39,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           sx={{
             position: 'relative',
             // bgcolor: checked && 'action.disabledBackground',
-            bgcolor: checked
-              ? alpha(theme.palette.warning.lighter, 1)
-              : color
-              ? 'action.disabledOpacity'
-              : 'action.focus',
+            bgcolor: checked ? 'primary.light' : color ? 'action.disabledOpacity' : 'action.focus',
           }}
         >
           <Stack
@@ -77,7 +73,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               {isAuthenticated && hasRequiredRole(['superadmin', 'siteManager', 'companyCeo'], userInfo?.roles) && (
                 <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
               )}
-              <Media id={model.id} model="Site" collection="banner" />
+              {/* <Media id={model.id} model="Site" collection="banner" /> */}
             </NewSpeedDial>
           </Stack>
           <CardActionArea onClick={handleSelect}>

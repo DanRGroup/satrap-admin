@@ -43,11 +43,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           sx={{
             position: 'relative',
             // bgcolor: checked && 'action.disabledBackground',
-            bgcolor: checked
-              ? alpha(theme.palette.warning.lighter, 1)
-              : color
-              ? 'action.disabledOpacity'
-              : 'action.focus',
+            bgcolor: checked ? 'primary.light' : color ? 'action.disabledOpacity' : 'action.focus',
           }}
         >
           <Stack
@@ -85,7 +81,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               {vehicleType && <Chip label={vehicleType} />}
               {driverName && <Chip label={driverName} />}
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
-              <Media id={model.id} model="Brand" collection="banner" />
+              {/* <Media id={model.id} model="Brand" collection="banner" /> */}
             </NewSpeedDial>
           </Stack>
           <CardActionArea onClick={handleSelect}>

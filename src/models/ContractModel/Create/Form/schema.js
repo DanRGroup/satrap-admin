@@ -41,8 +41,8 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
       type: 'number',
       title: 'civil_project',
       oneOf: [
-        { const: 1, title: 'is_civil' },
-        { const: 0, title: 'not_civil' },
+        { const: 1, title: 'yes' },
+        { const: 0, title: 'no' },
       ],
     },
     start_date: {
