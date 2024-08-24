@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 export const setModelsSlice = createSlice({
   name: 'models',
   initialState: {
+    test: [],
     contractTypes: [
       { const: '1', title: 'natural_official' },
       { const: '2', title: 'natural_agreement' },
@@ -131,7 +132,7 @@ export const setModelsSlice = createSlice({
       const { payload } = action;
       return {
         ...state,
-        payload,
+        ...payload,
       };
     },
   },

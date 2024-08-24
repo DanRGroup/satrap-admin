@@ -134,7 +134,7 @@ export default function List({
         </Tooltip>
         <Create title="create_user" refetch={refresh} />
         <RoleAssignment ids={selected} refetch={refresh} />
-        <RevokeRoleAssignment ids={selected} refetch={refresh} />
+        {/* <RevokeRoleAssignment ids={selected} refetch={refresh} /> */}
       </NewDialogActions>
     </>
   );

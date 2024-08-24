@@ -12,20 +12,9 @@ import { useMutation } from '@apollo/client';
 import { isEmptyObject } from 'helpers/formatObject';
 import { FormattedMessage } from 'react-intl';
 
-export default function RoleAssignment({ ids, refetch }) {
-  const [open, setOpen] = useState(false);
+export default function RevokeRoleAssignment({ refetch, roleName, userId, onClose }) {
   const [formData, setformData] = useState({});
   const { userToken } = useSelector((state) => state.auth);
-
-  const [schema, setSchema] = useState(0);
-
-  // const onOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const onClose = () => {
-  //   setOpen(false);
-  // };
 
   const [formCreate, { loading }] = useMutation(graph.revokeUserRole.query, {
     context: {
@@ -36,38 +25,18 @@ export default function RoleAssignment({ ids, refetch }) {
     },
   });
 
-  // const onChange = ({ formData }) => {
-  //   setformData(formData);
-  //   switch (formData?.role_id) {
-  //     case '3':
-  //     case '4':
-  //     case '5':
-  //     case '6':
-  //     case '7':
-  //     case '8':
-  //       setSchema(1);
-  //       break;
-  //     case '9':
-  //       setSchema(2);
-  //       break;
-  //     default:
-  //       setSchema(0);
-  //       break;
-  //   }
-  // };
-
   const onSubmit = async () => {
     // console.log('formdata', formData);
     try {
       const { data, errors } = await formCreate({
         variables: {
-          user_ids: ids.map((user) => user.id),
-          ...formData,
+          user_ids: userId,
+          roles: roleName,
         },
       });
       if (!errors) {
         refetch();
-        // onClose();
+        onClose();
         if (!isEmptyObject(data)) {
           data[graph.revokeUserRole.name]?.messages.map((message) => toast.success(String(message)));
         }

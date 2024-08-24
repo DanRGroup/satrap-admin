@@ -78,7 +78,7 @@ export default function Model({ model, delay, checked, handleSelect, refetch, co
             <NewSpeedDial>
               {role && <Chip label={role} />}
               {cellphone && <Chip label={cellphone} />}
-              <Roles refetch={refetch} roles={model?.all_roles} />
+              <Roles refetch={refetch} roles={model?.all_roles} userId={model?.id} />
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
             </NewSpeedDial>
           </Stack>

@@ -30,18 +30,18 @@ import { isEmptyObject } from 'helpers/formatObject';
 import { FormattedMessage } from 'react-intl';
 
 import { formatUserRoles } from 'helpers';
+import RevokeRoleAssignment from '../RevokeRoleAssignment';
 
-export default function RolesPopup({ ids, refetch, roles = [] }) {
+export default function RolesPopup({ ids, refetch, roles = [], userId }) {
   const [open, setOpen] = useState(false);
   const { userToken } = useSelector((state) => state.auth);
 
   const handleOpen = () => {
-    console.log('roles', roles);
     setOpen(true);
   };
   const handleClose = () => setOpen(false);
 
-  const [shopRoleDelete, { loading }] = useMutation(graph.delete.query, {
+  const [deleteRole, { loading }] = useMutation(graph.delete.query, {
     context: {
       serviceName: graph.delete.serviceName,
       headers: {
@@ -52,7 +52,7 @@ export default function RolesPopup({ ids, refetch, roles = [] }) {
 
   const handleDelete = async (ids) => {
     try {
-      const { data, errors } = await shopRoleDelete({
+      const { data, errors } = await deleteRole({
         variables: { ids },
       });
       if (!errors) {
@@ -114,19 +114,21 @@ export default function RolesPopup({ ids, refetch, roles = [] }) {
                     <Card key={i}>
                       <CardHeader
                         avatar={
-                          <Avatar sx={{ bgcolor: 'action.hover' }}>
-                            <AdminPanelSettingsRoundedIcon fontSize="small" color="error" />
-                          </Avatar>
-                        }
-                        title={role.title}
-                        action={
                           <Chip
                             label={
                               <Typography fontSize={14} variant="subtitle1">
-                                <FormattedMessage id={type} />
                                 {` ${title}`}
                               </Typography>
                             }
+                          />
+                        }
+                        title={role.title}
+                        action={
+                          <RevokeRoleAssignment
+                            roleName={role?.name}
+                            userId={userId}
+                            onClose={handleClose}
+                            refetch={refetch}
                           />
                         }
                         // action={
@@ -151,19 +153,22 @@ export default function RolesPopup({ ids, refetch, roles = [] }) {
                       <Card key={i}>
                         <CardHeader
                           avatar={
-                            <Avatar sx={{ bgcolor: 'action.hover' }}>
-                              <AdminPanelSettingsRoundedIcon fontSize="small" color="error" />
-                            </Avatar>
-                          }
-                          title={workshops.title}
-                          action={
                             <Chip
                               label={
                                 <Typography fontSize={14} variant="subtitle1">
-                                  {/* <FormattedMessage id="lab" /> */}
                                   {` ${title}`}
                                 </Typography>
                               }
+                            />
+                          }
+                          title={role.title}
+                          action={
+                            <RevokeRoleAssignment
+                              ids={id}
+                              roleName={role?.name}
+                              userId={userId}
+                              onClose={handleClose}
+                              refetch={refetch}
                             />
                           }
                           // action={
