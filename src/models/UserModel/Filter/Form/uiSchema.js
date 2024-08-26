@@ -1,3 +1,5 @@
+import { UsersRoleSelectionWidget } from 'components/FormWidgets';
+
 const uiSchema = () => ({
   lastname: {
     'ui:options': {
@@ -17,7 +19,7 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
-  type_ids: {
+  role_id: {
     'ui:options': {
       xs: 6,
       sm: 6,

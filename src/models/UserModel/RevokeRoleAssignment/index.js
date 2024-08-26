@@ -12,7 +12,8 @@ import { useMutation } from '@apollo/client';
 import { isEmptyObject } from 'helpers/formatObject';
 import { FormattedMessage } from 'react-intl';
 
-export default function RevokeRoleAssignment({ refetch, roleName, userId, onClose }) {
+export default function RevokeRoleAssignment(props) {
+  const { refetch, roleId, userId, workshopId, onClose } = props;
   const [formData, setformData] = useState({});
   const { userToken } = useSelector((state) => state.auth);
 
@@ -30,8 +31,9 @@ export default function RevokeRoleAssignment({ refetch, roleName, userId, onClos
     try {
       const { data, errors } = await formCreate({
         variables: {
-          user_ids: userId,
-          roles: roleName,
+          user_id: userId,
+          role_id: roleId,
+          workshop_id: workshopId,
         },
       });
       if (!errors) {
@@ -51,7 +53,7 @@ export default function RevokeRoleAssignment({ refetch, roleName, userId, onClos
       <Tooltip title="حذف نقش">
         <IconButton sx={{ bgcolor: 'action.selected' }} size="medium" color="error" onClick={onSubmit}>
           {loading ? (
-            <CircularProgress color="error" size={25} />
+            <CircularProgress color="error" size={20} />
           ) : (
             <AssignmentLateIcon color="error" fontSize="small" />
           )}

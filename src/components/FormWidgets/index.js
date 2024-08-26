@@ -9,6 +9,7 @@ export { default as ContractSelectionWidget } from './ContractSelectionWidget';
 export { default as ShiftTypeSelectionWidget } from './ShiftTypeSelectionWidget';
 export { default as TasksTypeSelectionWidget } from './TasksTypeSelectionWidget';
 export { default as UsersTypeSelectionWidget } from './UsersTypeSelectionWidget';
+export { default as UsersRoleSelectionWidget } from './UsersRoleSelectionWidget';
 export { default as VehicleTypeSelectionWidget } from './VehicleTypeSelectionWidget';
 export { default as TasksStatusSelectionWidget } from './TasksStatusSelectionWidget';
 export { default as UsersStatusSelectionWidget } from './UsersStatusSelectionWidget';

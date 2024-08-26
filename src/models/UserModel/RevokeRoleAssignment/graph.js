@@ -5,8 +5,8 @@ const schema = {
     name: 'revokeUserRole',
     serviceName: 'shared',
     query: gql`
-      mutation revokeUserRole($user_ids: [String]!, $roles: [String]!) {
-        revokeUserRole(user_ids: $user_ids, roles: $roles) {
+      mutation revokeUserRole($user_id: String!, $role_id: String!, $workshop_id: String) {
+        revokeUserRole(user_id: $user_id, role_id: $role_id, workshop_id: $workshop_id) {
           influenced_count
           messages
         }

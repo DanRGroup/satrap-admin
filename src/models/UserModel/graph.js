@@ -19,6 +19,7 @@ const schema = {
         $is_active: Int # 0 , 1
         $birth_date: String
         $type_ids: [String]
+        $role_id: String
         $has_role_name: String # کاربرانی که این نقش را دارند
         $has_permission_name: String # کاربرانی که این مجوز را دارند
         $device_zones: [String] # ios,android,a_device,no_device
@@ -41,6 +42,7 @@ const schema = {
           is_active: $is_active
           birth_date: $birth_date
           type_ids: $type_ids
+          role_id: $role_id
           has_role_name: $has_role_name
           has_permission_name: $has_permission_name
           device_zones: $device_zones

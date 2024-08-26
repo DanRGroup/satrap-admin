@@ -7,6 +7,7 @@ export { default as ContractModel } from './ContractModel';
 export { default as WorkshopModel } from './WorkshopModel';
 export { default as SiteTypeModel } from './SiteTypeModel';
 export { default as UserTypeModel } from './UserTypeModel';
+export { default as UserRoleModel } from './UserRoleModel';
 export { default as TaskTypeModel } from './TaskTypeModel';
 export { default as ShiftTypeModel } from './ShiftTypeModel';
 export { default as TaskStatusModel } from './TaskStatusModel';

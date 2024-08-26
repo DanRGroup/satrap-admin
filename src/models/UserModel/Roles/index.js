@@ -113,7 +113,8 @@ export default function RolesPopup({ ids, refetch, roles = [], userId }) {
                   return sites.map(({ id, type, title }, i) => (
                     <Card key={i}>
                       <CardHeader
-                        avatar={
+                        avatar={role.title}
+                        title={
                           <Chip
                             label={
                               <Typography fontSize={14} variant="subtitle1">
@@ -122,10 +123,9 @@ export default function RolesPopup({ ids, refetch, roles = [], userId }) {
                             }
                           />
                         }
-                        title={role.title}
                         action={
                           <RevokeRoleAssignment
-                            roleName={role?.name}
+                            roleId={role?.id}
                             userId={userId}
                             onClose={handleClose}
                             refetch={refetch}
@@ -152,7 +152,8 @@ export default function RolesPopup({ ids, refetch, roles = [], userId }) {
                     .map(({ id, title }, i) => (
                       <Card key={i}>
                         <CardHeader
-                          avatar={
+                          avatar={role.title}
+                          title={
                             <Chip
                               label={
                                 <Typography fontSize={14} variant="subtitle1">
@@ -161,12 +162,12 @@ export default function RolesPopup({ ids, refetch, roles = [], userId }) {
                               }
                             />
                           }
-                          title={role.title}
                           action={
                             <RevokeRoleAssignment
                               ids={id}
-                              roleName={role?.name}
+                              roleId={role?.id}
                               userId={userId}
+                              workshopId={workshops[i]?.id}
                               onClose={handleClose}
                               refetch={refetch}
                             />
@@ -186,6 +187,21 @@ export default function RolesPopup({ ids, refetch, roles = [], userId }) {
                       </Card>
                     ));
                 }
+                return (
+                  <Card key={i}>
+                    <CardHeader
+                      title={role.title}
+                      action={
+                        <RevokeRoleAssignment
+                          roleId={role?.id}
+                          userId={userId}
+                          onClose={handleClose}
+                          refetch={refetch}
+                        />
+                      }
+                    />
+                  </Card>
+                );
               })}
             </Stack>
           </DialogContent>
