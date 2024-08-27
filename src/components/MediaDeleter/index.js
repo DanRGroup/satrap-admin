@@ -46,7 +46,7 @@ export default function DeletePopup({ model, modelId, mediaId, refetch }) {
     <>
       <Button variant="outlined" color="error" size="small" onClick={onOpen}>
         {loading ? (
-          <CircularProgress color="error" size={25} />
+          <CircularProgress color="error" size={20} />
         ) : (
           <DeleteOutlineRounded color="error" fontSize="small" />
         )}

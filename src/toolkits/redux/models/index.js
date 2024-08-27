@@ -1,4 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import graph from 'layouts/AppLayout/graph';
+import client from 'config/apolloClient';
+
+import { result } from 'validate.js';
+
+export const fetchContractTypes = createAsyncThunk('models/fetchContractTypes', async () => {
+  const response = await client.query({
+    query: graph.list.query,
+    fetchPolicy: 'no-cache',
+  });
+  return response.data.contractType.data;
+});
 
 export const setModelsSlice = createSlice({
   name: 'models',
@@ -135,6 +147,20 @@ export const setModelsSlice = createSlice({
         ...payload,
       };
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchContractTypes.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchContractTypes.fulfilled, (state, action) => {
+        state.loading = false;
+        state.test = action.payload;
+      })
+      .addCase(fetchContractTypes.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
   },
 });
 

@@ -52,7 +52,7 @@ export default function DeletePopup({ ids, refetch, selection }) {
       <Tooltip title={<FormattedMessage id="delete" />}>
         <IconButton sx={{ bgcolor: 'action.selected' }} size="medium" color="error" onClick={onOpen}>
           {loading ? (
-            <CircularProgress color="error" size={25} />
+            <CircularProgress color="error" size={20} />
           ) : (
             <DeleteOutlineRounded color="error" fontSize="small" />
           )}

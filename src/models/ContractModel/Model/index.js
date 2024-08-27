@@ -7,7 +7,7 @@ import { alpha, useTheme } from '@mui/material';
 import {
   Card,
   Stack,
-  Slide,
+  Fade,
   Divider,
   Checkbox,
   Typography,
@@ -41,12 +41,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
 
   return (
     <>
-      <Slide
-        in
-        unmountOnExit
-        direction={direction}
-        timeout={{ appear: delay * 150, enter: delay * 170, exit: delay * 190 }}
-      >
+      <Fade in unmountOnExit timeout={{ appear: delay * 150, enter: delay * 170, exit: delay * 190 }}>
         <Card
           sx={{
             position: 'relative',
@@ -117,7 +112,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             />
           </CardActionArea>
         </Card>
-      </Slide>
+      </Fade>
       <Divider variant="middle" />
     </>
   );

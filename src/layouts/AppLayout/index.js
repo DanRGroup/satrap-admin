@@ -6,7 +6,7 @@ import { useState, Suspense, useEffect } from 'react';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
-import { setModels } from 'toolkits/redux/models';
+import { setModels, fetchContractTypes } from 'toolkits/redux/models';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function DashboardLayout() {
@@ -14,7 +14,8 @@ export default function DashboardLayout() {
   const [open, setOpen] = useState(false);
 
   const setRedux = () => {
-    dispatch(setModels({ test: [{ const: '1', title: 'test' }] }));
+    // dispatch(setModels({ test: [{ const: '1', title: 'test' }] }));
+    dispatch(fetchContractTypes());
     console.log('Set Test');
   };
 

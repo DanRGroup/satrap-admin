@@ -10,12 +10,7 @@ const schema = {
           data {
             id
             title
-            media {
-              id
-              full_url
-            }
           }
-          total
         }
       }
     `,

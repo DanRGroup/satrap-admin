@@ -64,7 +64,7 @@ export default function RoleAssignment({ ids, refetch }) {
       <Tooltip title="اختصاص نقش">
         <IconButton sx={{ bgcolor: 'action.selected' }} size="medium" color="error" onClick={onOpen}>
           {loading ? (
-            <CircularProgress color="error" size={25} />
+            <CircularProgress color="error" size={20} />
           ) : (
             <AssignmentIndRounded color="error" fontSize="small" />
           )}
