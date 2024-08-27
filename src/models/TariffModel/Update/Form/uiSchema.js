@@ -20,7 +20,7 @@ const uiSchema = () => ({
     },
   },
   operation_type_id: {
-    // 'ui:widget': OperationTypeSelectionWidget,
+    'ui:widget': OperationTypeSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,
@@ -40,7 +40,7 @@ const uiSchema = () => ({
     },
   },
   shift_type_id: {
-    // 'ui:widget': ShiftTypeSelectionWidget,
+    'ui:widget': ShiftTypeSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,

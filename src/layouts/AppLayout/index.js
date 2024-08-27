@@ -13,17 +13,17 @@ export default function DashboardLayout() {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
-  const setRedux = () => {
-    // dispatch(setModels({ test: [{ const: '1', title: 'test' }] }));
-    dispatch(fetchContractTypes());
-    console.log('Set Test');
-  };
+  // const setRedux = () => {
+  //   // dispatch(setModels({ test: [{ const: '1', title: 'test' }] }));
+  //   dispatch(fetchContractTypes());
+  //   console.log('Set Test');
+  // };
 
-  const models = useSelector((state) => state.models);
-  console.log(models);
-  useEffect(() => {
-    setRedux();
-  }, []);
+  // const models = useSelector((state) => state.models);
+  // console.log(models);
+  // useEffect(() => {
+  //   setRedux();
+  // }, []);
   return (
     <>
       <TourProvider>

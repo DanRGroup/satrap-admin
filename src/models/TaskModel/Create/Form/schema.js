@@ -31,12 +31,12 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
     material_type_id: {
       type: 'string',
       title: 'material_type',
-      oneOf: materialTypes,
+      // oneOf: materialTypes,
     },
     shift_type_id: {
       type: 'string',
       title: 'shift_type',
-      oneOf: shiftTypes,
+      // oneOf: shiftTypes,
     },
     // status_id: {
     //   type: 'string',

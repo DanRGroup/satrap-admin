@@ -10,17 +10,17 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
     operation_type_id: {
       type: 'string',
       title: 'operation_type',
-      oneOf: operationTypes,
+      // oneOf: operationTypes,
     },
     material_type_id: {
       type: 'string',
       title: 'material_type',
-      oneOf: materialTypes,
+      // oneOf: materialTypes,
     },
     shift_type_id: {
       type: 'string',
       title: 'shift_type',
-      oneOf: shiftTypes,
+      // oneOf: shiftTypes,
     },
     workshop_id: {
       type: 'string',

@@ -62,7 +62,7 @@ export default function MainModel(props) {
   };
 
   useEffect(() => {
-    startFetch && handleData(page > 1);
+    startFetch && handleData();
   }, [startFetch, page, filter, flag]);
 
   return (

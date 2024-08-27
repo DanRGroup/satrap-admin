@@ -72,7 +72,7 @@ const uiSchema = () => ({
     },
   },
   material_type_id: {
-    // 'ui:widget': MaterialTypeSelectionWidget,
+    'ui:widget': MaterialTypeSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,
@@ -82,7 +82,7 @@ const uiSchema = () => ({
     },
   },
   shift_type_id: {
-    // 'ui:widget': ShiftTypeSelectionWidget,
+    'ui:widget': ShiftTypeSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,

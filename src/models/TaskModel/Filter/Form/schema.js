@@ -1,4 +1,4 @@
-const schema = (taskTypes, operationTypes, materialTypes, shiftTypes, taskStatuses) => ({
+const schema = ({ taskTypes, taskStatuses, operationTypes, materialTypes, shiftTypes }) => ({
   type: 'object',
   required: [],
   properties: {
@@ -27,17 +27,17 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes, taskStatus
     material_type_ids: {
       type: 'string',
       title: 'material_type',
-      oneOf: materialTypes,
+      // oneOf: materialTypes,
     },
     shift_type_ids: {
       type: 'string',
       title: 'shift_type',
-      oneOf: shiftTypes,
+      // oneOf: shiftTypes,
     },
     operation_type_ids: {
       type: 'string',
       title: 'operation',
-      oneOf: operationTypes,
+      // oneOf: operationTypes,
     },
     status_ids: {
       type: 'string',
@@ -46,12 +46,12 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes, taskStatus
     },
     min_created_at: {
       type: 'string',
-      title: 'min_created_at',
+      title: 'start_date',
       format: 'date',
     },
     max_created_at: {
       type: 'string',
-      title: 'max_created_at',
+      title: 'end_date',
       format: 'date',
     },
   },

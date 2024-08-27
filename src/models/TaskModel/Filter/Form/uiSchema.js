@@ -61,6 +61,7 @@ const uiSchema = () => ({
     },
   },
   material_type_ids: {
+    'ui:widget': MaterialTypeSelectionWidget,
     'ui:options': {
       xs: 6,
       sm: 6,
@@ -70,6 +71,7 @@ const uiSchema = () => ({
     },
   },
   shift_type_ids: {
+    'ui:widget': ShiftTypeSelectionWidget,
     'ui:options': {
       xs: 6,
       sm: 6,
@@ -79,6 +81,7 @@ const uiSchema = () => ({
     },
   },
   operation_type_ids: {
+    'ui:widget': OperationTypeSelectionWidget,
     'ui:options': {
       xs: 6,
       sm: 6,

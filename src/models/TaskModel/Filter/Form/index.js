@@ -13,15 +13,15 @@ const Form = ({ init, setFilter }) => {
   };
 
   const { taskTypes } = useSelector((state) => state.models);
-  const { operationTypes } = useSelector((state) => state.models);
-  const { materialTypes } = useSelector((state) => state.models);
-  const { shiftTypes } = useSelector((state) => state.models);
+  // const { operationTypes } = useSelector((state) => state.models);
+  // const { materialTypes } = useSelector((state) => state.models);
+  // const { shiftTypes } = useSelector((state) => state.models);
   const { taskStatuses } = useSelector((state) => state.models);
 
   return (
     <MuiFormBuilder
       showSubmit={false}
-      schema={schema(taskTypes, operationTypes, materialTypes, shiftTypes, taskStatuses)}
+      schema={schema({ taskTypes, taskStatuses })}
       uiSchema={uiSchema()}
       formData={formData}
       onChange={onChange}

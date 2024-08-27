@@ -41,30 +41,6 @@ export default function RolesPopup({ ids, refetch, roles = [], userId }) {
   };
   const handleClose = () => setOpen(false);
 
-  const [deleteRole, { loading }] = useMutation(graph.delete.query, {
-    context: {
-      serviceName: graph.delete.serviceName,
-      headers: {
-        authorization: `Bearer ${userToken}`,
-      },
-    },
-  });
-
-  const handleDelete = async (ids) => {
-    try {
-      const { data, errors } = await deleteRole({
-        variables: { ids },
-      });
-      if (!errors) {
-        refetch();
-        handleClose();
-        if (!isEmptyObject(data)) {
-          data[graph.delete.name]?.messages.map((message) => toast.success(String(message)));
-        }
-      }
-    } catch (error) {}
-  };
-
   if (roles) {
     return (
       <>
@@ -73,14 +49,14 @@ export default function RolesPopup({ ids, refetch, roles = [], userId }) {
             color="error"
             variant="dot"
             overlap="circular"
-            invisible={!roles.length}
+            invisible={roles.length}
             anchorOrigin={{
               vertical: 'top',
               horizontal: 'right',
             }}
           >
             <IconButton
-              disabled={!roles.length}
+              disabled={roles.length < 0}
               size="small"
               color="error"
               onClick={handleOpen}
@@ -209,4 +185,11 @@ export default function RolesPopup({ ids, refetch, roles = [], userId }) {
       </>
     );
   }
+  return (
+    <Tooltip title="نقش ها">
+      <IconButton disabled={true} size="small" color="error" sx={{ bgcolor: 'error.lighter' }}>
+        <AdminPanelSettingsRoundedIcon fontSize="small" />
+      </IconButton>
+    </Tooltip>
+  );
 }
