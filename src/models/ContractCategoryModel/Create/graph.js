@@ -6,7 +6,7 @@ const schema = {
     serviceName: 'companyAdmin',
     query: gql`
       mutation createContractCategory(
-        $parent_id: String!
+        $parent_id: String
         $title: String!
         $alias: String
         $is_active: Int

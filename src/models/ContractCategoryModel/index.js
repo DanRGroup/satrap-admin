@@ -47,8 +47,6 @@ export default function MainModel(props) {
       const { data, error } = await getData({
         variables: {
           ...filter,
-          page,
-          limit,
         },
       });
       if (!isEmptyObject(data) && !error) {
@@ -63,7 +61,7 @@ export default function MainModel(props) {
   useEffect(() => {
     startFetch && handleData(page > 1);
   }, [startFetch, page, filter, flag]);
-  
+
   useEffect(() => {
     initFilter && setFilter(initFilter);
   }, [initFilter]);

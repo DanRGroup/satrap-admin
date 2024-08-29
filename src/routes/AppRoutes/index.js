@@ -230,7 +230,7 @@ export const navConfig = [
       {
         path: '/dashboard/contract-categories',
         url: '/dashboard/contract-categories',
-        title: 'contract-categories',
+        title: 'contract_categories',
         element: (
           <Page title="ContractCategoryModel">
             <ContractCategoryModel />

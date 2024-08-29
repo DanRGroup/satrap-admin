@@ -13,6 +13,7 @@ const schema = {
         #$employer_ids: [String]
         $status: String
         $with_calculations: Int
+        $category_ids: [String]
       ) {
         contract(
           ids: $ids
@@ -22,6 +23,7 @@ const schema = {
           #employer_ids: $employer_ids
           status: $status
           with_calculations: $with_calculations
+          category_ids: $category_ids
         ) {
           data {
             id

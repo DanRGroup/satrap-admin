@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 const schema = {
   get: {
     name: 'contractCategory',
-    serviceName: 'auth',
+    serviceName: 'companyAdmin',
     query: gql`
       query contractCategory($ids: [String]) {
         contractCategory(ids: $ids) {

@@ -1,4 +1,9 @@
+import { ContractCategorySelectionWidget } from 'components/FormWidgets';
+
 const uiSchema = () => ({
+  parent_id: {
+    'ui:widget': ContractCategorySelectionWidget,
+  },
   details: {
     selected: {
       'ui:widget': 'radio',

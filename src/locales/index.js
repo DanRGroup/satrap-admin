@@ -1,4 +1,5 @@
 import { ka_GE } from '@faker-js/faker';
+import { Category } from '@mui/icons-material';
 
 const locales = {
   en: {
@@ -53,6 +54,8 @@ const locales = {
     status: 'Status',
     manager: 'Manager',
     managment: 'Managment',
+    category: 'Category',
+    parent_category: 'Parent Category',
     activity: 'Activity',
     active: 'Active',
     inactive: 'In Active',
@@ -155,6 +158,7 @@ const locales = {
     operation_types: 'Operation Types',
     contract: 'Contract',
     contracts: 'Contracts',
+    contract_categories: 'Contract Categories',
     create_contract: 'Create Contract',
     edit_contract: 'Edit Contract',
     create_financial: 'Create Financial',
@@ -289,7 +293,6 @@ const locales = {
     nothing: 'موردی یافت نشد!',
     more: 'بیشتر...',
     continue: 'ادامه',
-    doctor: 'دکتر',
     acceptOrder: 'قبول سفارش',
 
     // Menu
@@ -317,6 +320,8 @@ const locales = {
     status: 'وضعیت',
     manager: 'مدیر',
     managment: 'مدیریت',
+    category: 'مجموعه',
+    parent_category: 'مجموعه والد',
     activity: 'وضعیت فعالیت',
     active: 'فعال',
     inactive: 'غیرفعال',
@@ -418,6 +423,7 @@ const locales = {
     operation_types: 'انواع کارکرد',
     contract: 'قرارداد',
     contracts: 'قراردادها',
+    contract_categories: 'دسته‌بندی‌های قرارداد',
     create_contract: 'ایجاد قرارداد',
     edit_contract: 'ویرایش قرارداد',
     create_financial: 'ایجاد ردیف مالی',

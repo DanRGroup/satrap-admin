@@ -42,8 +42,7 @@ export default function CreatePopup({ ids, title, refetch }) {
       const { data, errors } = await formUpdate({
         variables: {
           ...formData,
-          parent_id: ids,
-          details: JSON.stringify(formData.details),
+          // parent_id: ids,
         },
       });
       if (!errors) {
@@ -62,7 +61,7 @@ export default function CreatePopup({ ids, title, refetch }) {
     <>
       <Tooltip title={title}>
         <IconButton
-          size="small"
+          size="medium"
           color="warning"
           onClick={onOpen}
           disabled={loading}

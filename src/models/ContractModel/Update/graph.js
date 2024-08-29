@@ -10,6 +10,10 @@ const schema = {
           data {
             id
             title
+            category {
+              id
+              title
+            }
             workshop {
               id
               title
@@ -66,6 +70,7 @@ const schema = {
         $operation_type_id: String
         $forecast_amount: String
         $contractual_number: String
+        $category_id: String
         $is_civil: Int
       ) {
         updateContract(
@@ -84,6 +89,7 @@ const schema = {
           operation_type_id: $operation_type_id
           forecast_amount: $forecast_amount
           contractual_number: $contractual_number
+          category_id: $category_id
           is_civil: $is_civil
         ) {
           messages

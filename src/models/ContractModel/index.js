@@ -50,6 +50,7 @@ export default function MainModel(props) {
           page,
           limit,
           with_calculations: 1,
+          category_ids: '1',
         },
       });
       if (!isEmptyObject(data) && !error) {
