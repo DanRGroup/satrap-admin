@@ -6,6 +6,10 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
       type: 'string',
       title: 'title',
     },
+    category_id: {
+      type: 'string',
+      title: 'category',
+    },
     workshop_id: {
       type: 'string',
       title: 'workshop',

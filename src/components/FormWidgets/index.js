@@ -16,3 +16,4 @@ export { default as UsersStatusSelectionWidget } from './UsersStatusSelectionWid
 export { default as ContractTypeSelectionWidget } from './ContractTypeSelectionWidget';
 export { default as MaterialTypeSelectionWidget } from './MaterialTypeSelectionWidget';
 export { default as OperationTypeSelectionWidget } from './OperationTypeSelectionWidget';
+export { default as ContractCategorySelectionWidget } from './ContractCategorySelectionWidget';

@@ -23,6 +23,7 @@ import {
   WorkshopModel,
   TariffModel,
   TaskModel,
+  ContractCategoryModel,
 } from 'models';
 
 const NotFound = Loadable(lazy(() => import('screens/Authentication/Page404')));
@@ -212,6 +213,17 @@ export const superAdminNavConfig = [
         element: (
           <Page title="Contracts">
             <ContractModel />
+          </Page>
+        ),
+        inSidebar: true,
+      },
+      {
+        path: '/dashboard/contract-categories',
+        url: '/dashboard/contract-categories',
+        title: 'contract-categories',
+        element: (
+          <Page title="ContractCategoryModel">
+            <ContractCategoryModel />
           </Page>
         ),
         inSidebar: true,
