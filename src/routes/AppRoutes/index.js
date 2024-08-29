@@ -250,18 +250,6 @@ export const navConfig = [
         roles: ['superadmin', 'companyAdmin'],
       },
       {
-        path: '/dashboard/users',
-        url: '/dashboard/users',
-        title: 'users',
-        element: (
-          <Page title="Users">
-            <UserModel />
-          </Page>
-        ),
-        inSidebar: true,
-        roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
-      },
-      {
         path: '/dashboard/sites',
         url: '/dashboard/sites',
         title: 'sites',
@@ -295,6 +283,18 @@ export const navConfig = [
         ),
         inSidebar: true,
         roles: ['superadmin', 'workshopManager', 'companyCeo'],
+      },
+      {
+        path: '/dashboard/users',
+        url: '/dashboard/users',
+        title: 'users',
+        element: (
+          <Page title="Users">
+            <UserModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
       },
     ],
   },

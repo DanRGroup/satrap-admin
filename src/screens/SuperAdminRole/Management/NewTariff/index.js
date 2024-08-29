@@ -75,7 +75,7 @@ export default function FixedOrderCreation() {
         </CardActionArea>
       </Card>
       <NewDialog label="create" open={open} onClose={onClose} maxWidth="xs">
-        <NewDialogTitle title="title" onClose={onClose} />
+        <NewDialogTitle title="ایجاد تعرفه" onClose={onClose} />
         <NewDialogContent>
           <Stack p={2} alignItems="center">
             <Form formData={formData} onChange={onChange} />

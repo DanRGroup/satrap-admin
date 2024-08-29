@@ -44,7 +44,7 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
     },
     is_active: {
       type: 'number',
-      title: 'activity',
+      title: 'status',
       oneOf: [
         { const: 1, title: 'active' },
         { const: 0, title: 'inactive' },
