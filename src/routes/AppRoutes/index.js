@@ -23,6 +23,7 @@ import {
   WorkshopModel,
   TariffModel,
   TaskModel,
+  ContractCategoryModel,
 } from 'models';
 import { FormattedMessage } from 'react-intl';
 
@@ -225,6 +226,17 @@ export const navConfig = [
         ),
         inSidebar: true,
         roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
+      },
+      {
+        path: '/dashboard/contract-categories',
+        url: '/dashboard/contract-categories',
+        title: 'contract-categories',
+        element: (
+          <Page title="ContractCategoryModel">
+            <ContractCategoryModel />
+          </Page>
+        ),
+        inSidebar: true,
       },
       {
         path: '/dashboard/task',

@@ -3,6 +3,7 @@ import {
   UsersSelectionWidget,
   WorkshopSelectionWidget,
   OperationTypeSelectionWidget,
+  ContractCategorySelectionWidget,
 } from 'components/FormWidgets';
 
 const uiSchema = () => ({
@@ -13,6 +14,16 @@ const uiSchema = () => ({
       md: 12,
       lg: 12,
       xl: 12,
+    },
+  },
+  category_id: {
+    'ui:widget': ContractCategorySelectionWidget,
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   workshop_id: {

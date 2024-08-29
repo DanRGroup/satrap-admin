@@ -17,3 +17,4 @@ export { default as MaterialTypeModel } from './MaterialTypeModel';
 export { default as ContractTypeModel } from './ContractTypeModel';
 export { default as OperationTypeModel } from './OperationTypeModel';
 export { default as WorkshopStatusModel } from './WorkshopStatusModel';
+export { default as ContractCategoryModel } from './ContractCategoryModel';
