@@ -237,6 +237,7 @@ export const navConfig = [
           </Page>
         ),
         inSidebar: true,
+        roles: ['superadmin', 'workshopManager', 'companyCeo'],
       },
       {
         path: '/dashboard/task',
@@ -259,7 +260,7 @@ export const navConfig = [
           </Page>
         ),
         inSidebar: true,
-        roles: ['superadmin', 'companyAdmin'],
+        roles: ['superadmin', 'companyCeo'],
       },
       {
         path: '/dashboard/sites',

@@ -4,6 +4,17 @@ const uiSchema = () => ({
   parent_id: {
     'ui:widget': ContractCategorySelectionWidget,
   },
+  is_active: {
+    'ui:widget': 'radio',
+    'ui:options': {
+      inline: true,
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
   details: {
     selected: {
       'ui:widget': 'radio',

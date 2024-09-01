@@ -36,19 +36,16 @@ export default function UpdatePopup({ ids, title, refetch }) {
         },
         variables: {
           ids,
-          for_admin: 1,
         },
       });
       if (!isEmptyObject(data)) {
-        const res = data[graph.get.name][0];
-        const { title, alias, details, is_active } = res;
-        const { selected, in_first_page } = JSON.parse(details);
+        const res = data[graph.get.name]?.data[0];
+        const { title, parent, is_active } = res;
         if (res) {
           setFormData({
             title,
-            alias,
+            parent_id: parent?.id,
             is_active: Number(is_active),
-            details: { selected, in_first_page },
           });
         }
       }
@@ -72,7 +69,6 @@ export default function UpdatePopup({ ids, title, refetch }) {
         variables: {
           ids,
           ...formData,
-          details: JSON.stringify(formData.details),
         },
       });
       if (!errors) {

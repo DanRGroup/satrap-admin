@@ -64,13 +64,15 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {!hasRole ? (
+              <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
+              <Create ids={model.id} title={<FormattedMessage id="create" />} refetch={refetch} />
+              {!hasRole && (
                 <>
                   <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
                   <Create ids={model.id} title={<FormattedMessage id="create" />} refetch={refetch} />
                 </>
-              ) : (
-                <Config ids={model.id} title={<FormattedMessage id="config" />} refetch={refetch} />
+                // ) : (
+                //   <Config ids={model.id} title={<FormattedMessage id="config" />} refetch={refetch} />
               )}
             </NewSpeedDial>
           </Stack>

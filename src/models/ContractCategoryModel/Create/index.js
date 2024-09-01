@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
@@ -42,7 +42,7 @@ export default function CreatePopup({ ids, title, refetch }) {
       const { data, errors } = await formUpdate({
         variables: {
           ...formData,
-          // parent_id: ids,
+          parent_id: ids,
         },
       });
       if (!errors) {
@@ -57,11 +57,19 @@ export default function CreatePopup({ ids, title, refetch }) {
     }
   };
 
+  const getModel = (ids) => {
+    setFormData({ parent_id: ids });
+  };
+
+  useEffect(() => {
+    open && getModel(ids);
+  }, [open]);
+
   return (
     <>
       <Tooltip title={title}>
         <IconButton
-          size="medium"
+          size="small"
           color="warning"
           onClick={onOpen}
           disabled={loading}

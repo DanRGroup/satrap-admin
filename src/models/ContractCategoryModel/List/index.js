@@ -7,7 +7,7 @@ import { LoadingMore, NewDialogActions, NewDialogContent, NewDialogTitle } from 
 import Model from '../Model';
 import Filter from '../Filter';
 import Delete from '../Delete';
-import Create from '../Create';
+// import Create from '../Create';
 import Assignment from '../Assignment';
 import { FormattedMessage } from 'react-intl';
 
@@ -64,7 +64,7 @@ export default function List({
 
   const handleSelect = (item) => {
     let { id, children } = item;
-    console.log('children', children);
+    // console.log('children', children);
 
     let hasChild = children ? children?.length > 0 : false;
     if (hasChild) {
@@ -103,7 +103,7 @@ export default function List({
     refetch();
   };
 
-  console.log('contract category', result.data);
+  // console.log('result', result.data);
 
   return (
     <>
@@ -167,9 +167,15 @@ export default function List({
         </Stack>
       </NewDialogContent>
       <NewDialogActions isPopup={isPopup}>
-        <Button disabled={!result?.parent} sx={{ mr: 'auto' }} onClick={() => handleBack(result[0]?.parent)}>
-          Back
-        </Button>
+        {result?.data && (
+          <Button
+            disabled={!result?.data[0]?.parent}
+            sx={{ mr: 'auto' }}
+            onClick={() => handleBack(result?.data[0]?.parent?.id)}
+          >
+            <FormattedMessage id="back" />
+          </Button>
+        )}
         <Tooltip title={<FormattedMessage id="refresh" />}>
           <IconButton sx={{ bgcolor: 'action.selected', color: '#fff' }} size="medium" onClick={refresh}>
             {loading ? (
@@ -181,7 +187,6 @@ export default function List({
         </Tooltip>
         <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
         {/* Need Parent Id */}
-        <Create title={<FormattedMessage id="create" />} refetch={refresh} />
       </NewDialogActions>
     </>
   );

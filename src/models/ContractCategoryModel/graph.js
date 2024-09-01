@@ -14,10 +14,8 @@ const schema = {
         ) {
           data {
             id
-            title
             parent {
               id
-              title
             }
             children {
               id
@@ -25,9 +23,12 @@ const schema = {
               media {
                 full_url
               }
-              children {
+              parent {
                 id
                 title
+              }
+              children {
+                id
               }
             }
           }

@@ -52,8 +52,8 @@ NavItem.propTypes = {
 };
 
 function NavItem({ item, active, hasRequiredRole }) {
-  const isActiveRoot = active(item.url);
-  const [open, setOpen] = useState(isActiveRoot);
+  const isActiveRout = active(item.url);
+  const [open, setOpen] = useState(isActiveRout);
   const { userInfo } = useSelector((state) => state.auth);
   const { title, url, icon, children = [] } = item;
 
@@ -82,21 +82,21 @@ function NavItem({ item, active, hasRequiredRole }) {
         <ListItemStyle
           onClick={handleOpen}
           sx={{
-            ...(isActiveRoot && !open ? activeRootStyle : defultRootStyle),
+            ...(isActiveRout && !open ? activeRootStyle : defultRootStyle),
           }}
         >
           <Avatar
             sx={{
               mx: 'auto',
               bgcolor: 'transparent',
-              color: isActiveRoot && !open ? 'text.primary' : 'text.secondary',
+              color: isActiveRout && !open ? 'text.primary' : 'text.secondary',
             }}
           >
             {icon}
           </Avatar>
           <ListItemText disableTypography sx={{ mb: 0 }} primary={<FormattedMessage id={title} />} />
           <ExpandMore expand={open}>
-            <ExpandMoreIcon color={isActiveRoot && !open ? 'text.primary' : 'text.secondary'} />
+            <ExpandMoreIcon color={isActiveRout && !open ? 'text.primary' : 'text.secondary'} />
           </ExpandMore>
         </ListItemStyle>
 
@@ -150,7 +150,7 @@ function NavItem({ item, active, hasRequiredRole }) {
   }
 
   return (
-    <ListItemStyle to={url} component={NavLink} sx={{ ...(isActiveRoot && activeRootStyle) }}>
+    <ListItemStyle to={url} component={NavLink} sx={{ ...(isActiveRout && activeRootStyle) }}>
       <ListItemIconStyle>
         <CheckCircleOutlineRoundedIcon />
       </ListItemIconStyle>

@@ -80,11 +80,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               {plaque && <Chip label={plaque} />}
               {workshopTitle && <Chip label={workshopTitle} />}
               {siteTitle && <Chip label={siteTitle} />}
-              {isAuthenticated &&
-                hasRequiredRole(['superadmin', 'workshopManager', 'siteManager'], userInfo?.roles) && (
-                  <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
-                )}
-              {/* <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} /> */}
+              <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
               <ChangeStatus ids={model.id} title={<FormattedMessage id="change_status" />} refetch={refetch} />
               <ChangeLocation
                 ids={model?.vehicle?.id}

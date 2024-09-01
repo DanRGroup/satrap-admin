@@ -1,11 +1,8 @@
 import React from 'react';
 import schema from './schema';
 import uiSchema from './uiSchema';
-import siteManagerUiSchema from './siteManagerUiSchema';
 import { MuiFormBuilder } from 'components';
 import { useSelector } from 'react-redux';
-import { hasRequiredRole } from 'helpers';
-import { ConstantColorFactor } from 'three';
 
 const Form = ({ formData = {}, onChange }) => {
   const { taskStatuses, limitedTaskStatuses, supervisorTaskStatuses } = useSelector((state) => state.models);

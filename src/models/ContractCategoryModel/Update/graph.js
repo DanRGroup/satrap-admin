@@ -3,14 +3,18 @@ import { gql } from '@apollo/client';
 const schema = {
   get: {
     name: 'contractCategory',
-    serviceName: 'auth',
+    serviceName: 'companyAdmin',
     query: gql`
-      query contractCategory($ids: [String], $for_admin: Int) {
-        contractCategory(ids: $ids, for_admin: $for_admin) {
-          title
-          alias
-          details
-          is_active
+      query contractCategory($ids: [String]) {
+        contractCategory(ids: $ids) {
+          data {
+            title
+            is_active
+            parent {
+              id
+              title
+            }
+          }
         }
       }
     `,
@@ -19,14 +23,8 @@ const schema = {
     name: 'updateContractCategory',
     serviceName: 'companyAdmin',
     query: gql`
-      mutation updateContractCategory(
-        $ids: [String]!
-        $title: String
-        $alias: String
-        $is_active: Int
-        $details: String
-      ) {
-        updateContractCategory(ids: $ids, title: $title, alias: $alias, details: $details, is_active: $is_active) {
+      mutation updateContractCategory($ids: [String]!, $title: String, $is_active: Int) {
+        updateContractCategory(ids: $ids, title: $title, is_active: $is_active) {
           messages
         }
       }

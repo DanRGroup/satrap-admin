@@ -4,11 +4,11 @@ const schema = () => ({
   properties: {
     title: {
       type: 'string',
-      title: 'عنوان',
+      title: 'title',
     },
-    alias: {
+    parent_id: {
       type: 'string',
-      title: 'نام لاتین',
+      title: 'parent_category',
     },
     is_active: {
       type: 'number',
@@ -18,30 +18,30 @@ const schema = () => ({
         { const: 0, title: 'inactive' },
       ],
     },
-    details: {
-      type: 'object',
-      title: '',
-      properties: {
-        selected: {
-          type: 'number',
-          title: 'دسته بندی منتخب',
-          oneOf: [
-            { const: 1, title: 'active' },
-            { const: 0, title: 'inactive' },
-          ],
-          default: 0,
-        },
-        in_first_page: {
-          type: 'number',
-          title: 'نمایش ویژه در صفحه اول',
-          oneOf: [
-            { const: 1, title: 'active' },
-            { const: 0, title: 'inactive' },
-          ],
-          default: 0,
-        },
-      },
-    },
+    // details: {
+    //   type: 'object',
+    //   title: '',
+    //   properties: {
+    //     selected: {
+    //       type: 'number',
+    //       title: 'دسته بندی منتخب',
+    //       oneOf: [
+    //         { const: 1, title: 'active' },
+    //         { const: 0, title: 'inactive' },
+    //       ],
+    //       default: 0,
+    //     },
+    //     in_first_page: {
+    //       type: 'number',
+    //       title: 'نمایش ویژه در صفحه اول',
+    //       oneOf: [
+    //         { const: 1, title: 'active' },
+    //         { const: 0, title: 'inactive' },
+    //       ],
+    //       default: 0,
+    //     },
+    //   },
+    // },
   },
 });
 

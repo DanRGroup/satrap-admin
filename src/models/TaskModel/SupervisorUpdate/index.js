@@ -4,7 +4,6 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import ModeEditRoundedIcon from '@mui/icons-material/ModeEditRounded';
 
-import { hasRequiredRole } from 'helpers';
 import Form from './Form';
 import graph from './graph';
 import { toast } from 'react-toastify';
@@ -16,24 +15,7 @@ import { FormattedMessage } from 'react-intl';
 import { CircularProgress, Stack } from '@mui/material';
 import { descriptionId } from '@rjsf/utils';
 
-import SupervisorUpdate from '../SupervisorUpdate';
-import SiteManagerUpdate from '../SiteManagerUpdate';
-
-export default function CompHandler(props) {
-  const { userInfo, isAuthenticated } = useSelector((state) => state.auth);
-  if (isAuthenticated && hasRequiredRole(['superadmin', 'workshopManager'], userInfo?.roles)) {
-    return <UpdatePopup {...props} />;
-  }
-  if (isAuthenticated && hasRequiredRole(['workshopSupervisor'], userInfo?.roles)) {
-    return <SupervisorUpdate {...props} />;
-  }
-  if (isAuthenticated && hasRequiredRole(['siteManager'], userInfo?.roles)) {
-    return <SiteManagerUpdate {...props} />;
-  }
-  return null;
-}
-
-function UpdatePopup({ ids, title, refetch }) {
+export default function UpdatePopup({ ids, title, refetch }) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState();
   const { userToken } = useSelector((state) => state.auth);
