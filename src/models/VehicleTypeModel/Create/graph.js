@@ -2,11 +2,11 @@ import { gql } from '@apollo/client';
 
 const schema = {
   create: {
-    name: 'createVehicleTypes',
+    name: 'createVehicleType',
     serviceName: 'admin',
     query: gql`
-      mutation createVehicleTypes($title: String!, $details: String) {
-        createVehicleTypes(title: $title, details: $details) {
+      mutation createVehicleType($title: String!, $details: String) {
+        createVehicleType(title: $title, details: $details) {
           messages
         }
       }

@@ -24,7 +24,7 @@ const schema = {
     name: 'updateVehicleType',
     serviceName: 'admin',
     query: gql`
-      mutation updateVehicleType($ids: [String]!, $title: String!, $code: String, $details: String) {
+      mutation updateVehicleType($ids: [String]!, $title: String!, $details: String) {
         updateVehicleType(ids: $ids, title: $title, details: $details) {
           messages
         }
