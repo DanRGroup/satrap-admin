@@ -12,8 +12,8 @@ import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'c
 import { FormattedMessage } from 'react-intl';
 
 export default function CompHandler(props) {
-  const { userToken, userInfo, isAuthenticated } = useSelector((state) => state.auth);
-  if (isAuthenticated && hasRequiredRole(['superadmin', 'companyCeo', 'workshopManager'], userInfo?.roles)) {
+  const { userInfo, isAuthenticated } = useSelector((state) => state.auth);
+  if (isAuthenticated && hasRequiredRole(['superadmin', 'companyCeo'], userInfo?.roles)) {
     return <DeletePopup {...props} />;
   }
   return null;

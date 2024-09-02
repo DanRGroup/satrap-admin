@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 const schema = {
   current: {
     name: 'tariff',
-    serviceName: 'graphql',
+    serviceName: 'auth',
     query: gql`
       query tariff($ids: [String]) {
         tariff(ids: $ids) {

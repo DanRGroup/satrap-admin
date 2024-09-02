@@ -22,8 +22,8 @@ const schema = {
     name: 'updateTask',
     serviceName: 'auth',
     query: gql`
-      mutation updateTask($ids: [String]!, $status_id: String, $lat: String, $lng: String) {
-        updateTask(ids: $ids, status_id: $status_id, lat: $lat, lng: $lng) {
+      mutation updateTask($ids: [String]!, $status_id: String) {
+        updateTask(ids: $ids, status_id: $status_id) {
           messages
         }
       }
