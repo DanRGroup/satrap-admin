@@ -10,6 +10,7 @@ const schema = {
           data {
             firstname
             lastname
+            username
             address
             #cellphone
             tellphone

@@ -8,9 +8,20 @@ import {
   WorkshopSelectionWidget,
   MaterialTypeSelectionWidget,
   ShiftTypeSelectionWidget,
+  TariffSelectionWidget,
 } from 'components/FormWidgets';
 
 const uiSchema = () => ({
+  tariff_id: {
+    'ui:widget': TariffSelectionWidget,
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
   vehicle_id: {
     'ui:widget': VehicleSelectionWidget,
     'ui:options': {

@@ -38,11 +38,11 @@ const schema = (userTypes, userStatuses) => ({
     //   title: 'cellphone',
     //   minLength: 9,
     // },
-    password: {
-      type: 'string',
-      title: 'password',
-      minLength: 8,
-    },
+    // password: {
+    //   type: 'string',
+    //   title: 'password',
+    //   minLength: 8,
+    // },
     is_active: {
       type: 'number',
       title: 'activity',

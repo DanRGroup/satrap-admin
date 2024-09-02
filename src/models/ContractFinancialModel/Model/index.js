@@ -55,10 +55,14 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <CardHeader
               sx={{ px: 0.5, pl: 4, maxWidth: 180 }}
               title={
-                <Typography fontSize={14} variant="subtitle1" color={!model?.cost && 'error'}>
-                  {model?.cost ? `مبلغ پرداخت : ${model?.cost}` : 'عدم دسترسی به اطلاعات'}
-                  {model?.reported_in && ` شماره گزارش : ${model?.reported_in}`}
-                </Typography>
+                <>
+                  <Typography fontSize={14} variant="subtitle1" color={!model?.cost && 'error'}>
+                    {`مبلغ پرداخت : ${model?.cost ? model?.cost : 'ثبت نشده'}`}
+                  </Typography>
+                  <Typography fontSize={14} variant="subtitle1" color={!model?.reported_in && 'error'}>
+                    {` شماره گزارش : ${model?.reported_in ? model?.reported_in : 'ثبت نشده'}`}
+                  </Typography>
+                </>
               }
               // subheader={
               //   <Typography fontSize={12} variant="subtitle2">

@@ -158,9 +158,7 @@ export default function List({
             )}
           </IconButton>
         </Tooltip>
-        {isAuthenticated && hasRequiredRole(['superadmin', 'workshopManager'], userInfo?.roles) && (
-          <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
-        )}
+        <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
         <Create title={<FormattedMessage id="create" />} refetch={refresh} />
       </NewDialogActions>
     </>

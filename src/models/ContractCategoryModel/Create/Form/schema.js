@@ -2,13 +2,13 @@ const schema = () => ({
   type: 'object',
   required: [],
   properties: {
-    title: {
-      type: 'string',
-      title: 'title',
-    },
     parent_id: {
       type: 'string',
       title: 'parent_category',
+    },
+    title: {
+      type: 'string',
+      title: 'title',
     },
     // alias: {
     //   type: 'string',

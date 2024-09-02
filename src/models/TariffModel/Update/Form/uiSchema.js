@@ -30,7 +30,7 @@ const uiSchema = () => ({
     },
   },
   material_type_id: {
-    // 'ui:widget': MaterialTypeSelectionWidget,
+    'ui:widget': MaterialTypeSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,

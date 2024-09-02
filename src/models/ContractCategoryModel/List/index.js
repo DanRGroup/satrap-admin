@@ -179,9 +179,9 @@ export default function List({
         <Tooltip title={<FormattedMessage id="refresh" />}>
           <IconButton sx={{ bgcolor: 'action.selected', color: '#fff' }} size="medium" onClick={refresh}>
             {loading ? (
-              <CircularProgress color="inherit" size={20} />
+              <CircularProgress color="primary" size={20} />
             ) : (
-              <RefreshRoundedIcon color="inherit" fontSize="small" />
+              <RefreshRoundedIcon color="primary" fontSize="small" />
             )}
           </IconButton>
         </Tooltip>

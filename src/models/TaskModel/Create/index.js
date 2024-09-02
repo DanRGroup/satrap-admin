@@ -40,8 +40,6 @@ export default function CreatePopup({ title, refetch }) {
       const { data, errors } = await formUpdate({
         variables: {
           ...formData,
-          start_time: `${formData?.start_date} ${formData?.start_time}`,
-          end_time: `${formData?.end_date} ${formData?.end_time}`,
         },
       });
       if (!errors) {

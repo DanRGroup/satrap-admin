@@ -35,15 +35,19 @@ export default function DeletePopup({ ids, refetch, selection }) {
   });
 
   const onDelete = async () => {
-    const { data, errors } = await handleDelete({
-      variables: { ids },
-    });
-    if (!errors) {
-      refetch();
-      onClose();
-      if (!isEmptyObject(data)) {
-        data[graph.delete.name]?.messages.map((message) => toast.success(String(message)));
+    try {
+      const { data, errors } = await handleDelete({
+        variables: { ids },
+      });
+      if (!errors) {
+        refetch();
+        onClose();
+        if (!isEmptyObject(data)) {
+          data[graph.delete.name]?.messages.map((message) => toast.success(String(message)));
+        }
       }
+    } catch (err) {
+      toast.error(err);
     }
   };
 

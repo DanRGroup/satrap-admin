@@ -96,7 +96,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
   return (
     <>
       <Tooltip title={title}>
-        <IconButton sx={{ bgcolor: 'warning.lighter' }} size="small" color="info" onClick={onOpen}>
+        <IconButton sx={{ bgcolor: 'error.lighter' }} size="small" color="info" onClick={onOpen}>
           <AppRegistrationRoundedIcon color="error" fontSize="small" />
         </IconButton>
       </Tooltip>

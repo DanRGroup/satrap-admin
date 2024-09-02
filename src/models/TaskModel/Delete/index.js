@@ -2,6 +2,7 @@ import React from 'react';
 import { Stack, Avatar, Button, Tooltip, Typography, IconButton, CircularProgress } from '@mui/material';
 import { DeleteOutlineRounded } from '@mui/icons-material';
 
+import { hasRequiredRole } from 'helpers';
 import graph from './graph';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
@@ -10,7 +11,15 @@ import { isEmptyObject } from 'helpers/formatObject';
 import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'components';
 import { FormattedMessage } from 'react-intl';
 
-export default function DeletePopup({ ids, refetch, selection }) {
+export default function CompHandler(props) {
+  const { userToken, userInfo, isAuthenticated } = useSelector((state) => state.auth);
+  if (isAuthenticated && hasRequiredRole(['superadmin', 'companyCeo', 'workshopManager'], userInfo?.roles)) {
+    return <DeletePopup {...props} />;
+  }
+  return null;
+}
+
+function DeletePopup({ ids, refetch, selection }) {
   const [open, setOpen] = React.useState(false);
   const { userToken } = useSelector((state) => state.auth);
 
@@ -35,15 +44,19 @@ export default function DeletePopup({ ids, refetch, selection }) {
   });
 
   const onDelete = async () => {
-    const { data, errors } = await handleDelete({
-      variables: { ids },
-    });
-    if (!errors) {
-      refetch();
-      onClose();
-      if (!isEmptyObject(data)) {
-        data[graph.delete.name]?.messages.map((message) => toast.success(String(message)));
+    try {
+      const { data, errors } = await handleDelete({
+        variables: { ids },
+      });
+      if (!errors) {
+        refetch();
+        onClose();
+        if (!isEmptyObject(data)) {
+          data[graph.delete.name]?.messages.map((message) => toast.success(String(message)));
+        }
       }
+    } catch (err) {
+      toast.error(err);
     }
   };
 

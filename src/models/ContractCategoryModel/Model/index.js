@@ -15,7 +15,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
     language: { direction: dir },
   } = useSelector((state) => state.setting);
   const isRtl = dir === 'rtl';
-  const roles = ['superadmin', 'operator'];
+  const roles = ['superadmin', 'workshopAdmin', 'companyCeo'];
   const { userInfo } = useSelector((state) => state.auth);
   const hasRole = hasRequiredRole(roles, userInfo?.roles);
   return (
@@ -64,9 +64,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
-              <Create ids={model.id} title={<FormattedMessage id="create" />} refetch={refetch} />
-              {!hasRole && (
+              {hasRole && (
                 <>
                   <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
                   <Create ids={model.id} title={<FormattedMessage id="create" />} refetch={refetch} />

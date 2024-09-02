@@ -37,17 +37,9 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
       type: 'string',
       title: 'forecast_amount',
     },
-    contractual_number: {
+    cost: {
       type: 'string',
-      title: 'contractual_number',
-    },
-    is_civil: {
-      type: 'number',
-      title: 'civil_project',
-      oneOf: [
-        { const: 1, title: 'yes' },
-        { const: 0, title: 'no' },
-      ],
+      title: 'cost',
     },
     start_date: {
       type: 'string',
@@ -59,14 +51,23 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
       title: 'end_date',
       format: 'date',
     },
-    cost: {
-      type: 'string',
-      title: 'cost',
+    is_civil: {
+      type: 'number',
+      title: 'civil_project',
+      oneOf: [
+        { const: 1, title: 'yes' },
+        { const: 0, title: 'no' },
+      ],
     },
     number: {
       type: 'string',
-      title: 'number',
+      title: 'contract_number',
     },
+    contractual_number: {
+      type: 'string',
+      title: 'contractual_number',
+    },
+
     details: {
       type: 'string',
       title: 'details',

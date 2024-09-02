@@ -2,6 +2,10 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
   type: 'object',
   required: [],
   properties: {
+    tariff_id: {
+      type: 'string',
+      title: 'tariff',
+    },
     vehicle_id: {
       type: 'string',
       title: 'vehicle',
@@ -10,48 +14,48 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
     //   type: 'string',
     //   title: 'driver',
     // },
-    type_id: {
-      type: 'string',
-      title: 'task_type',
-      oneOf: taskTypes,
-    },
-    operation_type_id: {
-      type: 'string',
-      title: 'operation',
-      // oneOf: operationTypes,
-    },
-    workshop_id: {
-      type: 'string',
-      title: 'workshop',
-    },
-    site_id: {
-      type: 'string',
-      title: 'site',
-    },
-    material_type_id: {
-      type: 'string',
-      title: 'material_type',
-      // oneOf: materialTypes,
-    },
-    shift_type_id: {
-      type: 'string',
-      title: 'shift_type',
-      // oneOf: shiftTypes,
-    },
+    // type_id: {
+    //   type: 'string',
+    //   title: 'task_type',
+    //   oneOf: taskTypes,
+    // },
+    // operation_type_id: {
+    //   type: 'string',
+    //   title: 'operation',
+    //   // oneOf: operationTypes,
+    // },
+    // workshop_id: {
+    //   type: 'string',
+    //   title: 'workshop',
+    // },
+    // site_id: {
+    //   type: 'string',
+    //   title: 'site',
+    // },
+    // material_type_id: {
+    //   type: 'string',
+    //   title: 'material_type',
+    //   // oneOf: materialTypes,
+    // },
+    // shift_type_id: {
+    //   type: 'string',
+    //   title: 'shift_type',
+    //   // oneOf: shiftTypes,
+    // },
     // status_id: {
     //   type: 'string',
     //   title: 'task_status',
     // },
-    start_date: {
-      type: 'string',
-      title: 'start_date',
-      format: 'date',
-    },
-    start_time: {
-      type: 'string',
-      title: 'start_time',
-      format: 'time',
-    },
+    // start_date: {
+    //   type: 'string',
+    //   title: 'start_date',
+    //   format: 'date',
+    // },
+    // start_time: {
+    //   type: 'string',
+    //   title: 'start_time',
+    //   format: 'time',
+    // },
     // end_time: {
     //   type: 'string',
     //   title: 'end_time',

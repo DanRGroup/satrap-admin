@@ -83,7 +83,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
   return (
     <>
       <Tooltip title={title}>
-        <IconButton sx={{ bgcolor: 'warning.lighter' }} size="small" color="info" onClick={onOpen}>
+        <IconButton sx={{ bgcolor: 'info.lighter' }} size="small" color="info" onClick={onOpen}>
           <ModeEditRoundedIcon fontSize="small" />
         </IconButton>
       </Tooltip>
