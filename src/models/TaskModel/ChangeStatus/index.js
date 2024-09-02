@@ -73,8 +73,6 @@ export default function UpdatePopup({ ids, title, refetch }) {
         variables: {
           ids,
           status_id: formData?.status_id,
-          lat: formData?.location.lat,
-          lng: formData?.location.lng,
         },
       });
       if (!errors) {

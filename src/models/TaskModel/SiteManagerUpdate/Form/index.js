@@ -5,12 +5,12 @@ import { MuiFormBuilder } from 'components';
 import { useSelector } from 'react-redux';
 
 const Form = ({ formData = {}, onChange }) => {
-  const { supervisorTaskStatuses } = useSelector((state) => state.models);
+  const { limitedTaskStatuses } = useSelector((state) => state.models);
 
   return (
     <MuiFormBuilder
       showSubmit={false}
-      schema={schema(supervisorTaskStatuses)}
+      schema={schema(limitedTaskStatuses)}
       uiSchema={uiSchema()}
       formData={formData}
       onChange={onChange}

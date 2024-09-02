@@ -86,13 +86,13 @@ const schema = {
     query: gql`
       mutation updateTask(
         $ids: [String]!
-        #$vehicle_id: String!
-        #$driver_id: String!
-        #$type_id: String!
-        #$operation_type_id: String!
-        $workshop_id: String!
-        $site_id: String!
-        #$material_type_id: String!
+        #$vehicle_id: String
+        #$driver_id: String
+        #$type_id: String
+        #$operation_type_id: String
+        $workshop_id: String
+        $site_id: String
+        #$material_type_id: String
         #$shift_type_id: String!
         $status_id: String
         $start_time: String

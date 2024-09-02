@@ -51,10 +51,10 @@ export default function UpdatePopup({ ids, title, refetch }) {
             shift_type: res.shift_type?.id,
             material_type_id: res.material_type?.id,
             status_id: res.status?.id,
-            start_time: res?.start_time.split(' ')[1],
-            end_time: res?.end_time.split(' ')[1],
-            start_date: res?.start_time.split(' ')[0] + ' 00:00:00',
-            end_date: res?.end_time.split(' ')[0] + ' 00:00:00',
+            // start_time: res?.start_time.split(' ')[1],
+            // end_time: res?.end_time.split(' ')[1],
+            // start_date: res?.start_time.split(' ')[0] + ' 00:00:00',
+            // end_date: res?.end_time.split(' ')[0] + ' 00:00:00',
           });
         }
       }
