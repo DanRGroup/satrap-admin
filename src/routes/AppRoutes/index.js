@@ -5,27 +5,47 @@ import { hasRequiredRole } from 'helpers';
 import { Loadable, Page, PrivateRoute } from 'components';
 import { Navigate, Routes, Route } from 'react-router-dom';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
-import {
-  ContractTypeModel,
-  MaterialTypeModel,
-  OperationTypeModel,
-  ShiftTypeModel,
-  SiteTypeModel,
-  TaskStatusModel,
-  TaskTypeModel,
-  WorkshopStatusModel,
-  VehicleTypeModel,
-  SiteModel,
-  ContractModel,
-  VehicleModel,
-  UserModel,
-  UserStatusModel,
-  WorkshopModel,
-  TariffModel,
-  TaskModel,
-  ContractCategoryModel,
-} from 'models';
 import { FormattedMessage } from 'react-intl';
+
+const ContractTypeModel = Loadable(lazy(() => import('models/ContractTypeModel')));
+const MaterialTypeModel = Loadable(lazy(() => import('models/MaterialTypeModel')));
+const OperationTypeModel = Loadable(lazy(() => import('models/OperationTypeModel')));
+const ShiftTypeModel = Loadable(lazy(() => import('models/ShiftTypeModel')));
+const SiteTypeModel = Loadable(lazy(() => import('models/SiteTypeModel')));
+const TaskStatusModel = Loadable(lazy(() => import('models/TaskStatusModel')));
+const TaskTypeModel = Loadable(lazy(() => import('models/TaskTypeModel')));
+const WorkshopStatusModel = Loadable(lazy(() => import('models/WorkshopStatusModel')));
+const VehicleTypeModel = Loadable(lazy(() => import('models/VehicleTypeModel')));
+const SiteModel = Loadable(lazy(() => import('models/SiteModel')));
+const ContractModel = Loadable(lazy(() => import('models/ContractModel')));
+const VehicleModel = Loadable(lazy(() => import('models/VehicleModel')));
+const UserModel = Loadable(lazy(() => import('models/UserModel')));
+const UserStatusModel = Loadable(lazy(() => import('models/UserStatusModel')));
+const WorkshopModel = Loadable(lazy(() => import('models/WorkshopModel')));
+const TariffModel = Loadable(lazy(() => import('models/TariffModel')));
+const TaskModel = Loadable(lazy(() => import('models/TaskModel')));
+const ContractCategoryModel = Loadable(lazy(() => import('models/ContractCategoryModel')));
+
+// import {
+//   ContractTypeModel,
+//   MaterialTypeModel,
+//   OperationTypeModel,
+//   ShiftTypeModel,
+//   SiteTypeModel,
+//   TaskStatusModel,
+//   TaskTypeModel,
+//   WorkshopStatusModel,
+//   VehicleTypeModel,
+//   SiteModel,
+//   ContractModel,
+//   VehicleModel,
+//   UserModel,
+//   UserStatusModel,
+//   WorkshopModel,
+//   TariffModel,
+//   TaskModel,
+//   ContractCategoryModel,
+// } from 'models';
 
 const NotFound = Loadable(lazy(() => import('screens/Authentication/Page404')));
 
@@ -56,6 +76,121 @@ export const navConfig = [
   //   inSidebar: true,
   //   roles: ['superadmin'],
   // },
+  {
+    path: '/dashboard',
+    url: '/dashboard',
+    title: 'dashboard',
+    inSidebar: true,
+    element: <AppLayout />,
+    icon: <DashboardRoundedIcon fontSize="small" />,
+    children: [
+      {
+        path: '/dashboard/managment',
+        url: '/dashboard/managment',
+        title: 'managment',
+        element: (
+          <Page title="Managment">
+            <Management />
+          </Page>
+        ),
+        inSidebar: true,
+      },
+      {
+        path: '/dashboard/contracts',
+        url: '/dashboard/contracts',
+        title: 'contracts',
+        element: (
+          <Page title="Contracts">
+            <ContractModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
+      },
+      {
+        path: '/dashboard/contract-categories',
+        url: '/dashboard/contract-categories',
+        title: 'contract_categories',
+        element: (
+          <Page title="ContractCategoryModel">
+            <ContractCategoryModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin', 'companyCeo'],
+      },
+      {
+        path: '/dashboard/task',
+        url: '/dashboard/task',
+        title: 'tasks',
+        element: (
+          <Page title="Tasks">
+            <TaskModel />
+          </Page>
+        ),
+        inSidebar: true,
+      },
+      {
+        path: '/dashboard/tarrif',
+        url: '/dashboard/tarrif',
+        title: 'tariffs',
+        element: (
+          <Page title="Tariffs">
+            <TariffModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin', 'companyCeo'],
+      },
+      {
+        path: '/dashboard/sites',
+        url: '/dashboard/sites',
+        title: 'sites',
+        element: (
+          <Page title="Sites">
+            <SiteModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin', 'siteManager', 'companyCeo'],
+      },
+      {
+        path: '/dashboard/vehicles',
+        url: '/dashboard/vehicles',
+        title: 'vehicles',
+        element: (
+          <Page title="Vehicles">
+            <VehicleModel />
+          </Page>
+        ),
+        inSidebar: true,
+      },
+      {
+        path: '/dashboard/workshop',
+        url: '/dashboard/workshop',
+        title: 'workshops',
+        element: (
+          <Page title="Workshops">
+            <WorkshopModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin', 'workshopManager', 'companyCeo'],
+      },
+      {
+        path: '/dashboard/users',
+        url: '/dashboard/users',
+        title: 'users',
+        element: (
+          <Page title="Users">
+            <UserModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin', 'companyCeo', 'workshopManager', 'companyOperator', 'companyFinancial'],
+      },
+    ],
+  },
   {
     path: '/setting',
     url: '/setting',
@@ -193,121 +328,6 @@ export const navConfig = [
         ),
         inSidebar: true,
         roles: ['superadmin'],
-      },
-    ],
-  },
-  {
-    path: '/dashboard',
-    url: '/dashboard',
-    title: 'dashboard',
-    inSidebar: true,
-    element: <AppLayout />,
-    icon: <DashboardRoundedIcon fontSize="small" />,
-    children: [
-      {
-        path: '/dashboard/managment',
-        url: '/dashboard/managment',
-        title: 'managment',
-        element: (
-          <Page title="Managment">
-            <Management />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
-        path: '/dashboard/contracts',
-        url: '/dashboard/contracts',
-        title: 'contracts',
-        element: (
-          <Page title="Contracts">
-            <ContractModel />
-          </Page>
-        ),
-        inSidebar: true,
-        roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
-      },
-      {
-        path: '/dashboard/contract-categories',
-        url: '/dashboard/contract-categories',
-        title: 'contract_categories',
-        element: (
-          <Page title="ContractCategoryModel">
-            <ContractCategoryModel />
-          </Page>
-        ),
-        inSidebar: true,
-        roles: ['superadmin', 'workshopManager', 'companyCeo'],
-      },
-      {
-        path: '/dashboard/task',
-        url: '/dashboard/task',
-        title: 'tasks',
-        element: (
-          <Page title="Tasks">
-            <TaskModel />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
-        path: '/dashboard/tarrif',
-        url: '/dashboard/tarrif',
-        title: 'tariffs',
-        element: (
-          <Page title="Tariffs">
-            <TariffModel />
-          </Page>
-        ),
-        inSidebar: true,
-        roles: ['superadmin', 'companyCeo'],
-      },
-      {
-        path: '/dashboard/sites',
-        url: '/dashboard/sites',
-        title: 'sites',
-        element: (
-          <Page title="Sites">
-            <SiteModel />
-          </Page>
-        ),
-        inSidebar: true,
-        roles: ['superadmin', 'siteManager', 'companyCeo'],
-      },
-      {
-        path: '/dashboard/vehicles',
-        url: '/dashboard/vehicles',
-        title: 'vehicles',
-        element: (
-          <Page title="Vehicles">
-            <VehicleModel />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
-        path: '/dashboard/workshop',
-        url: '/dashboard/workshop',
-        title: 'workshops',
-        element: (
-          <Page title="Workshops">
-            <WorkshopModel />
-          </Page>
-        ),
-        inSidebar: true,
-        roles: ['superadmin', 'workshopManager', 'companyCeo'],
-      },
-      {
-        path: '/dashboard/users',
-        url: '/dashboard/users',
-        title: 'users',
-        element: (
-          <Page title="Users">
-            <UserModel />
-          </Page>
-        ),
-        inSidebar: true,
-        roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
       },
     ],
   },
