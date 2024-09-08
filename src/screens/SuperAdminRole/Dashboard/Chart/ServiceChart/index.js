@@ -24,7 +24,7 @@ export default function ServiceChart() {
   const [data, setData] = useState([]);
   const [labels, setLabels] = useState([]);
   const [refresh, setRefresh] = useState(false);
-  const title = 'نمودار فعالیت حمل بار (کارکرد تن)';
+  const title = 'نمودار فعالیت حمل بار (کارکرد سرویسی)';
   const {
     language: { dir },
   } = useSelector((state) => state.setting);
@@ -51,10 +51,10 @@ export default function ServiceChart() {
       });
       if (!isEmptyObject(data) && !error) {
         const { records } = data[graph.list.name];
-        records.map((item) => {
-          item.created_at = item.created_at.split(' ')[0];
+        records.data.map((item) => {
+          item.start_time = item.start_time.split(' ')[0];
         });
-        grouped = groupBy(records, 'created_at');
+        grouped = groupBy(records.data, 'start_time');
         const keys = Object.keys(grouped);
         const vals = Object.values(grouped).map((x) => x.length);
         setLabels(keys.reverse());

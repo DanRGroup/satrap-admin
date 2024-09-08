@@ -203,7 +203,7 @@ const UserPopup = () => {
             <Stack direction="row" height="100%">
               <Stack flex={2} px={4} justifyContent="center" alignItems="center">
                 <Stack sx={{ m: 2 }}>
-                  <StyledTitle fontSize="3.5rem" fontWeight="bold">
+                  <StyledTitle fontSize="3rem" fontWeight="bold">
                     <FormattedMessage id="brand" />
                   </StyledTitle>
                   <StyledTitle variant="h6">

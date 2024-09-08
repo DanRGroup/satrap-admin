@@ -10,9 +10,12 @@ import { useLazyQuery } from '@apollo/client';
 import { useSelector } from 'react-redux';
 import { isEmptyObject } from 'helpers/formatObject';
 
+import { useNavigate } from 'react-router-dom';
+
 // ----------------------------------------------------------------------
 
 export default function ModelsCount() {
+  const navigate = useNavigate();
   const { userToken } = useSelector((state) => state.auth);
   const [totalUsers, setTotalUsers] = useState(0);
   const [totalWorkshops, setTotalWorkshops] = useState(0);
@@ -102,9 +105,14 @@ export default function ModelsCount() {
     handleTariffsData();
   }, []);
 
+  const userRoute = () => navigate('/dashboard/users');
+  const siteRoute = () => navigate('/dashboard/sites');
+  const workshopRoute = () => navigate('/dashboard/workshop');
+  const tariffRoute = () => navigate('/dashboard/tarrif');
+
   return (
     <>
-      <Grid xs={12} sm={6} md={3}>
+      <Grid xs={12} sm={6} md={3} onClick={userRoute}>
         <AppWidgetSummary
           title="کاربران"
           total={totalUsers}
@@ -113,7 +121,7 @@ export default function ModelsCount() {
         />
       </Grid>
 
-      <Grid xs={12} sm={6} md={3}>
+      <Grid xs={12} sm={6} md={3} onClick={siteRoute}>
         <AppWidgetSummary
           title="محل‌ها"
           total={totalSites}
@@ -122,7 +130,7 @@ export default function ModelsCount() {
         />
       </Grid>
 
-      <Grid xs={12} sm={6} md={3}>
+      <Grid xs={12} sm={6} md={3} onClick={workshopRoute}>
         <AppWidgetSummary
           title="کارگاه‌ها"
           total={totalWorkshops}
@@ -132,7 +140,7 @@ export default function ModelsCount() {
         />
       </Grid>
 
-      <Grid xs={12} sm={6} md={3}>
+      <Grid xs={12} sm={6} md={3} onClick={tariffRoute}>
         <AppWidgetSummary
           title="تعرفه‌ها"
           total={totalTariffs}

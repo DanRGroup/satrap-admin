@@ -20,7 +20,7 @@ export default function AppView() {
   const [forecast, setForecast] = useState(0);
   const [total, settotal] = useState(0);
   const [refresh, setRefresh] = useState(false);
-  const title = 'نمودار فعالیت حمل بار (کارکرد تن)';
+  const [title, setTtitle] = useState('');
   const {
     language: { dir },
   } = useSelector((state) => state.setting);
@@ -45,9 +45,7 @@ export default function AppView() {
       });
       if (!isEmptyObject(data) && !error) {
         const { data: contracts } = data[graph.contract.name];
-        const { forecast_amount, total_service } = contracts[0];
-        setForecast(Number(forecast_amount - total_service));
-        settotal(Number(total_service));
+        setcontracts(contracts);
       }
     } catch (error) {}
   };
@@ -58,16 +56,27 @@ export default function AppView() {
 
   //   console.log(contracts);
   return (
-    <Grid xs={12} md={6} lg={4}>
-      <AppCurrentVisits
-        title={`نمودار اجرای قرارداد`}
-        chart={{
-          series: [
-            { label: 'انجام شده', value: total },
-            { label: 'مقدار باقیمانده', value: forecast },
-          ],
-        }}
-      />
+    <Grid container spacing={2}>
+      {contracts.map((contract, index) => {
+        const forecast = Number(contract.forecast_amount - contract.total_service); // Calculate forecast for each contract
+        const total = Number(contract.total_service);
+
+        return (
+          <Grid item xs={12} md={6} lg={4} key={index}>
+            <AppCurrentVisits
+              refetch={refetch}
+              loading={loading}
+              title={contract.title} // Use contract title
+              chart={{
+                series: [
+                  { label: 'انجام شده', value: total },
+                  { label: 'مقدار باقیمانده', value: forecast },
+                ],
+              }}
+            />
+          </Grid>
+        );
+      })}
     </Grid>
   );
 }
