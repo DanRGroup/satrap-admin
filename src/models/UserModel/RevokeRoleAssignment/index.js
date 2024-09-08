@@ -14,7 +14,7 @@ import { FormattedMessage } from 'react-intl';
 
 export default function RevokeRoleAssignment(props) {
   const { refetch, roleId, userId, workshopId, onClose } = props;
-  const [formData, setformData] = useState({});
+  const [formData, setFormData] = useState({});
   const { userToken } = useSelector((state) => state.auth);
 
   const [formCreate, { loading }] = useMutation(graph.revokeUserRole.query, {
@@ -39,12 +39,13 @@ export default function RevokeRoleAssignment(props) {
       if (!errors) {
         refetch();
         onClose();
+        setFormData({});
         if (!isEmptyObject(data)) {
           data[graph.revokeUserRole.name]?.messages.map((message) => toast.success(String(message)));
         }
       }
     } catch (error) {
-      setformData(formData);
+      setFormData(formData);
     }
   };
 

@@ -89,6 +89,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
       if (!errors) {
         refetch();
         onClose();
+        setFormData({});
         if (!isEmptyObject(data)) {
           data[graph.update.name]?.messages.map((message) => toast.success(String(message)));
         }

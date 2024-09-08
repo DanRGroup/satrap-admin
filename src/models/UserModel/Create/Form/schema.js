@@ -42,7 +42,6 @@ const schema = (userTypes, userStatuses) => ({
       type: 'string',
       title: 'password',
       minLength: 8,
-      // default: '111',
     },
     is_active: {
       type: 'number',

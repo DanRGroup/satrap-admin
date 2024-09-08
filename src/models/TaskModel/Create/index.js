@@ -37,6 +37,7 @@ export default function CreatePopup({ title, refetch }) {
 
   const onSubmit = async () => {
     try {
+      formData.start_time = formData.start_time + ' 00:00:00';
       const { data, errors } = await formUpdate({
         variables: {
           ...formData,
@@ -48,6 +49,7 @@ export default function CreatePopup({ title, refetch }) {
         }
         refetch();
         onClose();
+        setFormData({});
       }
     } catch (error) {
       setFormData(formData);
@@ -67,7 +69,7 @@ export default function CreatePopup({ title, refetch }) {
           <AddCircleOutlineRounded fontSize="small" />
         </IconButton>
       </Tooltip>
-      <NewDialog label="create" open={open} onClose={onClose} maxWidth="xs">
+      <NewDialog label="create" open={open} onClose={onClose} maxWidth="md">
         <NewDialogTitle title={<FormattedMessage id="create_task" />} onClose={onClose} />
         <NewDialogContent>
           <Stack p={2} alignItems="center">

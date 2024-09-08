@@ -8,8 +8,10 @@ import { useSelector } from 'react-redux';
 const Form = ({ init, setFilter }) => {
   const formData = { ...init };
 
-  const onChange = async ({ formData }) => {
-    setFilter(formData);
+  const onChange = ({ formData, errors }) => {
+    if (Boolean(errors.length === 0)) {
+      setFilter(formData);
+    }
   };
 
   const { userRoles } = useSelector((state) => state.models);

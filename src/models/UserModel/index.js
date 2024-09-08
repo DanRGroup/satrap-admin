@@ -5,6 +5,7 @@ import graph from './graph';
 import { useSelector } from 'react-redux';
 import { isEmptyObject } from 'helpers/formatObject';
 import { useLazyQuery } from '@apollo/client';
+import { toast } from 'react-toastify';
 
 export default function MainModel(props) {
   const { initFilter, isPopup = false } = props;
@@ -21,10 +22,12 @@ export default function MainModel(props) {
 
   const clearFilter = () => setFilter(init);
 
-  const handleSetFilter = (filter) => {
-    setPage(1);
-    setResult([]);
-    setFilter(filter);
+  const handleSetFilter = (filter, error) => {
+    if (!error) {
+      setPage(1);
+      setResult([]);
+      setFilter(filter);
+    }
   };
 
   const [getData, { loading }] = useLazyQuery(graph.list.query, {
@@ -57,7 +60,10 @@ export default function MainModel(props) {
         setTotal(res?.total);
         paginate ? setResult((prevData) => prevData.concat(res?.data)) : setResult(res?.data);
       }
-    } catch (error) {}
+    } catch (error) {
+      setResult([]);
+      toast.error(error);
+    }
   };
 
   useEffect(() => {

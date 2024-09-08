@@ -88,6 +88,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
       if (!errors) {
         refetch();
         onClose();
+        setFormData({});
         if (!isEmptyObject(data)) {
           data[graph.update.name]?.messages.map((message) => toast.success(String(message)));
         }
@@ -108,7 +109,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
           <ModeEditRoundedIcon fontSize="small" />
         </IconButton>
       </Tooltip>
-      <NewDialog label="update" open={open} onClose={onClose} maxWidth="xs">
+      <NewDialog label="update" open={open} onClose={onClose} maxWidth="md">
         <NewDialogTitle title={title} onClose={onClose} />
         <NewDialogContent>
           {loading || !formData ? (

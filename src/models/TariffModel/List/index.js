@@ -119,7 +119,9 @@ export default function List({
               delay={(i % limit) + 1}
               color={getColor(i)}
               checked={selected.find((select) => model.id === select.id) ? true : false}
-              handleSelect={() => handleSelect({ id: model?.id, title: model.title })}
+              handleSelect={() =>
+                handleSelect({ id: model?.id, title: `${model?.task_type?.title} ${model?.material_type?.title}` })
+              }
             />
           ))}
           <LoadingMore total={total} result={result.length} loading={loading} onClick={() => setPage(page + 1)} />

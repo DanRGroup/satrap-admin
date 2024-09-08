@@ -15,6 +15,7 @@ const Form = ({ formData = {}, onChange }) => {
       uiSchema={uiSchema()}
       formData={formData}
       onChange={onChange}
+      liveValidate={false}
     />
   );
 };

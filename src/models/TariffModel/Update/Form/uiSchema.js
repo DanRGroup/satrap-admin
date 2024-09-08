@@ -10,13 +10,13 @@ import {
 
 const uiSchema = () => ({
   task_type_id: {
-    // 'ui:widget': TasksTypeSelectionWidget,
+    'ui:widget': TasksTypeSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   operation_type_id: {
@@ -24,9 +24,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   material_type_id: {
@@ -34,9 +34,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   shift_type_id: {
@@ -44,9 +44,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   workshop_id: {
@@ -54,9 +54,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   site_id: {
@@ -64,9 +64,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   // creator_id: {
@@ -93,9 +93,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   is_active: {
@@ -104,14 +104,15 @@ const uiSchema = () => ({
       inline: true,
       xs: 12,
       sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   description: {
     'ui:widget': 'textarea',
     'ui:options': {
+      rows: 2,
       xs: 12,
       sm: 12,
       md: 12,

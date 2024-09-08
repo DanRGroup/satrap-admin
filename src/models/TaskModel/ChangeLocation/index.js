@@ -17,10 +17,7 @@ import { hasRequiredRole } from 'helpers';
 
 export default function CompHandler(props) {
   const { userInfo, isAuthenticated } = useSelector((state) => state.auth);
-  if (
-    isAuthenticated &&
-    hasRequiredRole(['driver'], userInfo?.roles)
-  ) {
+  if (isAuthenticated && hasRequiredRole(['driver'], userInfo?.roles)) {
     return <UpdatePopup {...props} />;
   }
   return null;
@@ -58,7 +55,7 @@ function UpdatePopup({ ids, title, refetch }) {
             location: {
               lat: tracks[0]?.lat,
               lng: tracks[0]?.lng,
-            }
+            },
           });
         }
       }
@@ -88,6 +85,7 @@ function UpdatePopup({ ids, title, refetch }) {
       if (!errors) {
         refetch();
         onClose();
+        setFormData({});
         if (!isEmptyObject(data)) {
           data[graph.update.name]?.messages.map((message) => toast.success(String(message)));
         }
@@ -108,7 +106,7 @@ function UpdatePopup({ ids, title, refetch }) {
           <FmdGoodRoundedIcon color="primary" fontSize="small" />
         </IconButton>
       </Tooltip>
-      <NewDialog label="update" open={open} onClose={onClose} maxWidth="xs">
+      <NewDialog label="update" open={open} onClose={onClose} maxWidth="sm">
         <NewDialogTitle title={title} onClose={onClose} />
         <NewDialogContent>
           {loading ? (

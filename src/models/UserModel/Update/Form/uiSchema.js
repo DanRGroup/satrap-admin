@@ -1,18 +1,20 @@
 // import { UsersTypeSelectionWidget, UsersStatusSelectionWidget } from 'components/FormWidgets';
 
 const uiSchema = () => ({
+  'ui:order': [
+    'firstname',
+    'lastname',
+    'email',
+    'username',
+    'birth_date',
+    'national_code',
+    'status_id',
+    'is_active',
+    'need_activation',
+    '*',
+  ],
   type_id: {
     // 'ui:widget': UsersTypeSelectionWidget,
-    'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
-  status_id: {
-    // 'ui:widget': UsersStatusSelectionWidget,
     'ui:options': {
       xs: 6,
       sm: 6,
@@ -48,70 +50,49 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
-  password: {
-    'ui:widget': 'password',
-    'ui:options': {
-      xs: 12,
-      sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
-  // cellphone: {
-  //   inputType: 'tel',
-  //   'ui:options': {
-  //     xs: 6,
-  //     sm: 6,
-  //     md: 6,
-  //     lg: 6,
-  //     xl: 6,
-  //   },
-  // },
-  national_code: {
-    'ui:options': {
-      xs: 6,
-      sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
   birth_date: {
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
+      md: 4,
+      lg: 4,
+      xl: 4,
+    },
+  },
+  national_code: {
+    'ui:options': {
+      xs: 6,
+      sm: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
+    },
+  },
+  status_id: {
+    // 'ui:widget': UsersStatusSelectionWidget,
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   email: {
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   address: {
     'ui:widget': 'textarea',
     'ui:options': {
-      rows: 3,
+      rows: 2,
       xs: 12,
       sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
-    },
-  },
-  gender: {
-    'ui:widget': 'radio',
-    'ui:options': {
-      inline: true,
-      xs: 6,
-      sm: 6,
       md: 6,
       lg: 6,
       xl: 6,
@@ -121,8 +102,8 @@ const uiSchema = () => ({
     'ui:widget': 'radio',
     'ui:options': {
       inline: true,
-      xs: 6,
-      sm: 6,
+      xs: 12,
+      sm: 12,
       md: 6,
       lg: 6,
       xl: 6,

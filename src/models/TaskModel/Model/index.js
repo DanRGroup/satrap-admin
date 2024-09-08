@@ -84,7 +84,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               <ChangeStatus ids={model.id} title={<FormattedMessage id="change_status" />} refetch={refetch} />
               <ChangeLocation
                 ids={model?.vehicle?.id}
-                title={<FormattedMessage id="changeLocation" />}
+                title={<FormattedMessage id="set_location" />}
                 refetch={refetch}
               />
               {/* <Media id={model.id} model="Task" collection="banner" /> */}

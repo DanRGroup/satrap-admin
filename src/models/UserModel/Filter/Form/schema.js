@@ -10,6 +10,11 @@ const schema = (userRoles, userStatuses) => ({
       type: 'string',
       title: 'firstname',
     },
+    cellphones: {
+      type: 'string',
+      title: 'cellphone',
+      minLength: 11,
+    },
     status_ids: {
       type: 'string',
       title: 'status',

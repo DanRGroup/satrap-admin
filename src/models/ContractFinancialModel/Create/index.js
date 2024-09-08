@@ -70,6 +70,7 @@ export default function CreatePopup({ ids, title, refetch }) {
       if (!errors) {
         refetch();
         onClose();
+        setFormData({});
         if (!isEmptyObject(data)) {
           data[graph.create.name]?.messages.map((message) => toast.success(String(message)));
         }

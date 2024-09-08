@@ -2,11 +2,6 @@ const schema = (userTypes, userStatuses) => ({
   type: 'object',
   required: [],
   properties: {
-    type_id: {
-      type: 'string',
-      title: 'role',
-      oneOf: userTypes,
-    },
     status_id: {
       type: 'string',
       title: 'status',
@@ -33,16 +28,6 @@ const schema = (userTypes, userStatuses) => ({
       title: 'birthDate',
       format: 'date',
     },
-    // cellphone: {
-    //   type: 'string',
-    //   title: 'cellphone',
-    //   minLength: 9,
-    // },
-    // password: {
-    //   type: 'string',
-    //   title: 'password',
-    //   minLength: 8,
-    // },
     is_active: {
       type: 'number',
       title: 'activity',

@@ -13,11 +13,11 @@ import { useMutation } from '@apollo/client';
 import { isEmptyObject } from 'helpers/formatObject';
 import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'components';
 import { FormattedMessage } from 'react-intl';
-import Typography from 'theme/overrides/Typography';
 
 export default function CreatePopup({ title, refetch }) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({});
+  const [formError, setFormError] = useState(true);
   const { userToken } = useSelector((state) => state.auth);
 
   const onOpen = () => setOpen(true);
@@ -32,8 +32,9 @@ export default function CreatePopup({ title, refetch }) {
     },
   });
 
-  const onChange = ({ formData }) => {
+  const onChange = ({ formData, errors }) => {
     setFormData(formData);
+    setFormError(Boolean(errors.length > 0));
   };
 
   const onSubmit = async () => {
@@ -44,6 +45,7 @@ export default function CreatePopup({ title, refetch }) {
       if (!errors) {
         refetch();
         onClose();
+        setFormData({});
         if (!isEmptyObject(data)) {
           data[graph.create.name]?.messages.map((message) => toast.success(String(message)));
         }
@@ -66,7 +68,7 @@ export default function CreatePopup({ title, refetch }) {
           <AddCircleOutlineRounded fontSize="small" />
         </IconButton>
       </Tooltip>
-      <NewDialog label="create" open={open} onClose={onClose} maxWidth="xs">
+      <NewDialog label="create" open={open} onClose={onClose} maxWidth="md">
         <NewDialogTitle title={<FormattedMessage id="create_contract" />} onClose={onClose} />
         <NewDialogContent>
           <Stack p={2} alignItems="center">
@@ -74,7 +76,7 @@ export default function CreatePopup({ title, refetch }) {
           </Stack>
         </NewDialogContent>
         <NewDialogActions>
-          <Button size="large" variant="contained" onClick={onSubmit}>
+          <Button size="large" variant="contained" onClick={onSubmit} disabled={formError}>
             <FormattedMessage id="create" />
           </Button>
         </NewDialogActions>

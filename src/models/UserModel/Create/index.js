@@ -70,7 +70,7 @@ export default function CreatePopup({ title, refetch }) {
           <FormattedMessage id={title} />
         </Button>
       </Tooltip>
-      <NewDialog label="create" open={open} onClose={onClose} maxWidth="sm">
+      <NewDialog label="create" open={open} onClose={onClose} maxWidth="md">
         <NewDialogTitle title={<FormattedMessage id="create_user" />} onClose={onClose} />
         <NewDialogContent>
           <Stack p={2} alignItems="center">

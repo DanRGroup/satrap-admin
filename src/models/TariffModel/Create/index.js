@@ -43,6 +43,7 @@ export default function CreatePopup({ title, refetch }) {
       if (!errors) {
         refetch();
         onClose();
+        setFormData({});
         if (!isEmptyObject(data)) {
           data[graph.create.name]?.messages.map((message) => toast.success(String(message)));
         }
@@ -65,8 +66,8 @@ export default function CreatePopup({ title, refetch }) {
           <AddCircleOutlineRounded fontSize="small" />
         </IconButton>
       </Tooltip>
-      <NewDialog label="create" open={open} onClose={onClose} maxWidth="xs">
-        <NewDialogTitle title={title} onClose={onClose} />
+      <NewDialog label="create" open={open} onClose={onClose} maxWidth="md">
+        <NewDialogTitle title={<FormattedMessage id="create_tariff" />} onClose={onClose} />
         <NewDialogContent>
           <Stack p={2} alignItems="center">
             <Form formData={formData} onChange={onChange} />

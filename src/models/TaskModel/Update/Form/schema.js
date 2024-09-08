@@ -75,14 +75,14 @@ const schema = (taskStatuses) => ({
     //   type: 'string',
     //   title: 'cost',
     // },
-    bill_number: {
-      type: 'string',
-      title: 'bill_number',
-    },
-    baskul: {
-      type: 'string',
-      title: 'baskul_amount',
-    },
+    // bill_number: {
+    //   type: 'string',
+    //   title: 'bill_number',
+    // },
+    // baskul: {
+    //   type: 'string',
+    //   title: 'baskul_amount',
+    // },
     // supervisor_id: {
     //   type: 'string',
     //   title: 'supervisor',
@@ -95,10 +95,10 @@ const schema = (taskStatuses) => ({
     //   type: 'string',
     //   title: 'updator',
     // },
-    tonnage: {
-      type: 'string',
-      title: 'tonnage',
-    },
+    // tonnage: {
+    //   type: 'string',
+    //   title: 'tonnage',
+    // },
     // coefficient: {
     //   type: 'string',
     //   title: 'coefficient',

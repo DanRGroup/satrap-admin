@@ -17,9 +17,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   vehicle_id: {
@@ -27,9 +27,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   // driver_id: {
@@ -116,9 +116,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   end_time: {
@@ -170,9 +170,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   // baskul_cost: {
@@ -218,18 +218,18 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   coefficient: {
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   // have_food: {
@@ -246,6 +246,7 @@ const uiSchema = () => ({
   description: {
     'ui:widget': 'textarea',
     'ui:options': {
+      rows: 2,
       xs: 12,
       sm: 12,
       md: 12,

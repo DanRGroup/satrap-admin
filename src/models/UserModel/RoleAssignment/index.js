@@ -14,7 +14,7 @@ import { FormattedMessage } from 'react-intl';
 
 export default function RoleAssignment({ ids, refetch }) {
   const [open, setOpen] = useState(false);
-  const [formData, setformData] = useState({});
+  const [formData, setFormData] = useState({});
   const { userToken } = useSelector((state) => state.auth);
 
   const onOpen = () => {
@@ -35,7 +35,7 @@ export default function RoleAssignment({ ids, refetch }) {
   });
 
   const onChange = ({ formData }) => {
-    setformData(formData);
+    setFormData(formData);
   };
 
   const onSubmit = async () => {
@@ -50,12 +50,13 @@ export default function RoleAssignment({ ids, refetch }) {
       if (!errors) {
         refetch();
         onClose();
+        setFormData({});
         if (!isEmptyObject(data)) {
           data[graph.assignRole.name]?.messages.map((message) => toast.success(String(message)));
         }
       }
     } catch (error) {
-      setformData(formData);
+      setFormData(formData);
     }
   };
 

@@ -30,12 +30,18 @@ export default function CompHandler(props) {
 function UpdatePopup({ ids, title, refetch }) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState();
+  const [formError, setFormError] = useState(true);
   const { userToken } = useSelector((state) => state.auth);
   const [fetchModel, { loading }] = useLazyQuery(graph.get.query);
   const [updateModel, { loading: updating }] = useMutation(graph.update.query);
 
-  const onOpen = () => setOpen(true);
-  const onClose = () => setOpen(false);
+  const onOpen = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false);
+    setFormError(true);
+  };
 
   const getModel = async () => {
     try {
@@ -68,8 +74,9 @@ function UpdatePopup({ ids, title, refetch }) {
     } catch (error) {}
   };
 
-  const onChange = ({ formData }) => {
+  const onChange = ({ formData, errors }) => {
     setFormData(formData);
+    setFormError(Boolean(errors.length > 0));
   };
 
   const onSubmit = async () => {
@@ -103,6 +110,7 @@ function UpdatePopup({ ids, title, refetch }) {
       if (!errors) {
         refetch();
         onClose();
+        setFormData({});
         if (!isEmptyObject(data)) {
           data[graph.update.name]?.messages.map((message) => toast.success(String(message)));
         }
@@ -123,7 +131,7 @@ function UpdatePopup({ ids, title, refetch }) {
           <ModeEditRoundedIcon fontSize="small" />
         </IconButton>
       </Tooltip>
-      <NewDialog label="update" open={open} onClose={onClose} maxWidth="xs">
+      <NewDialog label="update" open={open} onClose={onClose} maxWidth="md">
         <NewDialogTitle title={<FormattedMessage id="edit_contract" />} onClose={onClose} />
         <NewDialogContent>
           {loading || !formData ? (
@@ -142,7 +150,7 @@ function UpdatePopup({ ids, title, refetch }) {
             size="large"
             color="primary"
             variant="contained"
-            disabled={loading || updating}
+            disabled={loading || updating || formError}
             onClick={onSubmit}
             sx={{ minWidth: 80 }}
           >
