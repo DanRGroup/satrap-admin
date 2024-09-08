@@ -46,9 +46,7 @@ export default function FileAssignment({ model, modelId, refetch, paths }) {
       if (!isEmptyObject(data)) {
         refetch();
         onClose();
-        data[graph.assign.name]?.messages.map((message) =>
-          toast.success(String(message))
-        );
+        data[graph.assign.name]?.messages.map((message) => toast.success(String(message)));
       }
     } catch (error) {}
   };
@@ -86,7 +84,14 @@ export default function FileAssignment({ model, modelId, refetch, paths }) {
           <Button color="warning" variant="outlined" onClick={onClose}>
             فعلا نه
           </Button>
-          <Button color="secondary" variant="contained" disabled={loading} onClick={onDone} sx={{ minWidth: 80 }} autoFocus>
+          <Button
+            color="secondary"
+            variant="contained"
+            disabled={loading}
+            onClick={onDone}
+            sx={{ minWidth: 80 }}
+            autoFocus
+          >
             {loading ? <CircularProgress color="inherit" size={24} /> : 'بله'}
           </Button>
         </NewDialogActions>

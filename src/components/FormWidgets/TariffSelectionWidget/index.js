@@ -99,7 +99,9 @@ export default function CustomSelectWidget({
       if (!isEmptyObject(data)) {
         const res = data[graph.get.name].data;
         const modified = multiSelect ? res.map(({ id, title }) => ({ id, title })) : res[0];
-        setSelected(modified);
+        !multiSelect
+          ? setSelected({ id: modified?.id, title: `${modified?.task_type?.title} ${modified?.material_type?.title}` })
+          : setSelected(modified);
         setLoading(false);
       }
     } catch (error) {}

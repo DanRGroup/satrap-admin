@@ -25,18 +25,19 @@ export default function Logo({ width, height, disabledLink = false, sx }) {
 
   const delay = 2;
   const logo = (
-    <Fade in unmountOnExit timeout={{ appear: delay * 150, enter: delay * 170, exit: delay * 190 }}>
-      <Box
-        component="img"
-        src="/assets/logo_satrap.png"
-        alt="Logo"
-        sx={{
-          borderRadius: '20px',
-          width: { width },
-          height: { height },
-        }}
-      />
-    </Fade>
+    <></>
+    // <Fade in unmountOnExit timeout={{ appear: delay * 150, enter: delay * 170, exit: delay * 190 }}>
+    //   <Box
+    //     component="img"
+    //     src="/assets/logo_satrap.png"
+    //     alt="Logo"
+    //     sx={{
+    //       borderRadius: '20px',
+    //       width: { width },
+    //       height: { height },
+    //     }}
+    //   />
+    // </Fade>
 
     // <Box sx={{ width, height, ...sx, borderRadius: 10 }}>
     // <img src="/assets/logo_satrap.jpg" width={width} height={height} />
