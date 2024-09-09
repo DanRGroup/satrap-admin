@@ -16,6 +16,7 @@ import { isEmptyObject } from 'helpers/formatObject';
 import { groupBy } from 'utils/formArray';
 
 import { FormattedMessage } from 'react-intl';
+import { convertToJalali } from 'helpers';
 
 // ----------------------------------------------------------------------
 
@@ -51,19 +52,21 @@ export default function TonnageChart() {
       });
       if (!isEmptyObject(data) && !error) {
         const { records } = data[graph.list.name];
-        records.map((item) => {
-          item.created_at = item.created_at.split(' ')[0];
+        records.data.map((item) => {
+          item.start_time = item.start_time.split(' ')[0];
+          // item.start_time = convertToJalali(item.start_time);
         });
-        grouped = groupBy(records, 'created_at');
+        grouped = groupBy(records.data, 'start_time');
         const keys = Object.keys(grouped);
-        const accumulated = records.reduce((acc, record) => {
-          const { created_at: created_at, tonnage: tonnage } = record;
-          if (!acc[created_at]) {
-            acc[created_at] = 0;
+        const accumulated = records.data.reduce((acc, record) => {
+          const { start_time, tonnage } = record;
+          if (!acc[start_time]) {
+            acc[start_time] = 0;
           }
-          acc[created_at] += Number(tonnage);
+          acc[start_time] += Number(tonnage);
           return acc;
         }, {});
+        console.log('keys', keys);
         setLabels(keys);
         setData(Object.values(accumulated));
       }

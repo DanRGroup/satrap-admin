@@ -20,7 +20,7 @@ export default function AppWebsiteVisits({ title, subheader, chart, refetch, loa
     colors,
     plotOptions: {
       bar: {
-        columnWidth: '16%',
+        columnWidth: '20%',
       },
     },
     fill: {

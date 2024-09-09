@@ -2,6 +2,8 @@ import merge from 'lodash/merge';
 // @mui
 import { useTheme, alpha } from '@mui/material/styles';
 
+import fa from 'apexcharts/dist/locales/fa.json';
+
 // ----------------------------------------------------------------------
 
 export default function useChart(options) {
@@ -40,6 +42,8 @@ export default function useChart(options) {
 
     // Chart
     chart: {
+      locales: [fa],
+      defaultLocale: 'fa',
       toolbar: { show: false },
       zoom: { enabled: false },
       // animations: { enabled: false },

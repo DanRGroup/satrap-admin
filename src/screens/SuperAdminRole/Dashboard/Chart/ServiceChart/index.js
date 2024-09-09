@@ -17,6 +17,8 @@ import { groupBy } from 'utils/formArray';
 
 import { FormattedMessage } from 'react-intl';
 
+import { convertToJalali } from 'helpers';
+
 // ----------------------------------------------------------------------
 
 export default function ServiceChart() {
@@ -53,6 +55,7 @@ export default function ServiceChart() {
         const { records } = data[graph.list.name];
         records.data.map((item) => {
           item.start_time = item.start_time.split(' ')[0];
+          // item.start_time = convertToJalali(item.start_time);
         });
         grouped = groupBy(records.data, 'start_time');
         const keys = Object.keys(grouped);

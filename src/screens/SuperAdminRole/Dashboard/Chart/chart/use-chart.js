@@ -4,9 +4,29 @@ import { alpha, useTheme } from '@mui/material/styles';
 
 import { useResponsive } from 'hooks';
 
+import fa from 'apexcharts/dist/locales/fa.json';
+import jMoment from 'moment-jalaali';
+import { rotate } from 'three/examples/jsm/nodes/Nodes';
+jMoment.loadPersian({ dialect: 'persian-modern', usePersianDigits: false });
+
 // ----------------------------------------------------------------------
 
 export default function useChart(options) {
+  const categories = [
+    'فروردین',
+    'اردیبهشت',
+    'خرداد',
+    'تیر',
+    'مرداد',
+    'شهریور',
+    'مهر',
+    'آبان',
+    'آذر',
+    'دی',
+    'بهمن',
+    'اسفند',
+  ];
+
   const theme = useTheme();
 
   const smUp = useResponsive('up', 'sm');
@@ -44,6 +64,8 @@ export default function useChart(options) {
 
     // Chart
     chart: {
+      locales: [fa],
+      defaultLocale: 'fa',
       toolbar: { show: false },
       zoom: { enabled: false },
       // animations: { enabled: false },
@@ -86,7 +108,7 @@ export default function useChart(options) {
 
     // Stroke
     stroke: {
-      width: 3,
+      width: 4,
       curve: 'smooth',
       lineCap: 'round',
     },
@@ -104,8 +126,15 @@ export default function useChart(options) {
 
     // Xaxis
     xaxis: {
+      // categories: categories,
       axisBorder: { show: false },
       axisTicks: { show: false },
+      labels: {
+        show: false,
+        formatter: function (value) {
+          return jMoment(value).format('jD jMMMM');
+        },
+      },
     },
 
     // Markers
@@ -125,7 +154,7 @@ export default function useChart(options) {
     // Legend
     legend: {
       show: true,
-      fontSize: 13,
+      fontSize: 10,
       position: 'top',
       horizontalAlign: 'right',
       markers: {
