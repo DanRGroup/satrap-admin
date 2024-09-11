@@ -31,7 +31,42 @@ export default function Model({ model, delay, checked, handleSelect, refetch, co
 
   const role = Array.isArray(model?.roles) && model?.roles.length > 0 ? formatUserRoles(model.roles) : '';
 
-  const userFullName = model?.firstname && model?.lastname ? `${model.firstname} ${model.lastname}` : 'بدون نام';
+  const getUserFullName = (model) => {
+    if (model?.firstname) {
+      return `${model?.firstname}`;
+    }
+    if (model?.lastname) {
+      return `${model?.lastname}`;
+    }
+    if (model?.firstname && model?.lastname) {
+      return `${model?.firstname} ${model?.lastname}`;
+    } else {
+      return null;
+    }
+  };
+  const showUser = (model) => {
+    const userName = getUserFullName(model);
+    if (userName !== null) {
+      return (
+        <Typography fontSize={14} variant="subtitle1">
+          {userName}
+        </Typography>
+      );
+    }
+    if (userName === null) {
+      return (
+        <Typography
+          style={{
+            fontStyle: 'italic',
+          }}
+          fontSize={14}
+          variant="subtitle1"
+        >
+          ( بدون نام )
+        </Typography>
+      );
+    }
+  };
   const cellphone = model?.cellphone;
 
   return (
@@ -87,7 +122,7 @@ export default function Model({ model, delay, checked, handleSelect, refetch, co
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography fontSize={14} variant="subtitle1">
-                  {`${userFullName}`}
+                  {showUser(model)}
                 </Typography>
               }
               // subheader={

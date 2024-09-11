@@ -16,6 +16,7 @@ const RoleAssignmentForm = ({ formData = {}, loading, onSubmit, onChange }) => {
       formData={formData}
       onSubmit={onSubmit}
       onChange={onChange}
+      liveValidate={false}
     />
   );
 };
