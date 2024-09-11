@@ -14,6 +14,7 @@ import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'c
 import { FormattedMessage } from 'react-intl';
 import { CircularProgress, Stack } from '@mui/material';
 import { descriptionId } from '@rjsf/utils';
+import { fCurrency } from 'helpers/formatNumber';
 
 export default function UpdatePopup({ ids, title, refetch }) {
   const [open, setOpen] = useState(false);
@@ -60,7 +61,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
   };
 
   const onChange = ({ formData }) => {
-    setFormData(formData);
+    setFormData({ ...formData, cost: fCurrency(formData?.cost) });
   };
 
   const onSubmit = async () => {
