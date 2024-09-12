@@ -46,15 +46,15 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
     //   type: 'string',
     //   title: 'task_status',
     // },
-    // start_date: {
-    //   type: 'string',
-    //   title: 'start_date',
-    //   format: 'date',
-    // },
+    start_date: {
+      type: 'string',
+      title: 'start_date',
+      format: 'date',
+    },
     start_time: {
       type: 'string',
       title: 'start_time',
-      format: 'date',
+      format: 'time',
     },
     // end_time: {
     //   type: 'string',
@@ -74,10 +74,10 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
     //   type: 'string',
     //   title: 'cost',
     // },
-    bill_number: {
-      type: 'string',
-      title: 'bill_number',
-    },
+    // bill_number: {
+    //   type: 'string',
+    //   title: 'bill_number',
+    // },
     // baskul_cost: {
     //   type: 'string',
     //   title: 'baskul_cost',
@@ -110,10 +110,10 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
     //     { const: 0, title: 'dont' },
     //   ],
     // },
-    description: {
-      type: 'string',
-      title: 'description',
-    },
+    // description: {
+    //   type: 'string',
+    //   title: 'description',
+    // },
   },
 });
 

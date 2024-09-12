@@ -25,7 +25,6 @@ export default function CompHandler(props) {
     return <UpdatePopup {...props} />;
   }
   if (isAuthenticated && hasRequiredRole(['workshopSupervisor'], userInfo?.roles)) {
-    console.log('role', userInfo?.roles);
     return <SupervisorUpdate {...props} />;
   }
   if (isAuthenticated && hasRequiredRole(['siteManager'], userInfo?.roles)) {
@@ -70,10 +69,10 @@ function UpdatePopup({ ids, title, refetch }) {
             shift_type: res.shift_type?.id,
             material_type_id: res.material_type?.id,
             status_id: res.status?.id,
-            // start_time: res?.start_time.split(' ')[1],
-            // end_time: res?.end_time.split(' ')[1],
-            // start_date: res?.start_time.split(' ')[0] + ' 00:00:00',
-            // end_date: res?.end_time.split(' ')[0] + ' 00:00:00',
+            start_time: res?.start_time?.split(' ')[1],
+            end_time: res?.end_time?.split(' ')[1],
+            start_date: res?.start_time?.split(' ')[0],
+            end_date: res?.end_time?.split(' ')[0],
           });
         }
       }
@@ -129,7 +128,7 @@ function UpdatePopup({ ids, title, refetch }) {
           <ModeEditRoundedIcon fontSize="small" />
         </IconButton>
       </Tooltip>
-      <NewDialog label="update" open={open} onClose={onClose} maxWidth="sm">
+      <NewDialog label="update" open={open} onClose={onClose} maxWidth="md">
         <NewDialogTitle title={<FormattedMessage id="edit_task" />} onClose={onClose} />
         <NewDialogContent>
           {loading || !formData ? (

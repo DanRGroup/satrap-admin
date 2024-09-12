@@ -92,7 +92,7 @@ const uiSchema = () => ({
     },
   },
   status_id: {
-    // 'ui:widget': TasksStatusSelectionWidget,
+    'ui:widget': TasksStatusSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,
@@ -235,6 +235,7 @@ const uiSchema = () => ({
   description: {
     'ui:widget': 'textarea',
     'ui:options': {
+      rows: 2,
       xs: 12,
       sm: 12,
       md: 12,

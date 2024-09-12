@@ -12,14 +12,15 @@ import {
 } from 'components/FormWidgets';
 
 const uiSchema = () => ({
+  'ui:order': ['tariff_id', 'vehicle_id', 'start_time', 'start_date', '*'],
   tariff_id: {
     'ui:widget': TariffSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 4,
-      lg: 4,
-      xl: 4,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   vehicle_id: {
@@ -27,9 +28,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 4,
-      lg: 4,
-      xl: 4,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   // driver_id: {
@@ -121,31 +122,13 @@ const uiSchema = () => ({
       xl: 4,
     },
   },
-  end_time: {
-    'ui:options': {
-      xs: 12,
-      sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
   start_date: {
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
-    },
-  },
-  end_date: {
-    'ui:options': {
-      xs: 12,
-      sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   // stop_dueto: {
@@ -218,18 +201,18 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 4,
-      lg: 4,
-      xl: 4,
+      md: 2,
+      lg: 2,
+      xl: 2,
     },
   },
   coefficient: {
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 4,
-      lg: 4,
-      xl: 4,
+      md: 2,
+      lg: 2,
+      xl: 2,
     },
   },
   // have_food: {

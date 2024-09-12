@@ -20,18 +20,18 @@ const schema = (taskStatuses) => ({
     //   title: 'operation',
     //   oneOf: operationTypes,
     // },
-    workshop_id: {
-      type: 'string',
-      title: 'workshop',
-    },
-    site_id: {
-      type: 'string',
-      title: 'site',
-    },
+    // workshop_id: {
+    //   type: 'string',
+    //   title: 'workshop',
+    // },
+    // site_id: {
+    //   type: 'string',
+    //   title: 'site',
+    // },
     status_id: {
       type: 'string',
       title: 'task_status',
-      oneOf: taskStatuses,
+      // oneOf: taskStatuses,
     },
     // material_type_id: {
     //   type: 'string',

@@ -54,6 +54,14 @@ const schema = ({ taskTypes, taskStatuses, operationTypes, materialTypes, shiftT
       title: 'end_date',
       format: 'date',
     },
+    match_location: {
+      type: 'string',
+      title: 'match_location',
+      oneOf: [
+        { const: '1', title: 'do' },
+        { const: '0', title: 'dont' },
+      ],
+    },
   },
 });
 

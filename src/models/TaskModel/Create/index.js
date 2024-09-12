@@ -14,12 +14,20 @@ import { isEmptyObject } from 'helpers/formatObject';
 import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'components';
 import { FormattedMessage } from 'react-intl';
 
+import jMoment from 'moment-jalaali';
+
 export default function CreatePopup({ title, refetch }) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({});
   const { userToken } = useSelector((state) => state.auth);
 
-  const onOpen = () => setOpen(true);
+  const onClick = () => {
+    setOpen(true);
+    const newDate = new Date(Date.now());
+    const formattedTime = jMoment(newDate).format('HH:mm:ss');
+    const formattedDate = jMoment(newDate).format('YYYY-MM-DD');
+    setFormData({ start_time: formattedTime, start_date: formattedDate });
+  };
   const onClose = () => setOpen(false);
 
   const [formUpdate, { loading }] = useMutation(graph.create.query, {
@@ -37,10 +45,14 @@ export default function CreatePopup({ title, refetch }) {
 
   const onSubmit = async () => {
     try {
-      formData.start_time = formData.start_time + ' 00:00:00';
       const { data, errors } = await formUpdate({
         variables: {
-          ...formData,
+          tariff_id: formData?.tariff_id,
+          vehicle_id: formData?.vehicle_id,
+          start_time: `${formData?.start_date} ${formData?.start_time}`,
+          bill_number: formData?.bill_number,
+          tannage: formData?.tannage,
+          description: formData?.description,
         },
       });
       if (!errors) {
@@ -62,7 +74,7 @@ export default function CreatePopup({ title, refetch }) {
         <IconButton
           size="medium"
           color="warning"
-          onClick={onOpen}
+          onClick={onClick}
           disabled={loading}
           sx={{ bgcolor: 'action.selected' }}
         >

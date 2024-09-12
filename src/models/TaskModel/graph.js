@@ -21,6 +21,7 @@ const schema = {
         $max_created_at: String
         $min_created_at_equality: String
         $max_created_at_equality: String
+        $match_location: String
       ) {
         task(
           ids: $ids
@@ -38,6 +39,7 @@ const schema = {
           max_created_at: $max_created_at
           min_created_at_equality: $min_created_at_equality
           max_created_at_equality: $max_created_at_equality
+          match_location: $match_location
         ) {
           records {
             data {
