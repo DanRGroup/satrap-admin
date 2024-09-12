@@ -18,7 +18,6 @@ const uiSchema = () => ({
   },
   details: {
     selected: {
-      'ui:widget': 'radio',
       'ui:options': {
         inline: true,
         xs: 6,

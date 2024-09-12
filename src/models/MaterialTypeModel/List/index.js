@@ -87,7 +87,7 @@ export default function List({
           handleSelect={handleSelect}
         />
       )}
-      <NewDialogTitle title={title} onClose={onClose} isPopup={isPopup}>
+      <NewDialogTitle title={<FormattedMessage id="material_type" />} onClose={onClose} isPopup={isPopup}>
         <Filter
           total={total}
           init={filter}

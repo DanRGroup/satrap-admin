@@ -42,12 +42,13 @@ export default function CreatePopup({ title, refetch }) {
           title: formData?.title,
           manager_id: formData?.manager_id,
           type_id: formData?.type_id,
-          lat: formData?.location.lat,
-          lng: formData?.location.lng,
+          lat: formData?.location?.lat,
+          lng: formData?.location?.lng,
           is_active: formData?.is_active,
         },
       });
       if (!errors) {
+        console.log('!error');
         refetch();
         onClose();
         setFormData({});
@@ -57,6 +58,7 @@ export default function CreatePopup({ title, refetch }) {
       }
     } catch (error) {
       setFormData(formData);
+      console.log('error', error);
     }
   };
 
