@@ -32,14 +32,14 @@ export default function Model({ model, delay, checked, handleSelect, refetch, co
   const role = Array.isArray(model?.roles) && model?.roles.length > 0 ? formatUserRoles(model.roles) : '';
 
   const getUserFullName = (model) => {
+    if (model?.firstname && model?.lastname) {
+      return `${model?.firstname} ${model?.lastname}`;
+    }
     if (model?.firstname) {
       return `${model?.firstname}`;
     }
     if (model?.lastname) {
       return `${model?.lastname}`;
-    }
-    if (model?.firstname && model?.lastname) {
-      return `${model?.firstname} ${model?.lastname}`;
     } else {
       return null;
     }

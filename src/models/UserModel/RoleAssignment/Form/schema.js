@@ -4,7 +4,7 @@ export const schema = (userRoles) => ({
     role_id: {
       type: 'string',
       title: 'role',
-      oneOf: userRoles,
+      // oneOf: userRoles,
     },
   },
   required: ['role_id'],

@@ -10,7 +10,7 @@ import Filter from '../Filter';
 import Create from '../Create';
 import Assignment from '../Assignment';
 import RoleAssignment from '../RoleAssignment';
-import RevokeRoleAssignment from '../RevokeRoleAssignment';
+import ChangeUserPassword from '../ChangeUserPassword';
 
 export default function List({
   page,
@@ -134,6 +134,7 @@ export default function List({
         </Tooltip>
         <Create title="create_user" refetch={refresh} />
         <RoleAssignment ids={selected} refetch={refresh} />
+        <ChangeUserPassword ids={selected} refetch={refresh} />
         {/* <RevokeRoleAssignment ids={selected} refetch={refresh} /> */}
       </NewDialogActions>
     </>

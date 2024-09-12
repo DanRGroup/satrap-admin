@@ -79,9 +79,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 4,
-      lg: 4,
-      xl: 4,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   national_code: {
@@ -118,9 +118,9 @@ const uiSchema = () => ({
       rows: 2,
       xs: 12,
       sm: 12,
-      md: 4,
-      lg: 4,
-      xl: 4,
+      md: 8,
+      lg: 8,
+      xl: 8,
     },
   },
   gender: {

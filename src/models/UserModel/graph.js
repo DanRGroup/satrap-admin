@@ -26,8 +26,9 @@ const schema = {
         $user_category_ids: [String] #کاربرانی که به این مجموعه‌ها تعلق دارند
         $user_section: String # CUSTOMER,OPERATOR,CATEGORY
         $page: Int
-        $limit: Int #$for_admin: Int
-      ) {
+        $limit: Int
+      ) #$for_admin: Int
+      {
         users(
           ids: $ids
           national_codes: $national_codes

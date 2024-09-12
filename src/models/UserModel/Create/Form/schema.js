@@ -24,10 +24,10 @@ const schema = (userTypes, userStatuses) => ({
       type: 'string',
       title: 'nationalCode',
     },
-    username: {
-      type: 'string',
-      title: 'username',
-    },
+    // username: {
+    //   type: 'string',
+    //   title: 'username',
+    // },
     birth_date: {
       type: 'string',
       title: 'birthDate',
