@@ -60,6 +60,35 @@ const schema = {
       }
     `,
   },
+  list: {
+    name: 'vehicle',
+    serviceName: 'graphql',
+    query: gql`
+      query vehicle($ids: [String]) {
+        vehicle(ids: $ids) {
+          data {
+            id
+            plaque
+            serial_number
+            type {
+              id
+              title
+            }
+            driver {
+              firstname
+              lastname
+            }
+            media {
+              id
+              full_url
+            }
+            vin
+          }
+          total
+        }
+      }
+    `,
+  },
 };
 
 export default schema;

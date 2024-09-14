@@ -277,7 +277,7 @@ const locales = {
     brand_title: 'سامانه کنترل عملیات عمرانی',
     welcome: 'خوش آمدید...!',
     selectAll: 'انتخاب همه',
-    selected: 'رکورد انتخاب شده {selected}',
+    selected: ' {selected} رکورد انتخاب شده',
     filtered: 'فیلتر شده {filtered}',
     rmFilters: 'پاک کردن فیلترها',
     showFilters: 'نمایش فیلترها',

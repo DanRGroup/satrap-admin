@@ -9,7 +9,7 @@ import Form from './Form';
 import graph from './graph';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
-import { useMutation } from '@apollo/client';
+import { useMutation, useLazyQuery } from '@apollo/client';
 import { isEmptyObject } from 'helpers/formatObject';
 import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'components';
 import { FormattedMessage } from 'react-intl';
@@ -30,7 +30,7 @@ export default function CreatePopup({ title, refetch }) {
   };
   const onClose = () => setOpen(false);
 
-  const [formUpdate, { loading }] = useMutation(graph.create.query, {
+  const [formUpdate, { loading: createLoading }] = useMutation(graph.create.query, {
     context: {
       serviceName: graph.create.serviceName,
       headers: {
@@ -39,7 +39,44 @@ export default function CreatePopup({ title, refetch }) {
     },
   });
 
+  const [getData, { loading: listLoading }] = useLazyQuery(graph.list.query, {
+    context: {
+      serviceName: graph.list.serviceName,
+      headers: {
+        authorization: `Bearer ${userToken}`,
+      },
+    },
+  });
+
+  const handleVehicle = async (vehicle_id) => {
+    try {
+      const { data, error } = await getData({
+        variables: {
+          ids: vehicle_id,
+        },
+      });
+      if (!isEmptyObject(data) && !error) {
+        const res = data[graph.list.name];
+        const vehicle_type = res.data[0]?.type?.id;
+        switch (vehicle_type) {
+          case '1':
+            setFormData({ ...formData, tonnage: '10' });
+            break;
+          case '2':
+            setFormData({ ...formData, tonnage: '15' });
+            break;
+          default:
+            setFormData({ ...formData, tonnage: null });
+            break;
+        }
+      }
+    } catch (error) {}
+  };
+
   const onChange = ({ formData }) => {
+    if (formData?.vehicle_id) {
+      handleVehicle(formData.vehicle_id);
+    }
     setFormData(formData);
   };
 
@@ -75,7 +112,7 @@ export default function CreatePopup({ title, refetch }) {
           size="medium"
           color="warning"
           onClick={onClick}
-          disabled={loading}
+          disabled={createLoading}
           sx={{ bgcolor: 'action.selected' }}
         >
           <AddCircleOutlineRounded fontSize="small" />
@@ -89,7 +126,7 @@ export default function CreatePopup({ title, refetch }) {
           </Stack>
         </NewDialogContent>
         <NewDialogActions>
-          <Button size="large" variant="contained" onClick={onSubmit}>
+          <Button size="large" variant="contained" onClick={onSubmit} disabled={listLoading}>
             <FormattedMessage id="create" />
           </Button>
         </NewDialogActions>

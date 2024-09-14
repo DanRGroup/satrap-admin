@@ -65,10 +65,7 @@ export default function Filter({
         <CardHeader
           title={
             <Typography variant="subtitle1" fontSize={16}>
-              <FormattedMessage
-                id={selection > 0 ? 'selected' : 'selectAll'}
-                values={{ selected: digitsEnToFa(selection) }}
-              />
+              <FormattedMessage id={selection >= 0 && 'selected'} values={{ selected: digitsEnToFa(selection) }} />
             </Typography>
           }
           sx={{ p: 1 }}
@@ -77,15 +74,15 @@ export default function Filter({
               <FormattedMessage id="filtered" values={{ filtered: filterCount }} />
             </Typography>
           }
-          avatar={
-            <Checkbox
-              size="small"
-              color="warning"
-              indeterminate={selection > 0 && selection < acception}
-              checked={acception > 0 && selection === acception}
-              onChange={handleSelectAllClick}
-            />
-          }
+          // avatar={
+          //   <Checkbox
+          //     size="small"
+          //     color="warning"
+          //     indeterminate={selection > 0 && selection < acception}
+          //     checked={acception > 0 && selection === acception}
+          //     onChange={handleSelectAllClick}
+          //   />
+          // }
           action={
             <Stack columnGap={0.5} direction="row" alignItems="center" justifyContent="flex-end">
               <Tooltip title={<FormattedMessage id="rmFilters" />}>
