@@ -1,5 +1,18 @@
 import React, { useState } from 'react';
-import { Dialog, Tooltip, IconButton, DialogTitle, Stack, CircularProgress, Box, Button } from '@mui/material';
+import {
+  Dialog,
+  Tooltip,
+  IconButton,
+  DialogTitle,
+  Stack,
+  CircularProgress,
+  Box,
+  Button,
+  Typography,
+  Chip,
+  ListItem,
+  Paper,
+} from '@mui/material';
 import { AssignmentIndRounded } from '@mui/icons-material';
 
 import { NewDialogActions, NewDialogContent, NewDialog, NewDialogTitle } from 'components';
@@ -12,13 +25,16 @@ import { useMutation } from '@apollo/client';
 import { isEmptyObject } from 'helpers/formatObject';
 import { FormattedMessage } from 'react-intl';
 
-export default function RoleAssignment({ ids, refetch }) {
+export default function RoleAssignment({ ids, refetch, handleDelete }) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({});
   const { userToken } = useSelector((state) => state.auth);
 
   const onOpen = () => {
-    setOpen(true);
+    if (ids.length > 0) {
+      return setOpen(true);
+    }
+    return toast.warning(<FormattedMessage id="selectItems" />);
   };
 
   const onClose = () => {
@@ -39,7 +55,6 @@ export default function RoleAssignment({ ids, refetch }) {
   };
 
   const onSubmit = async () => {
-    // console.log('formdata', formData);
     try {
       const { data, errors } = await formCreate({
         variables: {
@@ -82,7 +97,26 @@ export default function RoleAssignment({ ids, refetch }) {
       >
         <NewDialogTitle title={<FormattedMessage id="role_asignment" />} onClose={onClose} />
         <NewDialogContent>
-          <Stack sx={{ m: 2 }}>
+          <Stack
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              listStyle: 'none',
+              p: 0.5,
+              m: 2,
+            }}
+            component="ul"
+          >
+            <Paper>
+              {ids.map((model) => {
+                return (
+                  <ListItem key={model.key}>
+                    <Chip label={model.title} onDelete={() => handleDelete(model)} />
+                  </ListItem>
+                );
+              })}
+            </Paper>
             <Form formData={formData} loading={loading} onChange={onChange} />
           </Stack>
         </NewDialogContent>

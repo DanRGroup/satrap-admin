@@ -32,10 +32,24 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   const isRtl = dir === 'rtl';
   const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
 
-  const workshopTitle = model?.workshop?.title;
-  const employer = model?.employer?.firstname
-    ? `${model?.employer?.firstname} ${model?.employer?.lastname}`
-    : 'بدون نام';
+  const getUserFullName = (model) => {
+    if (model?.employer?.firstname && model?.employer?.lastname) {
+      return `${model?.employer?.firstname} ${model?.employer?.lastname}`;
+    }
+    if (model?.employer?.firstname) {
+      return `${model?.employer?.firstname}`;
+    }
+    if (model?.lastname) {
+      return `${model?.employer?.lastname}`;
+    } else {
+      return undefined;
+    }
+  };
+
+  const chips = [
+    { id: '1', name: 'workshop', title: model?.workshop?.title },
+    { id: '2', name: 'employer', title: getUserFullName(model) },
+  ];
 
   const theme = useTheme();
 
@@ -75,8 +89,13 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {workshopTitle && <Chip label={workshopTitle} />}
-              <Chip label={employer} />
+              {chips.map((chip) => {
+                if (chip.title !== null) {
+                  return <Chip sx={{ width: '180px' }} key={chip.id} label={chip.title} />;
+                } else {
+                  <Chip sx={{ width: '180px' }} key={chip.id} label="-" />;
+                }
+              })}
               {isAuthenticated &&
                 hasRequiredRole(
                   ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],

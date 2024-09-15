@@ -27,10 +27,10 @@ export default function Model({ model, delay, checked, handleSelect, refetch, co
     language: { dir, direction },
   } = useSelector((state) => state.setting);
   const isRtl = direction === 'rtl';
-  const theme = useTheme();
 
-  const role = Array.isArray(model?.roles) && model?.roles.length > 0 ? formatUserRoles(model.roles) : '';
-
+  const getUserRole = (model) => {
+    return Array.isArray(model?.roles) && model?.roles.length > 0 ? formatUserRoles(model.roles) : undefined;
+  };
   const getUserFullName = (model) => {
     if (model?.firstname && model?.lastname) {
       return `${model?.firstname} ${model?.lastname}`;
@@ -41,7 +41,7 @@ export default function Model({ model, delay, checked, handleSelect, refetch, co
     if (model?.lastname) {
       return `${model?.lastname}`;
     } else {
-      return null;
+      return undefined;
     }
   };
   const showUser = (model) => {
@@ -67,6 +67,12 @@ export default function Model({ model, delay, checked, handleSelect, refetch, co
       );
     }
   };
+
+  const chips = [
+    { id: '1', name: 'userRole', title: getUserRole(model) },
+    { id: '2', name: 'userNmae', title: getUserFullName(model) },
+  ];
+
   const cellphone = model?.cellphone;
 
   return (
@@ -111,8 +117,13 @@ export default function Model({ model, delay, checked, handleSelect, refetch, co
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {role && <Chip label={role} />}
-              {cellphone && <Chip label={cellphone} />}
+              {chips.map((chip) => {
+                if (chip.title !== undefined) {
+                  return <Chip sx={{ width: '180px' }} key={chip.id} label={chip.title} />;
+                } else {
+                  return <Chip sx={{ width: '180px' }} key={chip.id} label="----" />;
+                }
+              })}
               <Roles refetch={refetch} roles={model?.all_roles} userId={model?.id} />
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
             </NewSpeedDial>

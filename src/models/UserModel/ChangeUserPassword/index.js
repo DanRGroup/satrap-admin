@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
-import { Dialog, Tooltip, IconButton, DialogTitle, Stack, CircularProgress, Box, Button } from '@mui/material';
+import {
+  Dialog,
+  Tooltip,
+  IconButton,
+  DialogTitle,
+  Stack,
+  CircularProgress,
+  Box,
+  Button,
+  ListItem,
+  Chip,
+} from '@mui/material';
 import PasswordRoundedIcon from '@mui/icons-material/PasswordRounded';
 
 import { NewDialogActions, NewDialogContent, NewDialog, NewDialogTitle } from 'components';
@@ -20,18 +31,21 @@ export default function CompHandler(props) {
     isAuthenticated &&
     hasRequiredRole(['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'], userInfo?.roles)
   ) {
-    return <RoleAssignment {...props} />;
+    return <ChangeUserPassword {...props} />;
   }
   return null;
 }
 
-function RoleAssignment({ ids, refetch }) {
+function ChangeUserPassword({ ids, refetch, handleDelete }) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({});
   const { userToken } = useSelector((state) => state.auth);
 
   const onOpen = () => {
-    setOpen(true);
+    if (ids.length > 0) {
+      return setOpen(true);
+    }
+    return toast.warning(<FormattedMessage id="selectItems" />);
   };
 
   const onClose = () => {
@@ -95,6 +109,13 @@ function RoleAssignment({ ids, refetch }) {
         <NewDialogTitle title={<FormattedMessage id="password_change" />} onClose={onClose} />
         <NewDialogContent>
           <Stack sx={{ m: 2 }}>
+            {ids.map((model) => {
+              return (
+                <ListItem key={model.key}>
+                  <Chip label={model.title} onDelete={() => handleDelete(model)} />
+                </ListItem>
+              );
+            })}
             <Form formData={formData} loading={loading} onChange={onChange} />
           </Stack>
         </NewDialogContent>

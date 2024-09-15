@@ -18,14 +18,26 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   const isRtl = dir === 'rtl';
   const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
 
-  const theme = useTheme();
+  const getUserFullName = (model) => {
+    if (model?.manager?.firstname && model?.manager?.lastname) {
+      return `${model?.manager?.firstname} ${model?.manager?.lastname}`;
+    }
+    if (model?.manager?.firstname) {
+      return `${model?.manager?.firstname}`;
+    }
+    if (model?.lastname) {
+      return `${model?.manager?.lastname}`;
+    } else {
+      return undefined;
+    }
+  };
+
+  const chips = [
+    { id: '1', name: 'siteType', title: model?.type?.title },
+    { id: '2', name: 'siteManager', title: getUserFullName(model) },
+  ];
 
   const siteTitel = model?.title;
-  const siteType = model?.type?.title;
-  const siteManager =
-    model?.manager?.firstname && model?.manager?.lastname
-      ? `${model?.manager?.firstname} ${model?.manager?.lastname}`
-      : '';
 
   return (
     <>
@@ -63,8 +75,13 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {siteType && <Chip label={siteType} />}
-              {siteManager && <Chip label={siteManager} />}
+              {chips.map((chip) => {
+                if (chip.title !== undefined) {
+                  return <Chip sx={{ width: '180px' }} key={chip.id} label={chip.title} />;
+                } else {
+                  return <Chip sx={{ width: '180px' }} key={chip.id} label="----" />;
+                }
+              })}
               {isAuthenticated && hasRequiredRole(['superadmin', 'siteManager', 'companyCeo'], userInfo?.roles) && (
                 <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
               )}

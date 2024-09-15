@@ -57,6 +57,20 @@ export default function List({
     }
   };
 
+  const getUserFullName = (model) => {
+    if (model?.firstname && model?.lastname) {
+      return `${model?.firstname} ${model?.lastname}`;
+    }
+    if (model?.firstname) {
+      return `${model?.firstname}`;
+    }
+    if (model?.lastname) {
+      return `${model?.lastname}`;
+    } else {
+      return '( بدون نام )';
+    }
+  };
+
   const getColor = (index) => {
     return index % 2 === 0 ? false : true;
   };
@@ -116,7 +130,7 @@ export default function List({
               delay={(i % limit) + 1}
               color={getColor(i)}
               checked={selected.find((select) => model.id === select.id) ? true : false}
-              handleSelect={() => handleSelect({ id: model?.id, title: `${model?.firstname} ${model?.lastname}` })}
+              handleSelect={() => handleSelect({ id: model?.id, title: getUserFullName(model) })}
             />
           ))}
           <LoadingMore total={total} result={result.length} loading={loading} onClick={() => setPage(page + 1)} />
@@ -133,8 +147,8 @@ export default function List({
           </IconButton>
         </Tooltip>
         <Create title="create_user" refetch={refresh} />
-        <RoleAssignment ids={selected} refetch={refresh} />
-        <ChangeUserPassword ids={selected} refetch={refresh} />
+        <RoleAssignment ids={selected} refetch={refresh} handleDelete={handleSelect} />
+        <ChangeUserPassword ids={selected} refetch={refresh} handleDelete={handleSelect} />
         {/* <RevokeRoleAssignment ids={selected} refetch={refresh} /> */}
       </NewDialogActions>
     </>

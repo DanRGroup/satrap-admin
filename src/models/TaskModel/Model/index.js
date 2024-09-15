@@ -29,16 +29,28 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
     language: { direction: dir },
   } = useSelector((state) => state.setting);
   const isRtl = dir === 'rtl';
-  const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
 
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const getUserFullName = (model) => {
+    if (model?.driver?.firstname && model?.driver?.lastname) {
+      return `${model?.driver?.firstname} ${model?.driver?.lastname}`;
+    }
+    if (model?.driver?.firstname) {
+      return `${model?.driver?.firstname}`;
+    }
+    if (model?.lastname) {
+      return `${model?.driver?.lastname}`;
+    } else {
+      return undefined;
+    }
+  };
 
-  const driver = model?.driver?.firstname + ' ' + model?.driver?.lastname;
-  const taskType = model?.type.title;
-  const plaque = model?.vehicle?.plaque;
-  const workshopTitle = model?.workshop?.title;
-  const siteTitle = model?.site?.title;
+  const chips = [
+    { id: '1', name: 'driver', title: getUserFullName(model) },
+    { id: '2', name: 'taskType', title: model?.type.title },
+    { id: '3', name: 'plaque', title: model?.vehicle?.plaque },
+    { id: '4', name: 'workshop', title: model?.workshop?.title },
+    { id: '5', name: 'site', title: model?.site?.title },
+  ];
 
   return (
     <>
@@ -76,10 +88,13 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {taskType && <Chip label={taskType} />}
-              {plaque && <Chip label={plaque} />}
-              {workshopTitle && <Chip label={workshopTitle} />}
-              {siteTitle && <Chip label={siteTitle} />}
+              {chips.map((chip) => {
+                if (chip.title !== undefined) {
+                  return <Chip sx={{ width: '130px' }} key={chip.id} label={chip.title} />;
+                } else {
+                  return <Chip sx={{ width: '130px' }} key={chip.id} label="----" />;
+                }
+              })}
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
               <ChangeStatus ids={model.id} title={<FormattedMessage id="change_status" />} refetch={refetch} />
               <ChangeLocation
@@ -95,7 +110,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography fontSize={14} variant="subtitle1">
-                  {driver}
+                  {getUserFullName(model)}
                 </Typography>
               }
               // subheader={

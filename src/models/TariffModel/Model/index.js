@@ -29,12 +29,17 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   const isRtl = dir === 'rtl';
   const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
 
-  const operationType = model?.operation_type?.title;
+  const chips = [
+    { id: '1', name: 'operationType', title: model?.operation_type?.title },
+    { id: '2', name: 'materialType', title: model?.material_type?.title },
+    { id: '3', name: 'shiftType', title: model?.shift_type?.title },
+    { id: '4', name: 'taskType', title: model?.task_type?.title },
+    { id: '5', name: 'workshop', title: model?.workshop?.title },
+    { id: '6', name: 'site', title: model?.site?.title },
+  ];
+
   const materialType = model?.material_type?.title;
-  const shiftType = model?.shift_type?.title;
   const taskType = model?.task_type?.title;
-  const workshopTitle = model?.workshop?.title;
-  const siteTitle = model?.site?.title;
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -59,14 +64,6 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-start"
             direction={isRtl ? 'row' : 'row-reverse'}
           >
-            {/* {!isMobile && (
-              <>
-                {workshopTitle && <Chip label={workshopTitle} />}
-                {siteTitle && <Chip label={siteTitle} />}
-                {operationType && <Chip label={operationType} />}
-                {shiftType && <Chip label={shiftType} />}
-              </>
-            )} */}
             <Checkbox size="small" checked={checked} onChange={handleSelect} />
             <Media
               id={model?.id}
@@ -89,10 +86,13 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {workshopTitle && <Chip label={workshopTitle} />}
-              {siteTitle && <Chip label={siteTitle} />}
-              {operationType && <Chip label={operationType} />}
-              {shiftType && <Chip label={shiftType} />}
+              {chips.map((chip) => {
+                if (chip.title !== undefined) {
+                  return <Chip sx={{ width: '120px' }} key={chip.id} label={chip.title} />;
+                } else {
+                  return <Chip sx={{ width: '120px' }} key={chip.id} label="----" />;
+                }
+              })}
               {isAuthenticated &&
                 hasRequiredRole(
                   ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],

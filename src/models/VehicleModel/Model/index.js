@@ -24,12 +24,27 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
     language: { direction: dir },
   } = useSelector((state) => state.setting);
   const isRtl = dir === 'rtl';
-  const theme = useTheme();
 
-  const vehicleType = model?.type?.title ? model?.type?.title : '';
+  const getUserFullName = (model) => {
+    if (model?.driver?.firstname && model?.driver?.lastname) {
+      return `${model?.driver?.firstname} ${model?.driver?.lastname}`;
+    }
+    if (model?.driver?.firstname) {
+      return `${model?.driver?.firstname}`;
+    }
+    if (model?.lastname) {
+      return `${model?.driver?.lastname}`;
+    } else {
+      return undefined;
+    }
+  };
+
+  const chips = [
+    { id: '1', name: 'vehicleType', title: model?.type?.title },
+    { id: '2', name: 'driverName', title: getUserFullName(model) },
+  ];
+
   const plaque = model?.plaque ? model?.plaque : '';
-  const driverName =
-    model?.driver?.firstname && model?.driver?.lastname ? `${model?.driver?.firstname} ${model?.driver?.lastname}` : '';
 
   return (
     <>
@@ -73,8 +88,13 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {vehicleType && <Chip label={vehicleType} />}
-              {driverName && <Chip label={driverName} />}
+              {chips.map((chip) => {
+                if (chip.title !== undefined) {
+                  return <Chip sx={{ width: '180px' }} key={chip.id} label={chip.title} />;
+                } else {
+                  return <Chip sx={{ width: '180px' }} key={chip.id} label="----" />;
+                }
+              })}
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
               {/* <Media id={model.id} model="Brand" collection="banner" /> */}
             </NewSpeedDial>

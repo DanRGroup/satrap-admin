@@ -11,6 +11,7 @@ import {
   Typography,
   IconButton,
   CardContent,
+  Chip,
 } from '@mui/material';
 import Form from './Form';
 import { ExpandMoreButton } from 'components';
@@ -34,7 +35,6 @@ export default function Filter({
 }) {
   const theme = useTheme();
   const [expanded, setExpanded] = useState(false);
-
   const {
     language: { direction },
   } = useSelector((state) => state.setting);
