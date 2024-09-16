@@ -221,6 +221,8 @@ const locales = {
     financial_manager: 'Financial Manager',
     driver: 'Driver',
 
+    company: 'Company',
+    companies: 'Companies',
     company_ceo: 'Company CEO',
     company_operator: 'Company Operator',
     company_financial: 'Company Financial',
@@ -490,6 +492,8 @@ const locales = {
     financial_manager: 'مدیر مالی',
     driver: 'راننده',
 
+    company: 'شرکت',
+    companies: 'شرکت‌ها',
     company_ceo: 'مدیر عامل شرکت',
     company_operator: 'اپراتور شرکت',
     company_financial: 'واحد مالی شرکت',

@@ -46,14 +46,14 @@ export default function Model({ model, delay, checked, handleSelect, refetch, co
   };
   const showUser = (model) => {
     const userName = getUserFullName(model);
-    if (userName !== null) {
+    if (userName !== undefined) {
       return (
         <Typography fontSize={14} variant="subtitle1">
           {userName}
         </Typography>
       );
     }
-    if (userName === null) {
+    if (userName === undefined) {
       return (
         <Typography
           style={{

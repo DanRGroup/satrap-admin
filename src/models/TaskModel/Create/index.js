@@ -60,10 +60,10 @@ export default function CreatePopup({ title, refetch }) {
         const vehicle_type = res.data[0]?.type?.id;
         switch (vehicle_type) {
           case '1':
-            setFormData({ ...formData, tonnage: '10' });
+            setFormData({ ...formData, tonnage: '10', coefficient: '1' });
             break;
           case '2':
-            setFormData({ ...formData, tonnage: '15' });
+            setFormData({ ...formData, tonnage: '15', coefficient: '1.5' });
             break;
           default:
             setFormData({ ...formData, tonnage: null });

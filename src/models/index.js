@@ -3,6 +3,7 @@ export { default as SiteModel } from './SiteModel';
 export { default as UserModel } from './UserModel';
 export { default as TariffModel } from './TariffModel';
 export { default as VehicleModel } from './VehicleModel';
+export { default as CompanyModel } from './CompanyModel';
 export { default as ContractModel } from './ContractModel';
 export { default as WorkshopModel } from './WorkshopModel';
 export { default as SiteTypeModel } from './SiteTypeModel';

@@ -25,6 +25,7 @@ const WorkshopModel = Loadable(lazy(() => import('models/WorkshopModel')));
 const TariffModel = Loadable(lazy(() => import('models/TariffModel')));
 const TaskModel = Loadable(lazy(() => import('models/TaskModel')));
 const ContractCategoryModel = Loadable(lazy(() => import('models/ContractCategoryModel')));
+const CompanyModel = Loadable(lazy(() => import('models/CompanyModel')));
 
 // import {
 //   ContractTypeModel,
@@ -84,6 +85,17 @@ export const navConfig = [
     element: <AppLayout />,
     icon: <DashboardRoundedIcon fontSize="small" />,
     children: [
+      {
+        path: '/dashboard/companies',
+        url: '/dashboard/companies',
+        title: 'companies',
+        element: (
+          <Page title="Companies">
+            <CompanyModel />
+          </Page>
+        ),
+        inSidebar: true,
+      },
       {
         path: '/dashboard/managment',
         url: '/dashboard/managment',

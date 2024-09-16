@@ -66,7 +66,6 @@ export default function TonnageChart() {
           acc[start_time] += Number(tonnage);
           return acc;
         }, {});
-        console.log('keys', keys);
         setLabels(keys);
         setData(Object.values(accumulated));
       }
