@@ -24,6 +24,7 @@ import {
   TariffModel,
   TaskModel,
   ContractCategoryModel,
+  CompanyModel,
 } from 'models';
 
 const NotFound = Loadable(lazy(() => import('screens/Authentication/Page404')));
@@ -195,6 +196,19 @@ export const superAdminNavConfig = [
     element: <AppLayout />,
     icon: <DashboardRoundedIcon fontSize="small" />,
     children: [
+      {
+        path: '/dashboard/companies',
+        url: '/dashboard/companies',
+        title: 'companies',
+        element: (
+          <Page title="Companies">
+            <CompanyModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
+      },
+      ,
       {
         path: '/dashboard/managment',
         url: '/dashboard/managment',

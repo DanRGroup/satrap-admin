@@ -95,6 +95,7 @@ export const navConfig = [
           </Page>
         ),
         inSidebar: true,
+        roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
       },
       {
         path: '/dashboard/managment',

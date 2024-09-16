@@ -1,4 +1,5 @@
 export const schema = (userRoles) => ({
+  // required: ['role_id'],
   type: 'object',
   properties: {
     role_id: {
@@ -7,23 +8,22 @@ export const schema = (userRoles) => ({
       // oneOf: userRoles,
     },
   },
-  required: ['role_id'],
   allOf: [
-    {
-      if: {
-        properties: {
-          role_id: { const: '' },
-        },
-      },
-      then: {
-        not: {
-          properties: {
-            workshop_id: {},
-            site_id: {},
-          },
-        },
-      },
-    },
+    // {
+    //   if: {
+    //     properties: {
+    //       role_id: {},
+    //     },
+    //   },
+    //   then: {
+    //     not: {
+    //       properties: {
+    //         workshop_id: {},
+    //         site_id: {},
+    //       },
+    //     },
+    //   },
+    // },
     {
       if: {
         properties: {
@@ -59,6 +59,9 @@ export const schema = (userRoles) => ({
           },
         },
       },
+    },
+    {
+      required: ['role_id'],
     },
   ],
 });

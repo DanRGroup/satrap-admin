@@ -32,14 +32,17 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   const isRtl = dir === 'rtl';
   const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
 
-  const getUserFullName = (model) => {
+  const getEmployerName = (model) => {
+    if (model?.company?.title) {
+      return `${model?.company?.title}`;
+    }
     if (model?.employer?.firstname && model?.employer?.lastname) {
       return `${model?.employer?.firstname} ${model?.employer?.lastname}`;
     }
     if (model?.employer?.firstname) {
       return `${model?.employer?.firstname}`;
     }
-    if (model?.lastname) {
+    if (model?.employer?.lastname) {
       return `${model?.employer?.lastname}`;
     } else {
       return undefined;
@@ -48,7 +51,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
 
   const chips = [
     { id: '1', name: 'workshop', title: model?.workshop?.title },
-    { id: '2', name: 'employer', title: getUserFullName(model) },
+    { id: '2', name: 'employer', title: getEmployerName(model) },
   ];
 
   const theme = useTheme();
@@ -90,7 +93,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           >
             <NewSpeedDial>
               {chips.map((chip) => {
-                if (chip.title !== null) {
+                if (chip.title !== undefined) {
                   return <Chip sx={{ width: '180px' }} key={chip.id} label={chip.title} />;
                 } else {
                   <Chip sx={{ width: '180px' }} key={chip.id} label="-" />;

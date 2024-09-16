@@ -121,6 +121,7 @@ const locales = {
     updator: 'Updator',
     supervisor: 'Supervisor',
     employer: 'Employer',
+    employer_type: 'Employer Type',
     stop_dueto: 'Stop Due to',
     site: 'Site',
     sites: 'Sites',
@@ -393,6 +394,7 @@ const locales = {
     updator: 'بروزرسانی کننده',
     supervisor: 'ناظر',
     employer: 'کارفرما',
+    employer_type: 'نوع کارفرما',
     stop_dueto: 'علت توقف',
 
     site: 'محل تخلیه',

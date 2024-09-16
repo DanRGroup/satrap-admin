@@ -34,6 +34,10 @@ const schema = {
               firstname
               lastname
             }
+            company {
+              id
+              title
+            }
             workshop {
               id
               title

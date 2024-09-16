@@ -1,6 +1,7 @@
 export { default as SiteSelectionWidget } from './SiteSelectionWidget';
 export { default as UsersSelectionWidget } from './UsersSelectionWidget';
 export { default as TariffSelectionWidget } from './TariffSelectionWidget';
+export { default as CompanySelectionWidget } from './CompanySelectionWidget';
 export { default as VehicleSelectionWidget } from './VehicleSelectionWidget';
 // export { default as DriversSelectionWidget } from './DriversSelectionWidget';
 export { default as WorkshopSelectionWidget } from './WorkshopSelectionWidget';

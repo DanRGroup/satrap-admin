@@ -64,6 +64,7 @@ function UpdatePopup({ ids, title, refetch }) {
             ...res,
             workshop_id: res?.workshop?.id,
             employer_id: res?.employer?.id,
+            company_id: res?.company?.id,
             category_id: res?.category?.id,
             type_id: res?.type?.id,
             operation_type_id: res?.operation_type?.id,

@@ -33,9 +33,14 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
       title: 'operation_type',
       // oneOf: operationTypes,
     },
-    employer_id: {
-      type: 'string',
-      title: 'employer',
+    employer_type: {
+      type: 'number',
+      title: 'employer_type',
+      oneOf: [
+        { const: 0, title: 'natural' },
+        { const: 1, title: 'legal' },
+      ],
+      default: 0,
     },
     workshop_id: {
       type: 'string',
@@ -73,6 +78,42 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
       title: 'details',
     },
   },
+  allOf: [
+    {
+      if: {
+        properties: {
+          employer_type: {
+            const: 0,
+          },
+        },
+      },
+      then: {
+        properties: {
+          employer_id: {
+            type: 'string',
+            title: 'employer',
+          },
+        },
+      },
+    },
+    {
+      if: {
+        properties: {
+          employer_type: {
+            const: 1,
+          },
+        },
+      },
+      then: {
+        properties: {
+          company_id: {
+            type: 'string',
+            title: 'company',
+          },
+        },
+      },
+    },
+  ],
 });
 
 export default schema;

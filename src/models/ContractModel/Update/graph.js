@@ -27,6 +27,10 @@ const schema = {
               firstname
               lastname
             }
+            company {
+              id
+              title
+            }
             operation_type {
               id
               title

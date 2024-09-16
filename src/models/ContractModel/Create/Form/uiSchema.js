@@ -4,6 +4,7 @@ import {
   WorkshopSelectionWidget,
   OperationTypeSelectionWidget,
   ContractCategorySelectionWidget,
+  CompanySelectionWidget,
 } from 'components/FormWidgets';
 
 const uiSchema = () => ({
@@ -13,9 +14,11 @@ const uiSchema = () => ({
     'cost',
     'status',
     'type_id',
+    'employer_type',
     'category_id',
     'operation_type_id',
     'employer_id',
+    'company_id',
     'workshop_id',
     'is_civil',
     '*',
@@ -51,9 +54,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   type_id: {
@@ -61,9 +64,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   category_id: {
@@ -86,8 +89,27 @@ const uiSchema = () => ({
       xl: 6,
     },
   },
+  employer_type: {
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 4,
+      lg: 4,
+      xl: 4,
+    },
+  },
   employer_id: {
     'ui:widget': UsersSelectionWidget,
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 4,
+      lg: 4,
+      xl: 4,
+    },
+  },
+  company_id: {
+    'ui:widget': CompanySelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,

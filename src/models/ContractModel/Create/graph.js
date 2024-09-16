@@ -22,6 +22,7 @@ const schema = {
         $contractual_number: String
         $category_id: String
         $is_civil: Int
+        $company_id: String
       ) {
         createContract(
           title: $title
@@ -40,6 +41,7 @@ const schema = {
           contractual_number: $contractual_number
           category_id: $category_id
           is_civil: $is_civil
+          company_id: $company_id
         ) {
           messages
         }

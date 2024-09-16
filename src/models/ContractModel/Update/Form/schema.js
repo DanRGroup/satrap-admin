@@ -6,33 +6,6 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
       type: 'string',
       title: 'title',
     },
-    category_id: {
-      type: 'string',
-      title: 'category',
-    },
-    workshop_id: {
-      type: 'string',
-      title: 'workshop',
-    },
-    employer_id: {
-      type: 'string',
-      title: 'employer',
-    },
-    type_id: {
-      type: 'string',
-      title: 'contract_type',
-      oneOf: contractTypes,
-    },
-    status: {
-      type: 'string',
-      title: 'status',
-      oneOf: contractStatuses,
-    },
-    operation_type_id: {
-      type: 'string',
-      title: 'operation_type',
-      // oneOf: operationTypes,
-    },
     forecast_amount: {
       type: 'string',
       title: 'forecast_amount',
@@ -40,6 +13,37 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
     cost: {
       type: 'string',
       title: 'cost',
+    },
+    status: {
+      type: 'string',
+      title: 'status',
+      oneOf: contractStatuses,
+    },
+    type_id: {
+      type: 'string',
+      title: 'contract_type',
+      oneOf: contractTypes,
+    },
+    category_id: {
+      type: 'string',
+      title: 'category',
+    },
+    operation_type_id: {
+      type: 'string',
+      title: 'operation_type',
+      // oneOf: operationTypes,
+    },
+    employer_id: {
+      type: 'string',
+      title: 'employer',
+    },
+    workshop_id: {
+      type: 'string',
+      title: 'workshop',
+    },
+    company_id: {
+      type: 'string',
+      title: 'company',
     },
     start_date: {
       type: 'string',

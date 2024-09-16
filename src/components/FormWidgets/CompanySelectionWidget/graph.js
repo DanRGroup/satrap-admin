@@ -1,17 +1,16 @@
 import { gql } from '@apollo/client';
 
 const schema = {
-  list: {
+  get: {
     name: 'company',
     serviceName: 'graphql',
     query: gql`
-      query company($ids: [String], $title: String) {
-        company(ids: $ids, title: $title) {
+      query company($ids: [String]) {
+        company(ids: $ids) {
           data {
             id
             title
           }
-          total
         }
       }
     `,

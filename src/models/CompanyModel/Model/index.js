@@ -3,7 +3,7 @@ import Update from '../Update';
 import Media from '../Media';
 
 import { alpha, useTheme } from '@mui/material';
-import { Card, Stack, Slide, Divider, Checkbox, Typography, CardHeader, CardActionArea } from '@mui/material';
+import { Card, Stack, Fade, Divider, Checkbox, Typography, CardHeader, CardActionArea } from '@mui/material';
 import { AvatarPopover, NewSpeedDial } from 'components';
 import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
@@ -17,12 +17,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
 
   return (
     <>
-      <Slide
-        in
-        unmountOnExit
-        direction={direction}
-        timeout={{ appear: delay * 150, enter: delay * 170, exit: delay * 190 }}
-      >
+      <Fade in unmountOnExit timeout={{ appear: delay * 150, enter: delay * 170, exit: delay * 190 }}>
         <Card
           sx={{
             position: 'relative',
@@ -63,7 +58,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           >
             <NewSpeedDial>
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
-              <Media id={model.id} model="Brand" collection="banner" />
+              {/* <Media id={model.id} model="Brand" collection="banner" /> */}
             </NewSpeedDial>
           </Stack>
           <CardActionArea onClick={handleSelect}>
@@ -82,7 +77,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             />
           </CardActionArea>
         </Card>
-      </Slide>
+      </Fade>
       <Divider variant="middle" />
     </>
   );

@@ -70,10 +70,9 @@ export default function Model({ model, delay, checked, handleSelect, refetch, co
 
   const chips = [
     { id: '1', name: 'userRole', title: getUserRole(model) },
-    { id: '2', name: 'userNmae', title: getUserFullName(model) },
+    { id: '2', name: 'userName', title: getUserFullName(model) },
+    { id: '3', name: 'cellphone', title: model?.cellphone },
   ];
-
-  const cellphone = model?.cellphone;
 
   return (
     <>
@@ -119,9 +118,9 @@ export default function Model({ model, delay, checked, handleSelect, refetch, co
             <NewSpeedDial>
               {chips.map((chip) => {
                 if (chip.title !== undefined) {
-                  return <Chip sx={{ width: '180px' }} key={chip.id} label={chip.title} />;
+                  return <Chip sx={{ width: '150px' }} key={chip.id} label={chip.title} />;
                 } else {
-                  return <Chip sx={{ width: '180px' }} key={chip.id} label="----" />;
+                  return <Chip sx={{ width: '150px' }} key={chip.id} label="----" />;
                 }
               })}
               <Roles refetch={refetch} roles={model?.all_roles} userId={model?.id} />
