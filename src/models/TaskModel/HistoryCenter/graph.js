@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 const schema = {
-  list: {
+  get: {
     name: 'task',
     serviceName: 'auth',
     query: gql`
@@ -22,6 +22,11 @@ const schema = {
                 }
                 created_at
                 updated_at
+              }
+              driver {
+                cellphone
+                firstname
+                lastname
               }
             }
           }

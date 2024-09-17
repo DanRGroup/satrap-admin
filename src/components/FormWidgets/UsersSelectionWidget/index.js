@@ -114,7 +114,7 @@ export default function CustomSelectWidget({
         const res = data[graph.get.name].data;
         const modified = multiSelect ? res.map(({ id, firstname }) => ({ id, title: firstname })) : res[0];
         !multiSelect
-          ? setSelected({ id: modified?.id, title: getUserFullName(res) || '( بدون نام )' })
+          ? setSelected({ id: modified?.id, title: getUserFullName(modified) || '( بدون نام )' })
           : setSelected(modified);
         setLoading(false);
       }

@@ -10,18 +10,31 @@ import PrintRoundedIcon from '@mui/icons-material/PrintRounded';
 import './print.css';
 
 import Content from './Content';
-import { Avatar, CircularProgress, DialogActions, DialogTitle, Stack, Typography } from '@mui/material';
+import { Avatar, CircularProgress, DialogActions, DialogTitle, Stack, Typography, Tooltip } from '@mui/material';
 
-export default function ControlCenter({ model, refetch, title }) {
+export default function ControlCenter({ model, title, refetch }) {
+  const { id, driver } = model;
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const {} = model;
-
   const printRef = useRef(null);
   const [isPrinting, setIsPrinting] = useState(false);
   const promiseResolveRef = useRef(null);
+
+  const getUserFullName = (model) => {
+    if (model?.firstname && model?.lastname) {
+      return `${model?.firstname} ${model?.lastname}`;
+    }
+    if (model?.firstname) {
+      return `${model?.firstname}`;
+    }
+    if (model?.lastname) {
+      return `${model?.lastname}`;
+    } else {
+      return undefined;
+    }
+  };
 
   useEffect(() => {
     if (isPrinting && promiseResolveRef.current) {
@@ -45,14 +58,16 @@ export default function ControlCenter({ model, refetch, title }) {
 
   return (
     <>
-      <IconButton
-        size="small"
-        sx={{ bgcolor: 'warning.lighter', color: 'warning.dark' }}
-        color="warning"
-        onClick={handleOpen}
-      >
-        <HistoryRoundedIcon fontSize="small" />
-      </IconButton>
+      <Tooltip title={title}>
+        <IconButton
+          size="small"
+          sx={{ bgcolor: 'warning.lighter', color: 'warning.dark' }}
+          color="warning"
+          onClick={handleOpen}
+        >
+          <HistoryRoundedIcon fontSize="small" />
+        </IconButton>
+      </Tooltip>
       <Dialog
         dir="rtl"
         fullWidth
@@ -71,33 +86,35 @@ export default function ControlCenter({ model, refetch, title }) {
         <DialogTitle sx={{ p: 1 }} component="div">
           <Stack direction="row" justifyContent="space-between">
             <Stack>
-              {/* <Typography textAlign="center" variant="subtitle1" color="text.secondary" fontSize={16} letterSpacing={3}>
-                {tracking_code.split('.')[1]}
-              </Typography> */}
-              <Typography textAlign="center" variant="subtitle1" color="text.secondary" fontSize={14}>
-                {title}
+              <Typography textAlign="center" variant="subtitle1" color="text.secondary" fontSize={16}>
+                گزارش وضعیت فعالیت
               </Typography>
+              {/* <Typography textAlign="center" variant="subtitle1" color="text.secondary" fontSize={14}>
+                {id}
+              </Typography> */}
             </Stack>
-            <Stack>{/* <UserInfo customer={customer} /> */}</Stack>
+            <Stack>
+              <UserInfo customer={getUserFullName(driver)} />
+            </Stack>
           </Stack>
         </DialogTitle>
         <DialogContent ref={printRef} sx={{ p: 1, direction: 'ltr' }}>
           <Box className="print-header">
             <Stack rowGap={2} borderRadius={2}>
               <p color="#000" variant="h3">
-                گزارش وضعیعت فعالیت
+                گزارش وضعیت فعالیت
               </p>
-              {/* <Stack direction="row" justifyContent="space-between">
+              <Stack direction="row" justifyContent="space-between">
                 <p color="#000" variant="h5">
-                  شماره سفارش
+                  شماره فعالیت
                 </p>
                 <p color="#000" variant="h2">
                   {id}
                 </p>
-              </Stack> */}
+              </Stack>
             </Stack>
           </Box>
-          <Content model={model} />
+          <Content id={id} />
         </DialogContent>
         <DialogActions>
           <IconButton
@@ -131,11 +148,11 @@ const UserInfo = ({ customer }) => (
     </Avatar>
     <Stack alignItems="center" flex={1}>
       <Typography textAlign="center" color="warning.dark" fontWeight="bold" fontSize={12} variant="subtitle1">
-        {customer?.firstname || ''} {customer?.lastname || '-'}
+        راننده : {customer}
       </Typography>
-      <Typography fontWeight="bold" fontSize={16} variant="subtitle1">
+      {/* <Typography fontWeight="bold" fontSize={16} variant="subtitle1">
         {customer?.cellphone}
-      </Typography>
+      </Typography> */}
     </Stack>
   </Stack>
 );

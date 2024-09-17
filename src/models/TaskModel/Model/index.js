@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import Update from '../Update';
 import Media from '../Media';
 import ChangeStatus from '../ChangeStatus';
-import HistoryCenter from '../HistoryCenter';
 import ChangeLocation from '../ChangeLocation';
+import HistoryCenter from '../HistoryCenter';
 
 import {
   Card,
@@ -96,8 +96,8 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
                 }
               })}
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
-              <ChangeStatus ids={model.id} title={<FormattedMessage id="change_status" />} refetch={refetch} />
-              {/* <HistoryCenter model={model} title={<FormattedMessage id="change_status" />} refetch={refetch} /> */}
+              <ChangeStatus ids={model?.id} title={<FormattedMessage id="change_status" />} refetch={refetch} />
+              <HistoryCenter model={model} title={<FormattedMessage id="history" />} refetch={refetch} />
               <ChangeLocation
                 ids={model?.vehicle?.id}
                 title={<FormattedMessage id="set_location" />}

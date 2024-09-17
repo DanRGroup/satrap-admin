@@ -41,6 +41,7 @@ function SpeedDial({ children }) {
           overflowX: 'scroll',
           whiteSpace: 'nowrap',
           flexWrap: 'nowrap',
+          direction: 'rtl',
         }}
         columnGap={1}
         alignItems="center"

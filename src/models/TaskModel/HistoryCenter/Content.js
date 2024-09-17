@@ -11,22 +11,9 @@ import { Box, Popover, Card, Stack, Avatar, CardHeader, Typography, IconButton }
 import { CircularProgress } from '@mui/material';
 import { CountdownTimer } from 'components';
 
-export default function Content({ model }) {
-  const {
-    id,
-    call_me,
-    fast_send,
-    total_cost,
-    created_at,
-    demand_time,
-    delivery_time,
-    tracking_code,
-    shop,
-    status,
-    customer,
-  } = model;
+export default function Content({ id }) {
   const [result, setResult] = useState([]);
-  const { userToken } = useSelector((state) => state.user);
+  const { userToken } = useSelector((state) => state.auth);
 
   const [getData, { loading }] = useLazyQuery(graph.get.query, {
     variables: {
@@ -45,7 +32,7 @@ export default function Content({ model }) {
     try {
       const { data } = await getData();
       if (!isEmptyObject(data)) {
-        const res = data[graph.get.name]?.data[0];
+        const res = data[graph.get.name]?.records.data[0];
         setResult(res.status_timeline);
       }
     } catch (error) {}
@@ -80,7 +67,7 @@ export default function Content({ model }) {
                 }
                 action={
                   <Stack direction="row" justifyContent="flex-end" alignItems="center" columnGap={1} rowGap={1}>
-                    <OrderDate title="تاریخ تغییر" date={row.created_at} />
+                    <OrderDate date={row.created_at} />
                   </Stack>
                 }
               />
@@ -108,7 +95,7 @@ const UserInfo = ({ customer }) => (
     </Avatar>
     <Stack alignItems="center" flex={1}>
       <Typography textAlign="center" color="error.dark" fontWeight="bold" fontSize={12} variant="subtitle1">
-        {customer?.firstname || ''} {customer?.lastname || '-'}
+        {customer?.firstname || ''} {customer?.lastname || ''}
       </Typography>
       <Typography fontWeight="bold" fontSize={16} variant="subtitle1">
         {customer?.cellphone}
