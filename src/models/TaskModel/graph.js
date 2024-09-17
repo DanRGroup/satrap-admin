@@ -83,6 +83,7 @@ const schema = {
           total_shift
           total_tonnage
           total_cost
+          all_tonnage
         }
       }
     `,

@@ -60,13 +60,16 @@ export default function CreatePopup({ title, refetch }) {
         const vehicle_type = res.data[0]?.type?.id;
         switch (vehicle_type) {
           case '1':
-            setFormData({ ...formData, tonnage: '10', coefficient: '1' });
+            setFormData({ ...formData, vehicle_id: vehicle_id, tonnage: '10', coefficient: '1' });
+            // console.log(formData);
             break;
           case '2':
-            setFormData({ ...formData, tonnage: '15', coefficient: '1.5' });
+            setFormData({ ...formData, vehicle_id: vehicle_id, tonnage: '15', coefficient: '1.5' });
+            // console.log(formData);
             break;
           default:
-            setFormData({ ...formData, tonnage: null });
+            setFormData({ ...formData, vehicle_id: vehicle_id, tonnage: null, coefficient: null });
+            // console.log(formData);
             break;
         }
       }
@@ -74,14 +77,16 @@ export default function CreatePopup({ title, refetch }) {
   };
 
   const onChange = ({ formData }) => {
+    setFormData(formData);
     if (formData?.vehicle_id) {
+      setFormData({ ...formData, vehicle_id: formData.vehicle_id });
       handleVehicle(formData.vehicle_id);
     }
-    setFormData(formData);
   };
 
   const onSubmit = async () => {
     try {
+      console.log(formData);
       const { data, errors } = await formUpdate({
         variables: {
           tariff_id: formData?.tariff_id,

@@ -7,7 +7,7 @@ import { LoadingMore, NewDialogActions, NewDialogContent, NewDialogTitle } from 
 import Model from '../Model';
 import Filter from '../Filter';
 import Delete from '../Delete';
-// import Create from '../Create';
+import Create from '../Create';
 import Assignment from '../Assignment';
 import { FormattedMessage } from 'react-intl';
 
@@ -151,7 +151,7 @@ export default function List({
           {/* {result[0] && (
             <ParentModel model={result[0]} refetch={refetch} handleSelect={() => handleSelect(result[0])} />
           )} */}
-          {result.data &&
+          {result?.data &&
             result.data[0].children.map((model, i) => (
               <Model
                 key={i}
@@ -186,6 +186,9 @@ export default function List({
           </IconButton>
         </Tooltip>
         <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
+        {/* {result?.data && result?.data[0]?.parent === null && (
+          <Create size="medium" ids="1" title={<FormattedMessage id="create" />} refetch={refetch} />
+        )} */}
         {/* Need Parent Id */}
       </NewDialogActions>
     </>

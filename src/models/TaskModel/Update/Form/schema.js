@@ -2,51 +2,51 @@ const schema = (taskStatuses) => ({
   type: 'object',
   required: [],
   properties: {
-    // vehicle_id: {
-    //   type: 'string',
-    //   title: 'vehicle',
-    // },
-    // driver_id: {
-    //   type: 'string',
-    //   title: 'driver',
-    // },
-    // type_id: {
-    //   type: 'string',
-    //   title: 'task_type',
-    //   oneOf: taskTypes,
-    // },
-    // operation_type_id: {
-    //   type: 'string',
-    //   title: 'operation',
-    //   oneOf: operationTypes,
-    // },
-    // workshop_id: {
-    //   type: 'string',
-    //   title: 'workshop',
-    // },
-    // site_id: {
-    //   type: 'string',
-    //   title: 'site',
-    // },
+    vehicle_id: {
+      type: 'string',
+      title: 'vehicle',
+    },
+    driver_id: {
+      type: 'string',
+      title: 'driver',
+    },
+    type_id: {
+      type: 'string',
+      title: 'task_type',
+      // oneOf: taskTypes,
+    },
+    operation_type_id: {
+      type: 'string',
+      title: 'operation',
+      // oneOf: operationTypes,
+    },
+    workshop_id: {
+      type: 'string',
+      title: 'workshop',
+    },
+    site_id: {
+      type: 'string',
+      title: 'site',
+    },
     status_id: {
       type: 'string',
       title: 'task_status',
       // oneOf: taskStatuses,
     },
-    // material_type_id: {
-    //   type: 'string',
-    //   title: 'material_type',
-    //   oneOf: materialTypes,
-    // },
-    // shift_type_id: {
-    //   type: 'string',
-    //   title: 'shift_type',
-    //   oneOf: shiftTypes,
-    // },
-    // status_id: {
-    //   type: 'string',
-    //   title: 'task_status',
-    // },
+    material_type_id: {
+      type: 'string',
+      title: 'material_type',
+      // oneOf: materialTypes,
+    },
+    shift_type_id: {
+      type: 'string',
+      title: 'shift_type',
+      // oneOf: shiftTypes,
+    },
+    status_id: {
+      type: 'string',
+      title: 'task_status',
+    },
     start_time: {
       type: 'string',
       title: 'start_time',

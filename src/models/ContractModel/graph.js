@@ -53,10 +53,15 @@ const schema = {
               id
               title
             }
+            category {
+              id
+              title
+            }
             total_houre
             total_service
             total_tonnage
             progress
+            number
           }
           total
         }

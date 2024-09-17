@@ -86,18 +86,6 @@ export const navConfig = [
     icon: <DashboardRoundedIcon fontSize="small" />,
     children: [
       {
-        path: '/dashboard/companies',
-        url: '/dashboard/companies',
-        title: 'companies',
-        element: (
-          <Page title="Companies">
-            <CompanyModel />
-          </Page>
-        ),
-        inSidebar: true,
-        roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
-      },
-      {
         path: '/dashboard/managment',
         url: '/dashboard/managment',
         title: 'managment',
@@ -201,6 +189,18 @@ export const navConfig = [
         ),
         inSidebar: true,
         roles: ['superadmin', 'companyCeo', 'workshopManager', 'companyOperator', 'companyFinancial'],
+      },
+      {
+        path: '/dashboard/companies',
+        url: '/dashboard/companies',
+        title: 'companies',
+        element: (
+          <Page title="Companies">
+            <CompanyModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
       },
     ],
   },

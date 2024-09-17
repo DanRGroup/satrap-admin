@@ -52,9 +52,9 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   const chips = [
     { id: '1', name: 'workshop', title: model?.workshop?.title },
     { id: '2', name: 'employer', title: getEmployerName(model) },
+    { id: '3', name: 'category', title: model?.category?.title },
+    { id: '4', name: 'number', title: model?.number },
   ];
-
-  const theme = useTheme();
 
   return (
     <>
@@ -93,10 +93,10 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           >
             <NewSpeedDial>
               {chips.map((chip) => {
-                if (chip.title !== undefined) {
-                  return <Chip sx={{ width: '180px' }} key={chip.id} label={chip.title} />;
+                if (chip.title !== undefined && chip.title !== null) {
+                  return <Chip sx={{ width: '140px' }} key={chip.id} label={chip.title} />;
                 } else {
-                  <Chip sx={{ width: '180px' }} key={chip.id} label="-" />;
+                  return <Chip sx={{ width: '140px' }} key={chip.id} label="----" />;
                 }
               })}
               {isAuthenticated &&

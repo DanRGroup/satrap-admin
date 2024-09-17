@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Update from '../Update';
 import Media from '../Media';
 import ChangeStatus from '../ChangeStatus';
+import HistoryCenter from '../HistoryCenter';
 import ChangeLocation from '../ChangeLocation';
 
 import {
@@ -45,11 +46,10 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   };
 
   const chips = [
-    { id: '1', name: 'driver', title: getUserFullName(model) },
-    { id: '2', name: 'taskType', title: model?.type.title },
-    { id: '3', name: 'plaque', title: model?.vehicle?.plaque },
-    { id: '4', name: 'workshop', title: model?.workshop?.title },
-    { id: '5', name: 'site', title: model?.site?.title },
+    { id: '1', name: 'taskType', title: model?.type.title },
+    { id: '2', name: 'plaque', title: model?.vehicle?.plaque },
+    { id: '3', name: 'workshop', title: model?.workshop?.title },
+    { id: '4', name: 'site', title: model?.site?.title },
   ];
 
   return (
@@ -90,13 +90,14 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <NewSpeedDial>
               {chips.map((chip) => {
                 if (chip.title !== undefined) {
-                  return <Chip sx={{ width: '130px' }} key={chip.id} label={chip.title} />;
+                  return <Chip sx={{ width: '140px' }} key={chip.id} label={chip.title} />;
                 } else {
-                  return <Chip sx={{ width: '130px' }} key={chip.id} label="----" />;
+                  return <Chip sx={{ width: '140px' }} key={chip.id} label="----" />;
                 }
               })}
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
               <ChangeStatus ids={model.id} title={<FormattedMessage id="change_status" />} refetch={refetch} />
+              {/* <HistoryCenter model={model} title={<FormattedMessage id="change_status" />} refetch={refetch} /> */}
               <ChangeLocation
                 ids={model?.vehicle?.id}
                 title={<FormattedMessage id="set_location" />}
@@ -110,7 +111,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography fontSize={14} variant="subtitle1">
-                  {getUserFullName(model)}
+                  {getUserFullName(model) || '( بدون نام )'}
                 </Typography>
               }
               // subheader={

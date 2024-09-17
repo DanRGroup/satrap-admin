@@ -15,6 +15,10 @@ const schema = {
                 firstname
                 lastname
               }
+              vehicle {
+                id
+                plaque
+              }
               operation_type {
                 id
                 title

@@ -70,8 +70,7 @@ export default function Model({ model, delay, checked, handleSelect, refetch, co
 
   const chips = [
     { id: '1', name: 'userRole', title: getUserRole(model) },
-    { id: '2', name: 'userName', title: getUserFullName(model) },
-    { id: '3', name: 'cellphone', title: model?.cellphone },
+    { id: '2', name: 'cellphone', title: model?.cellphone },
   ];
 
   return (

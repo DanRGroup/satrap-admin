@@ -1,0 +1,10 @@
+.print-header {
+    display: none;
+}
+@media print {
+    .print-header,
+    .print-header * {
+        display: flex;
+        direction: rtl
+    }
+}

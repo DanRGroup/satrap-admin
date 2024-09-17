@@ -197,19 +197,6 @@ export const superAdminNavConfig = [
     icon: <DashboardRoundedIcon fontSize="small" />,
     children: [
       {
-        path: '/dashboard/companies',
-        url: '/dashboard/companies',
-        title: 'companies',
-        element: (
-          <Page title="Companies">
-            <CompanyModel />
-          </Page>
-        ),
-        inSidebar: true,
-        roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
-      },
-      ,
-      {
         path: '/dashboard/managment',
         url: '/dashboard/managment',
         title: 'managment',
@@ -265,17 +252,6 @@ export const superAdminNavConfig = [
         inSidebar: true,
       },
       {
-        path: '/dashboard/users',
-        url: '/dashboard/users',
-        title: 'users',
-        element: (
-          <Page title="Users">
-            <UserModel />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
         path: '/dashboard/sites',
         url: '/dashboard/sites',
         title: 'sites',
@@ -307,6 +283,29 @@ export const superAdminNavConfig = [
           </Page>
         ),
         inSidebar: true,
+      },
+      {
+        path: '/dashboard/users',
+        url: '/dashboard/users',
+        title: 'users',
+        element: (
+          <Page title="Users">
+            <UserModel />
+          </Page>
+        ),
+        inSidebar: true,
+      },
+      {
+        path: '/dashboard/companies',
+        url: '/dashboard/companies',
+        title: 'companies',
+        element: (
+          <Page title="Companies">
+            <CompanyModel />
+          </Page>
+        ),
+        inSidebar: true,
+        roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
       },
     ],
   },

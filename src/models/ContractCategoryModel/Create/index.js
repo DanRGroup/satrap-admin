@@ -14,7 +14,7 @@ import { isEmptyObject } from 'helpers/formatObject';
 import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'components';
 import { FormattedMessage } from 'react-intl';
 
-export default function CreatePopup({ ids, title, refetch }) {
+export default function CreatePopup({ ids, size = 'small', title, refetch }) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({});
   const [formError, setFormError] = useState(true);
@@ -69,13 +69,7 @@ export default function CreatePopup({ ids, title, refetch }) {
   return (
     <>
       <Tooltip title={title}>
-        <IconButton
-          size="small"
-          color="warning"
-          onClick={onOpen}
-          disabled={loading}
-          sx={{ bgcolor: 'action.selected' }}
-        >
+        <IconButton size={size} color="warning" onClick={onOpen} disabled={loading} sx={{ bgcolor: 'action.selected' }}>
           <AddCircleOutlineRounded fontSize="small" />
         </IconButton>
       </Tooltip>
