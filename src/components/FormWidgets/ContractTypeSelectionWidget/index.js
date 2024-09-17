@@ -197,7 +197,7 @@ export default function CustomSelectWidget({
           ) : (
             <IconButton
               color="error"
-              disabled={loading}
+              disabled={loading || disabled || readonly}
               onClick={clearSelection}
               sx={{ width: 24, height: 24, fontSize: 16, bgcolor: 'error.lighter' }}
             >

@@ -43,6 +43,20 @@ export default function CustomSelectWidget({
   const [selected, setSelected] = useState(value);
   const { userToken } = useSelector((state) => state.auth);
 
+  const getUserFullName = (model) => {
+    if (model?.firstname && model?.lastname) {
+      return `${model?.firstname} ${model?.lastname}`;
+    }
+    if (model?.firstname) {
+      return `${model?.firstname}`;
+    }
+    if (model?.lastname) {
+      return `${model?.lastname}`;
+    } else {
+      return undefined;
+    }
+  };
+
   const {
     language: { direction },
   } = useSelector((state) => state.setting);
@@ -100,7 +114,7 @@ export default function CustomSelectWidget({
         const res = data[graph.get.name].data;
         const modified = multiSelect ? res.map(({ id, firstname }) => ({ id, title: firstname })) : res[0];
         !multiSelect
-          ? setSelected({ id: modified?.id, title: `${modified?.firstname} ${modified?.lastname}` })
+          ? setSelected({ id: modified?.id, title: getUserFullName(res) || '( بدون نام )' })
           : setSelected(modified);
         setLoading(false);
       }
@@ -197,7 +211,7 @@ export default function CustomSelectWidget({
           ) : (
             <IconButton
               color="error"
-              disabled={loading}
+              disabled={loading || disabled || readonly}
               onClick={clearSelection}
               sx={{ width: 24, height: 24, fontSize: 16, bgcolor: 'error.lighter' }}
             >
