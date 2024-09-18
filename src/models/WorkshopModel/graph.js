@@ -24,6 +24,11 @@ const schema = {
           data {
             id
             title
+            manager {
+              id
+              firstname
+              lastname
+            }
             media {
               id
               full_url

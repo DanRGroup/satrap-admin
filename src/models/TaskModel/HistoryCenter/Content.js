@@ -8,6 +8,7 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
 import { Box, Popover, Card, Stack, Avatar, CardHeader, Typography, IconButton } from '@mui/material';
+
 import { CircularProgress } from '@mui/material';
 import { CountdownTimer } from 'components';
 
@@ -59,14 +60,25 @@ export default function Content({ id }) {
             <Card key={i} elevation={1}>
               <CardHeader
                 sx={{ p: 1 }}
-                title={<Typography variant="subtitle1">{row.status?.title}</Typography>}
+                title={
+                  <Typography fontSize={{ xs: 14 }} variant="subtitle1">
+                    {row.status?.title}
+                  </Typography>
+                }
                 avatar={
                   <Stack direction="row" justifyContent="center" alignItems="center" columnGap={0.5}>
                     <UserInfo customer={row.user} />
                   </Stack>
                 }
                 action={
-                  <Stack direction="row" justifyContent="flex-end" alignItems="center" columnGap={1} rowGap={1}>
+                  <Stack
+                    width={{ xs: 10 }}
+                    direction="row"
+                    justifyContent="flex-end"
+                    alignItems="center"
+                    columnGap={1}
+                    rowGap={1}
+                  >
                     <OrderDate date={row.created_at} />
                   </Stack>
                 }

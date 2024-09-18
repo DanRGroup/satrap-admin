@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Box, IconButton, Stack, Zoom, useMediaQuery, useTheme } from '@mui/material';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 
+import { useSelector } from 'react-redux';
+
 export default function CompHandler({ children }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'), { defaultMatches: false });
@@ -17,6 +19,9 @@ export default function CompHandler({ children }) {
 function SpeedDial({ children }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen((prev) => !prev);
+  const {
+    language: { direction },
+  } = useSelector((state) => state.setting);
 
   return (
     <>
@@ -41,7 +46,7 @@ function SpeedDial({ children }) {
           overflowX: 'scroll',
           whiteSpace: 'nowrap',
           flexWrap: 'nowrap',
-          direction: 'rtl',
+          direction: { direction },
         }}
         columnGap={1}
         alignItems="center"

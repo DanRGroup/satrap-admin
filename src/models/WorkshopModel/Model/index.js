@@ -13,6 +13,7 @@ import {
   CardActionArea,
   alpha,
   useTheme,
+  Chip,
 } from '@mui/material';
 import { AvatarPopover, NewSpeedDial } from 'components';
 import { useSelector } from 'react-redux';
@@ -28,6 +29,10 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   const theme = useTheme();
 
   const { isAuthenticated, userInfo } = useSelector((state) => state.auth);
+
+  const chips = [
+    { id: '1', name: 'manager', title: `${model?.manager?.firstname || '--'} ${model?.manager?.lastname || '--'}` },
+  ];
 
   return (
     <>
@@ -65,6 +70,13 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
+              {chips.map((chip) => {
+                if (chip.title !== undefined && chip.title !== null) {
+                  return <Chip sx={{ width: '180px' }} key={chip.id} label={chip.title} />;
+                } else {
+                  return <Chip sx={{ width: '180px' }} key={chip.id} label="----" />;
+                }
+              })}
               {isAuthenticated && hasRequiredRole(['superadmin', 'workshopManager', 'companyCeo'], userInfo?.roles) && (
                 <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
               )}

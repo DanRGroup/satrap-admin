@@ -9,6 +9,9 @@ import { useReactToPrint } from 'react-to-print';
 import PrintRoundedIcon from '@mui/icons-material/PrintRounded';
 import './print.css';
 
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 import Content from './Content';
 import { Avatar, CircularProgress, DialogActions, DialogTitle, Stack, Typography, Tooltip } from '@mui/material';
 
@@ -21,6 +24,9 @@ export default function ControlCenter({ model, title, refetch }) {
   const printRef = useRef(null);
   const [isPrinting, setIsPrinting] = useState(false);
   const promiseResolveRef = useRef(null);
+
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const getUserFullName = (model) => {
     if (model?.firstname && model?.lastname) {
@@ -70,9 +76,10 @@ export default function ControlCenter({ model, title, refetch }) {
       </Tooltip>
       <Dialog
         dir="rtl"
+        fullScreen={fullScreen}
         fullWidth
         open={open}
-        maxWidth="md"
+        maxWidth="sm"
         PaperComponent={Box}
         onClose={handleClose}
         PaperProps={{
