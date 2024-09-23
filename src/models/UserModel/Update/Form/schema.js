@@ -23,11 +23,11 @@ const schema = (userTypes, userStatuses) => ({
       type: 'string',
       title: 'username',
     },
-    birth_date: {
-      type: 'string',
-      title: 'birthDate',
-      format: 'date',
-    },
+    // birth_date: {
+    //   type: 'string',
+    //   title: 'birthDate',
+    //   format: 'date',
+    // },
     is_active: {
       type: 'number',
       title: 'activity',
@@ -40,11 +40,11 @@ const schema = (userTypes, userStatuses) => ({
       type: 'string',
       title: 'address',
     },
-    email: {
-      type: 'string',
-      title: 'email',
-      format: 'email',
-    },
+    // email: {
+    //   type: 'string',
+    //   title: 'email',
+    //   format: 'email',
+    // },
   },
 });
 
