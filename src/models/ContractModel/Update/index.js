@@ -62,6 +62,8 @@ function UpdatePopup({ ids, title, refetch }) {
         if (res) {
           setFormData({
             ...res,
+            cost: Number(res?.cost),
+            forecast_amount: Number(res?.forecast_amount),
             workshop_id: res?.workshop?.id,
             employer_id: res?.employer?.id,
             company_id: res?.company?.id,
@@ -99,11 +101,11 @@ function UpdatePopup({ ids, title, refetch }) {
           status: formData?.status_id,
           start_date: formData?.start_date,
           end_date: formData?.end_date,
-          cost: formData?.cost,
+          cost: String(formData?.cost),
           number: formData?.number,
           details: formData?.details,
           operation_type_id: formData?.operation_type_id,
-          forecast_amount: formData?.forecast_amount,
+          forecast_amount: String(formData?.forecast_amount),
           contractual_number: formData?.contractual_number,
           is_civil: formData?.is_civil,
         },

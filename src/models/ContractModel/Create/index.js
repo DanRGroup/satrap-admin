@@ -40,7 +40,7 @@ export default function CreatePopup({ title, refetch }) {
   const onSubmit = async () => {
     try {
       const { data, errors } = await formUpdate({
-        variables: formData,
+        variables: { ...formData, forecast_amount: String(formData?.forecast_amount), cost: String(formData?.cost) },
       });
       if (!errors) {
         refetch();

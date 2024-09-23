@@ -69,11 +69,11 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
                   {model.title}
                 </Typography>
               }
-              subheader={
-                <Typography fontSize={12} variant="subtitle2">
-                  {model.producer?.title}
-                </Typography>
-              }
+              // subheader={
+              //   <Typography fontSize={12} variant="subtitle2">
+              //     {model.producer?.title}
+              //   </Typography>
+              // }
             />
           </CardActionArea>
         </Card>

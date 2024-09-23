@@ -7,11 +7,11 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
       title: 'title',
     },
     forecast_amount: {
-      type: 'string',
+      type: 'number',
       title: 'forecast_amount',
     },
     cost: {
-      type: 'string',
+      type: 'number',
       title: 'cost',
     },
     status: {

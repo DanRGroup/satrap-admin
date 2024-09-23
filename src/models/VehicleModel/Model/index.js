@@ -69,7 +69,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <Checkbox size="small" checked={checked} onChange={handleSelect} />
             <Media
               id={model.id}
-              model="Brand"
+              model="Vehicle"
               collection="avatar"
               title={model.title}
               subheader={model.producer?.title || 'برند'}

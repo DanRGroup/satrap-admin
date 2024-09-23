@@ -45,7 +45,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <Checkbox size="small" checked={checked} onChange={handleSelect} />
             <Media
               id={model.id}
-              model="ProductCategory"
+              model="ContractCategory"
               collection="avatar"
               title={model.title}
               subheader="ProductCategory"

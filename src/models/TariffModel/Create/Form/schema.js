@@ -39,7 +39,7 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
     //   title: 'updator',
     // },
     cost: {
-      type: 'string',
+      type: 'number',
       title: 'cost',
     },
     is_active: {

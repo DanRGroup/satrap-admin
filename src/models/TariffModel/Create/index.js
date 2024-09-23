@@ -13,7 +13,7 @@ import { useMutation } from '@apollo/client';
 import { isEmptyObject } from 'helpers/formatObject';
 import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'components';
 import { FormattedMessage } from 'react-intl';
-import { fCurrency } from 'helpers/formatNumber';
+import { fCurrency, fCurrencyInt } from 'helpers/formatNumber';
 
 export default function CreatePopup({ title, refetch }) {
   const [open, setOpen] = useState(false);
@@ -33,13 +33,14 @@ export default function CreatePopup({ title, refetch }) {
   });
 
   const onChange = ({ formData }) => {
-    setFormData({ ...formData, cost: fCurrency(formData?.cost) });
+    // setFormData({ ...formData, cost: fCurrencyInt(formData?.cost) });
+    setFormData(formData);
   };
 
   const onSubmit = async () => {
     try {
       const { data, errors } = await formUpdate({
-        variables: formData,
+        variables: { ...formData, cost: String(formData?.cost) },
       });
       if (!errors) {
         refetch();
