@@ -73,7 +73,9 @@ export default function AppView() {
     <Container maxWidth="xl">
       <Grid container spacing={3}>
         <ModelsCount />
-        <ContractChart />
+        <Grid md={12} lg={12}>
+          <ContractChart />
+        </Grid>
         <TonnageChart />
         <ServiceChart />
         {/* <Grid xs={12} md={6} lg={8}>
