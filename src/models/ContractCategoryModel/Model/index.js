@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { hasRequiredRole } from 'helpers';
 
-export default function Model({ model, delay, direction, checked, handleSelect, refetch }) {
+export default function Model({ model, delay, direction, checked, handleSelect, handleOpen, refetch }) {
   const {
     language: { direction: dir },
   } = useSelector((state) => state.setting);
@@ -74,7 +74,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               )}
             </NewSpeedDial>
           </Stack>
-          <CardActionArea onClick={handleSelect}>
+          <CardActionArea onClick={handleOpen}>
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
               title={

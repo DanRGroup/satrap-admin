@@ -34,7 +34,7 @@ export default function Filter({
   handleSelectAllClick,
 }) {
   const theme = useTheme();
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
   const {
     language: { direction },
   } = useSelector((state) => state.setting);

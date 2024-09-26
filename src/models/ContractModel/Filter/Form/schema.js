@@ -30,9 +30,17 @@ const schema = (contractTypes, contractStatuses) => ({
       title: 'status',
       oneOf: contractStatuses,
     },
-    number: {
+    // number: {
+    //   type: 'string',
+    //   title: 'number',
+    // },
+    employer_ids: {
       type: 'string',
-      title: 'number',
+      title: 'natural_employer',
+    },
+    company_ids: {
+      type: 'string',
+      title: 'legal_employer',
     },
   },
 });

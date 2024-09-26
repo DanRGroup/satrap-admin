@@ -23,6 +23,7 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
       type: 'string',
       title: 'contract_type',
       oneOf: contractTypes,
+      default: '1',
     },
     category_id: {
       type: 'string',
@@ -33,15 +34,15 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
       title: 'operation_type',
       // oneOf: operationTypes,
     },
-    employer_type: {
-      type: 'number',
-      title: 'employer_type',
-      oneOf: [
-        { const: 0, title: 'natural' },
-        { const: 1, title: 'legal' },
-      ],
-      default: 0,
-    },
+    // employer_type: {
+    //   type: 'number',
+    //   title: 'employer_type',
+    //   oneOf: [
+    //     { const: 0, title: 'natural' },
+    //     { const: 1, title: 'legal' },
+    //   ],
+    //   default: 0,
+    // },
     workshop_id: {
       type: 'string',
       title: 'workshop',
@@ -82,8 +83,8 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
     {
       if: {
         properties: {
-          employer_type: {
-            const: 0,
+          type_id: {
+            oneOf: [{ const: '1' }, { const: '2' }],
           },
         },
       },
@@ -91,7 +92,7 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
         properties: {
           employer_id: {
             type: 'string',
-            title: 'employer',
+            title: 'natural_employer',
           },
         },
       },
@@ -99,8 +100,8 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
     {
       if: {
         properties: {
-          employer_type: {
-            const: 1,
+          type_id: {
+            oneOf: [{ const: '3' }, { const: '4' }],
           },
         },
       },
@@ -108,7 +109,7 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
         properties: {
           company_id: {
             type: 'string',
-            title: 'company',
+            title: 'legal_employer',
           },
         },
       },

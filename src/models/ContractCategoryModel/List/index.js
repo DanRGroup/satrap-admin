@@ -62,7 +62,7 @@ export default function List({
     return setFilter({ ...filter, category_id: id });
   };
 
-  const handleSelect = (item) => {
+  const handleOpen = (item) => {
     let { id, children } = item;
     // console.log('children', children);
 
@@ -71,6 +71,9 @@ export default function List({
       setDirection('right');
       return setFilter({ ...filter, category_id: id });
     }
+  };
+
+  const handleSelect = (item) => {
     const selectedIndex = selected.map((item) => item.id).indexOf(item.id);
     let newSelected = [];
     if (selectedIndex === -1) {
@@ -162,6 +165,7 @@ export default function List({
                 direction={direction}
                 checked={selected.find((select) => model.id === select.id) ? true : false}
                 handleSelect={() => handleSelect(model)}
+                handleOpen={() => handleOpen(model)}
               />
             ))}
         </Stack>
@@ -171,7 +175,7 @@ export default function List({
           <Button
             disabled={!result?.data[0]?.parent}
             sx={{ mr: 'auto' }}
-            onClick={() => handleBack(result?.data[0]?.parent?.id)}
+            onClick={() => handleBack(result?.data[0]?.parent)}
           >
             <FormattedMessage id="back" />
           </Button>
