@@ -4,7 +4,7 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
   properties: {
     title: {
       type: 'string',
-      title: 'title',
+      title: 'contract_title',
     },
     forecast_amount: {
       type: 'number',

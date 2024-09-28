@@ -188,6 +188,10 @@ const locales = {
     is_civil: 'Is Civil',
     not_civil: 'Not Civil',
 
+    contract_title: 'Contract Title',
+    site_title: 'Site Title',
+    workshop_title: 'Workshop Title',
+
     carrying_cargo: 'Carrying Cargo',
     excavation: 'Excavation',
     quarrying: 'Quarrying',
@@ -398,8 +402,8 @@ const locales = {
     updator: 'بروزرسانی کننده',
     supervisor: 'ناظر',
     employer: 'کارفرما',
-    legal_employer: 'کارفرمای حقوقی',
-    natural_employer: 'کارفرمای حقیقی',
+    legal_employer: 'کارفرما (حقوقی)',
+    natural_employer: 'کارفرما (حقیقی)',
     employer_type: 'نوع کارفرما',
     stop_dueto: 'علت توقف',
 
@@ -462,6 +466,10 @@ const locales = {
     civil_project: 'پروژه عمرانی',
     is_civil: 'عمرانی است',
     not_civil: 'عمرانی نیست',
+
+    contract_title: 'عنوان قرارداد',
+    site_title: 'عنوان محل تخلیه',
+    workshop_title: 'عنوان کارگاه',
 
     carrying_cargo: 'حمل بار',
     excavation: 'خاک برداری',

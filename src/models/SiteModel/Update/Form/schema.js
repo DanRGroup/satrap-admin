@@ -4,7 +4,7 @@ const schema = (siteTypes) => ({
   properties: {
     title: {
       type: 'string',
-      title: 'title',
+      title: 'site_title',
     },
     manager_id: {
       type: 'string',

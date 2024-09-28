@@ -10,7 +10,8 @@ const schema = {
         $title: String
         $workshop_ids: [String]
         $type_ids: [String]
-        #$employer_ids: [String]
+        $employer_ids: [String]
+        $company_ids: [String]
         $status: String
         $with_calculations: Int
         $category_ids: [String]
@@ -20,7 +21,8 @@ const schema = {
           title: $title
           workshop_ids: $workshop_ids
           type_ids: $type_ids
-          #employer_ids: $employer_ids
+          employer_ids: $employer_ids
+          company_ids: $company_ids
           status: $status
           with_calculations: $with_calculations
           category_ids: $category_ids

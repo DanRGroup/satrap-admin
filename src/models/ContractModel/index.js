@@ -19,7 +19,10 @@ export default function MainModel(props) {
   const [filter, setFilter] = useState(init);
   const { userToken } = useSelector((state) => state.auth);
 
-  const clearFilter = () => setFilter(init);
+  const clearFilter = () => {
+    setFilter([]);
+    startFetch(true);
+  };
 
   const handleSetFilter = (filter) => {
     setPage(1);

@@ -4,7 +4,7 @@ const schema = (workshopStatuses) => ({
   properties: {
     title: {
       type: 'string',
-      title: 'title',
+      title: 'workshop_title',
     },
     // alias: {
     //   type: 'string',
