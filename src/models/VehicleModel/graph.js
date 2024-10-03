@@ -32,6 +32,12 @@ const schema = {
               title
             }
             driver {
+              id
+              firstname
+              lastname
+            }
+            owner {
+              id
               firstname
               lastname
             }

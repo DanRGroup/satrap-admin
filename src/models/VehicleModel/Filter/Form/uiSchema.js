@@ -5,18 +5,18 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   serial_number: {
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   owner_ids: {
@@ -24,37 +24,37 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
-  driver_id: {
+  driver_ids: {
     'ui:widget': UsersSelectionWidget,
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   status: {
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   type_ids: {
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
 });

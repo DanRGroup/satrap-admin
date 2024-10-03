@@ -14,7 +14,7 @@ const schema = (vehicleTypes, vehicleStatuses) => ({
       type: 'string',
       title: 'owner',
     },
-    driver_id: {
+    driver_ids: {
       type: 'string',
       title: 'driver',
     },

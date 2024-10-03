@@ -100,7 +100,12 @@ export default function CustomSelectWidget({
         const res = data[graph.get.name].data;
         const modified = multiSelect ? res.map(({ id, title }) => ({ id, title })) : res[0];
         !multiSelect
-          ? setSelected({ id: modified?.id, title: `${modified?.task_type?.title} ${modified?.material_type?.title}` })
+          ? setSelected({
+              id: modified?.id,
+              title: `${modified?.task_type?.title || ''} ${modified?.material_type?.title || ''} ${
+                modified?.workshop?.title || ''
+              } ${modified?.site?.title || ''}`,
+            })
           : setSelected(modified);
         setLoading(false);
       }

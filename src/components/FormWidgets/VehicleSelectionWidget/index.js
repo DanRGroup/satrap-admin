@@ -99,7 +99,12 @@ export default function CustomSelectWidget({
       if (!isEmptyObject(data)) {
         const res = data[graph.get.name].data;
         const modified = multiSelect ? res.map(({ id, title }) => ({ id, title })) : res[0];
-        !multiSelect ? setSelected({ id: modified?.id, title: modified?.plaque }) : setSelected(modified);
+        !multiSelect
+          ? setSelected({
+              id: modified?.id,
+              title: `${modified?.plaque || ''} ${modified?.owner?.firstname || ''} ${modified?.owner?.lastname || ''}`,
+            })
+          : setSelected(modified);
         setLoading(false);
       }
     } catch (error) {}

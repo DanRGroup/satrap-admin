@@ -119,7 +119,12 @@ export default function List({
               delay={(i % limit) + 1}
               color={getColor(i)}
               checked={selected.find((select) => model.id === select.id) ? true : false}
-              handleSelect={() => handleSelect({ id: model?.id, title: model.plaque })}
+              handleSelect={() =>
+                handleSelect({
+                  id: model?.id,
+                  title: `${model?.plaque || ''} ${model?.owner?.firstname || ''} ${model?.owner?.lastname || ''}`,
+                })
+              }
             />
           ))}
           <LoadingMore total={total} result={result.length} loading={loading} onClick={() => setPage(page + 1)} />

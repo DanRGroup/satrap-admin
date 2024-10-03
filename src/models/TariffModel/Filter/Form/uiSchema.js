@@ -13,9 +13,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   operation_type_ids: {
@@ -23,9 +23,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   material_type_ids: {
@@ -33,9 +33,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   shift_type_ids: {
@@ -43,9 +43,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   workshop_ids: {
@@ -53,9 +53,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   site_ids: {
@@ -63,9 +63,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   is_active: {

@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import AddCircleOutlineRounded from '@mui/icons-material/AddCircleOutlineRounded';
 
 import Form from './Form';
@@ -18,6 +21,8 @@ export default function CreatePopup({ title, refetch }) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({});
   const { userToken } = useSelector((state) => state.auth);
+  const [plaque, setPlaque] = useState(['', '', '', '', '', '']);
+  const inputRefs = useRef([]);
 
   const onOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
@@ -53,6 +58,19 @@ export default function CreatePopup({ title, refetch }) {
     }
   };
 
+  const handlePlaqueChange = (index, event) => {
+    const value = event.target.value.toUpperCase();
+    if (value.length <= 1) {
+      const newPlaque = [...plaque];
+      newPlaque[index] = value;
+      setPlaque(newPlaque);
+
+      // Move to next input if current is filled
+      if (value.length === 1 && index < 6) {
+        inputRefs.current[index + 1].focus();
+      }
+    }
+  };
   return (
     <>
       <Tooltip title={title}>
@@ -71,6 +89,29 @@ export default function CreatePopup({ title, refetch }) {
         <NewDialogContent>
           <Stack p={2} alignItems="center">
             <Form formData={formData} onChange={onChange} />
+            <Box dir="ltr">
+              <Box display="flex" justifyContent="center">
+                {plaque.map((char, index) => (
+                  <TextField
+                    key={index}
+                    value={char}
+                    onChange={(e) => handlePlaqueChange(index, e)}
+                    inputRef={(el) => (inputRefs.current[index] = el)}
+                    variant="outlined"
+                    size="small"
+                    inputProps={{
+                      style: {
+                        textTransform: 'uppercase',
+                        width: '1.5em',
+                        textAlign: 'center',
+                      },
+                      maxLength: 1,
+                    }}
+                    sx={{ mr: index === 2 ? 1 : 0.5, ml: index === 2 ? 1 : 0.5 }}
+                  />
+                ))}
+              </Box>
+            </Box>
           </Stack>
         </NewDialogContent>
         <NewDialogActions>

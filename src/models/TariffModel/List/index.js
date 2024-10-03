@@ -121,7 +121,12 @@ export default function List({
               color={getColor(i)}
               checked={selected.find((select) => model.id === select.id) ? true : false}
               handleSelect={() =>
-                handleSelect({ id: model?.id, title: `${model?.task_type?.title} ${model?.material_type?.title}` })
+                handleSelect({
+                  id: model?.id,
+                  title: `${model?.task_type?.title || ''} ${model?.material_type?.title || ''} ${
+                    model?.workshop?.title || ''
+                  } ${model?.site?.title || ''}`,
+                })
               }
             />
           ))}

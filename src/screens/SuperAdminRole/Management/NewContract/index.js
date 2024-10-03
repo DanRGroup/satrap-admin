@@ -68,9 +68,11 @@ export default function FixedOrderCreation() {
           <CardHeader
             title="ایجاد قرارداد"
             subheader={
-              <Typography variant="subtitle2" fontSize={14} color="text.disabled">
-                توضیحات قرارداد
-              </Typography>
+              <Stack direction="row" alignItems="center" spacing={1}>
+                <Typography variant="subtitle2" fontSize={14} color="text.disabled">
+                  توضیحات قرارداد
+                </Typography>
+              </Stack>
             }
           />
         </CardActionArea>

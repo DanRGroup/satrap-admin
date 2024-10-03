@@ -17,6 +17,14 @@ const schema = {
               id
               title
             }
+            workshop {
+              id
+              title
+            }
+            site {
+              id
+              title
+            }
           }
         }
       }

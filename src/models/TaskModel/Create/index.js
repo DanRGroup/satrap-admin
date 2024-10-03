@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
@@ -61,15 +61,12 @@ export default function CreatePopup({ title, refetch }) {
         switch (vehicle_type) {
           case '1':
             setFormData({ ...formData, vehicle_id: vehicle_id, tonnage: '10', coefficient: '1' });
-            // console.log(formData);
             break;
           case '2':
             setFormData({ ...formData, vehicle_id: vehicle_id, tonnage: '15', coefficient: '1.5' });
-            // console.log(formData);
             break;
           default:
             setFormData({ ...formData, vehicle_id: vehicle_id, tonnage: null, coefficient: null });
-            // console.log(formData);
             break;
         }
       }
@@ -78,11 +75,13 @@ export default function CreatePopup({ title, refetch }) {
 
   const onChange = ({ formData }) => {
     setFormData(formData);
+  };
+
+  useEffect(() => {
     if (formData?.vehicle_id) {
-      setFormData({ ...formData, vehicle_id: formData.vehicle_id });
       handleVehicle(formData.vehicle_id);
     }
-  };
+  }, [formData.vehicle_id]);
 
   const onSubmit = async () => {
     try {

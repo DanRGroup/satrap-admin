@@ -3,11 +3,11 @@ import { UsersSelectionWidget } from 'components/FormWidgets';
 const uiSchema = () => ({
   title: {
     'ui:options': {
-      xs: 12,
-      sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
+      xs: 6,
+      sm: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   manager_ids: {
@@ -15,27 +15,27 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   type_ids: {
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   status: {
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   is_active: {
@@ -45,8 +45,8 @@ const uiSchema = () => ({
       xs: 12,
       sm: 12,
       md: 12,
-      lg: 6,
-      xl: 6,
+      lg: 12,
+      xl: 12,
     },
   },
 });

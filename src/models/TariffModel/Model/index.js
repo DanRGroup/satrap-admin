@@ -106,7 +106,7 @@ export default function Model({ model, delay, direction, isAssign, checked, hand
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <Typography fontSize={14} variant="subtitle1">
-                  {`${taskType} ${materialType && ' - ' + materialType}`}
+                  {`${taskType} ${materialType ? ' - ' + materialType : ''}`}
                 </Typography>
               }
               // subheader={

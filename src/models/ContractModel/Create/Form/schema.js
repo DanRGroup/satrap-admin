@@ -12,7 +12,7 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
     },
     cost: {
       type: 'number',
-      title: 'cost',
+      title: 'contract_cost',
     },
     status: {
       type: 'string',

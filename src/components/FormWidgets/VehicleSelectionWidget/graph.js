@@ -11,6 +11,11 @@ const schema = {
             id
             serial_number
             plaque
+            owner {
+              id
+              firstname
+              lastname
+            }
             media {
               id
               full_url
