@@ -11,6 +11,8 @@ import ReactMapboxGl, {
   Popup,
   Marker,
 } from 'react-mapbox-gl';
+import SearchAddress from './SearchAddress';
+
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { setRTLTextPlugin, getRTLTextPluginStatus } from 'mapbox-gl';
 import { Box, styled } from '@mui/material';
@@ -38,6 +40,10 @@ const LocationFieldTemplate = (props) => {
   //   onChange({ lat: String(center[1]), lng: String(center[0]) });
   // }, []);
 
+  const changeCenter = (data) => {
+    setCenter(data);
+  };
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -55,7 +61,7 @@ const LocationFieldTemplate = (props) => {
         <Map
           zoom={[15]}
           style="https://www.parsimap.com/styles/street.json"
-          containerStyle={{ height: '200px', width: '100%', borderRadius: 10 }}
+          containerStyle={{ height: '260px', width: '100%', borderRadius: 10 }}
           center={center}
           onClick={(map, event) => {
             setCenter([event.lngLat.lng, event.lngLat.lat]);
@@ -76,6 +82,9 @@ const LocationFieldTemplate = (props) => {
             />
           </Marker>
         </Map>
+        <Box sx={{ position: 'absolute', top: 4, left: 4, right: 4, zIndex: 1 }}>
+          <SearchAddress changeCenter={changeCenter} />
+        </Box>
       </Card>
     </>
   );
