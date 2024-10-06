@@ -5,8 +5,8 @@ const schema = {
     name: 'vehicle',
     serviceName: 'graphql',
     query: gql`
-      query vehicle($ids: [String], $title: String) {
-        vehicle(ids: $ids, title: $title) {
+      query vehicle($ids: [String]) {
+        vehicle(ids: $ids) {
           data {
             id
             owner {

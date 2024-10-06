@@ -14,10 +14,16 @@ import {
   Chip,
   alpha,
   useTheme,
+  Box,
+  Paper,
+  CardContent,
 } from '@mui/material';
 import { AvatarPopover, NewSpeedDial } from 'components';
 import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
+
+import IranLicensePlate from 'iran-license-plate';
+import 'iran-license-plate/dist/License.css';
 
 export default function Model({ model, delay, direction, checked, handleSelect, refetch, color }) {
   const {
@@ -100,19 +106,51 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             </NewSpeedDial>
           </Stack>
           <CardActionArea onClick={handleSelect}>
-            <CardHeader
-              sx={{ px: 0.5, pl: 13 }}
-              title={
-                <Typography fontSize={14} variant="subtitle1">
-                  {`پلاک : ${plaque}`}
-                </Typography>
-              }
-              // subheader={
-              //   <Typography fontSize={12} variant="subtitle2">
-              //     {`شماره سریال : ${model.serial_number}`}
-              //   </Typography>
-              // }
-            />
+            <Box>
+              <CardHeader
+                sx={{ px: 0.5, pl: 13 }}
+                title={
+                  // <Typography maxHeight="auto" fontSize={8}>
+                  //     <IranLicensePlate serial={`IR13-${plaque.slice(2, 5)}A${plaque.slice(0, 2)}`} />
+                  //   </Typography>
+                  <Card variant="outlined" sx={{ width: 200, height: 42, bgcolor: 'warning.main', borderRadius: 1 }}>
+                    <CardContent sx={{ p: 0 }}>
+                      <Stack width="100%" height="100%" direction="row">
+                        <Stack flex={3} alignItems="center" justifyContent="center" columnGap={3}>
+                          <Typography variant="subtitle2">ایران</Typography>
+                          <Typography variant="subtitle2">13</Typography>
+                        </Stack>
+                        <Divider orientation="vertical" flexItem sx={{ bgcolor: 'black' }} />
+                        <Stack direction="row" flex={10} alignItems="center" justifyContent="center" columnGap={3}>
+                          <Typography fontSize={18} fontWeight="bold">
+                            {plaque.slice(2, 6)}
+                          </Typography>
+                          <Typography fontSize={18} fontWeight="bold">
+                            ع
+                          </Typography>
+                          <Typography fontSize={18} fontWeight="bold">
+                            {plaque.slice(0, 2)}
+                          </Typography>
+                        </Stack>
+                        <Divider orientation="vertical" flexItem sx={{ bgcolor: 'black' }} />
+                        <Divider orientation="vertical" flexItem />
+                        <Stack bgcolor="info.dark" flex={1} alignItems="center" justifyContent="center">
+                          <Stack alignItems="center">
+                            <Box component="img" src="/assets/icons/fa.webp" alt="IRAN" />
+                            <Typography fontSize={10}>IRAN</Typography>
+                          </Stack>
+                        </Stack>
+                      </Stack>
+                    </CardContent>
+                  </Card>
+                }
+                // subheader={
+                //   <Typography fontSize={12} variant="subtitle2">
+                //     {`شماره سریال : ${model.serial_number}`}
+                //   </Typography>
+                // }
+              />
+            </Box>
           </CardActionArea>
         </Card>
       </Fade>

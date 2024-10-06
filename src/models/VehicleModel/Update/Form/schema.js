@@ -22,6 +22,7 @@ const schema = (vehicleTypes) => ({
     plaque: {
       type: 'string',
       title: 'plaque',
+      maxLength: 5,
     },
     details: {
       type: 'string',

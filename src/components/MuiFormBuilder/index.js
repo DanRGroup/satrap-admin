@@ -9,6 +9,7 @@ import MuiFormBuilder from './MuiFormBuilder';
 
 import { transformErrors } from './utils';
 import { LocationField } from './CustomFields';
+import { LicensePlateField } from './CustomFields';
 import { removeNulls } from 'helpers/formatObject';
 
 const MuiForm = ({
@@ -42,7 +43,7 @@ const MuiForm = ({
       customValidate={customValidate}
       transformErrors={transformErrors}
       formData={removeNulls(formData)}
-      fields={{ location: LocationField }}
+      fields={{ location: LocationField, licensePlate: LicensePlateField }}
     >
       {
         <Stack columnGap={1} direction="row" alignItems="center" justifyContent="flex-end">

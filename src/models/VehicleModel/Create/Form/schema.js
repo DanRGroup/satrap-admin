@@ -20,13 +20,23 @@ const schema = (vehicleTypes, vehicleStatuses) => ({
       title: 'vehicle_status',
       oneOf: vehicleStatuses,
     },
-    serial_number: {
-      type: 'string',
-      title: 'serialNumber',
-    },
+    // serial_number: {
+    //   type: 'string',
+    //   title: 'serialNumber',
+    // },
     plaque: {
       type: 'string',
       title: 'plaque',
+      // properties: {
+      //   part1: {
+      //     type: 'number',
+      //     maxLength: 3,
+      //   },
+      //   part2: {
+      //     type: 'number',
+      //     maxLength: 2,
+      //   },
+      // },
     },
     details: {
       type: 'string',
