@@ -8,6 +8,7 @@ import { LoadingMore, NewDialogActions, NewDialogContent, NewDialogTitle } from 
 import Model from '../Model';
 import Filter from '../Filter';
 import Create from '../Create';
+import CreateEmployer from '../CreateEmployer';
 import Assignment from '../Assignment';
 import RoleAssignment from '../RoleAssignment';
 import ChangeUserPassword from '../ChangeUserPassword';
@@ -147,6 +148,7 @@ export default function List({
           </IconButton>
         </Tooltip>
         <Create title="create_user" refetch={refresh} />
+        <CreateEmployer title="create_employer" refetch={refresh} />
         <RoleAssignment ids={selected} refetch={refresh} handleDelete={handleSelect} />
         <ChangeUserPassword ids={selected} refetch={refresh} handleDelete={handleSelect} />
         {/* <RevokeRoleAssignment ids={selected} refetch={refresh} /> */}

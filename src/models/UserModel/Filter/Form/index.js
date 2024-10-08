@@ -16,11 +16,12 @@ const Form = ({ init, setFilter }) => {
 
   const { userRoles } = useSelector((state) => state.models);
   const { userStatuses } = useSelector((state) => state.models);
+  const { userTypes } = useSelector((state) => state.models);
 
   return (
     <MuiFormBuilder
       showSubmit={false}
-      schema={schema(userRoles, userStatuses)}
+      schema={schema(userRoles, userStatuses, userTypes)}
       uiSchema={uiSchema()}
       formData={formData}
       onChange={onChange}
