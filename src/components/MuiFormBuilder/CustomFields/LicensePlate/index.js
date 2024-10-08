@@ -92,6 +92,7 @@ const LicensePlateFieldTemplate = (props) => {
               <Box display="flex" justifyContent="center">
                 {part2.map((char, index) => (
                   <TextField
+                    type="number"
                     key={index}
                     value={char}
                     onChange={(e) => handlePart2Change(index, e)}
@@ -103,6 +104,7 @@ const LicensePlateFieldTemplate = (props) => {
                         width: '10px',
                         height: '10px',
                         textAlign: 'center',
+                        fontWeight: 'bold',
                       },
                       maxLength: 1,
                     }}
@@ -118,6 +120,7 @@ const LicensePlateFieldTemplate = (props) => {
               <Box display="flex" justifyContent="center">
                 {part1.map((char, index) => (
                   <TextField
+                    type="number"
                     key={index}
                     value={char}
                     onChange={(e) => handlePart1Change(index, e)}
@@ -129,6 +132,7 @@ const LicensePlateFieldTemplate = (props) => {
                         width: '10px',
                         height: '10px',
                         textAlign: 'center',
+                        fontWeight: 'bold',
                       },
                       maxLength: 1,
                     }}
@@ -143,7 +147,9 @@ const LicensePlateFieldTemplate = (props) => {
           <Stack bgcolor="info.dark" flex={1} alignItems="center" justifyContent="center">
             <Stack alignItems="center">
               <Box component="img" src="/assets/icons/fa.webp" alt="IRAN" />
-              <Typography fontSize={10}>IRAN</Typography>
+              <Typography fontWeight="bold" fontSize={10}>
+                IRAN
+              </Typography>
             </Stack>
           </Stack>
         </Stack>

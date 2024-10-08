@@ -57,11 +57,26 @@ const LocationFieldTemplate = (props) => {
 
   return (
     <>
-      <Card variant="outlined">
+      <Card
+        variant="outlined"
+        sx={{
+          height: {
+            xs: '480px',
+            sm: '500px',
+            md: '560px',
+            lg: '600px',
+            xl: '640px',
+          },
+        }}
+      >
         <Map
           zoom={[15]}
           style="https://www.parsimap.com/styles/street.json"
-          containerStyle={{ height: '260px', width: '100%', borderRadius: 10 }}
+          containerStyle={{
+            height: '100%',
+            width: '100%',
+            borderRadius: 10,
+          }}
           center={center}
           onClick={(map, event) => {
             setCenter([event.lngLat.lng, event.lngLat.lat]);
