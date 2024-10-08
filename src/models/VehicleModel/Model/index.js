@@ -121,14 +121,14 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
                           <Typography variant="subtitle2">13</Typography>
                         </Stack>
                         <Divider orientation="vertical" flexItem sx={{ bgcolor: 'black' }} />
-                        <Stack direction="row" flex={10} alignItems="center" justifyContent="center" columnGap={3}>
-                          <Typography fontSize={18} fontWeight="bold">
+                        <Stack direction="row" flex={10} alignItems="center" justifyContent="center" columnGap={1}>
+                          <Typography fontSize={22} fontWeight="bold">
                             {plaque.slice(2, 6)}
                           </Typography>
-                          <Typography fontSize={18} fontWeight="bold">
+                          <Typography fontSize={22} fontWeight="bold">
                             ع
                           </Typography>
-                          <Typography fontSize={18} fontWeight="bold">
+                          <Typography fontSize={22} fontWeight="bold">
                             {plaque.slice(0, 2)}
                           </Typography>
                         </Stack>
@@ -137,7 +137,9 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
                         <Stack bgcolor="info.dark" flex={1} alignItems="center" justifyContent="center">
                           <Stack alignItems="center">
                             <Box component="img" src="/assets/icons/fa.webp" alt="IRAN" />
-                            <Typography fontSize={10}>IRAN</Typography>
+                            <Typography fontWeight="bold" fontSize={10}>
+                              IRAN
+                            </Typography>
                           </Stack>
                         </Stack>
                       </Stack>

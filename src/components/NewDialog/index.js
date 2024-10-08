@@ -2,9 +2,9 @@ import React from 'react';
 import { Box, Dialog, useMediaQuery, useTheme, IconButton } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
-export default function NewDialog({ open, label, onClose, maxWidth = 'md', children }) {
+export default function NewDialog({ open, label, onClose, maxWidth = 'md', children, fullScreen = false }) {
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Dialog
@@ -15,7 +15,7 @@ export default function NewDialog({ open, label, onClose, maxWidth = 'md', child
       onClose={onClose}
       maxWidth={maxWidth}
       PaperComponent={Box}
-      fullScreen={fullScreen}
+      fullScreen={fullScreen || isMobile}
       aria-labelledby={`${label}-dialog-title`}
       aria-describedby={`${label}-dialog-description`}
       PaperProps={{

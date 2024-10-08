@@ -130,7 +130,7 @@ export default function CreatePopup({ title, refetch }) {
           </Stack>
         </NewDialogContent>
         <NewDialogActions>
-          <Button size="large" variant="contained" onClick={onSubmit} disabled={listLoading}>
+          <Button size="large" variant="contained" onClick={onSubmit} disabled={listLoading || createLoading}>
             <FormattedMessage id="create" />
           </Button>
         </NewDialogActions>

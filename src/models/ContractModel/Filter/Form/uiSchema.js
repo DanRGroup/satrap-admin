@@ -9,8 +9,8 @@ const uiSchema = () => ({
   'ui:order': ['title', 'type_ids', 'employer_ids', 'company_ids', 'workshop_ids', 'status', 'number', '*'],
   title: {
     'ui:options': {
-      xs: 4,
-      sm: 4,
+      xs: 6,
+      sm: 6,
       md: 3,
       lg: 3,
       xl: 3,
@@ -37,8 +37,8 @@ const uiSchema = () => ({
   workshop_ids: {
     'ui:widget': WorkshopSelectionWidget,
     'ui:options': {
-      xs: 4,
-      sm: 4,
+      xs: 6,
+      sm: 6,
       md: 3,
       lg: 3,
       xl: 3,
@@ -47,8 +47,8 @@ const uiSchema = () => ({
   type_ids: {
     // 'ui:widget': ContractTypeSelectionWidget,
     'ui:options': {
-      xs: 4,
-      sm: 4,
+      xs: 6,
+      sm: 6,
       md: 3,
       lg: 3,
       xl: 3,
@@ -57,8 +57,8 @@ const uiSchema = () => ({
   employer_ids: {
     'ui:widget': UsersSelectionWidget,
     'ui:options': {
-      xs: 4,
-      sm: 4,
+      xs: 6,
+      sm: 6,
       md: 3,
       lg: 3,
       xl: 3,
@@ -67,8 +67,8 @@ const uiSchema = () => ({
   company_ids: {
     'ui:widget': CompanySelectionWidget,
     'ui:options': {
-      xs: 4,
-      sm: 4,
+      xs: 6,
+      sm: 6,
       md: 3,
       lg: 3,
       xl: 3,
@@ -76,8 +76,8 @@ const uiSchema = () => ({
   },
   status: {
     'ui:options': {
-      xs: 4,
-      sm: 4,
+      xs: 6,
+      sm: 6,
       md: 3,
       lg: 3,
       xl: 3,
@@ -85,8 +85,8 @@ const uiSchema = () => ({
   },
   number: {
     'ui:options': {
-      xs: 4,
-      sm: 4,
+      xs: 6,
+      sm: 6,
       md: 3,
       lg: 3,
       xl: 3,

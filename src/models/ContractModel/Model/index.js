@@ -54,6 +54,8 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
     { id: '2', name: 'employer', title: getEmployerName(model) },
     { id: '3', name: 'category', title: model?.category?.title },
     { id: '4', name: 'number', title: model?.number },
+    { id: '5', name: 'forecastAmount', title: model?.forecast_amount },
+    { id: '6', name: 'totalService', title: model?.total_service },
   ];
 
   return (
@@ -94,9 +96,9 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <NewSpeedDial>
               {chips.map((chip) => {
                 if (chip.title !== undefined && chip.title !== null) {
-                  return <Chip sx={{ width: '140px' }} key={chip.id} label={chip.title} />;
+                  return <Chip sx={{ width: '120px' }} key={chip.id} label={chip.title} />;
                 } else {
-                  return <Chip sx={{ width: '140px' }} key={chip.id} label="----" />;
+                  return <Chip sx={{ width: '120px' }} key={chip.id} label="----" />;
                 }
               })}
               {isAuthenticated &&

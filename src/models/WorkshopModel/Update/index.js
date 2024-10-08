@@ -99,7 +99,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
           <ModeEditRoundedIcon fontSize="small" />
         </IconButton>
       </Tooltip>
-      <NewDialog label="update" open={open} onClose={onClose} maxWidth="sm">
+      <NewDialog label="update" open={open} onClose={onClose} fullScreen>
         <NewDialogTitle title={title} onClose={onClose} />
         <NewDialogContent>
           {loading || !formData ? (
@@ -107,7 +107,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
               <CircularProgress />
             </Stack>
           ) : (
-            <Stack p={2} alignItems="center">
+            <Stack p={2}>
               <Form formData={formData} onChange={onChange} />
             </Stack>
           )}

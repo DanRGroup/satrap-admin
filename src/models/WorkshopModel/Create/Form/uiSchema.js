@@ -4,20 +4,20 @@ const uiSchema = () => ({
   'ui:order': ['title', 'status_id', 'manager_id', 'is_active', 'location'],
   title: {
     'ui:options': {
-      xs: 12,
-      sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      xs: 6,
+      sm: 6,
+      md: 3,
+      lg: 3,
+      xl: 3,
     },
   },
   alias: {
     'ui:options': {
-      xs: 12,
-      sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      xs: 6,
+      sm: 6,
+      md: 3,
+      lg: 3,
+      xl: 3,
     },
   },
   // shipping_cost_config: {
@@ -34,9 +34,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 3,
+      lg: 3,
+      xl: 3,
     },
   },
   manager_id: {
@@ -44,9 +44,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 6,
       sm: 6,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 3,
+      lg: 3,
+      xl: 3,
     },
   },
   location: {
@@ -63,11 +63,11 @@ const uiSchema = () => ({
     'ui:widget': 'radio',
     'ui:options': {
       inline: true,
-      xs: 12,
-      sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      xs: 6,
+      sm: 6,
+      md: 3,
+      lg: 3,
+      xl: 3,
     },
   },
 });

@@ -59,6 +59,7 @@ const schema = {
               id
               title
             }
+            forecast_amount
             total_houre
             total_service
             total_tonnage

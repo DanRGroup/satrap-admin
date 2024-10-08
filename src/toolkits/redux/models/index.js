@@ -88,7 +88,7 @@ export const setModelsSlice = createSlice({
       { const: '2', title: 'night' },
     ],
     userTypes: [
-      { const: '1', title: 'user' },
+      // { const: '1', title: 'user' },
       { const: '2', title: 'manager' },
       { const: '3', title: 'operator' },
       { const: '4', title: 'workshop_manager' },
@@ -97,6 +97,7 @@ export const setModelsSlice = createSlice({
       { const: '7', title: 'site_manager' },
       { const: '8', title: 'financial_manager' },
       { const: '9', title: 'driver' },
+      { const: '13', title: 'employer' },
     ],
     userRoles: [
       { const: '3', title: 'company_ceo' },

@@ -66,10 +66,10 @@ export default function CreatePopup({ title, refetch }) {
           <AddCircleOutlineRounded fontSize="small" />
         </IconButton>
       </Tooltip>
-      <NewDialog label="create" open={open} onClose={onClose} maxWidth="sm">
+      <NewDialog label="create" open={open} onClose={onClose} fullScreen>
         <NewDialogTitle title={title} onClose={onClose} />
         <NewDialogContent>
-          <Stack p={2} alignItems="center">
+          <Stack p={2}>
             <Form formData={formData} onChange={onChange} />
           </Stack>
         </NewDialogContent>
