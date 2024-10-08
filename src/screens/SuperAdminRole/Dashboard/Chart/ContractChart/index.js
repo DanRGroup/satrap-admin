@@ -58,7 +58,7 @@ export default function AppView() {
   return (
     <Grid container spacing={2}>
       {contracts.map((contract, index) => {
-        const forecast = Number(contract.forecast_amount - contract.total_service); // Calculate forecast for each contract
+        const forecast = Number(contract.forecast_amount - contract.total_service);
         const total = Number(contract.total_service);
 
         return (

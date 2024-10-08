@@ -47,10 +47,11 @@ export default function FixedOrderCreation() {
   const onSubmit = async () => {
     try {
       const { data, errors } = await formUpdate({
-        variables: formData,
+        variables: { ...formData, forecast_amount: String(formData?.forecast_amount), cost: String(formData?.cost) },
       });
       if (!errors) {
         onClose();
+        setFormData({});
         if (!isEmptyObject(data)) {
           data[graph.create.name]?.messages.map((message) => toast.success(String(message)));
         }
