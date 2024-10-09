@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useMediaQuery, useTheme, Stack, Typography, Chip } from '@mui/material';
 
-const CardHeaderTitle = ({ title, chips = [] }) => {
+const CardHeaderTitle = ({ maxWidth = '160px', title, chips = [] }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'), { defaultMatches: false });
 
@@ -19,7 +19,8 @@ const CardHeaderTitle = ({ title, chips = [] }) => {
       </Typography>
       <Stack direction="row" columnGap={1} flexWrap="wrap" rowGap={0.5}>
         {chips.map((chip) => {
-          return <Chip sx={{ width: '160px' }} key={chip.id} label={chip?.title || '----'} />;
+          const chipWidth = chip?.width || maxWidth;
+          return <Chip sx={{ width: chipWidth }} key={chip.id} label={chip?.title || '----'} />;
         })}
       </Stack>
     </Stack>

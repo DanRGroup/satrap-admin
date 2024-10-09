@@ -165,7 +165,7 @@ export default function CustomSelectWidget({
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  fontSize={selected?.id || selected?.length > 0 ? 12 : 20}
+                  fontSize={selected?.id || selected?.length > 0 ? 12 : 16}
                 >
                   <FormattedMessage id={label || schema.title} />
                 </Typography>
