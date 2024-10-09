@@ -24,3 +24,4 @@ export { default as Tour } from './Tour';
 export { default as AvatarPopover } from './AvatarPopover';
 export { default as MediaDeleter } from './MediaDeleter';
 export { default as MediaUploader } from './MediaUploader';
+export { default as CardHeaderTitle } from './CardHeaderTitle';
