@@ -146,7 +146,9 @@ export default function List({
         {isAuthenticated &&
           hasRequiredRole(['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'], userInfo?.roles) && (
             <>
-              <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
+              {!isPopup && (
+                <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
+              )}
               <Create title={<FormattedMessage id="create" />} refetch={refresh} />
             </>
           )}

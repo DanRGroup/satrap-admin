@@ -149,8 +149,12 @@ export default function List({
         </Tooltip>
         <Create title="create_user" refetch={refresh} />
         <CreateEmployer title="create_employer" refetch={refresh} />
-        <RoleAssignment ids={selected} refetch={refresh} handleDelete={handleSelect} />
-        <ChangeUserPassword ids={selected} refetch={refresh} handleDelete={handleSelect} />
+        {!isPopup && (
+          <>
+            <RoleAssignment ids={selected} refetch={refresh} handleDelete={handleSelect} />
+            <ChangeUserPassword ids={selected} refetch={refresh} handleDelete={handleSelect} />
+          </>
+        )}
         {/* <RevokeRoleAssignment ids={selected} refetch={refresh} /> */}
       </NewDialogActions>
     </>

@@ -189,7 +189,7 @@ export default function List({
             )}
           </IconButton>
         </Tooltip>
-        <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
+        {!isPopup && <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />}
         {/* {result?.data && result?.data[0]?.parent === null && (
           <Create size="medium" ids="1" title={<FormattedMessage id="create" />} refetch={refetch} />
         )} */}

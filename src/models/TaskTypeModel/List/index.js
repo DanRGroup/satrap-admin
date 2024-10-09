@@ -131,7 +131,7 @@ export default function List({
             )}
           </IconButton>
         </Tooltip>
-        <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
+        {!isPopup && <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />}
         <Create title={<FormattedMessage id="create" />} refetch={refresh} />
       </NewDialogActions>
     </>

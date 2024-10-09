@@ -5,6 +5,7 @@ import { faker } from '@faker-js/faker';
 
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
+import Stack from '@mui/material/Stack';
 
 import ModelsCount from './ModelsCount';
 import ServiceChart from './ServiceChart';
@@ -73,9 +74,11 @@ export default function AppView() {
     <Container maxWidth="xl">
       <Grid container spacing={3}>
         <ModelsCount />
-        <Grid md={12} lg={12}>
-          <ContractChart />
-        </Grid>
+        <Stack direction="row" alignContent="center">
+          <Grid md={12} lg={12}>
+            <ContractChart />
+          </Grid>
+        </Stack>
         <TonnageChart />
         <ServiceChart />
         {/* <Grid xs={12} md={6} lg={8}>

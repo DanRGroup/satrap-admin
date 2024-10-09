@@ -50,13 +50,28 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
     }
   };
 
+  const getTotal = (model) => {
+    if (model?.operation_type?.id === '1') {
+      return model?.total_service;
+    }
+    if (model?.operation_type?.id === '2') {
+      return model?.total_tonnage;
+    }
+    if (model?.operation_type?.id === '5') {
+      return 'متر مکعب';
+    } else {
+      return undefined;
+    }
+  };
+
   const chips = [
     { id: '1', name: 'workshop', title: model?.workshop?.title },
     { id: '2', name: 'employer', title: getEmployerName(model) },
     { id: '3', name: 'category', title: model?.category?.title },
     { id: '4', name: 'number', title: model?.number },
-    { id: '5', name: 'forecastAmount', title: model?.forecast_amount },
-    { id: '6', name: 'totalService', title: model?.total_service },
+    { id: '5', name: 'operationType', title: model?.operation_type?.title },
+    { id: '6', name: 'forecastAmount', title: model?.forecast_amount },
+    { id: '7', name: 'totalService', title: getTotal(model) },
   ];
 
   return (
@@ -118,7 +133,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
               title={
-                <CardHeaderTitle title={model?.title} chips={chips} />
+                <CardHeaderTitle maxWidth="140px" title={model?.title} chips={chips} />
                 // <Stack flexWrap={true}>
 
                 // </Stack>

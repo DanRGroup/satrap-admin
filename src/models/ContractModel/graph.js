@@ -60,6 +60,7 @@ const schema = {
               title
             }
             forecast_amount
+            #total_cubic_meter
             total_houre
             total_service
             total_tonnage

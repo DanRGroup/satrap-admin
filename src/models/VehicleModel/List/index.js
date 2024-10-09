@@ -141,7 +141,8 @@ export default function List({
           </IconButton>
         </Tooltip>
         {isAuthenticated &&
-          hasRequiredRole(['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'], userInfo?.roles) && (
+          hasRequiredRole(['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'], userInfo?.roles) &&
+          !isPopup && (
             <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
           )}
         <Create title={<FormattedMessage id="create" />} refetch={refresh} />

@@ -38,7 +38,7 @@ export default function Model({ model, delay, direction, isAssign, checked, hand
     { id: '6', name: 'site', title: model?.site?.title },
   ];
 
-  const materialType = model?.material_type?.title;
+  const workshopTitle = model?.workshop?.title;
   const taskType = model?.task_type?.title;
 
   const theme = useTheme();
@@ -98,7 +98,7 @@ export default function Model({ model, delay, direction, isAssign, checked, hand
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
               title={
-                <CardHeaderTitle title={`${taskType} ${materialType ? ' - ' + materialType : ''}`} chips={chips} />
+                <CardHeaderTitle title={`${taskType} ${workshopTitle ? ' - ' + workshopTitle : ''}`} chips={chips} />
               }
               // subheader={
               //   <Typography fontSize={12} variant="subtitle2">

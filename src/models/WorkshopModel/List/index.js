@@ -137,7 +137,9 @@ export default function List({
         </Tooltip>
         {isAuthenticated && hasRequiredRole(['superadmin'], userInfo?.roles) && (
           <>
-            <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
+            {!isPopup && (
+              <Delete ids={selected.map((item) => item.id)} refetch={refresh} selection={selected.length > 0} />
+            )}
             <Create title={<FormattedMessage id="create_workshop" />} refetch={refresh} />
           </>
         )}
