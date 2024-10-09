@@ -16,7 +16,7 @@ import {
   Chip,
   alpha,
 } from '@mui/material';
-import { AvatarPopover, NewSpeedDial } from 'components';
+import { AvatarPopover, CardHeaderTitle, NewSpeedDial } from 'components';
 import { FormattedMessage } from 'react-intl';
 
 import { useSelector } from 'react-redux';
@@ -86,13 +86,6 @@ export default function Model({ model, delay, direction, isAssign, checked, hand
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {chips.map((chip) => {
-                if (chip.title !== undefined) {
-                  return <Chip sx={{ width: isAssign ? '80px' : '120px' }} key={chip.id} label={chip.title} />;
-                } else {
-                  return <Chip sx={{ width: isAssign ? '80px' : '120px' }} key={chip.id} label="----" />;
-                }
-              })}
               {isAuthenticated &&
                 hasRequiredRole(
                   ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
@@ -105,9 +98,7 @@ export default function Model({ model, delay, direction, isAssign, checked, hand
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
               title={
-                <Typography fontSize={14} variant="subtitle1">
-                  {`${taskType} ${materialType ? ' - ' + materialType : ''}`}
-                </Typography>
+                <CardHeaderTitle title={`${taskType} ${materialType ? ' - ' + materialType : ''}`} chips={chips} />
               }
               // subheader={
               //   <Typography fontSize={12} variant="subtitle2">

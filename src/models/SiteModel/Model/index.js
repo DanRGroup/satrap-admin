@@ -4,7 +4,7 @@ import Media from '../Media';
 
 import { alpha, useTheme } from '@mui/material';
 import { Card, Stack, Fade, Divider, Checkbox, Typography, CardHeader, CardActionArea, Chip } from '@mui/material';
-import { AvatarPopover, NewSpeedDial } from 'components';
+import { AvatarPopover, NewSpeedDial, CardHeaderTitle } from 'components';
 
 import { useSelector } from 'react-redux';
 import { hasRequiredRole } from 'helpers';
@@ -75,13 +75,6 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {chips.map((chip) => {
-                if (chip.title !== undefined) {
-                  return <Chip sx={{ width: '180px' }} key={chip.id} label={chip.title} />;
-                } else {
-                  return <Chip sx={{ width: '180px' }} key={chip.id} label="----" />;
-                }
-              })}
               {isAuthenticated && hasRequiredRole(['superadmin', 'siteManager', 'companyCeo'], userInfo?.roles) && (
                 <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
               )}
@@ -91,11 +84,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           <CardActionArea onClick={handleSelect}>
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
-              title={
-                <Typography textAlign={isRtl ? 'start' : 'end'} fontSize={14} variant="subtitle1">
-                  {siteTitel}
-                </Typography>
-              }
+              title={<CardHeaderTitle title={siteTitel} chips={chips} />}
               // subheader={
               //   <Typography fontSize={12} variant="subtitle2">
               //     {model?.type?.title}

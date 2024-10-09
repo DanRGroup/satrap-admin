@@ -19,7 +19,7 @@ import {
   Chip,
   alpha,
 } from '@mui/material';
-import { AvatarPopover, NewSpeedDial } from 'components';
+import { AvatarPopover, CardHeaderTitle, NewSpeedDial } from 'components';
 import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 
@@ -88,13 +88,6 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {chips.map((chip) => {
-                if (chip.title !== undefined) {
-                  return <Chip sx={{ width: '140px' }} key={chip.id} label={chip.title} />;
-                } else {
-                  return <Chip sx={{ width: '140px' }} key={chip.id} label="----" />;
-                }
-              })}
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
               <ChangeStatus ids={model?.id} title={<FormattedMessage id="change_status" />} refetch={refetch} />
               <HistoryCenter model={model} title={<FormattedMessage id="history" />} refetch={refetch} />
@@ -109,11 +102,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           <CardActionArea onClick={handleSelect}>
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
-              title={
-                <Typography fontSize={14} variant="subtitle1">
-                  {getUserFullName(model) || '( بدون نام )'}
-                </Typography>
-              }
+              title={<CardHeaderTitle title={getUserFullName(model) || '( بدون نام )'} chips={chips} />}
               // subheader={
               //   <Typography fontSize={12} variant="subtitle2">
               //     {`${model?.workshop?.title} ${model?.type.title === 'حمل بار' ? ` - ${model?.site?.title}` : ''}`}

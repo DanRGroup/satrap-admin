@@ -59,7 +59,7 @@ export default function Filter({
         elevation={1}
         sx={{
           direction: { direction },
-          bgcolor: selection ? alpha(theme.palette.warning.light, 1) : alpha(theme.palette.background.paper, 1),
+          // bgcolor: selection ? alpha(theme.palette.warning.light, 1) : alpha(theme.palette.background.paper, 1),
         }}
       >
         <CardHeader

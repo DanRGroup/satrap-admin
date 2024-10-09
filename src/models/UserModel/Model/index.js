@@ -7,7 +7,7 @@ import { formatUserRoles } from 'helpers';
 
 import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import { AvatarPopover, NewSpeedDial } from 'components';
+import { AvatarPopover, NewSpeedDial, CardHeaderTitle } from 'components';
 import {
   Card,
   Stack,
@@ -115,13 +115,6 @@ export default function Model({ model, delay, checked, handleSelect, refetch, co
             justifyContent="flex-end"
           >
             <NewSpeedDial>
-              {chips.map((chip) => {
-                if (chip.title !== undefined) {
-                  return <Chip sx={{ width: '150px' }} key={chip.id} label={chip.title} />;
-                } else {
-                  return <Chip sx={{ width: '150px' }} key={chip.id} label="----" />;
-                }
-              })}
               <Roles refetch={refetch} roles={model?.all_roles} userId={model?.id} />
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
             </NewSpeedDial>
@@ -129,11 +122,7 @@ export default function Model({ model, delay, checked, handleSelect, refetch, co
           <CardActionArea onClick={handleSelect}>
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
-              title={
-                <Typography fontSize={14} variant="subtitle1">
-                  {showUser(model)}
-                </Typography>
-              }
+              title={<CardHeaderTitle title={showUser(model)} chips={chips} />}
               // subheader={
               //   <Typography fontSize={12} variant="subtitle2">
               //     {model?.cellphone}
