@@ -201,7 +201,7 @@ const UserPopup = () => {
         <Stack width="100vw" height="100vh">
           <Fade in={!screenSaver} timeout={1000}>
             <Stack direction="row" height="100%">
-              <Stack flex={2} px={4} justifyContent="center" alignItems="center">
+              <Stack flex={2} justifyContent="center" alignItems="center">
                 <Stack sx={{ m: 2 }}>
                   <StyledTitle fontSize="3rem" fontWeight="bold">
                     <FormattedMessage id="brand" />
@@ -288,7 +288,6 @@ const UserPopup = () => {
           <Fade in={screenSaver} timeout={1000}>
             <Stack height="100%" justifyContent="center" alignItems="center" position="absolute" top={0} rowGap={2}>
               <Avatar sx={{ width: 120, height: 120 }} variant="circular" alt="user" src="/assets/images/avatar.jpg" />
-              <Typography color="#fff">پنل فروشندگان هایپرانو</Typography>
               <Button
                 fullWidth
                 color="inherit"
