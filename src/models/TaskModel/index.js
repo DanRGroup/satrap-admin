@@ -53,9 +53,9 @@ export default function MainModel(props) {
         },
       });
       if (!isEmptyObject(data) && !error) {
-        const { records, total_houre, total_service, total_shift, total_tonnage, total_cost, all_tonnage } =
+        const { records, total_houre, total_service, total_shift, total_tonnage, total_cost, all_tonnage, total_cubic_meter } =
           data[graph.list.name];
-        setReport({ total_houre, total_service, total_shift, total_tonnage, total_cost, all_tonnage });
+        setReport({ total_houre, total_service, total_shift, total_tonnage, total_cost, all_tonnage, total_cubic_meter });
         paginate ? setResult((prevData) => prevData.concat(records?.data)) : setResult(records?.data);
         setTotal(records?.total);
       }

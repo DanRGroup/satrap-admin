@@ -59,8 +59,9 @@ const schema = {
               id
               title
             }
+            cost
             forecast_amount
-            #total_cubic_meter
+            total_cubic_meter
             total_houre
             total_service
             total_tonnage

@@ -46,10 +46,13 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
   };
 
   const chips = [
-    { id: '1', name: 'taskType', title: model?.type.title },
-    { id: '2', name: 'plaque', title: model?.vehicle?.plaque },
-    { id: '3', name: 'workshop', title: model?.workshop?.title },
-    { id: '4', name: 'site', title: model?.site?.title },
+    { id: '1', name: 'taskType', title: model?.type?.title },
+    { id: '2', name: 'operationType', title: model?.operation_type?.title },
+    { id: '3', name: 'materialType', title: model?.material_type?.title },
+    { id: '4', name: 'vehicleType', title: model?.vehicle?.type?.title },
+    { id: '5', name: 'plaque', title: model?.vehicle?.plaque },
+    { id: '6', name: 'workshop', title: model?.workshop?.title },
+    { id: '7', name: 'site', title: model?.site?.title },
   ];
 
   return (
@@ -102,7 +105,9 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           <CardActionArea onClick={handleSelect}>
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
-              title={<CardHeaderTitle title={getUserFullName(model) || '( بدون نام )'} chips={chips} />}
+              title={
+                <CardHeaderTitle maxWidth="140px" title={getUserFullName(model) || '( بدون نام )'} chips={chips} />
+              }
               // subheader={
               //   <Typography fontSize={12} variant="subtitle2">
               //     {`${model?.workshop?.title} ${model?.type.title === 'حمل بار' ? ` - ${model?.site?.title}` : ''}`}

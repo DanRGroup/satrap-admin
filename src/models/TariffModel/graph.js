@@ -8,6 +8,7 @@ const schema = {
       query tariff(
         $ids: [String]
         $task_type_ids: [String]
+        $material_type_ids: [String]
         $operation_type_ids: [String]
         $workshop_ids: [String]
         $site_ids: [String]
@@ -15,6 +16,7 @@ const schema = {
         tariff(
           ids: $ids
           task_type_ids: $task_type_ids
+          material_type_ids: $material_type_ids
           operation_type_ids: $operation_type_ids
           workshop_ids: $workshop_ids
           site_ids: $site_ids
@@ -53,6 +55,7 @@ const schema = {
               id
               title
             }
+            cost
           }
           total
         }

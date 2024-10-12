@@ -18,7 +18,7 @@ export default function List({
   page,
   limit,
   total,
-  report: { total_houre, total_service, total_shift, total_tonnage, total_cost, all_tonnage },
+  report: { total_houre, total_service, total_shift, total_tonnage, total_cost, all_tonnage, total_cubic_meter },
   setPage,
 
   result,
@@ -119,6 +119,7 @@ export default function List({
           {total_tonnage && <Chip label={`تناژ قرادادی : ${total_tonnage}`} />}
           {total_cost && <Chip label={`جمع هزینه‌ها : ${total_cost}`} />}
           {all_tonnage && <Chip label={`کل تناژ : ${all_tonnage}`} />}
+          {total_cubic_meter && <Chip label={`جمع مترمکعب : ${total_cubic_meter}`} />}
         </Box>
       )}
       <NewDialogContent>
@@ -147,7 +148,7 @@ export default function List({
             {total_shift && <Chip label={`جمع شیفت : ${total_shift}`} />}
             {total_tonnage && <Chip label={`جمع تناژ : ${total_tonnage}`} />}
             {total_cost && <Chip label={`جمع هزینه‌ها : ${total_cost}`} />}
-            {total_cost && <Chip label={`جمع هزینه‌ها : ${total_cost}`} />}
+            {total_cubic_meter && <Chip label={`جمع مترمکعب : ${total_cubic_meter}`} />}
             {all_tonnage && <Chip sx={{ ml: 1 }} label={`کل تناژ : ${all_tonnage}`} />}
           </Box>
         )}

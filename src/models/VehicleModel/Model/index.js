@@ -39,7 +39,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
     if (model?.driver?.firstname) {
       return `${model?.driver?.firstname}`;
     }
-    if (model?.lastname) {
+    if (model?.driver?.lastname) {
       return `${model?.driver?.lastname}`;
     } else {
       return undefined;

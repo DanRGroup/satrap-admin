@@ -67,7 +67,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
         },
         variables: {
           ids,
-          owner: formData?.owner_id,
+          owner_id: formData?.owner_id,
           driver_id: formData?.driver_id,
           type_id: formData?.type_id,
           serial_number: formData?.serial_number,

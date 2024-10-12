@@ -51,6 +51,10 @@ const schema = {
                 id
                 title
               }
+              operation_type {
+                id
+                title
+              }
               workshop {
                 id
                 title
@@ -62,6 +66,10 @@ const schema = {
               vehicle {
                 id
                 plaque
+                type {
+                  id
+                  title
+                }
               }
               driver {
                 id
@@ -79,6 +87,7 @@ const schema = {
             total
           }
           total_houre
+          total_cubic_meter
           total_service
           total_shift
           total_tonnage
