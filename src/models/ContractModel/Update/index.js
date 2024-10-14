@@ -15,6 +15,7 @@ import { FormattedMessage } from 'react-intl';
 import { CircularProgress, Stack } from '@mui/material';
 import { endOfDay } from 'date-fns';
 import { hasRequiredRole } from 'helpers';
+import { fCurrency, rCurrency } from 'helpers/formatNumber';
 
 export default function CompHandler(props) {
   const { userToken, userInfo, isAuthenticated } = useSelector((state) => state.auth);
@@ -62,8 +63,8 @@ function UpdatePopup({ ids, title, refetch }) {
         if (res) {
           setFormData({
             ...res,
-            cost: Number(res?.cost),
-            forecast_amount: Number(res?.forecast_amount),
+            cost: fCurrency(res?.cost),
+            forecast_amount: fCurrency(res?.forecast_amount),
             workshop_id: res?.workshop?.id,
             employer_id: res?.employer?.id,
             company_id: res?.company?.id,
@@ -78,7 +79,11 @@ function UpdatePopup({ ids, title, refetch }) {
   };
 
   const onChange = ({ formData, errors }) => {
-    setFormData(formData);
+    setFormData({
+      ...formData,
+      forecast_amount: fCurrency(formData?.forecast_amount),
+      cost: fCurrency(formData?.cost),
+    });
     setFormError(Boolean(errors.length > 0));
   };
 
@@ -101,11 +106,11 @@ function UpdatePopup({ ids, title, refetch }) {
           status: formData?.status_id,
           start_date: formData?.start_date,
           end_date: formData?.end_date,
-          cost: String(formData?.cost),
+          cost: rCurrency(formData?.cost),
           number: formData?.number,
           details: formData?.details,
           operation_type_id: formData?.operation_type_id,
-          forecast_amount: String(formData?.forecast_amount),
+          forecast_amount: rCurrency(formData?.forecast_amount),
           contractual_number: formData?.contractual_number,
           is_civil: formData?.is_civil,
         },

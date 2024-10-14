@@ -51,10 +51,6 @@ const schema = {
               id
               title
             }
-            task_type {
-              id
-              title
-            }
             cost
           }
           total

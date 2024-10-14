@@ -21,6 +21,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { useSelector } from 'react-redux';
 import { hasRequiredRole } from 'helpers';
+import { fCurrency } from 'helpers/formatNumber';
 
 export default function Model({ model, delay, direction, isAssign, checked, handleSelect, refetch, color }) {
   const {
@@ -36,7 +37,7 @@ export default function Model({ model, delay, direction, isAssign, checked, hand
     { id: '4', name: 'taskType', title: model?.task_type?.title },
     { id: '5', name: 'workshop', title: model?.workshop?.title },
     { id: '6', name: 'site', title: model?.site?.title },
-    { id: '7', name: 'cost', title: model?.cost },
+    { id: '7', name: 'cost', title: fCurrency(model?.cost) },
   ];
 
   const workshopTitle = model?.workshop?.title;

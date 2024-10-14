@@ -1,5 +1,5 @@
-import { generateTemplates } from "../Templates";
-import { generateWidgets } from "../Widgets";
+import { generateTemplates } from '../Templates';
+import { generateWidgets } from '../Widgets';
 
 export function generateTheme() {
   return {

@@ -14,7 +14,7 @@ import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'c
 import { FormattedMessage } from 'react-intl';
 import { CircularProgress, Stack } from '@mui/material';
 import { descriptionId } from '@rjsf/utils';
-import { fCurrency } from 'helpers/formatNumber';
+import { fCurrency, rCurrency } from 'helpers/formatNumber';
 
 export default function UpdatePopup({ ids, title, refetch }) {
   const [open, setOpen] = useState(false);
@@ -52,6 +52,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
             material_type_id: res.material_type?.id,
             shift_type_id: res.shift_type?.id,
             is_active: Number(res.is_active),
+            cost: fCurrency(res?.cost),
             // creator_id: { id: res.creator?.id, title: `${res.creator?.firstname} ${res.creator?.lastname}` },
             // updator_id: { id: res.updator?.id, title: `${res.updator?.firstname} ${res.updator?.lastname}` },
           });
@@ -81,7 +82,7 @@ export default function UpdatePopup({ ids, title, refetch }) {
           shift_type_id: formData?.shift_type_id,
           workshop_id: formData?.workshop_id,
           site_id: formData?.site_id,
-          cost: formData?.cost,
+          cost: rCurrency(formData?.cost),
           is_active: formData?.is_active,
           description: formData?.description,
         },

@@ -52,6 +52,7 @@ export default function BaseInputTemplate(props) {
     },
     ...rest,
   };
+
   const _onChange = ({ target: { value } }) => onChange(value === '' ? options.emptyValue : digitsFaToEn(value));
   const _onBlur = ({ target: { value } }) => onBlur(id, value);
   const _onFocus = ({ target: { value } }) => onFocus(id, value);

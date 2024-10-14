@@ -8,7 +8,8 @@ import { useLazyQuery } from '@apollo/client';
 
 export default function MainModel(props) {
   const { initFilter, isPopup = false } = props;
-  const init = { max_created_at_equality: '<=', min_created_at_equality: '>=', ...initFilter };
+
+  const init = { ...initFilter };
 
   const [startFetch, setStartFetch] = useState(!isPopup);
   const [flag, setFlag] = useState(false);
@@ -25,12 +26,26 @@ export default function MainModel(props) {
   const handleSetFilter = (filter) => {
     setPage(1);
     setResult([]);
+    if (filter?.tariff) {
+      const ids = filter?.tariff;
+      handleTariff(ids);
+      // setFilter(tariff);
+    }
     setFilter(filter);
   };
 
-  const [getData, { loading }] = useLazyQuery(graph.list.query, {
+  const [getTasks, { loading }] = useLazyQuery(graph.tasks.query, {
     context: {
-      serviceName: graph.list.serviceName,
+      serviceName: graph.tasks.serviceName,
+      headers: {
+        authorization: `Bearer ${userToken}`,
+      },
+    },
+  });
+
+  const [getTariffs, { loading: tariffsLoading }] = useLazyQuery(graph.tariffs.query, {
+    context: {
+      serviceName: graph.tariffs.serviceName,
       headers: {
         authorization: `Bearer ${userToken}`,
       },
@@ -45,7 +60,7 @@ export default function MainModel(props) {
 
   const handleData = async (paginate) => {
     try {
-      const { data, error } = await getData({
+      const { data, error } = await getTasks({
         variables: {
           ...filter,
           page,
@@ -53,13 +68,54 @@ export default function MainModel(props) {
         },
       });
       if (!isEmptyObject(data) && !error) {
-        const { records, total_houre, total_service, total_shift, total_tonnage, total_cost, all_tonnage, total_cubic_meter } =
-          data[graph.list.name];
-        setReport({ total_houre, total_service, total_shift, total_tonnage, total_cost, all_tonnage, total_cubic_meter });
+        const {
+          records,
+          total_houre,
+          total_service,
+          total_shift,
+          total_tonnage,
+          total_cost,
+          all_tonnage,
+          total_cubic_meter,
+        } = data[graph.tasks.name];
+        setReport({
+          total_houre,
+          total_service,
+          total_shift,
+          total_tonnage,
+          total_cost,
+          all_tonnage,
+          total_cubic_meter,
+        });
         paginate ? setResult((prevData) => prevData.concat(records?.data)) : setResult(records?.data);
         setTotal(records?.total);
       }
     } catch (error) {}
+  };
+
+  const handleTariff = async (ids) => {
+    try {
+      const { data, error } = await getTariffs({
+        variables: {
+          ids,
+        },
+      });
+      if (!isEmptyObject(data) && !error) {
+        const res = data[graph.tariffs.name];
+        const tariff = res?.data[0];
+        setFilter((prevFilter) => ({
+          ...prevFilter,
+          task_type_ids: tariff?.task_type?.id,
+          operation_type_ids: tariff?.operation_type?.id,
+          material_type_ids: tariff?.material_type?.id,
+          workshop_ids: tariff?.workshop?.id,
+          site_ids: tariff?.site?.id,
+        }));
+        setStartFetch(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

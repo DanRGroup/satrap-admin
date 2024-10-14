@@ -121,6 +121,7 @@ export const setModelsSlice = createSlice({
       { const: '3', title: 'defile' },
       { const: '4', title: 'desert' },
       { const: '5', title: 'displacement' },
+      { const: '6', title: 'other' },
     ],
     vehicleTypes: [
       { const: '1', title: 'single_truck' },

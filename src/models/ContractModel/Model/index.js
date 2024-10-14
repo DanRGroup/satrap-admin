@@ -25,6 +25,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { useSelector } from 'react-redux';
 import { hasRequiredRole } from 'helpers';
+import { fCurrency } from 'helpers/formatNumber';
 
 export default function Model({ model, delay, direction, checked, handleSelect, refetch, color }) {
   const {
@@ -69,10 +70,10 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
     { id: '2', name: 'employer', title: getEmployerName(model) },
     { id: '3', name: 'category', title: model?.category?.title },
     { id: '4', name: 'number', title: model?.number },
-    { id: '5', name: 'cost', title: model?.cost },
-    { id: '6', name: 'operationType', title: model?.forecast_amount },
-    { id: '7', name: 'forecastAmount', title: getTotal(model) },
-    { id: '8', name: 'totalService', title: model?.progress + ' %' },
+    { id: '5', name: 'cost', title: `مبلغ : ${fCurrency(model?.cost)}` },
+    { id: '6', name: 'operationType', title: `برآورد : ${fCurrency(model?.forecast_amount)}` },
+    { id: '7', name: 'forecastAmount', title: `ثبت : ${getTotal(model)}` },
+    { id: '8', name: 'totalService', title: `پیشرفت : ${model?.progress + ' %'}` },
   ];
 
   return (
@@ -134,7 +135,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
               title={
-                <CardHeaderTitle maxWidth="120px" title={model?.title} chips={chips} />
+                <CardHeaderTitle maxWidth="130px" title={model?.title} chips={chips} />
                 // <Stack flexWrap={true}>
 
                 // </Stack>

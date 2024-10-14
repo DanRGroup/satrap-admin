@@ -12,10 +12,9 @@ export function fCurrency(number) {
   return result(format, '.00');
 }
 
-export function fCurrencyInt(number) {
-  const formatted = numeral(number).format('0,0.00');
-
-  return { formatted, value: number }; // Return both formatted string and original number
+export function rCurrency(number) {
+  const format = number.replaceAll(',', '');
+  return format;
 }
 
 export function fPercent(number) {
