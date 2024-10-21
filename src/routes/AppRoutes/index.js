@@ -26,6 +26,7 @@ const TariffModel = Loadable(lazy(() => import('models/TariffModel')));
 const TaskModel = Loadable(lazy(() => import('models/TaskModel')));
 const ContractCategoryModel = Loadable(lazy(() => import('models/ContractCategoryModel')));
 const CompanyModel = Loadable(lazy(() => import('models/CompanyModel')));
+const MUITraining = Loadable(lazy(() => import('models/MUITraining')));
 
 // import {
 //   ContractTypeModel,
@@ -85,6 +86,17 @@ export const navConfig = [
     element: <AppLayout />,
     icon: <DashboardRoundedIcon fontSize="small" />,
     children: [
+      {
+        path: '/dashboard/training',
+        url: '/dashboard/training',
+        title: 'MUI-Training',
+        element: (
+          <Page title="MUITraining">
+            <MUITraining />
+          </Page>
+        ),
+        inSidebar: true,
+      },
       {
         path: '/dashboard/managment',
         url: '/dashboard/managment',

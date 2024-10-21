@@ -40,9 +40,12 @@ export default function App() {
 
   const getContent = () => {
     if (!loading) {
-      if (isAuthenticated && hasRequiredRole(['superadmin'], userInfo?.roles)) {
-        return <SuperAdminRoutes />;
-      } else if (isAuthenticated) {
+      // if (isAuthenticated && hasRequiredRole(['superadmin'], userInfo?.roles)) {
+      //   return <SuperAdminRoutes />;
+      // } else if (isAuthenticated) {
+      //   return <AppRoutes />;
+      // }
+      if (isAuthenticated) {
         return <AppRoutes />;
       }
       return <AuthenticationRoutes />;

@@ -31,6 +31,7 @@ const NotFound = Loadable(lazy(() => import('screens/Authentication/Page404')));
 
 const Management = Loadable(lazy(() => import('screens/SuperAdminRole/Management')));
 const SuperAdminDashboard = Loadable(lazy(() => import('screens/SuperAdminRole/Dashboard')));
+const MUITraining = Loadable(lazy(() => import('models/MUITraining')));
 
 function Dashboard() {
   const { userInfo } = useSelector((state) => state.auth);
@@ -196,6 +197,17 @@ export const superAdminNavConfig = [
     element: <AppLayout />,
     icon: <DashboardRoundedIcon fontSize="small" />,
     children: [
+      {
+        path: '/dashboard/training',
+        url: '/dashboard/training',
+        title: 'MUI-Training',
+        element: (
+          <Page title="MUITraining">
+            <MUITraining />
+          </Page>
+        ),
+        inSidebar: true,
+      },
       {
         path: '/dashboard/managment',
         url: '/dashboard/managment',
