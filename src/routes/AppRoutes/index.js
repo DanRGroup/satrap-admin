@@ -89,7 +89,7 @@ export const navConfig = [
       {
         path: '/dashboard/training',
         url: '/dashboard/training',
-        title: 'MUI-Training',
+        title: 'training',
         element: (
           <Page title="MUITraining">
             <MUITraining />

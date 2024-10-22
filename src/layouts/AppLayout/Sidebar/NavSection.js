@@ -53,7 +53,7 @@ NavItem.propTypes = {
 
 function NavItem({ item, active, hasRequiredRole }) {
   const isActiveRout = active(item.url);
-  const [open, setOpen] = useState(isActiveRout);
+  const [open, setOpen] = useState(Boolean(isActiveRout));
   const { userInfo } = useSelector((state) => state.auth);
   const { title, url, icon, children = [] } = item;
 
