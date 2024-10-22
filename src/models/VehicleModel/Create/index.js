@@ -48,7 +48,9 @@ export default function CreatePopup({ title, refetch }) {
       return;
     }
     try {
+      // const owner_id = formData?.owner_type_id === '1' ? formData?.natural_owner_id : formData?.legal_owner_id;
       const { data, errors } = await formUpdate({
+        // variables: { ...formData, status: 'IDLE', owner_id: owner_id },
         variables: { ...formData, status: 'IDLE' },
       });
       if (!errors) {

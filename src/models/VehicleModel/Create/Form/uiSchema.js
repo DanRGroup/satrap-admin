@@ -1,15 +1,54 @@
-import { UsersSelectionWidget, VehicleTypeSelectionWidget } from 'components/FormWidgets';
+import { CompanySelectionWidget, UsersSelectionWidget, VehicleTypeSelectionWidget } from 'components/FormWidgets';
 
 const uiSchema = () => ({
-  'ui:order': ['plaque', '*'],
+  'ui:order': ['plaque', 'owner_type_id', 'owner_id', 'natural_owner_id', 'legal_owner_id', '*'],
+  plaque: {
+    'ui:field': 'licensePlate',
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
   owner_id: {
     'ui:widget': UsersSelectionWidget,
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
+  owner_type_id: {
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
+  natural_owner_id: {
+    'ui:widget': UsersSelectionWidget,
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
+    },
+  },
+  legal_owner_id: {
+    'ui:widget': CompanySelectionWidget,
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 12,
+      xl: 12,
     },
   },
   driver_id: {
@@ -17,9 +56,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 12,
+      lg: 12,
+      xl: 12,
     },
   },
   type_id: {
@@ -51,16 +90,7 @@ const uiSchema = () => ({
   //     xl: 6,
   //   },
   // },
-  plaque: {
-    'ui:field': 'licensePlate',
-    'ui:options': {
-      xs: 12,
-      sm: 12,
-      md: 12,
-      lg: 12,
-      xl: 12,
-    },
-  },
+
   details: {
     'ui:widget': 'textarea',
     'ui:options': {

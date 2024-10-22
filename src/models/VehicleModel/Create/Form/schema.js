@@ -2,6 +2,20 @@ const schema = (vehicleTypes, vehicleStatuses) => ({
   type: 'object',
   required: [],
   properties: {
+    plaque: {
+      type: 'string',
+      title: 'plaque',
+      // properties: {
+      //   part1: {
+      //     type: 'number',
+      //     maxLength: 3,
+      //   },
+      //   part2: {
+      //     type: 'number',
+      //     maxLength: 2,
+      //   },
+      // },
+    },
     owner_id: {
       type: 'string',
       title: 'owner',
@@ -24,25 +38,56 @@ const schema = (vehicleTypes, vehicleStatuses) => ({
     //   type: 'string',
     //   title: 'serialNumber',
     // },
-    plaque: {
-      type: 'string',
-      title: 'plaque',
-      // properties: {
-      //   part1: {
-      //     type: 'number',
-      //     maxLength: 3,
-      //   },
-      //   part2: {
-      //     type: 'number',
-      //     maxLength: 2,
-      //   },
-      // },
-    },
+    // owner_type_id: {
+    //   type: 'string',
+    //   title: 'owner_type',
+    //   oneOf: [
+    //     { const: '1', title: 'natural' },
+    //     { const: '2', title: 'legal' },
+    //   ],
+    //   default: '1',
+    // },
     details: {
       type: 'string',
       title: 'details',
     },
   },
+  // allOf: [
+  //   {
+  //     if: {
+  //       properties: {
+  //         owner_type_id: {
+  //           oneOf: [{ const: '1' }],
+  //         },
+  //       },
+  //     },
+  //     then: {
+  //       properties: {
+  //         natural_owner_id: {
+  //           type: 'string',
+  //           title: 'natural_owner',
+  //         },
+  //       },
+  //     },
+  //   },
+  //   {
+  //     if: {
+  //       properties: {
+  //         owner_type_id: {
+  //           oneOf: [{ const: '2' }],
+  //         },
+  //       },
+  //     },
+  //     then: {
+  //       properties: {
+  //         legal_owner_id: {
+  //           type: 'string',
+  //           title: 'legal_owner',
+  //         },
+  //       },
+  //     },
+  //   },
+  // ],
 });
 
 export default schema;
