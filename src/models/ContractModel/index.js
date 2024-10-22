@@ -8,7 +8,7 @@ import { useLazyQuery } from '@apollo/client';
 
 export default function MainModel(props) {
   const { initFilter, isPopup = false } = props;
-  const init = { ...initFilter };
+  const init = { ...initFilter, with_calculations: 1, category_ids: '1' };
 
   const [startFetch, setStartFetch] = useState(!isPopup);
   const [flag, setFlag] = useState(false);
@@ -19,10 +19,7 @@ export default function MainModel(props) {
   const [filter, setFilter] = useState(init);
   const { userToken } = useSelector((state) => state.auth);
 
-  const clearFilter = () => {
-    setFilter([]);
-    startFetch(true);
-  };
+  const clearFilter = () => setFilter(init);
 
   const handleSetFilter = (filter) => {
     setPage(1);
@@ -52,8 +49,6 @@ export default function MainModel(props) {
           ...filter,
           page,
           limit,
-          with_calculations: 1,
-          category_ids: '1',
         },
       });
       if (!isEmptyObject(data) && !error) {

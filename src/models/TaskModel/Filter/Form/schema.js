@@ -62,10 +62,6 @@ const schema = ({ taskTypes, taskStatuses, operationTypes, materialTypes, shiftT
         { const: '0', title: 'dont' },
       ],
     },
-    tariff: {
-      type: 'string',
-      title: 'tariff',
-    },
   },
 });
 

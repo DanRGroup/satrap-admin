@@ -7,17 +7,24 @@ import {
   Collapse,
   Checkbox,
   useTheme,
+  useMediaQuery,
   CardHeader,
   Typography,
   IconButton,
   CardContent,
+  Button,
 } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+
 import Form from './Form';
 import { ExpandMoreButton } from 'components';
 import { FormattedMessage } from 'react-intl';
 import { digitsEnToFa } from '@persian-tools/persian-tools';
 import { FilterAltOffRounded, KeyboardArrowUpRounded } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
+
+import { TariffSelectionWidget } from 'components/FormWidgets';
+import { TariffModel } from 'models';
 
 export default function Filter({
   init,
@@ -33,7 +40,9 @@ export default function Filter({
   handleSelectAllClick,
 }) {
   const theme = useTheme();
+  const [title, setTitle] = useState('');
   const [expanded, setExpanded] = useState(false);
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'), { defaultMatches: false });
 
   const {
     language: { direction },
@@ -52,6 +61,24 @@ export default function Filter({
       })
       .filter((val) => val).length
   );
+
+  const onAssign = (data, onClose) => {
+    const tariff = data[0];
+    setTitle(tariff?.title);
+    setFilter({
+      site_ids: tariff?.site_id,
+      workshop_ids: tariff?.workshop_id,
+      material_type_ids: tariff?.material_type_id,
+      shift_type_ids: tariff?.shift_type_id,
+      operation_type_ids: tariff?.operation_type_id,
+    });
+    onClose();
+  };
+
+  const clearTariff = () => {
+    setTitle('');
+    setFilter({});
+  };
 
   return (
     <>
@@ -88,6 +115,26 @@ export default function Filter({
           }
           action={
             <Stack columnGap={0.5} direction="row" alignItems="center" justifyContent="flex-end">
+              <TariffModel isPopup isAssign onAssign={onAssign}>
+                <Button variant="outlined">
+                  <Typography variant="subtitle2" sx={{ mx: 1 }}>
+                    انتخاب تعرفه
+                  </Typography>
+                  {!isMobile && <Typography variant="caption">{title || ''}</Typography>}
+                </Button>
+              </TariffModel>
+              {title && (
+                <Stack p={1} zIndex={2} alignItems="center" justifyContent="center">
+                  <IconButton
+                    color="error"
+                    onClick={clearTariff}
+                    sx={{ width: 24, height: 24, fontSize: 16, bgcolor: 'error.lighter' }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                </Stack>
+              )}
+
               <Tooltip title={<FormattedMessage id="rmFilters" />}>
                 <IconButton sx={{ bgcolor: 'info.lighter' }} size="small" color="info" onClick={clearFilter}>
                   <FilterAltOffRounded color="info" fontSize="small" />
@@ -107,6 +154,7 @@ export default function Filter({
         <Collapse in={expanded} timeout="auto">
           <CardContent sx={{ py: 0, px: 1 }}>
             <Form init={init} setFilter={setFilter} />
+            {/* <TariffSelectionWidget /> */}
           </CardContent>
         </Collapse>
       </Card>

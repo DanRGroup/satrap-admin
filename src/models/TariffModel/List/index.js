@@ -126,6 +126,11 @@ export default function List({
                   title: `${model?.task_type?.title || ''} ${model?.material_type?.title || ''} ${
                     model?.workshop?.title || ''
                   } ${model?.site?.title || ''}`,
+                  site_id: model?.site?.id,
+                  workshop_id: model?.workshop?.id,
+                  material_type_id: model?.material_type?.id,
+                  shift_type_id: model?.shift_type?.id,
+                  operation_type_id: model?.operation_type?.id,
                 })
               }
             />
