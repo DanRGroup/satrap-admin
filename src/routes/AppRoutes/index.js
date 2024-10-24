@@ -4,7 +4,9 @@ import { useSelector } from 'react-redux';
 import { hasRequiredRole } from 'helpers';
 import { Loadable, Page, PrivateRoute } from 'components';
 import { Navigate, Routes, Route } from 'react-router-dom';
+
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
+
 import { FormattedMessage } from 'react-intl';
 
 const ContractTypeModel = Loadable(lazy(() => import('models/ContractTypeModel')));
