@@ -10,7 +10,7 @@ export default function Button(theme) {
         containedInherit: {
           color: theme.palette.common.white,
           backgroundColor: theme.palette.grey[800],
-          "&:hover": {
+          '&:hover': {
             color: theme.palette.common.white,
             backgroundColor: theme.palette.grey[800],
           },
