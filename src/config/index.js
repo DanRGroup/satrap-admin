@@ -1,3 +1,4 @@
+
 export const url = 'https://core.satrapsazeh.ir';
 // export const url = 'http://core2.satrapsazeh.ir:81';
 export const mapboxAccessToken =
