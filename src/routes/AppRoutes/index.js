@@ -4,7 +4,18 @@ import { useSelector } from 'react-redux';
 import { hasRequiredRole } from 'helpers';
 import { Loadable, Page, PrivateRoute } from 'components';
 import { Navigate, Routes, Route } from 'react-router-dom';
+
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
+import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
+import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded';
+import TaskRoundedIcon from '@mui/icons-material/TaskRounded';
+import CategoryRoundedIcon from '@mui/icons-material/CategoryRounded';
+import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded';
+import WhereToVoteRoundedIcon from '@mui/icons-material/WhereToVoteRounded';
+import FireTruckRoundedIcon from '@mui/icons-material/FireTruckRounded';
+import LocationCityRoundedIcon from '@mui/icons-material/LocationCityRounded';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+
 import { FormattedMessage } from 'react-intl';
 
 const ContractTypeModel = Loadable(lazy(() => import('models/ContractTypeModel')));

@@ -23,9 +23,6 @@ import { AvatarPopover, NewSpeedDial, CardHeaderTitle } from 'components';
 import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 
-import IranLicensePlate from 'iran-license-plate';
-import 'iran-license-plate/dist/License.css';
-
 export default function Model({ model, delay, direction, checked, handleSelect, refetch, color }) {
   const {
     language: { direction: dir },
