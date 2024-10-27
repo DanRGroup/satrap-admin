@@ -15,6 +15,8 @@ import WhereToVoteRoundedIcon from '@mui/icons-material/WhereToVoteRounded';
 import FireTruckRoundedIcon from '@mui/icons-material/FireTruckRounded';
 import LocationCityRoundedIcon from '@mui/icons-material/LocationCityRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import BusinessRoundedIcon from '@mui/icons-material/BusinessRounded';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -105,6 +107,7 @@ export const navConfig = [
             <Management />
           </Page>
         ),
+        icon: <ManageAccountsRoundedIcon fontSize="small" />,
         inSidebar: true,
       },
       {
@@ -116,6 +119,7 @@ export const navConfig = [
             <ContractModel />
           </Page>
         ),
+        icon: <EditNoteRoundedIcon fontSize="small" />,
         inSidebar: true,
         roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
       },
@@ -128,6 +132,7 @@ export const navConfig = [
             <ContractCategoryModel />
           </Page>
         ),
+        icon: <CategoryRoundedIcon fontSize="small" />,
         inSidebar: true,
         roles: ['superadmin', 'companyCeo'],
       },
@@ -140,6 +145,7 @@ export const navConfig = [
             <TaskModel />
           </Page>
         ),
+        icon: <TaskRoundedIcon fontSize="small" />,
         inSidebar: true,
       },
       {
@@ -151,6 +157,7 @@ export const navConfig = [
             <TariffModel />
           </Page>
         ),
+        icon: <ImportContactsRoundedIcon fontSize="small" />,
         inSidebar: true,
         roles: ['superadmin', 'companyCeo'],
       },
@@ -163,6 +170,7 @@ export const navConfig = [
             <SiteModel />
           </Page>
         ),
+        icon: <WhereToVoteRoundedIcon fontSize="small" />,
         inSidebar: true,
         roles: ['superadmin', 'siteManager', 'companyCeo'],
       },
@@ -175,6 +183,7 @@ export const navConfig = [
             <VehicleModel />
           </Page>
         ),
+        icon: <FireTruckRoundedIcon fontSize="small" />,
         inSidebar: true,
       },
       {
@@ -186,6 +195,7 @@ export const navConfig = [
             <WorkshopModel />
           </Page>
         ),
+        icon: <LocationCityRoundedIcon fontSize="small" />,
         inSidebar: true,
         roles: ['superadmin', 'workshopManager', 'companyCeo'],
       },
@@ -198,6 +208,7 @@ export const navConfig = [
             <UserModel />
           </Page>
         ),
+        icon: <AccountCircleRoundedIcon fontSize="small" />,
         inSidebar: true,
         roles: ['superadmin', 'companyCeo', 'workshopManager', 'companyOperator', 'companyFinancial'],
       },
@@ -210,6 +221,7 @@ export const navConfig = [
             <CompanyModel />
           </Page>
         ),
+        icon: <BusinessRoundedIcon fontSize="small" />,
         inSidebar: true,
         roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
       },
@@ -221,7 +233,7 @@ export const navConfig = [
     title: 'setting',
     inSidebar: true,
     element: <AppLayout />,
-    icon: <DashboardRoundedIcon fontSize="small" />,
+    icon: <SettingsIcon fontSize="small" />,
     roles: ['superadmin'],
     children: [
       { element: <Navigate to="/app" replace /> },

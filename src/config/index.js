@@ -1,4 +1,4 @@
-export const url = 'https://core.satrapsazeh.ir';
+export const url = 'http://core.satrapsazeh.ir';
 // export const url = 'http://core2.satrapsazeh.ir:81';
 export const mapboxAccessToken =
   'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';

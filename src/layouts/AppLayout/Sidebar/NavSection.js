@@ -103,7 +103,7 @@ function NavItem({ item, active, hasRequiredRole }) {
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             {children.map((item, index) => {
-              const { title, url, inSidebar = false, roles } = item;
+              const { title, url, inSidebar = false, roles, icon } = item;
               const isActiveSub = active(url);
 
               if (inSidebar && hasRequiredRole(roles, userInfo?.roles)) {
@@ -115,7 +115,7 @@ function NavItem({ item, active, hasRequiredRole }) {
                     sx={{ my: 0.2, ...(isActiveSub && activeSubStyle) }}
                   >
                     <ListItemIconStyle sx={{ mx: 1 }}>
-                      <Box
+                      {/* <Box
                         component="span"
                         sx={{
                           width: 4,
@@ -131,7 +131,8 @@ function NavItem({ item, active, hasRequiredRole }) {
                             bgcolor: 'text.primary',
                           }),
                         }}
-                      />
+                      /> */}
+                      {icon}
                     </ListItemIconStyle>
                     <ListItemText
                       primary={<FormattedMessage id={title} />}
