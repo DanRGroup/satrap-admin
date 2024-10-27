@@ -15,6 +15,7 @@ const uiSchema = () => ({
   driver_id: {
     'ui:widget': UsersSelectionWidget,
     'ui:options': {
+      initFilter: { type_id: '9' },
       xs: 12,
       sm: 12,
       md: 6,

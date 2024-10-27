@@ -75,7 +75,6 @@
     "date-fns": "^3.6.0",
     "firebase": "^10.7.1",
     "graphql": "^16.6.0",
-    "iran-license-plate": "^0.3.12",
     "jwt-decode": "^3.1.2",
     "mapbox-gl": "^3.3.0",
     "mapir-react-component": "^2.0.7",

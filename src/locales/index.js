@@ -3,6 +3,8 @@ import { Category } from '@mui/icons-material';
 
 const locales = {
   en: {
+    training: 'Train Menu',
+
     brand: 'Satrapsazeh',
     brand_title: 'Opartion Control System',
     welcome: 'Welcome Back...!',
@@ -292,6 +294,8 @@ const locales = {
     OrdersWidget: 'OrdersWidget',
   },
   fa: {
+    training: 'منوی تمرینی',
+
     brand: 'ساتراپ سازه',
     brand_title: 'سامانه کنترل عملیات عمرانی',
     welcome: 'خوش آمدید...!',
