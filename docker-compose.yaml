@@ -3,9 +3,11 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+    container_name: satrap-admin
     networks:
-      - satrap-shared
+      - shared
+    restart: unless-stopped
 
 networks:
-  satrap-shared:
+  shared:
     external: true
