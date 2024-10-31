@@ -25,15 +25,23 @@ export const primary = {
   darker: '#042174',
   contrastText: '#FFFFFF',
 };
-
 export const secondary = {
-  lighter: '#EFD6FF',
-  light: '#C684FF',
-  main: '#8E33FF',
-  dark: '#5119B7',
-  darker: '#27097A',
+  lighter: '#86b25f',
+  light: '#5b874b',
+  main: '#689f38',
+  dark: '#486f27',
+  darker: '#234915',
   contrastText: '#FFFFFF',
 };
+
+// export const secondary = {
+//   lighter: '#EFD6FF',
+//   light: '#C684FF',
+//   main: '#8E33FF',
+//   dark: '#5119B7',
+//   darker: '#27097A',
+//   contrastText: '#FFFFFF',
+// };
 
 export const info = {
   lighter: '#CAFDF5',

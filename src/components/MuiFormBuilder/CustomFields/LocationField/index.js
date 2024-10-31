@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
+import { toast } from 'react-toastify';
 
 import { useGeolocation } from 'hooks/geoHook';
 import ReactMapboxGl, {
@@ -15,17 +16,63 @@ import SearchAddress from './SearchAddress';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { setRTLTextPlugin, getRTLTextPluginStatus } from 'mapbox-gl';
-import { Box, styled } from '@mui/material';
+import { Box, Button, CircularProgress, styled } from '@mui/material';
+import MyLocationRoundedIcon from '@mui/icons-material/MyLocationRounded';
 
 const Map = ReactMapboxGl({
   accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA',
   // interactive: !disabled,
 });
 
+const codes = [
+  'نیاز به مجوز دسترسی مکان',
+  'به دست آوردن موقعیت جغرافیایی ناموفق بود',
+  'زمان دریافت اطلاعات مکانی پایان یافت',
+];
+
 const LocationFieldTemplate = (props) => {
   const { formData, onChange, disabled } = props;
   const state = useGeolocation();
   const [center, setCenter] = useState([state.longitude, state.latitude]);
+  const {
+    error,
+    latitude,
+    longitude,
+    loading: finding,
+  } = useGeolocation({
+    enableHighAccuracy: true,
+    // maximumAge: 5000,
+    // timeout: 10000,
+  });
+
+  function handleLocationClick() {
+    console.log('navigator.geolocation', navigator.geolocation);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, errorMessage);
+    } else {
+      console.log('Geolocation not supported');
+    }
+  }
+
+  function success(position) {
+    console.log('success');
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    setCenter([latitude, longitude]);
+    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+  }
+
+  function errorMessage() {
+    console.log('Unable to retrieve your location');
+  }
+
+  const findMe = () => {
+    if (error) {
+      toast.error(codes[error?.code]);
+    } else if (!finding) {
+      return setCenter([longitude, latitude]);
+    }
+  };
 
   useEffect(() => {
     const status = getRTLTextPluginStatus();
@@ -100,6 +147,18 @@ const LocationFieldTemplate = (props) => {
         <Box sx={{ position: 'absolute', top: 4, left: 4, right: 4, zIndex: 1 }}>
           <SearchAddress changeCenter={changeCenter} />
         </Box>
+        <Button
+          size="small"
+          color="primary"
+          onClick={findMe}
+          variant="contained"
+          endIcon={
+            finding ? <CircularProgress size={20} color="inherit" /> : <MyLocationRoundedIcon fontSize="small" />
+          }
+          sx={{ position: 'absolute', bottom: 4, right: 4, zIndex: 10 }}
+        >
+          مرا پیدا کن
+        </Button>
       </Card>
     </>
   );
