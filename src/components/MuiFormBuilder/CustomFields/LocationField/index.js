@@ -45,27 +45,6 @@ const LocationFieldTemplate = (props) => {
     // timeout: 10000,
   });
 
-  function handleLocationClick() {
-    console.log('navigator.geolocation', navigator.geolocation);
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, errorMessage);
-    } else {
-      console.log('Geolocation not supported');
-    }
-  }
-
-  function success(position) {
-    console.log('success');
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    setCenter([latitude, longitude]);
-    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-  }
-
-  function errorMessage() {
-    console.log('Unable to retrieve your location');
-  }
-
   const findMe = () => {
     if (error) {
       toast.error(codes[error?.code]);
