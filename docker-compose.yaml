@@ -1,0 +1,13 @@
+services:
+  satrap-admin-app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: satrap-admin
+    networks:
+      - shared
+    restart: unless-stopped
+
+networks:
+  shared:
+    external: true
