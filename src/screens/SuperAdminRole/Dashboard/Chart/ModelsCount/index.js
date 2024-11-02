@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import graph from '../graph';
 
 import Grid from '@mui/material/Unstable_Grid2';
+import Box from '@mui/material/Box';
 
 import AppWidgetSummary from '../app-widget-summary';
 
@@ -117,7 +118,7 @@ export default function ModelsCount() {
           title="کاربران"
           total={totalUsers}
           color="success"
-          icon={<img alt="icon" src="/assets/icons/glass/patients.png" />}
+          icon={<Box component="img" src="/assets/icons/glass/patients.png" alt="icon" />}
         />
       </Grid>
 
@@ -126,7 +127,7 @@ export default function ModelsCount() {
           title="محل‌ها"
           total={totalSites}
           color="info"
-          icon={<img alt="icon" src="/assets/icons/glass/clinics.png" />}
+          icon={<Box component="img" src="/assets/icons/glass/clinics.png" alt="icon" />}
         />
       </Grid>
 
@@ -136,7 +137,7 @@ export default function ModelsCount() {
           total={totalWorkshops}
           color="warning"
           // url="/orders/new"
-          icon={<img alt="icon" src="/assets/icons/glass/orders.png" />}
+          icon={<Box component="img" src="/assets/icons/glass/orders.png" alt="icon" />}
         />
       </Grid>
 
@@ -145,7 +146,7 @@ export default function ModelsCount() {
           title="تعرفه‌ها"
           total={totalTariffs}
           color="error"
-          icon={<img alt="icon" src="/assets/icons/glass/doctors.png" />}
+          icon={<Box component="img" src="/assets/icons/glass/doctors.png" alt="icon" />}
         />
       </Grid>
     </>
