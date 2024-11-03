@@ -19,6 +19,7 @@ const schema = (contractTypes, contractStatuses) => ({
     type_ids: {
       type: 'string',
       title: 'contract_type',
+      default: undefined,
       oneOf: contractTypes,
     },
     workshop_ids: {
@@ -28,6 +29,7 @@ const schema = (contractTypes, contractStatuses) => ({
     status: {
       type: 'string',
       title: 'status',
+      default: undefined,
       oneOf: contractStatuses,
     },
     // number: {
