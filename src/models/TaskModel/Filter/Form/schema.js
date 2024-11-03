@@ -21,6 +21,7 @@ const schema = ({ taskTypes, taskStatuses, operationTypes, materialTypes, shiftT
     type_ids: {
       type: 'string',
       title: 'task_type',
+      default: undefined,
       oneOf: taskTypes,
     },
 
@@ -42,6 +43,7 @@ const schema = ({ taskTypes, taskStatuses, operationTypes, materialTypes, shiftT
     status_ids: {
       type: 'string',
       title: 'task_status',
+      default: undefined,
       oneOf: taskStatuses,
     },
     min_created_at: {
@@ -57,6 +59,7 @@ const schema = ({ taskTypes, taskStatuses, operationTypes, materialTypes, shiftT
     match_location: {
       type: 'string',
       title: 'match_location',
+      default: undefined,
       oneOf: [
         { const: '1', title: 'do' },
         { const: '0', title: 'dont' },

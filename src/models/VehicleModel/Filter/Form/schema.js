@@ -21,11 +21,13 @@ const schema = (vehicleTypes, vehicleStatuses) => ({
     status_ids: {
       type: 'string',
       title: 'vehicle_status',
+      default: undefined,
       oneOf: vehicleStatuses,
     },
     type_ids: {
       type: 'string',
       title: 'vehicle_type',
+      default: undefined,
       oneOf: vehicleTypes,
     },
   },

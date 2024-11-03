@@ -5,6 +5,7 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
     task_type_ids: {
       type: 'string',
       title: 'task_type',
+      default: undefined,
       oneOf: taskTypes,
     },
     operation_type_ids: {
@@ -33,6 +34,7 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
     is_active: {
       type: 'number',
       title: 'activity',
+      default: undefined,
       oneOf: [
         { const: 1, title: 'active' },
         { const: 0, title: 'inactive' },

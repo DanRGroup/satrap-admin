@@ -11,7 +11,6 @@ const uiSchema = () => ({
     },
   },
   is_active: {
-    'ui:emptyValue': '',
     'ui:widget': 'radio',
     'ui:options': {
       inline: true,
@@ -23,7 +22,6 @@ const uiSchema = () => ({
     },
   },
   status_ids: {
-    'ui:emptyValue': '',
     'ui:options': {
       xs: 6,
       sm: 6,

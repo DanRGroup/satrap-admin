@@ -40,7 +40,6 @@ const uiSchema = () => ({
     },
   },
   status_ids: {
-    'ui:emptyValue': '',
     'ui:options': {
       xs: 6,
       sm: 6,
@@ -50,7 +49,6 @@ const uiSchema = () => ({
     },
   },
   type_ids: {
-    'ui:emptyValue': '',
     'ui:options': {
       xs: 6,
       sm: 6,

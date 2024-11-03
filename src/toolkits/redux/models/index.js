@@ -17,14 +17,12 @@ export const setModelsSlice = createSlice({
   initialState: {
     test: [],
     contractTypes: [
-      { const: undefined, title: '---' },
       { const: '1', title: 'natural_official' },
       { const: '2', title: 'natural_agreement' },
       { const: '3', title: 'legal_official' },
       { const: '4', title: 'legal_agreement' },
     ],
     contractStatuses: [
-      { const: undefined, title: '---' },
       { const: 'REGISTERED', title: 'registered' },
       { const: 'DOING', title: 'doing' },
       { const: 'DONED', title: 'done' },

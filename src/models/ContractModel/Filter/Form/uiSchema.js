@@ -46,7 +46,6 @@ const uiSchema = () => ({
   },
   type_ids: {
     // 'ui:widget': ContractTypeSelectionWidget,
-    // 'ui:emptyValue': '',
     'ui:options': {
       xs: 12,
       sm: 12,
@@ -76,7 +75,6 @@ const uiSchema = () => ({
     },
   },
   status: {
-    // 'ui:emptyValue': '',
     'ui:options': {
       xs: 12,
       sm: 12,
