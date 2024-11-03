@@ -44,6 +44,7 @@ const locales = {
     newOrder: 'New Order',
 
     // Forms
+    chooseOne: 'Choose one option',
     login: 'Login',
     id: 'ID',
     title: 'Title',
@@ -335,6 +336,7 @@ const locales = {
     newOrder: 'ثبت سفارش',
 
     // Forms
+    chooseOne: 'یک مورد را انتخاب کنید',
     login: 'ورود',
     id: 'شناسه',
     title: 'عنوان',
