@@ -65,6 +65,7 @@ const uiSchema = () => ({
     },
   },
   type_ids: {
+    'ui:emptyValue': '',
     'ui:options': {
       xs: 6,
       sm: 6,
@@ -105,6 +106,7 @@ const uiSchema = () => ({
   },
   status_ids: {
     // 'ui:widget': TasksStatusSelectionWidget,
+    'ui:emptyValue': '',
     'ui:options': {
       xs: 6,
       sm: 6,
@@ -133,6 +135,7 @@ const uiSchema = () => ({
     },
   },
   match_location: {
+    'ui:emptyValue': '',
     'ui:widget': 'radio',
     'ui:options': {
       inline: true,

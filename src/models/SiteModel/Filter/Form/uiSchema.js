@@ -21,6 +21,7 @@ const uiSchema = () => ({
     },
   },
   type_ids: {
+    'ui:emptyValue': '',
     'ui:options': {
       xs: 6,
       sm: 6,
@@ -30,6 +31,7 @@ const uiSchema = () => ({
     },
   },
   status: {
+    'ui:emptyValue': '',
     'ui:options': {
       xs: 6,
       sm: 6,
@@ -39,6 +41,7 @@ const uiSchema = () => ({
     },
   },
   is_active: {
+    'ui:emptyValue': '',
     'ui:widget': 'radio',
     'ui:options': {
       inline: true,

@@ -32,6 +32,7 @@ const uiSchema = () => ({
     },
   },
   role_id: {
+    'ui:emptyValue': '',
     'ui:options': {
       xs: 4,
       sm: 4,
@@ -41,6 +42,7 @@ const uiSchema = () => ({
     },
   },
   type_ids: {
+    'ui:emptyValue': '',
     'ui:options': {
       xs: 4,
       sm: 4,
@@ -50,6 +52,7 @@ const uiSchema = () => ({
     },
   },
   status_ids: {
+    'ui:emptyValue': '',
     'ui:options': {
       xs: 4,
       sm: 4,
