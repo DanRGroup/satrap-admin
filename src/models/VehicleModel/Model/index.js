@@ -104,48 +104,54 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               <CardHeader
                 sx={{ px: 0.5, pl: 13 }}
                 title={
-                  // <Typography maxHeight="auto" fontSize={8}>
-                  //     <IranLicensePlate serial={`IR13-${plaque.slice(2, 5)}A${plaque.slice(0, 2)}`} />
-                  //   </Typography>
-                  <Stack
-                    alignItems={isMobile ? 'flex-start' : 'center'}
-                    direction={isMobile ? 'column' : 'row'}
-                    rowGap={1}
-                  >
-                    <Card variant="outlined" sx={{ width: 200, height: 42, bgcolor: 'warning.main', borderRadius: 1 }}>
-                      <CardContent sx={{ p: 0 }}>
-                        <Stack width="100%" height="100%" direction="row">
-                          <Stack flex={3} alignItems="center" justifyContent="center" columnGap={3}>
-                            <Typography variant="subtitle2">ایران</Typography>
-                            <Typography variant="subtitle2">13</Typography>
-                          </Stack>
-                          <Divider orientation="vertical" flexItem sx={{ bgcolor: 'black' }} />
-                          <Stack direction="row" flex={10} alignItems="center" justifyContent="center" columnGap={1}>
-                            <Typography fontSize={22} fontWeight="bold">
-                              {plaque.slice(2, 6)}
-                            </Typography>
-                            <Typography fontSize={22} fontWeight="bold">
-                              ع
-                            </Typography>
-                            <Typography fontSize={22} fontWeight="bold">
-                              {plaque.slice(0, 2)}
-                            </Typography>
-                          </Stack>
-                          <Divider orientation="vertical" flexItem sx={{ bgcolor: 'black' }} />
-                          <Divider orientation="vertical" flexItem />
-                          <Stack bgcolor="info.dark" flex={1} alignItems="center" justifyContent="center">
-                            <Stack alignItems="center">
-                              <Box component="img" src="/assets/icons/fa.webp" alt="IRAN" />
-                              <Typography fontWeight="bold" fontSize={10}>
-                                IRAN
+                  plaque ? ( // <Typography maxHeight="auto" fontSize={8}>
+                    //     <IranLicensePlate serial={`IR13-${plaque.slice(2, 5)}A${plaque.slice(0, 2)}`} />
+                    //   </Typography>
+                    <Stack
+                      alignItems={isMobile ? 'flex-start' : 'center'}
+                      direction={isMobile ? 'column' : 'row'}
+                      rowGap={1}
+                    >
+                      <Card
+                        variant="outlined"
+                        sx={{ width: 200, height: 42, bgcolor: 'warning.main', borderRadius: 1 }}
+                      >
+                        <CardContent sx={{ p: 0 }}>
+                          <Stack width="100%" height="100%" direction="row">
+                            <Stack flex={3} alignItems="center" justifyContent="center" columnGap={3}>
+                              <Typography variant="subtitle2">ایران</Typography>
+                              <Typography variant="subtitle2">13</Typography>
+                            </Stack>
+                            <Divider orientation="vertical" flexItem sx={{ bgcolor: 'black' }} />
+                            <Stack direction="row" flex={10} alignItems="center" justifyContent="center" columnGap={1}>
+                              <Typography fontSize={22} fontWeight="bold">
+                                {plaque.slice(2, 6)}
+                              </Typography>
+                              <Typography fontSize={22} fontWeight="bold">
+                                ع
+                              </Typography>
+                              <Typography fontSize={22} fontWeight="bold">
+                                {plaque.slice(0, 2)}
                               </Typography>
                             </Stack>
+                            <Divider orientation="vertical" flexItem sx={{ bgcolor: 'black' }} />
+                            <Divider orientation="vertical" flexItem />
+                            <Stack bgcolor="info.dark" flex={1} alignItems="center" justifyContent="center">
+                              <Stack alignItems="center">
+                                <Box component="img" src="/assets/icons/fa.webp" alt="IRAN" />
+                                <Typography fontWeight="bold" fontSize={10}>
+                                  IRAN
+                                </Typography>
+                              </Stack>
+                            </Stack>
                           </Stack>
-                        </Stack>
-                      </CardContent>
-                    </Card>
-                    <CardHeaderTitle chips={chips} />
-                  </Stack>
+                        </CardContent>
+                      </Card>
+                      <CardHeaderTitle chips={chips} />
+                    </Stack>
+                  ) : (
+                    <CardHeaderTitle titleWidth={400} title={`شماره سریال : ${model?.serial_number}`} chips={chips} />
+                  )
                 }
                 // subheader={
                 //   <Typography fontSize={12} variant="subtitle2">
