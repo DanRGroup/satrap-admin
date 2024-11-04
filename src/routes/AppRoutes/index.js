@@ -74,7 +74,11 @@ function Dashboard() {
   // if (hasRequiredRole(['superadmin', 'operator'], userInfo?.roles)) {
   //   return <SuperAdminDashboard />;
   // }
-  return <SuperAdminDashboard />;
+  return (
+    <Page title="داشبورد">
+      <SuperAdminDashboard />
+    </Page>
+  );
 }
 
 export const navConfig = [
@@ -103,7 +107,7 @@ export const navConfig = [
         url: '/dashboard/managment',
         title: 'managment',
         element: (
-          <Page title="Managment">
+          <Page title="مدیریت">
             <Management />
           </Page>
         ),
@@ -115,7 +119,7 @@ export const navConfig = [
         url: '/dashboard/contracts',
         title: 'contracts',
         element: (
-          <Page title="Contracts">
+          <Page title="قراردادها">
             <ContractModel />
           </Page>
         ),
@@ -141,7 +145,7 @@ export const navConfig = [
         url: '/dashboard/task',
         title: 'tasks',
         element: (
-          <Page title="Tasks">
+          <Page title="فعالیت‌ها">
             <TaskModel />
           </Page>
         ),
@@ -153,7 +157,7 @@ export const navConfig = [
         url: '/dashboard/tarrif',
         title: 'tariffs',
         element: (
-          <Page title="Tariffs">
+          <Page title="تعرفه‌ها">
             <TariffModel />
           </Page>
         ),
@@ -166,7 +170,7 @@ export const navConfig = [
         url: '/dashboard/sites',
         title: 'sites',
         element: (
-          <Page title="Sites">
+          <Page title="محل‌های تخلیه">
             <SiteModel />
           </Page>
         ),
@@ -179,7 +183,7 @@ export const navConfig = [
         url: '/dashboard/vehicles',
         title: 'vehicles',
         element: (
-          <Page title="Vehicles">
+          <Page title="ماشین‌آلات">
             <VehicleModel />
           </Page>
         ),
@@ -191,7 +195,7 @@ export const navConfig = [
         url: '/dashboard/workshop',
         title: 'workshops',
         element: (
-          <Page title="Workshops">
+          <Page title="کارگاه‌ها">
             <WorkshopModel />
           </Page>
         ),
@@ -204,7 +208,7 @@ export const navConfig = [
         url: '/dashboard/users',
         title: 'users',
         element: (
-          <Page title="Users">
+          <Page title="کاربران">
             <UserModel />
           </Page>
         ),
@@ -217,7 +221,7 @@ export const navConfig = [
         url: '/dashboard/companies',
         title: 'companies',
         element: (
-          <Page title="Companies">
+          <Page title="شرکت‌ها">
             <CompanyModel />
           </Page>
         ),
@@ -250,7 +254,7 @@ export const navConfig = [
         url: '/setting/contract-types',
         title: 'contract_types',
         element: (
-          <Page title="Contract">
+          <Page title="انواع قرارداد">
             <ContractTypeModel />
           </Page>
         ),
@@ -262,7 +266,7 @@ export const navConfig = [
         url: '/setting/material-types',
         title: 'material_types',
         element: (
-          <Page title="Material">
+          <Page title="انواع مصالح">
             <MaterialTypeModel />
           </Page>
         ),
@@ -274,7 +278,7 @@ export const navConfig = [
         url: '/setting/operation-types',
         title: 'operation_types',
         element: (
-          <Page title="Operations">
+          <Page title="انواع کارکرد">
             <OperationTypeModel />
           </Page>
         ),
@@ -286,7 +290,7 @@ export const navConfig = [
         url: '/setting/shift-types',
         title: 'shift_types',
         element: (
-          <Page title="Actions">
+          <Page title="انواع شیفت">
             <ShiftTypeModel />
           </Page>
         ),
@@ -298,7 +302,7 @@ export const navConfig = [
         url: '/setting/site-types',
         title: 'site_types',
         element: (
-          <Page title="Sites">
+          <Page title="انواع محل">
             <SiteTypeModel />
           </Page>
         ),
@@ -310,7 +314,7 @@ export const navConfig = [
         url: '/setting/vehicle-types',
         title: 'vehicle_types',
         element: (
-          <Page title="Sites">
+          <Page title="انواع ماشین">
             <VehicleTypeModel />
           </Page>
         ),
@@ -322,7 +326,7 @@ export const navConfig = [
         url: '/setting/task-status',
         title: 'task_status',
         element: (
-          <Page title="Tasks">
+          <Page title="وضعیت‌های فعالیت">
             <TaskStatusModel />
           </Page>
         ),
@@ -334,7 +338,7 @@ export const navConfig = [
         url: '/setting/task-types',
         title: 'task_types',
         element: (
-          <Page title="Tasks">
+          <Page title="انواع فعالیت">
             <TaskTypeModel />
           </Page>
         ),
@@ -346,7 +350,7 @@ export const navConfig = [
         url: '/setting/workshop-status',
         title: 'workshop_status',
         element: (
-          <Page title="WorkShop">
+          <Page title="وضعیت‌های کارگاه">
             <WorkshopStatusModel />
           </Page>
         ),
@@ -358,7 +362,7 @@ export const navConfig = [
         url: '/setting/user-status',
         title: 'user_status',
         element: (
-          <Page title="UserStatus">
+          <Page title="وضعیت‌های کاربران">
             <UserStatusModel />
           </Page>
         ),
