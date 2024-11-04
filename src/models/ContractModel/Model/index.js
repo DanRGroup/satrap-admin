@@ -135,7 +135,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
               title={
-                <CardHeaderTitle maxWidth="130px" title={model?.title} chips={chips} />
+                <CardHeaderTitle chipWidth="130px" title={model?.title} chips={chips} />
                 // <Stack flexWrap={true}>
 
                 // </Stack>

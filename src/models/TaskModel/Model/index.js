@@ -106,7 +106,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
               title={
-                <CardHeaderTitle maxWidth="140px" title={getUserFullName(model) || '( بدون نام )'} chips={chips} />
+                <CardHeaderTitle chipWidth="140px" title={getUserFullName(model) || '( بدون نام )'} chips={chips} />
               }
               // subheader={
               //   <Typography fontSize={12} variant="subtitle2">
