@@ -64,9 +64,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 4,
-      lg: 4,
-      xl: 4,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   category_id: {
@@ -93,9 +93,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 4,
-      lg: 4,
-      xl: 4,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   employer_id: {
@@ -103,9 +103,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 4,
-      lg: 4,
-      xl: 4,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   company_id: {
@@ -113,9 +113,9 @@ const uiSchema = () => ({
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 4,
-      lg: 4,
-      xl: 4,
+      md: 6,
+      lg: 6,
+      xl: 6,
     },
   },
   operation_type_id: {

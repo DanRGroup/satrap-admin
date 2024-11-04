@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 import { forwardRef } from 'react';
 import { Box } from '@mui/material';
+import { FormattedMessage } from 'react-intl';
 
 // ----------------------------------------------------------------------
 
 const Page = forwardRef(({ children, title = '', meta, ...other }, ref) => (
   <Box ref={ref} {...other}>
     <Helmet>
-      <title>{title}</title>
+      <title>ساتراپ - {title}</title>
       {meta}
     </Helmet>
     {children}

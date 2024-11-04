@@ -30,6 +30,7 @@ const schema = (siteTypes) => ({
     is_active: {
       type: 'number',
       title: 'activity',
+      default: 1,
       oneOf: [
         { const: 1, title: 'active' },
         { const: 0, title: 'inactive' },

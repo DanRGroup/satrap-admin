@@ -14,11 +14,11 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
       type: 'string',
       title: 'contract_cost',
     },
-    status: {
-      type: 'string',
-      title: 'status',
-      oneOf: contractStatuses,
-    },
+    // status: {
+    //   type: 'string',
+    //   title: 'status',
+    //   oneOf: contractStatuses,
+    // },
     type_id: {
       type: 'string',
       title: 'contract_type',
@@ -60,6 +60,7 @@ const schema = (contractTypes, contractStatuses, operationTypes) => ({
     is_civil: {
       type: 'number',
       title: 'civil_project',
+      default: null,
       oneOf: [
         { const: 1, title: 'yes' },
         { const: 0, title: 'no' },

@@ -13,6 +13,7 @@ const schema = (vehicleTypes) => ({
     type_id: {
       type: 'string',
       title: 'vehicle_type',
+      default: undefined,
       oneOf: vehicleTypes,
     },
     serial_number: {
