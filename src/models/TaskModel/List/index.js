@@ -13,6 +13,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { useSelector } from 'react-redux';
 import { hasRequiredRole } from 'helpers';
+import { fCurrency } from 'helpers/formatNumber';
 
 export default function List({
   page,
@@ -83,6 +84,19 @@ export default function List({
     refetch();
   };
 
+  const totalAmounts = (
+    <Box sx={{ textAlign: 'center' }}>
+      {total_houre && <Chip label={`جمع ساعت : ${fCurrency(total_houre)}`} />}
+      {total_service && <Chip label={`جمع سرویس : ${fCurrency(total_service)}`} />}
+      {total_shift && <Chip label={`جمع شیفت : ${fCurrency(total_shift)}`} />}
+      {total_tonnage && <Chip label={`تناژ قرادادی : ${fCurrency(total_tonnage)}`} />}
+      {total_cost && <Chip label={`جمع هزینه‌ها : ${fCurrency(total_cost)}`} />}
+      {all_tonnage && <Chip label={`کل تناژ : ${fCurrency(all_tonnage)}`} />}
+      {total_cubic_meter && <Chip label={`جمع مترمکعب : ${fCurrency(total_cubic_meter)}`} />}
+      {all_tonnage && <Chip sx={{ ml: 1 }} label={`کل تناژ : ${all_tonnage}`} />}
+    </Box>
+  );
+
   return (
     <>
       {isAssign && multiSelect && (
@@ -111,17 +125,7 @@ export default function List({
           isPopup={isPopup}
         />
       </NewDialogTitle>
-      {isMobile && (
-        <Box sx={{ textAlign: 'center' }}>
-          {total_houre && <Chip label={`جمع ساعت : ${total_houre}`} />}
-          {total_service && <Chip label={`جمع سرویس : ${total_service}`} />}
-          {total_shift && <Chip label={`جمع شیفت : ${total_shift}`} />}
-          {total_tonnage && <Chip label={`تناژ قرادادی : ${total_tonnage}`} />}
-          {total_cost && <Chip label={`جمع هزینه‌ها : ${total_cost}`} />}
-          {all_tonnage && <Chip label={`کل تناژ : ${all_tonnage}`} />}
-          {total_cubic_meter && <Chip label={`جمع مترمکعب : ${total_cubic_meter}`} />}
-        </Box>
-      )}
+      {isMobile && totalAmounts}
       <NewDialogContent>
         <Stack p={0.5} rowGap={0.5} minHeight={isPopup ? 'calc(100vh - 245px)' : 'calc(100vh - 264px)'}>
           {result.map((model, i) => (
@@ -141,18 +145,7 @@ export default function List({
         </Stack>
       </NewDialogContent>
       <NewDialogActions isPopup={isPopup}>
-        {!isMobile && (
-          <Box>
-            {total_houre && <Chip label={`جمع ساعت : ${total_houre}`} />}
-            {total_service && <Chip label={`جمع سرویس : ${total_service}`} />}
-            {total_shift && <Chip label={`جمع شیفت : ${total_shift}`} />}
-            {total_tonnage && <Chip label={`جمع تناژ : ${total_tonnage}`} />}
-            {total_cost && <Chip label={`جمع هزینه‌ها : ${total_cost}`} />}
-            {total_cubic_meter && <Chip label={`جمع مترمکعب : ${total_cubic_meter}`} />}
-            {all_tonnage && <Chip sx={{ ml: 1 }} label={`کل تناژ : ${all_tonnage}`} />}
-          </Box>
-        )}
-
+        {!isMobile && totalAmounts}
         <Tooltip title={<FormattedMessage id="refresh" />}>
           <IconButton sx={{ bgcolor: 'action.selected', color: '#fff' }} size="medium" onClick={refresh}>
             {loading ? (

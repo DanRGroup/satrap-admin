@@ -101,7 +101,7 @@ export default function Model({ model, delay, direction, isAssign, checked, hand
               sx={{ px: 0.5, pl: 13 }}
               title={
                 <CardHeaderTitle
-                  maxWidth="130px"
+                  chipWidth="130px"
                   title={`${taskType} ${workshopTitle ? ' - ' + workshopTitle : ''}`}
                   chips={chips}
                 />

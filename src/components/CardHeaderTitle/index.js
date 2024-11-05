@@ -17,7 +17,7 @@ const CardHeaderTitle = ({ titleWidth = 200, chipWidth = '160px', title, chips =
       <Typography fontSize={14} variant="subtitle1" minWidth={titleWidth}>
         {title}
       </Typography>
-      <Stack direction="row" columnGap={1} flexWrap="wrap" rowGap={0.5}>
+      <Stack justifyContent="center" direction="row" columnGap={1} flexWrap="wrap" rowGap={0.5}>
         {chips.map((chip) => {
           const width = chip?.width || chipWidth;
           return <Chip sx={{ width: width }} key={chip.id} label={chip?.title || '----'} />;
