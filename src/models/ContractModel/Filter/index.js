@@ -50,7 +50,7 @@ export default function Filter({
           return Boolean(val);
         }
       })
-      .filter((val) => val).length
+      .filter((val) => val).length - 1
   );
 
   return (

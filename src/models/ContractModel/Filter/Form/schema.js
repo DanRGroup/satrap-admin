@@ -44,6 +44,10 @@ const schema = (contractTypes, contractStatuses) => ({
       type: 'string',
       title: 'legal_employer',
     },
+    category_ids: {
+      type: 'string',
+      title: 'contract_categories',
+    },
   },
 });
 
