@@ -124,8 +124,8 @@ export default function List({
                 handleSelect({
                   id: model?.id,
                   title: `${model?.task_type?.title || ''} ${model?.material_type?.title || ''} ${
-                    model?.workshop?.title || ''
-                  } ${model?.site?.title || ''}`,
+                    model?.operation_type?.title || ''
+                  } ${model?.workshop?.title || ''} ${model?.site?.title || ''}`,
                   site_id: model?.site?.id,
                   workshop_id: model?.workshop?.id,
                   material_type_id: model?.material_type?.id,

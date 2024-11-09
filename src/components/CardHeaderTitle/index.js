@@ -9,7 +9,7 @@ const CardHeaderTitle = ({ titleWidth = 200, chipWidth = '160px', title, chips =
   return (
     <Stack
       alignItems={isMobile ? 'flex-start' : 'center'}
-      maxWidth="90%"
+      maxWidth="76%"
       direction={!isMobile ? 'row' : 'column'}
       columnGap={2}
       rowGap={1}

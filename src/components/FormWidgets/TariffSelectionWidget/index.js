@@ -103,8 +103,8 @@ export default function CustomSelectWidget({
           ? setSelected({
               id: modified?.id,
               title: `${modified?.task_type?.title || ''} ${modified?.material_type?.title || ''} ${
-                modified?.workshop?.title || ''
-              } ${modified?.site?.title || ''}`,
+                modified?.operation_type?.title || ''
+              } ${modified?.workshop?.title || ''} ${modified?.site?.title || ''}`,
             })
           : setSelected(modified);
         setLoading(false);
