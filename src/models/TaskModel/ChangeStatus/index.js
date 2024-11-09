@@ -14,8 +14,10 @@ import { isEmptyObject } from 'helpers/formatObject';
 import { NewDialog, NewDialogActions, NewDialogContent, NewDialogTitle } from 'components';
 import { FormattedMessage } from 'react-intl';
 import { CircularProgress, Stack } from '@mui/material';
+import ErrorIcon from '@mui/icons-material/Error';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-export default function UpdatePopup({ ids, title, refetch }) {
+export default function UpdatePopup({ ids, title, refetch, status }) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState();
   const [formError, setFormError] = useState(true);
@@ -95,9 +97,20 @@ export default function UpdatePopup({ ids, title, refetch }) {
   return (
     <>
       <Tooltip title={title}>
-        <IconButton sx={{ bgcolor: 'error.lighter' }} size="small" color="info" onClick={onOpen}>
+        {/* <IconButton sx={{ bgcolor: 'error.lighter' }} size="small" color="info" onClick={onOpen}>
           <AppRegistrationRoundedIcon color="error" fontSize="small" />
-        </IconButton>
+        </IconButton> */}
+        <Stack minWidth={120}>
+          <Button
+            size="small"
+            variant="outlined"
+            color={status === '2' ? 'success' : 'error'}
+            endIcon={status === '2' ? <CheckCircleIcon /> : <ErrorIcon />}
+            onClick={onOpen}
+          >
+            {status === '2' ? 'انجام شده' : 'در حال انجام'}
+          </Button>
+        </Stack>
       </Tooltip>
       <NewDialog label="update" open={open} onClose={onClose} maxWidth="xs">
         <NewDialogTitle title={title} onClose={onClose} />

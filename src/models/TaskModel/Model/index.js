@@ -14,6 +14,7 @@ import {
   Typography,
   CardHeader,
   CardActionArea,
+  Button,
   useMediaQuery,
   useTheme,
   Chip,
@@ -92,12 +93,17 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           >
             <NewSpeedDial>
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
-              <ChangeStatus ids={model?.id} title={<FormattedMessage id="change_status" />} refetch={refetch} />
               <HistoryCenter model={model} title={<FormattedMessage id="history" />} refetch={refetch} />
               <ChangeLocation
                 ids={model?.vehicle?.id}
                 title={<FormattedMessage id="set_location" />}
                 refetch={refetch}
+              />
+              <ChangeStatus
+                ids={model?.id}
+                title={<FormattedMessage id="change_status" />}
+                refetch={refetch}
+                status={model?.status?.id}
               />
               {/* <Media id={model.id} model="Task" collection="banner" /> */}
             </NewSpeedDial>
@@ -106,7 +112,12 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
               title={
-                <CardHeaderTitle chipWidth="140px" title={getUserFullName(model) || '( بدون نام )'} chips={chips} />
+                <CardHeaderTitle
+                  titleWidth={100}
+                  chipWidth={140}
+                  title={getUserFullName(model) || '( بدون نام )'}
+                  chips={chips}
+                />
               }
               // subheader={
               //   <Typography fontSize={12} variant="subtitle2">

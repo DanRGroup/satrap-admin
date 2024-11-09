@@ -85,14 +85,13 @@ export default function CreatePopup({ title, refetch }) {
 
   const onSubmit = async () => {
     try {
-      console.log(formData);
       const { data, errors } = await formUpdate({
         variables: {
           tariff_id: formData?.tariff_id,
           vehicle_id: formData?.vehicle_id,
           start_time: `${formData?.start_date} ${formData?.start_time}`,
           bill_number: formData?.bill_number,
-          tannage: formData?.tannage,
+          tonnage: formData?.tonnage,
           description: formData?.description,
         },
       });

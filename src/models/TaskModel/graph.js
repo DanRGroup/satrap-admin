@@ -63,6 +63,10 @@ const schema = {
                 id
                 title
               }
+              status {
+                id
+                title
+              }
               vehicle {
                 id
                 plaque
