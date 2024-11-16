@@ -45,6 +45,7 @@ function UpdatePopup({ ids, title, refetch }) {
 
   const getModel = async () => {
     try {
+      // setFormData({ ...formData, end_time: '' });
       const { data } = await fetchModel({
         context: {
           serviceName: graph.get.serviceName,
@@ -86,36 +87,40 @@ function UpdatePopup({ ids, title, refetch }) {
   };
 
   const onSubmit = async () => {
-    try {
-      const { data, errors } = await updateModel({
-        context: {
-          serviceName: graph.update.serviceName,
-          headers: {
-            authorization: `Bearer ${userToken}`,
+    if (!formData?.end_time) {
+      toast.error('فیلد زمان پایان الزامی است!');
+    } else {
+      try {
+        const { data, errors } = await updateModel({
+          context: {
+            serviceName: graph.update.serviceName,
+            headers: {
+              authorization: `Bearer ${userToken}`,
+            },
           },
-        },
-        variables: {
-          ids,
-          workshop_id: formData?.workshop_id,
-          site_id: formData?.site_id,
-          status_id: formData?.status_id,
-          start_time: `${formData?.start_date} ${formData?.start_time}`,
-          end_time: `${formData?.end_date} ${formData?.end_time}`,
-          bill_number: formData?.bill_number,
-          tonnage: formData?.tonnage,
-          description: formData?.description,
-        },
-      });
-      if (!errors) {
-        refetch();
-        onClose();
-        setFormData({});
-        if (!isEmptyObject(data)) {
-          data[graph.update.name]?.messages.map((message) => toast.success(String(message)));
+          variables: {
+            ids,
+            workshop_id: formData?.workshop_id,
+            site_id: formData?.site_id,
+            status_id: formData?.status_id,
+            start_time: `${formData?.start_date} ${formData?.start_time}`,
+            end_time: formData?.end_time ? `${formData?.end_date} ${formData?.end_time}` : null,
+            bill_number: formData?.bill_number,
+            tonnage: formData?.tonnage,
+            description: formData?.description,
+          },
+        });
+        if (!errors) {
+          refetch();
+          onClose();
+          setFormData({});
+          if (!isEmptyObject(data)) {
+            data[graph.update.name]?.messages.map((message) => toast.success(String(message)));
+          }
         }
+      } catch (error) {
+        setFormData(formData);
       }
-    } catch (error) {
-      setFormData(formData);
     }
   };
 

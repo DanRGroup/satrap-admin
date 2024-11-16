@@ -27,6 +27,7 @@ const Form = ({ formData = {}, onChange }) => {
 
   return (
     <MuiFormBuilder
+      liveValidate={false}
       showSubmit={false}
       schema={schema(taskStatusesRole)}
       uiSchema={uiSchema()}

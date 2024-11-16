@@ -16,6 +16,7 @@ const schema = {
         $operation_type_ids: [String]
         $status_ids: [String]
         $type_ids: [String]
+        $contract_ids: [String]
         $created_at: String
         $min_created_at: String
         $max_created_at: String
@@ -34,6 +35,7 @@ const schema = {
           operation_type_ids: $operation_type_ids
           status_ids: $status_ids
           type_ids: $type_ids
+          contract_ids: $contract_ids
           created_at: $created_at
           min_created_at: $min_created_at
           max_created_at: $max_created_at

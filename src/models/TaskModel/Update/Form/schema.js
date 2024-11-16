@@ -1,6 +1,6 @@
 const schema = (taskStatuses) => ({
   type: 'object',
-  required: [],
+  required: ['end_time'],
   properties: {
     vehicle_id: {
       type: 'string',

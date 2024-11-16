@@ -114,7 +114,8 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
               title={
                 <CardHeaderTitle
                   titleWidth={100}
-                  chipWidth={140}
+                  chipWidth={120}
+                  maxWidth="76%"
                   title={getUserFullName(model) || '( بدون نام )'}
                   chips={chips}
                 />
