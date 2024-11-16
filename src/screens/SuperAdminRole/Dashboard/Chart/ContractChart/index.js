@@ -58,9 +58,10 @@ export default function AppView() {
   return (
     <Grid container spacing={2}>
       {contracts.map((contract, index) => {
-        const forecast = Number(contract.forecast_amount - contract.total_service);
-        const total = Number(contract.total_service);
-
+        // const forecast = Number(contract.forecast_amount - contract.total_service);
+        // const total = Number(contract.total_service);
+        const progress = Number(contract.progress_done_cost);
+        const total = 100 - progress;
         return (
           <Grid item key={index}>
             <AppCurrentVisits
@@ -69,8 +70,10 @@ export default function AppView() {
               title={contract.title} // Use contract title
               chart={{
                 series: [
-                  { label: 'انجام شده', value: total },
-                  { label: 'مقدار باقیمانده', value: forecast },
+                  // { label: 'انجام شده', value: total },
+                  // { label: 'مقدار باقیمانده', value: forecast },
+                  { label: 'انجام شده', value: progress },
+                  { label: 'مقدار باقیمانده', value: total },
                 ],
               }}
             />

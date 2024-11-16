@@ -3,6 +3,7 @@ import { ContractSelectionWidget } from 'components/FormWidgets';
 const uiSchema = () => ({
   contract_id: {
     'ui:widget': ContractSelectionWidget,
+    'ui:disabled': true,
     'ui:options': {
       xs: 12,
       sm: 12,

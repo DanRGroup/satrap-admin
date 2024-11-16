@@ -44,7 +44,7 @@ const schema = {
               id
               title
             }
-
+            progress_done_cost
             forecast_amount
             total_houre
             total_service

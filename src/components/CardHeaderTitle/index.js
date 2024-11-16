@@ -2,14 +2,14 @@ import React from 'react';
 
 import { useMediaQuery, useTheme, Stack, Typography, Chip } from '@mui/material';
 
-const CardHeaderTitle = ({ titleWidth = 200, chipWidth = '160px', title, chips = [] }) => {
+const CardHeaderTitle = ({ titleWidth = 200, chipWidth = '160px', maxWidth = '84%', title, chips = [] }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'), { defaultMatches: false });
 
   return (
     <Stack
       alignItems={isMobile ? 'flex-start' : 'center'}
-      maxWidth="76%"
+      maxWidth={maxWidth}
       direction={!isMobile ? 'row' : 'column'}
       columnGap={2}
       rowGap={1}
