@@ -59,6 +59,8 @@ const schema = {
               id
               title
             }
+            total_done_cost
+            progress_done_cost
             cost
             forecast_amount
             total_cubic_meter

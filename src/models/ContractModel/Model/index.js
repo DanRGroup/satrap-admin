@@ -72,8 +72,8 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
     { id: '4', name: 'number', title: model?.number },
     { id: '5', name: 'cost', title: `مبلغ : ${fCurrency(model?.cost)}` },
     { id: '6', name: 'operationType', title: `برآورد : ${fCurrency(model?.forecast_amount)}` },
-    { id: '7', name: 'forecastAmount', title: `ثبت : ${getTotal(model)}` },
-    { id: '8', name: 'totalService', title: `پیشرفت : ${model?.progress + ' %'}` },
+    // { id: '7', name: 'forecastAmount', title: `ثبت : ${getTotal(model)}` },
+    { id: '8', name: 'totalService', title: `پیشرفت : ${model?.progress_done_cost + ' %'}` },
   ];
 
   return (
