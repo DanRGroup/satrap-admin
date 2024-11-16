@@ -38,10 +38,15 @@ const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
     //   type: 'string',
     //   title: 'updator',
     // },
+    contract_id: {
+      type: 'string',
+      title: 'contract',
+    },
     cost: {
       type: 'string',
       title: 'cost',
     },
+
     is_active: {
       type: 'number',
       title: 'status',

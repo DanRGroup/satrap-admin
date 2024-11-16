@@ -32,6 +32,10 @@ const schema = {
               id
               title
             }
+            contract {
+              id
+              title
+            }
             cost
             creator {
               id

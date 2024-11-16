@@ -7,6 +7,7 @@ const schema = {
     query: gql`
       mutation createTariff(
         $task_type_id: String!
+        $contract_id: String!
         $operation_type_id: String!
         $workshop_id: String!
         $site_id: String
@@ -20,6 +21,7 @@ const schema = {
       ) {
         createTariff(
           task_type_id: $task_type_id
+          contract_id: $contract_id
           operation_type_id: $operation_type_id
           workshop_id: $workshop_id
           site_id: $site_id

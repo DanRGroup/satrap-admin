@@ -6,6 +6,7 @@ import {
   WorkshopSelectionWidget,
   MaterialTypeSelectionWidget,
   ShiftTypeSelectionWidget,
+  ContractSelectionWidget,
 } from 'components/FormWidgets';
 
 const uiSchema = () => ({
@@ -89,13 +90,23 @@ const uiSchema = () => ({
   //     xl: 6,
   //   },
   // },
+  contract_id: {
+    'ui:widget': ContractSelectionWidget,
+    'ui:options': {
+      xs: 12,
+      sm: 12,
+      md: 4,
+      lg: 4,
+      xl: 4,
+    },
+  },
   cost: {
     'ui:options': {
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   is_active: {
@@ -104,9 +115,9 @@ const uiSchema = () => ({
       inline: true,
       xs: 12,
       sm: 12,
-      md: 6,
-      lg: 6,
-      xl: 6,
+      md: 4,
+      lg: 4,
+      xl: 4,
     },
   },
   description: {
