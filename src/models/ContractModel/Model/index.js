@@ -70,10 +70,10 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
     { id: '2', name: 'employer', title: getEmployerName(model) },
     { id: '3', name: 'category', title: model?.category?.title },
     { id: '4', name: 'number', title: model?.number },
-    { id: '5', name: 'cost', title: `مبلغ : ${fCurrency(model?.cost)}` },
+    { id: '5', name: 'cost', title: `مبلغ : ${fCurrency(model?.cost)}`, width: 140 },
     { id: '6', name: 'operationType', title: `برآورد : ${fCurrency(model?.forecast_amount)}` },
     // { id: '7', name: 'forecastAmount', title: `ثبت : ${getTotal(model)}` },
-    { id: '8', name: 'totalService', title: `پیشرفت : ${model?.progress_done_cost + ' %'}` },
+    { id: '8', name: 'totalService', title: `پیشرفت : ${Math.round(Number(model?.progress_done_cost)) + ' %'}` },
   ];
 
   return (
@@ -135,7 +135,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
               title={
-                <CardHeaderTitle chipWidth="140px" title={model?.title} chips={chips} />
+                <CardHeaderTitle chipWidth="120px" title={model?.title} chips={chips} />
                 // <Stack flexWrap={true}>
 
                 // </Stack>
