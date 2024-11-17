@@ -6,6 +6,7 @@ import { Loadable, Page, PrivateRoute } from 'components';
 import { Navigate, Routes, Route } from 'react-router-dom';
 
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
+import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
 import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
 import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded';
 import TaskRoundedIcon from '@mui/icons-material/TaskRounded';
@@ -84,7 +85,7 @@ function Dashboard() {
 export const navConfig = [
   {
     path: '/',
-    element: <Navigate to="/dashboard/managment" replace />,
+    element: <Navigate to="/dashboard/app" replace />,
   },
   // {
   //   path: '/setting/app',
@@ -102,6 +103,15 @@ export const navConfig = [
     element: <AppLayout />,
     icon: <DashboardRoundedIcon fontSize="small" />,
     children: [
+      {
+        path: '/dashboard/app',
+        url: '/dashboard/app',
+        title: 'app',
+        element: <Dashboard />,
+        icon: <GridViewRoundedIcon fontSize="small" />,
+        inSidebar: true,
+        roles: ['superadmin'],
+      },
       {
         path: '/dashboard/managment',
         url: '/dashboard/managment',
@@ -241,14 +251,6 @@ export const navConfig = [
     roles: ['superadmin'],
     children: [
       { element: <Navigate to="/app" replace /> },
-      {
-        path: '/setting/app',
-        url: '/setting/app',
-        title: 'app',
-        element: <Dashboard />,
-        inSidebar: true,
-        roles: ['superadmin'],
-      },
       {
         path: '/setting/contract-types',
         url: '/setting/contract-types',
