@@ -41,16 +41,21 @@ export default function List({
   const handleSelect = (item) => {
     const selectedIndex = selected.map((item) => item.id).indexOf(item.id);
     let newSelected = [];
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, item);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
+    if (multiSelect) {
+      if (selectedIndex === -1) {
+        newSelected = newSelected.concat(selected, item);
+      } else if (selectedIndex === 0) {
+        newSelected = newSelected.concat(selected.slice(1));
+      } else if (selectedIndex === selected.length - 1) {
+        newSelected = newSelected.concat(selected.slice(0, -1));
+      } else if (selectedIndex > 0) {
+        newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
+      }
+      setSelected(newSelected);
+    } else if (!multiSelect) {
+      newSelected.push(item);
+      setSelected(newSelected);
     }
-    setSelected(newSelected);
     if (isAssign && !multiSelect && newSelected.length > 0) {
       onAssign(newSelected, onClose);
     }
