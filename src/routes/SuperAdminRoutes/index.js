@@ -4,34 +4,68 @@ import { useSelector } from 'react-redux';
 import { hasRequiredRole } from 'helpers';
 import { Loadable, Page, PrivateRoute } from 'components';
 import { Navigate, Routes, Route } from 'react-router-dom';
+
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
-import {
-  ContractTypeModel,
-  MaterialTypeModel,
-  OperationTypeModel,
-  ShiftTypeModel,
-  SiteTypeModel,
-  TaskStatusModel,
-  TaskTypeModel,
-  WorkshopStatusModel,
-  VehicleTypeModel,
-  SiteModel,
-  ContractModel,
-  VehicleModel,
-  UserModel,
-  UserStatusModel,
-  WorkshopModel,
-  TariffModel,
-  TaskModel,
-  ContractCategoryModel,
-  CompanyModel,
-} from 'models';
+import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
+import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
+import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded';
+import TaskRoundedIcon from '@mui/icons-material/TaskRounded';
+import CategoryRoundedIcon from '@mui/icons-material/CategoryRounded';
+import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded';
+import WhereToVoteRoundedIcon from '@mui/icons-material/WhereToVoteRounded';
+import FireTruckRoundedIcon from '@mui/icons-material/FireTruckRounded';
+import LocationCityRoundedIcon from '@mui/icons-material/LocationCityRounded';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import BusinessRoundedIcon from '@mui/icons-material/BusinessRounded';
+import SettingsIcon from '@mui/icons-material/Settings';
+
+import { FormattedMessage } from 'react-intl';
+
+const ContractTypeModel = Loadable(lazy(() => import('models/ContractTypeModel')));
+const MaterialTypeModel = Loadable(lazy(() => import('models/MaterialTypeModel')));
+const OperationTypeModel = Loadable(lazy(() => import('models/OperationTypeModel')));
+const ShiftTypeModel = Loadable(lazy(() => import('models/ShiftTypeModel')));
+const SiteTypeModel = Loadable(lazy(() => import('models/SiteTypeModel')));
+const TaskStatusModel = Loadable(lazy(() => import('models/TaskStatusModel')));
+const TaskTypeModel = Loadable(lazy(() => import('models/TaskTypeModel')));
+const WorkshopStatusModel = Loadable(lazy(() => import('models/WorkshopStatusModel')));
+const VehicleTypeModel = Loadable(lazy(() => import('models/VehicleTypeModel')));
+const SiteModel = Loadable(lazy(() => import('models/SiteModel')));
+const ContractModel = Loadable(lazy(() => import('models/ContractModel')));
+const VehicleModel = Loadable(lazy(() => import('models/VehicleModel')));
+const UserModel = Loadable(lazy(() => import('models/UserModel')));
+const UserStatusModel = Loadable(lazy(() => import('models/UserStatusModel')));
+const WorkshopModel = Loadable(lazy(() => import('models/WorkshopModel')));
+const TariffModel = Loadable(lazy(() => import('models/TariffModel')));
+const TaskModel = Loadable(lazy(() => import('models/TaskModel')));
+const ContractCategoryModel = Loadable(lazy(() => import('models/ContractCategoryModel')));
+const CompanyModel = Loadable(lazy(() => import('models/CompanyModel')));
+
+// import {
+//   ContractTypeModel,
+//   MaterialTypeModel,
+//   OperationTypeModel,
+//   ShiftTypeModel,
+//   SiteTypeModel,
+//   TaskStatusModel,
+//   TaskTypeModel,
+//   WorkshopStatusModel,
+//   VehicleTypeModel,
+//   SiteModel,
+//   ContractModel,
+//   VehicleModel,
+//   UserModel,
+//   UserStatusModel,
+//   WorkshopModel,
+//   TariffModel,
+//   TaskModel,
+//   ContractCategoryModel,
+// } from 'models';
 
 const NotFound = Loadable(lazy(() => import('screens/Authentication/Page404')));
 
 const Management = Loadable(lazy(() => import('screens/SuperAdminRole/Management')));
 const SuperAdminDashboard = Loadable(lazy(() => import('screens/SuperAdminRole/Dashboard')));
-const MUITraining = Loadable(lazy(() => import('models/MUITraining')));
 
 function Dashboard() {
   const { userInfo } = useSelector((state) => state.auth);
@@ -41,13 +75,171 @@ function Dashboard() {
   // if (hasRequiredRole(['superadmin', 'operator'], userInfo?.roles)) {
   //   return <SuperAdminDashboard />;
   // }
-  return <SuperAdminDashboard />;
+  return (
+    <Page title="داشبورد">
+      <SuperAdminDashboard />
+    </Page>
+  );
 }
 
-export const superAdminNavConfig = [
+export const navConfig = [
   {
     path: '/',
-    element: <Navigate to="/setting/app" replace />,
+    element: <Navigate to="/dashboard/app" replace />,
+  },
+  // {
+  //   path: '/setting/app',
+  //   url: '/setting/app',
+  //   title: <FormattedMessage id="app" />,
+  //   element: <Dashboard />,
+  //   inSidebar: true,
+  //   roles: ['superadmin'],
+  // },
+  {
+    path: '/dashboard',
+    url: '/dashboard',
+    title: 'dashboard',
+    inSidebar: true,
+    element: <AppLayout />,
+    icon: <DashboardRoundedIcon fontSize="small" />,
+    children: [
+      {
+        path: '/dashboard/app',
+        url: '/dashboard/app',
+        title: 'app',
+        element: <Dashboard />,
+        icon: <GridViewRoundedIcon fontSize="small" />,
+        inSidebar: true,
+        roles: ['superadmin'],
+      },
+      {
+        path: '/dashboard/managment',
+        url: '/dashboard/managment',
+        title: 'managment',
+        element: (
+          <Page title="مدیریت">
+            <Management />
+          </Page>
+        ),
+        icon: <ManageAccountsRoundedIcon fontSize="small" />,
+        inSidebar: true,
+      },
+      {
+        path: '/dashboard/contracts',
+        url: '/dashboard/contracts',
+        title: 'contracts',
+        element: (
+          <Page title="قراردادها">
+            <ContractModel />
+          </Page>
+        ),
+        icon: <EditNoteRoundedIcon fontSize="small" />,
+        inSidebar: true,
+        roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
+      },
+      {
+        path: '/dashboard/contract-categories',
+        url: '/dashboard/contract-categories',
+        title: 'contract_categories',
+        element: (
+          <Page title="ContractCategoryModel">
+            <ContractCategoryModel />
+          </Page>
+        ),
+        icon: <CategoryRoundedIcon fontSize="small" />,
+        inSidebar: true,
+        roles: ['superadmin', 'companyCeo'],
+      },
+      {
+        path: '/dashboard/task',
+        url: '/dashboard/task',
+        title: 'tasks',
+        element: (
+          <Page title="فعالیت‌ها">
+            <TaskModel />
+          </Page>
+        ),
+        icon: <TaskRoundedIcon fontSize="small" />,
+        inSidebar: true,
+      },
+      {
+        path: '/dashboard/tarrif',
+        url: '/dashboard/tarrif',
+        title: 'tariffs',
+        element: (
+          <Page title="تعرفه‌ها">
+            <TariffModel />
+          </Page>
+        ),
+        icon: <ImportContactsRoundedIcon fontSize="small" />,
+        inSidebar: true,
+        roles: ['superadmin', 'companyCeo'],
+      },
+      {
+        path: '/dashboard/sites',
+        url: '/dashboard/sites',
+        title: 'sites',
+        element: (
+          <Page title="محل‌های تخلیه">
+            <SiteModel />
+          </Page>
+        ),
+        icon: <WhereToVoteRoundedIcon fontSize="small" />,
+        inSidebar: true,
+        roles: ['superadmin', 'siteManager', 'companyCeo'],
+      },
+      {
+        path: '/dashboard/vehicles',
+        url: '/dashboard/vehicles',
+        title: 'vehicles',
+        element: (
+          <Page title="ماشین‌آلات">
+            <VehicleModel />
+          </Page>
+        ),
+        icon: <FireTruckRoundedIcon fontSize="small" />,
+        inSidebar: true,
+      },
+      {
+        path: '/dashboard/workshop',
+        url: '/dashboard/workshop',
+        title: 'workshops',
+        element: (
+          <Page title="کارگاه‌ها">
+            <WorkshopModel />
+          </Page>
+        ),
+        icon: <LocationCityRoundedIcon fontSize="small" />,
+        inSidebar: true,
+        roles: ['superadmin', 'workshopManager', 'companyCeo'],
+      },
+      {
+        path: '/dashboard/users',
+        url: '/dashboard/users',
+        title: 'users',
+        element: (
+          <Page title="کاربران">
+            <UserModel />
+          </Page>
+        ),
+        icon: <AccountCircleRoundedIcon fontSize="small" />,
+        inSidebar: true,
+        roles: ['superadmin', 'companyCeo', 'workshopManager', 'companyOperator', 'companyFinancial'],
+      },
+      {
+        path: '/dashboard/companies',
+        url: '/dashboard/companies',
+        title: 'companies',
+        element: (
+          <Page title="شرکت‌ها">
+            <CompanyModel />
+          </Page>
+        ),
+        icon: <BusinessRoundedIcon fontSize="small" />,
+        inSidebar: true,
+        roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
+      },
+    ],
   },
   {
     path: '/setting',
@@ -55,24 +247,16 @@ export const superAdminNavConfig = [
     title: 'setting',
     inSidebar: true,
     element: <AppLayout />,
-    icon: <DashboardRoundedIcon fontSize="small" />,
+    icon: <SettingsIcon fontSize="small" />,
     roles: ['superadmin'],
     children: [
       { element: <Navigate to="/app" replace /> },
-      {
-        path: '/setting/app',
-        url: '/setting/app',
-        title: 'app',
-        element: <Dashboard />,
-        inSidebar: true,
-        roles: ['superadmin'],
-      },
       {
         path: '/setting/contract-types',
         url: '/setting/contract-types',
         title: 'contract_types',
         element: (
-          <Page title="Contract">
+          <Page title="انواع قرارداد">
             <ContractTypeModel />
           </Page>
         ),
@@ -84,7 +268,7 @@ export const superAdminNavConfig = [
         url: '/setting/material-types',
         title: 'material_types',
         element: (
-          <Page title="Material">
+          <Page title="انواع مصالح">
             <MaterialTypeModel />
           </Page>
         ),
@@ -96,7 +280,7 @@ export const superAdminNavConfig = [
         url: '/setting/operation-types',
         title: 'operation_types',
         element: (
-          <Page title="Operations">
+          <Page title="انواع کارکرد">
             <OperationTypeModel />
           </Page>
         ),
@@ -108,7 +292,7 @@ export const superAdminNavConfig = [
         url: '/setting/shift-types',
         title: 'shift_types',
         element: (
-          <Page title="Actions">
+          <Page title="انواع شیفت">
             <ShiftTypeModel />
           </Page>
         ),
@@ -120,7 +304,7 @@ export const superAdminNavConfig = [
         url: '/setting/site-types',
         title: 'site_types',
         element: (
-          <Page title="Sites">
+          <Page title="انواع محل">
             <SiteTypeModel />
           </Page>
         ),
@@ -132,7 +316,7 @@ export const superAdminNavConfig = [
         url: '/setting/vehicle-types',
         title: 'vehicle_types',
         element: (
-          <Page title="Sites">
+          <Page title="انواع ماشین">
             <VehicleTypeModel />
           </Page>
         ),
@@ -144,7 +328,7 @@ export const superAdminNavConfig = [
         url: '/setting/task-status',
         title: 'task_status',
         element: (
-          <Page title="Tasks">
+          <Page title="وضعیت‌های فعالیت">
             <TaskStatusModel />
           </Page>
         ),
@@ -156,7 +340,7 @@ export const superAdminNavConfig = [
         url: '/setting/task-types',
         title: 'task_types',
         element: (
-          <Page title="Tasks">
+          <Page title="انواع فعالیت">
             <TaskTypeModel />
           </Page>
         ),
@@ -168,7 +352,7 @@ export const superAdminNavConfig = [
         url: '/setting/workshop-status',
         title: 'workshop_status',
         element: (
-          <Page title="WorkShop">
+          <Page title="وضعیت‌های کارگاه">
             <WorkshopStatusModel />
           </Page>
         ),
@@ -180,144 +364,12 @@ export const superAdminNavConfig = [
         url: '/setting/user-status',
         title: 'user_status',
         element: (
-          <Page title="UserStatus">
+          <Page title="وضعیت‌های کاربران">
             <UserStatusModel />
           </Page>
         ),
         inSidebar: true,
         roles: ['superadmin'],
-      },
-    ],
-  },
-  {
-    path: '/dashboard',
-    url: '/dashboard',
-    title: 'dashboard',
-    inSidebar: true,
-    element: <AppLayout />,
-    icon: <DashboardRoundedIcon fontSize="small" />,
-    children: [
-      {
-        path: '/dashboard/training',
-        url: '/dashboard/training',
-        title: 'MUI-Training',
-        element: (
-          <Page title="MUITraining">
-            <MUITraining />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
-        path: '/dashboard/managment',
-        url: '/dashboard/managment',
-        title: 'managment',
-        element: (
-          <Page title="Managment">
-            <Management />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
-        path: '/dashboard/contracts',
-        url: '/dashboard/contracts',
-        title: 'contracts',
-        element: (
-          <Page title="Contracts">
-            <ContractModel />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
-        path: '/dashboard/contract-categories',
-        url: '/dashboard/contract-categories',
-        title: 'contract-categories',
-        element: (
-          <Page title="ContractCategoryModel">
-            <ContractCategoryModel />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
-        path: '/dashboard/task',
-        url: '/dashboard/task',
-        title: 'tasks',
-        element: (
-          <Page title="Tasks">
-            <TaskModel />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
-        path: '/dashboard/tarrif',
-        url: '/dashboard/tarrif',
-        title: 'tariffs',
-        element: (
-          <Page title="Tariffs">
-            <TariffModel />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
-        path: '/dashboard/sites',
-        url: '/dashboard/sites',
-        title: 'sites',
-        element: (
-          <Page title="Sites">
-            <SiteModel />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
-        path: '/dashboard/vehicles',
-        url: '/dashboard/vehicles',
-        title: 'vehicles',
-        element: (
-          <Page title="Vehicles">
-            <VehicleModel />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
-        path: '/dashboard/workshop',
-        url: '/dashboard/workshop',
-        title: 'workshops',
-        element: (
-          <Page title="Workshops">
-            <WorkshopModel />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
-        path: '/dashboard/users',
-        url: '/dashboard/users',
-        title: 'users',
-        element: (
-          <Page title="Users">
-            <UserModel />
-          </Page>
-        ),
-        inSidebar: true,
-      },
-      {
-        path: '/dashboard/companies',
-        url: '/dashboard/companies',
-        title: 'companies',
-        element: (
-          <Page title="Companies">
-            <CompanyModel />
-          </Page>
-        ),
-        inSidebar: true,
-        roles: ['superadmin', 'companyCeo', 'companyOperator', 'companyFinancial'],
       },
     ],
   },
@@ -352,7 +404,7 @@ export const superAdminNavConfig = [
 const Router = () => {
   return (
     <Routes>
-      {superAdminNavConfig.map((route, i) => (
+      {navConfig.map((route, i) => (
         <Route key={i} path={route.path} element={<PrivateRoute data={route} />}>
           {route.children &&
             route.children.map((child, c) => (

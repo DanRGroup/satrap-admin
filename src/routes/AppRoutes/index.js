@@ -85,7 +85,7 @@ function Dashboard() {
 export const navConfig = [
   {
     path: '/',
-    element: <Navigate to="/dashboard/app" replace />,
+    element: <Navigate to="/dashboard/managment" replace />,
   },
   // {
   //   path: '/setting/app',
