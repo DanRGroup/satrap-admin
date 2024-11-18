@@ -2,11 +2,11 @@ import { gql } from '@apollo/client';
 
 const schema = {
   current: {
-    name: 'contractTypes',
+    name: 'contractType',
     serviceName: 'graphql',
     query: gql`
-      query contractTypes($ids: [String]) {
-        contractTypes(ids: $ids) {
+      query contractType($ids: [String]) {
+        contractType(ids: $ids) {
           data {
             media {
               id

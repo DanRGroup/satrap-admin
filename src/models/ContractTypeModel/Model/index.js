@@ -43,7 +43,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
             <Checkbox size="small" checked={checked} onChange={handleSelect} />
             <Media
               id={model.id}
-              model="Brand"
+              model="ContractType"
               collection="avatar"
               title={model.title}
               subheader={model.producer?.title || 'برند'}
@@ -63,7 +63,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           >
             <NewSpeedDial>
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
-              <Media id={model.id} model="Brand" collection="banner" />
+              <Media id={model.id} model="ContractType" />
             </NewSpeedDial>
           </Stack>
           <CardActionArea onClick={handleSelect}>

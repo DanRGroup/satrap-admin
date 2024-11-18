@@ -63,7 +63,7 @@ export default function Model({ model, delay, direction, checked, handleSelect, 
           >
             <NewSpeedDial>
               <Update ids={model.id} title={<FormattedMessage id="update" />} refetch={refetch} />
-              <Media id={model.id} model="Brand" collection="banner" />
+              {/* <Media id={model.id} model="Brand" collection="banner" /> */}
             </NewSpeedDial>
           </Stack>
           <CardActionArea onClick={handleSelect}>
