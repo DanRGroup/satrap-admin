@@ -23,7 +23,7 @@ export default function SignIn({ handleType, startLiveBackground }) {
       if (!errors && !isEmptyObject(data)) {
         const {
           adminLogin: {
-            user: { cellphone, username, roles, permission_names, token },
+            user: { firstname, lastname, cellphone, username, roles, permission_names, token },
           },
         } = data;
         let userRoles = [];
@@ -36,6 +36,8 @@ export default function SignIn({ handleType, startLiveBackground }) {
             isAuthenticated: true,
             userToken: token,
             userInfo: {
+              firstname,
+              lastname,
               username,
               cellphone,
               roles: userRoles,

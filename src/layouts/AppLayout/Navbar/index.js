@@ -1,13 +1,13 @@
-import { useTour } from "@reactour/tour";
-import { useEffect, useState } from "react";
-import { Box, Stack, AppBar, IconButton, Typography } from "@mui/material";
+import { useTour } from '@reactour/tour';
+import { useEffect, useState } from 'react';
+import { Box, Stack, AppBar, IconButton, Typography } from '@mui/material';
 
-import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
-import HelpOutlineRoundedIcon from "@mui/icons-material/HelpOutlineRounded";
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import HelpOutlineRoundedIcon from '@mui/icons-material/HelpOutlineRounded';
 
-import ThemePopover from "./ThemePopover";
-import ProfilePopover from "./ProfilePopover";
-import LanguagePopover from "./LanguagePopover";
+import ThemePopover from './ThemePopover';
+import ProfilePopover from './ProfilePopover';
+import LanguagePopover from './LanguagePopover';
 
 const drawerWidth = 320;
 export default function Navbar({ onOpenSidebar }) {
@@ -19,11 +19,11 @@ export default function Navbar({ onOpenSidebar }) {
     const handleStatusChange = () => {
       setIsOnline(navigator.onLine);
     };
-    window.addEventListener("online", handleStatusChange);
-    window.addEventListener("offline", handleStatusChange);
+    window.addEventListener('online', handleStatusChange);
+    window.addEventListener('offline', handleStatusChange);
     return () => {
-      window.removeEventListener("online", handleStatusChange);
-      window.removeEventListener("offline", handleStatusChange);
+      window.removeEventListener('online', handleStatusChange);
+      window.removeEventListener('offline', handleStatusChange);
     };
   }, [isOnline]);
 
@@ -33,9 +33,9 @@ export default function Navbar({ onOpenSidebar }) {
       sx={{
         m: 1,
         borderRadius: 2,
-        bgcolor: "background.default",
+        bgcolor: 'background.default',
         width: {
-          xs: "calc(100% - 16px)",
+          xs: 'calc(100% - 16px)',
           lg: `calc(100% - ${drawerWidth}px - 16px)`,
         },
       }}
@@ -67,6 +67,7 @@ export default function Navbar({ onOpenSidebar }) {
           <ThemePopover />
           <LanguagePopover />
           <ProfilePopover />
+          {/* <UserProfilePopup /> */}
         </Stack>
       </Stack>
     </AppBar>

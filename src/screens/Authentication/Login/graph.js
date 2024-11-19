@@ -8,6 +8,8 @@ const schema = {
       mutation adminLogin($cellphone: String!, $password: String!) {
         adminLogin(cellphone: $cellphone, password: $password) {
           user {
+            firstname
+            lastname
             token
             roles
             username
