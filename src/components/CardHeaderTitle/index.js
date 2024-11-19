@@ -14,7 +14,7 @@ const CardHeaderTitle = ({ titleWidth = 200, chipWidth = '160px', maxWidth = '84
       columnGap={2}
       rowGap={1}
     >
-      <Typography fontSize={14} variant="subtitle1" minWidth={titleWidth}>
+      <Typography fontSize={14} variant="subtitle1" width={titleWidth}>
         {title}
       </Typography>
       <Stack justifyContent="center" direction="row" columnGap={1} flexWrap="wrap" rowGap={0.5}>

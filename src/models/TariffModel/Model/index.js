@@ -40,7 +40,8 @@ export default function Model({ model, delay, direction, isAssign, checked, hand
     { id: '7', name: 'cost', title: fCurrency(model?.cost) },
   ];
 
-  const workshopTitle = model?.workshop?.title;
+  // const workshopTitle = model?.workshop?.title;
+  const contractTitle = model?.contract?.title;
   const taskType = model?.task_type?.title;
 
   const theme = useTheme();
@@ -99,20 +100,12 @@ export default function Model({ model, delay, direction, isAssign, checked, hand
           <CardActionArea onClick={handleSelect}>
             <CardHeader
               sx={{ px: 0.5, pl: 13 }}
-              title={
-                <CardHeaderTitle
-                  chipWidth="120px"
-                  title={`${taskType} ${workshopTitle ? ' - ' + workshopTitle : ''}`}
-                  chips={chips}
-                />
+              title={<CardHeaderTitle chipWidth={120} titleWidth={200} title={`${taskType}`} chips={chips} />}
+              subheader={
+                <Typography fontSize={12} variant="subtitle2">
+                  {contractTitle ? contractTitle : ''}
+                </Typography>
               }
-              // subheader={
-              //   <Typography fontSize={12} variant="subtitle2">
-              //     {`${model?.workshop?.title} ${
-              //       model?.task_type.title === 'حمل بار' ? ` - ${model?.site?.title}` : ''
-              //     }`}
-              //   </Typography>
-              // }
             />
           </CardActionArea>
         </Card>
