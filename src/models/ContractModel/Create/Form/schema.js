@@ -1,6 +1,6 @@
 const schema = (contractTypes, contractStatuses, operationTypes) => ({
   type: 'object',
-  required: [],
+  required: ['forecast_amount', 'cost'],
   properties: {
     title: {
       type: 'string',
