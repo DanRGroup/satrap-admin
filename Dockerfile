@@ -1,7 +1,7 @@
 FROM node:alpine AS builder
 
-RUN apk update --no-cache \
-    && apk upgrade
+# RUN apk update --no-cache \
+#     && apk upgrade
 
 WORKDIR /app
 
