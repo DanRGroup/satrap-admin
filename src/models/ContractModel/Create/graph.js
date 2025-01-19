@@ -18,7 +18,7 @@ const schema = {
         $number: String
         $details: String
         $operation_type_id: String
-        $forecast_amount: String
+        $forecast_amount: String!
         $contractual_number: String
         $category_id: String
         $is_civil: Int
