@@ -14,7 +14,7 @@ const schema = {
         $status: String
         $start_date: String
         $end_date: String
-        $cost: String
+        $cost: String!
         $number: String
         $details: String
         $operation_type_id: String
