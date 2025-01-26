@@ -1,6 +1,6 @@
 const schema = (taskTypes, operationTypes, materialTypes, shiftTypes) => ({
   type: 'object',
-  required: [],
+  required: ['task_type_id', 'operation_type_id', 'contract_id', 'workshop_id', 'cost'],
   properties: {
     task_type_id: {
       type: 'string',
