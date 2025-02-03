@@ -99,12 +99,18 @@ export default function Model({ model, delay, direction, isAssign, checked, hand
           </Stack>
           <CardActionArea onClick={handleSelect}>
             <CardHeader
-              sx={{ px: 0.5, pl: 13 }}
+              sx={{ py: 0.5, px: 0.5, pl: 13 }}
               title={<CardHeaderTitle chipWidth={120} titleWidth={200} title={`${taskType}`} chips={chips} />}
               subheader={
-                <Typography fontSize={12} variant="subtitle2">
-                  {contractTitle ? contractTitle : ''}
-                </Typography>
+                <Stack direction="row" columnGap={1}>
+                  <Typography fontSize={11} variant="subtitle2">
+                    {model?.contract?.category?.title}
+                  </Typography>
+                  -
+                  <Typography fontSize={11} variant="caption">
+                    {model?.contract?.title}
+                  </Typography>
+                </Stack>
               }
             />
           </CardActionArea>

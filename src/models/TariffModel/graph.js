@@ -56,6 +56,9 @@ const schema = {
             contract {
               id
               title
+              category {
+                title
+              }
             }
             cost
           }
